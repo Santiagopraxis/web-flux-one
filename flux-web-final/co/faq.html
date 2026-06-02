@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX One — Preguntas Frecuentes (FAQ)</title>
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+  <style>
+    .faq-hero {
+      padding: 140px 0 80px 0;
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(0, 184, 148, 0.1) 0%, rgba(5, 5, 8, 0) 60%);
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto 100px auto;
+    }
+    .faq-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .faq-item:hover {
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .faq-question {
+      padding: 24px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .faq-item.active .faq-answer {
+      padding-bottom: 24px;
+      max-height: 300px;
+    }
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      color: #00B894;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      </a>
+      <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Productos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>INFRAESTRUCTURA DE NUEVA GENERACIÓN</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="recaudo.html">Recaudo</a></li>
+                  <li><a href="dispersion.html">Dispersión</a></li>
+                  <li><a href="conciliacion.html">Conciliación</a></li>
+                  <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Desarrolladores</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Recursos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>CONOCIMIENTO Y SOPORTE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RECURSOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> <span id="current-country-text">Col</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="/co/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+          </ul>
+        </li>
+            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+          </ul>
+        </li>
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">ES</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="index.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="../en/index.html"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Iniciar sesión</button>
+        <button class="btn-primary" onclick="openModal()">Comienza hoy</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY MENU -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+      </div>
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">Productos <span class="drilldown-arrow">›</span></button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">Recursos <span class="drilldown-arrow">›</span></button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Desarrolladores</a>
+            </nav>
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Iniciar sesión</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Comienza hoy</a>
+            </div>
+          </div>
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Volver</button>
+              <div class="panel-title">Productos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="recaudo.html" class="mobile-link" onclick="toggleMenu()">Recaudo Inteligente</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Dispersión Automática</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Conciliación en tiempo real</a>
+              <a href="#" class="mobile-link" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a>
+            </nav>
+          </div>
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Volver</button>
+              <div class="panel-title">Recursos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">Preguntas Frecuentes</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="faq-hero">
+    <div class="container">
+      <p style="color: #00B894; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">SOPORTE Y RESPUESTAS</p>
+      <h1 class="section-title" style="font-size: clamp(32px, 4vw, 56px); margin-bottom: 20px;">Preguntas Frecuentes</h1>
+      <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">Encuentra respuestas rápidas sobre nuestra infraestructura transaccional multi-riel, conciliación y seguridad bancaria.</p>
+    </div>
+  </header>
+
+  <!-- FAQS -->
+  <section class="container">
+    <div class="faq-container">
+      
+      <!-- FAQ - Pagos que piensan -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Cómo funcionan los "pagos que piensan" en fluX One?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>No solo procesamos transacciones, sino que nuestra IA predice la probabilidad de mora antes de que ocurra y genera recordatorios proactivos por WhatsApp mediante Nexa, optimizando canales y guiando las decisiones de tu empresa de forma autónoma.</p>
+        </div>
+      </div>
+
+      <!-- FAQ - Tiempo Real -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Cómo garantizan la ejecución en tiempo real 24/7/365?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Procesamos tus recaudos y pagos en segundos utilizando tecnología de orquestación transaccional multi-riel integrada de forma nativa con los rieles inmediatos locales (como Bre-B en Colombia y SPEI en México), sin importar el banco, el día o la hora.</p>
+        </div>
+      </div>
+
+      <!-- FAQ - Visibilidad -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Qué nivel de visibilidad ofrece el sistema?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Ofrecemos visibilidad operativa absoluta a través de un dashboard ejecutivo en tiempo real. Esto permite saber de inmediato quién pagó, quién tiene pagos pendientes y quién está en riesgo de mora para tomar acciones oportunas de inmediato.</p>
+        </div>
+      </div>
+
+      <!-- FAQ - Automatización -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Qué procesos abarca la automatización de punta a punta?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Abarcamos de forma automatizada todo el ciclo del dinero de tu empresa: desde la orquestación y procesamiento de pagos entrantes (Recaudo) hasta la dispersión de fondos y la conciliación contable instantánea y directa en tu ERP sin archivos sueltos.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 1 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Qué es fluX One y cómo se integra con mi empresa?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>fluX One es un orquestador transaccional e infraestructura de pagos multi-riel de nueva generación. Se integra a través de una API REST robusta y unificada, permitiendo que tu sistema central o ERP (SAP, Oracle, Dynamics, etc.) reciba y concilie pagos automáticamente en tiempo real.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Qué significa liquidación instantánea T+0?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Significa que eliminamos el ciclo de espera tradicional de 24 a 48 horas bancarias. Con fluX One, cada vez que un cliente realiza un pago a través de cualquier riel (PSE, transferencias directas, Bre-B), los fondos se liquidan y están disponibles de inmediato en tus cuentas transaccionales el mismo día.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Cómo funciona la conciliación automática en tiempo real?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Nuestra plataforma realiza un cruce automático (match transaccional) uniendo la factura emitida con la transferencia o recaudo recibido. Al emparejar los datos mediante nuestro Pull Engine a nivel de API, se elimina la necesidad de extraer y subir extractos manuales en Excel, reportando el estatus de pago en milisegundos a tu ERP.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>¿Qué certificaciones y estándares de seguridad cumplen?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Operamos con estándares de seguridad de nivel financiero y bancario. Contamos con certificaciones y arquitecturas alineadas a PCI-DSS y ISO-27001 para la encriptación de extremo a extremo de toda la información transaccional y protección absoluta de datos.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Empieza a<br>fluir</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="recaudo.html">Recaudo</a></li>
+            <li><a href="dispersion.html">Dispersión</a></li>
+            <li><a href="conciliacion.html">Conciliación</a></li>
+            <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Desarrolladores</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Guías de Integración</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Agenda tu demo de fluX</h2>
+        <p>Te contactamos en menos de 24 horas hábiles</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">Enviar solicitud →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+  <script>
+    function toggleFaq(element) {
+      element.classList.toggle('active');
+    }
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if (menu) {
+        menu.classList.toggle('active');
+        if (btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+  </script>
+</body>
+</html>

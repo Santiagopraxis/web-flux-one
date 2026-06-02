@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión — fluX One</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+  <style>
+    /* Base Variables for Light/Dark Mode */
+    :root {
+      --bg-main: #ffffff;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --input-bg: #F8FAFC;
+      --input-border: #E2E8F0;
+      --input-text: #0F172A;
+      --btn-bg: #0F172A;
+      --btn-text: #ffffff;
+      --btn-hover: #1E293B;
+      --regional-bg: rgba(37, 99, 235, 0.1);
+      --regional-text: #2563EB;
+      --regional-border: rgba(37, 99, 235, 0.2);
+    }
+
+    [data-theme="dark"] {
+      --bg-main: #0B1121;
+      --text-main: #ffffff;
+      --text-muted: #94A3B8;
+      --input-bg: rgba(255,255,255,0.05);
+      --input-border: rgba(255,255,255,0.1);
+      --input-text: #ffffff;
+      --btn-bg: #2563EB;
+      --btn-text: #ffffff;
+      --btn-hover: #1D4ED8;
+      --regional-bg: rgba(59, 130, 246, 0.15);
+      --regional-text: #60A5FA;
+      --regional-border: rgba(59, 130, 246, 0.3);
+    }
+
+    body, html { margin: 0; padding: 0; height: 100%; font-family: 'Inter', sans-serif; background: var(--bg-main); transition: background 0.3s; }
+    
+    .login-layout { display: flex; height: 100vh; width: 100%; }
+    
+    /* Lado Izquierdo - Formulario */
+    .login-form-side { flex: 1; display: flex; flex-direction: column; padding: 40px; position: relative; background: var(--bg-main); transition: background 0.3s; }
+    .login-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    
+    .login-logo { width: 120px; transition: filter 0.3s; }
+    /* Removed CSS filter for logo */
+
+    .back-link { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .back-link:hover { color: var(--text-main); }
+    
+    .login-form-container { margin: auto; width: 100%; max-width: 400px; display: flex; flex-direction: column; }
+    
+    .regional-badge {
+      align-self: flex-start;
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 4px 12px;
+      background: var(--regional-bg); border: 1px solid var(--regional-border);
+      color: var(--regional-text); border-radius: 100px;
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 24px; transition: all 0.3s;
+    }
+
+    .login-title { font-size: 2rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; letter-spacing: -0.02em; transition: color 0.3s;}
+    .login-subtitle { font-size: 1rem; color: var(--text-muted); margin-bottom: 40px; transition: color 0.3s;}
+    
+    .form-group { margin-bottom: 24px; position: relative; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s;}
+    .form-input { 
+      width: 100%; padding: 14px 16px; 
+      border: 1px solid var(--input-border); 
+      border-radius: 12px; font-size: 1rem; 
+      color: var(--input-text); background: var(--input-bg);
+      transition: all 0.3s; box-sizing: border-box; 
+    }
+    .form-input:focus { outline: none; border-color: #2563EB; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+    .form-input::placeholder { color: var(--text-muted); opacity:0.6;}
+
+    .forgot-link { position: absolute; right: 0; top: 0; font-size: 0.85rem; color: #2563EB; text-decoration: none; font-weight: 500; }
+    [data-theme="dark"] .forgot-link { color: #60A5FA; }
+    .forgot-link:hover { text-decoration: underline; }
+    
+    .login-btn { 
+      width: 100%; padding: 16px; 
+      background: var(--btn-bg); color: var(--btn-text); 
+      border: none; border-radius: 12px; 
+      font-size: 1rem; font-weight: 600; cursor: pointer; 
+      transition: all 0.3s; margin-top: 8px; 
+    }
+    .login-btn:hover { background: var(--btn-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    
+    .login-footer { text-align: center; margin-top: 40px; font-size: 0.9rem; color: var(--text-muted); transition: color 0.3s;}
+    .login-footer a { color: #2563EB; font-weight: 600; text-decoration: none; }
+    [data-theme="dark"] .login-footer a { color: #60A5FA; }
+
+    /* Lado Derecho - Gráfico con login.png */
+    .login-graphic-side { 
+      flex: 1; position: relative; overflow: hidden; 
+      display: flex; flex-direction: column; justify-content: flex-start; 
+      padding: 60px; color: white; 
+    }
+    .graphic-bg { 
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+      background: url('../assets/images/backgrounds/login.png') no-repeat center center; 
+      background-size: cover; z-index: 0; 
+    }
+    /* Sutil gradiente oscuro abajo para que el texto sea legible */
+    .graphic-overlay { 
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+      background: linear-gradient(to bottom, rgba(5,5,5,0.9) 0%, transparent 60%); 
+      z-index: 1; 
+    }
+    .graphic-content { position: relative; z-index: 2; max-width: 500px; text-shadow: 0 4px 20px rgba(0,0,0,0.5);}
+    .graphic-title { font-size: 2.5rem; font-weight: 300; line-height: 1.2; margin-bottom: 16px; }
+    .graphic-desc { font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+    
+    /* Theme Toggle Switch */
+    .theme-toggle {
+      position: absolute;
+      top: 30px; right: 40px;
+      z-index: 10;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-radius: 100px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .theme-btn {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: all 0.3s;
+    }
+    .theme-btn.active { background: white; color: #0F172A; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+
+    @media (max-width: 900px) {
+      .login-graphic-side { display: none; }
+      .login-form-side { padding: 24px; }
+      .theme-toggle { top: 20px; right: 20px; background: var(--input-bg); border-color: var(--input-border); }
+      .theme-btn { color: var(--text-muted); }
+      .theme-btn.active { background: var(--text-main); color: var(--bg-main); }
+    }
+  
+    .country-switcher {
+      align-self: flex-start;
+      display: inline-flex;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 100px;
+      padding: 4px;
+      margin-bottom: 24px;
+      transition: all 0.3s;
+    }
+    .country-btn {
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .country-btn:hover { color: var(--text-main); }
+    .country-btn.active {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="login-layout">
+    
+    <!-- Lado Izquierdo: Formulario Dinámico -->
+    <div class="login-form-side">
+      <div class="login-header">
+        <a href="index.html"><img src="../assets/images/logos/xo%20negro.svg" alt="fluX One" class="login-logo" id="login-logo-img"></a>
+        <a href="index.html" class="back-link">Volver al sitio</a>
+      </div>
+      
+      <div class="login-form-container">
+        <div class="country-switcher">
+          <a href="../co/login.html" class="country-btn ">🇨🇴 Colombia</a>
+          <a href="../mx/login.html" class="country-btn active">🇲🇽 México</a>
+        </div>
+        <h1 class="login-title">Iniciar sesión</h1>
+        <p class="login-subtitle">Accede a tu cuenta corporativa para continuar.</p>
+        
+        <form onsubmit="event.preventDefault(); alert('Conectando a la bóveda segura...');">
+          <div class="form-group">
+            <label class="form-label">Email Corporativo</label>
+            <input type="email" class="form-input" placeholder="nombre@empresa.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Contraseña</label>
+            <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+            <input type="password" class="form-input" placeholder="••••••••" required>
+          </div>
+          
+          <button type="submit" class="login-btn">Acceder al Dashboard →</button>
+        </form>
+        
+        <div class="login-footer">
+          ¿No tienes una cuenta? <a href="index.html#contacto">Agenda una demo</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Lado Derecho: Imagen Completa -->
+    <div class="login-graphic-side">
+      <div class="graphic-bg"></div>
+      <div class="graphic-overlay"></div>
+      
+      <div class="theme-toggle" id="theme-toggle">
+        <div class="theme-btn active" id="btn-dark">🌙</div>
+        <div class="theme-btn" id="btn-light">☀️</div>
+      </div>
+
+      <div class="graphic-content">
+        <h2 class="graphic-title">Centro de control México.</h2>
+        <p class="graphic-desc">Supervisa tu recaudo y autoriza dispersiones con orquestación nativa en SPEI, CoDi y STP.</p>
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const btnDark = document.getElementById('btn-dark');
+    const btnLight = document.getElementById('btn-light');
+    
+    const savedTheme = localStorage.getItem('flux-theme') || 'dark';
+    document.body.setAttribute('data-theme', savedTheme);
+    updateToggleUI(savedTheme);
+
+    toggle.addEventListener('click', () => {
+      const current = document.body.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', next);
+      localStorage.setItem('flux-theme', next);
+      updateToggleUI(next);
+    });
+
+    function updateToggleUI(theme) {
+      const logoImg = document.getElementById('login-logo-img');
+      if (theme === 'dark') {
+        btnDark.classList.add('active');
+        btnLight.classList.remove('active');
+        if(logoImg) logoImg.src = '../assets/images/logos/xo banco.svg';
+      } else {
+        btnLight.classList.add('active');
+        btnDark.classList.remove('active');
+        if(logoImg) logoImg.src = '../assets/images/logos/xo negro.svg';
+      }
+    }
+  </script>
+
+  <script>
+    // Global Mobile Menu Logic
+    
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      
+      // Cerrar otros si queremos (opcional, aquí permitimos abrir múltiples)
+      
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px"; // 16 por el margin top simulado
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    // Backward compatibility
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+
+    <script>
+    // Panel Navigation Logic
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    // Override toggleMenu to reset panels on close
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         // Reset panels when closing
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+    </script>
+
+</body>
+</html>

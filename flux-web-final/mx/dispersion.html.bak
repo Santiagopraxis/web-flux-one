@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX One — Dispersión sin límites</title>
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      </a>
+      
+            <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Productos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>INFRAESTRUCTURA DE NUEVA GENERACIÓN</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="recaudo.html">Recaudo</a></li>
+                  <li><a href="dispersion.html">Dispersión</a></li>
+                  <li><a href="conciliacion.html">Conciliación</a></li>
+                  <li><a href="nexa.html">Nexa</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Desarrolladores</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Recursos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>CONOCIMIENTO Y SOPORTE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RECURSOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="como-funciona.html">Cómo funciona</a></li>
+                  <li><a href="#faq">Preguntas Frecuentes</a></li>
+                  <li><a href="../blog">Blog</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <!-- COUNTRY SELECTOR -->
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO" id="current-flag-img"> <span id="current-country-text">Méx</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="/co/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+          </ul>
+        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">ES</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="index.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="../en/index.html"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text">Iniciar sesión</button>
+        <button class="btn-primary" onclick="openModal()">Comienza hoy</button>
+        <!-- Hamburger Menu -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+      <!-- MOBILE OVERLAY MENU (DRILL-DOWN) -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+      </div>
+      
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          
+          <!-- PANEL 1: MAIN MENU -->
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Productos <span class="drilldown-arrow">›</span>
+              </button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Recursos <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Desarrolladores</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Hablemos</a>
+            </nav>
+            
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Iniciar sesión</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Comienza hoy</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="index.html" class="active">ES</a>
+                <span class="divider">|</span>
+                <a href="../en/index.html">EN</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Volver</button>
+              <div class="panel-title">Productos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="recaudo.html" class="mobile-link" onclick="toggleMenu()">Recaudo Inteligente</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Dispersión Automática</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Conciliación en tiempo real</a>
+              <a href="nexa.html" class="mobile-link" onclick="toggleMenu()">Nexa</a>
+            </nav>
+          </div>
+
+          <!-- PANEL 3: RECURSOS -->
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Volver</button>
+              <div class="panel-title">Recursos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="como-funciona.html" class="mobile-link" onclick="toggleMenu()">Cómo funciona</a>
+              <a href="#faq" class="mobile-link" onclick="toggleMenu()">Preguntas Frecuentes (FAQ)</a>
+              <a href="../blog" class="mobile-link" onclick="toggleMenu()">Blog</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero hero-gradient" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content hero-grid">
+        <div class="hero-text-col">
+          <div class="badge-new sr fade-in" style="display:inline-block; margin-bottom: 24px;">PRODUCTO: PAY-OUTS</div>
+          <h1 class="hero-title sr fade-in delay-2">Dispersión masiva.<br><span class="text-grad">En un clic.</span></h1>
+          <p class="hero-desc sr fade-in delay-3">Miles de pagos procesados en segundos. Liquidación inmediata 24/7. Optimización de canales en tiempo real.</p>
+          
+          <div class="hero-actions sr fade-in delay-4">
+            <button class="btn-primary" onclick="openModal()">Agenda una demo →</button>
+          </div>
+        </div>
+        <div class="hero-graphic-col sr hero-video-reveal delay-3">
+          <video src="../assets/videos/mx/dispersiones.mp4" autoplay muted playsinline class="showcase-video"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ HACE INTELIGENTE A LA DISPERSIÓN -->
+  <section class="section-light">
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title">¿Qué hace inteligente a la dispersión?</h2>
+      </div>
+
+      <div class="grid-3 sr fade-in">
+        <div class="card glass-light d1">
+          <div class="card-icon"><img src="../assets/images/icons/dispersiones.svg" alt="Icon"></div>
+          <h3 class="card-title">Dispersión masiva sin límites</h3>
+          <p class="card-desc">Paga a miles de empleados, proveedores o beneficiarios en un solo clic. Sin límites de volumen. Sin esperar horarios bancarios.</p>
+        </div>
+        <div class="card glass-light d2">
+          <div class="card-icon"><img src="../assets/images/icons/recaudo.svg" alt="Icon"></div>
+          <h3 class="card-title">Optimización de canales</h3>
+          <p class="card-desc">fluX elige automáticamente el canal más eficiente para cada transacción. Optimiza costos sin sacrificar velocidad.</p>
+        </div>
+        <div class="card glass-light d3">
+          <div class="card-icon"><img src="../assets/images/icons/capacidades-bi.svg" alt="Icon"></div>
+          <h3 class="card-title">Predicción de rebotes</h3>
+          <p class="card-desc">Modelos predictivos que identifican cuentas con alta probabilidad de rechazo. Te alertamos antes de dispersar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASOS DE USO -->
+  <section>
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title">Casos de uso</h2>
+      </div>
+
+      <div class="grid-3 sr fade-in">
+        <div class="card glass d1">
+          <h3 class="card-title">Nóminas masivas</h3>
+          <p class="card-desc">Dispersa a miles de empleados en minutos. Con predicción de rebotes y optimización de canales. Sin errores.</p>
+        </div>
+        <div class="card glass d2">
+          <h3 class="card-title">Proveedores y aliados</h3>
+          <p class="card-desc">Paga a cientos de proveedores en un solo archivo. Conciliación automática. Trazabilidad total.</p>
+        </div>
+        <div class="card glass d3">
+          <h3 class="card-title">Marketplaces y plataformas</h3>
+          <p class="card-desc">Dispersa a miles de vendedores después de cada transacción. Liquidación inmediata. Sin fricciones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section-light" style="padding: 80px 0;">
+    <div class="container sr fade-in" style="text-align: center;">
+      <h2 class="section-title">¿Listo para dispersar sin límites?</h2>
+      <button class="btn-primary" style="margin-top: 24px;" onclick="openModal()">Agenda tu demo →</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer footer-light">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Experimenta<br>el despegue</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="recaudo.html">Recaudo</a></li>
+            <li><a href="dispersion.html">Dispersión</a></li>
+            <li><a href="conciliacion.html">Conciliación</a></li>
+            <li><a href="bi.html">Capacidades BI</a></li>
+            <li><a href="nexa.html">Nexa</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Desarrolladores</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#">Guías de Integración</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One" class="footer-logo-main" style="height: 36px; width: auto;">
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <img src="../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="height: 28px; width: auto; opacity: 1;">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Políticas de Privacidad</a>
+        <a href="#">Seguridad</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Agenda tu demo de fluX</h2>
+        <p>Te contactamos en menos de 24 horas hábiles</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <select name="pais" required>
+            <option value="">País</option>
+            <option value="CO" selected>Colombia</option>
+            <option value="MX">México</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+          <select name="necesidad" required>
+            <option value="">¿Qué necesitas?</option>
+            <option value="recaudo">Recaudo</option>
+            <option value="dispersion">Dispersión</option>
+            <option value="conciliacion">Conciliación</option>
+            <option value="bi">Inteligencia de Negocio</option>
+            <option value="todo">Todo lo anterior</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">Enviar solicitud →</button>
+        <p class="legal-text">
+          Al enviar este formulario aceptas nuestra <a href="../politica-privacidad.html">política de privacidad</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+
+  <script>
+    // Global Mobile Menu Logic
+    
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      
+      // Cerrar otros si queremos (opcional, aquí permitimos abrir múltiples)
+      
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px"; // 16 por el margin top simulado
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    // Backward compatibility
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+
+    <script>
+    // Panel Navigation Logic
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    // Override toggleMenu to reset panels on close
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         // Reset panels when closing
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+    </script>
+
+</body>
+</html>

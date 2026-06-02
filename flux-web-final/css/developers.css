@@ -1,0 +1,362 @@
+/* Developers Portal Specific Styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --dev-bg: #0D1117;
+  --dev-sidebar: #161B22;
+  --dev-code-bg: #0D1117;
+  --dev-text: #C9D1D9;
+  --dev-highlight: #58A6FF;
+  --dev-border: #30363D;
+  --dev-green: #238636;
+}
+
+body.dev-portal {
+  background-color: var(--dev-bg);
+  color: var(--dev-text);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+}
+
+.dev-sidebar {
+  width: 280px;
+  background-color: var(--dev-sidebar);
+  border-right: 1px solid var(--dev-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--dev-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-header img {
+  height: 24px;
+}
+
+.badge {
+  background: rgba(88, 166, 255, 0.15);
+  color: var(--dev-highlight);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(88, 166, 255, 0.3);
+}
+
+.sidebar-nav {
+  padding: 24px;
+  flex: 1;
+}
+
+.nav-section {
+  margin-bottom: 24px;
+}
+
+.nav-section h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8B949E;
+  margin-bottom: 12px;
+}
+
+.nav-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-section li a {
+  display: block;
+  padding: 8px 12px;
+  color: var(--dev-text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-section li a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-section li.active a {
+  background: rgba(88, 166, 255, 0.1);
+  color: var(--dev-highlight);
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--dev-border);
+}
+
+.api-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: #8B949E;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3FB950;
+  box-shadow: 0 0 10px rgba(63, 185, 80, 0.4);
+}
+
+.uptime {
+  margin-left: auto;
+  font-family: monospace;
+}
+
+/* Main Content */
+.dev-main {
+  margin-left: 280px;
+  padding: 48px;
+  flex: 1;
+  max-width: 900px;
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  color: #8B949E;
+  margin-bottom: 32px;
+}
+
+.breadcrumb a {
+  color: var(--dev-highlight);
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.dev-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.dev-hero p {
+  font-size: 1.125rem;
+  color: #8B949E;
+  line-height: 1.6;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin: 48px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--dev-border);
+  color: #fff;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: 32px 0 16px;
+  color: #fff;
+}
+
+p {
+  color: var(--dev-text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* API Key Box */
+.api-key-box {
+  background: #161B22;
+  border: 1px solid var(--dev-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.api-key-box h4 {
+  margin: 0 0 16px;
+  color: #fff;
+}
+
+.key-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #010409;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--dev-border);
+  margin-bottom: 16px;
+}
+
+.mode-badge {
+  background: rgba(63, 185, 80, 0.1);
+  color: #3FB950;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.875rem;
+}
+
+.btn-reveal {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--dev-border);
+  color: var(--dev-text);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+
+.btn-reveal:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.warning {
+  color: #D29922;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Code Blocks */
+.code-tabs {
+  display: flex;
+  gap: 4px;
+  background: #161B22;
+  padding: 8px 12px 0;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid var(--dev-border);
+  border-bottom: none;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #8B949E;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  color: var(--dev-highlight);
+  border-bottom-color: var(--dev-highlight);
+}
+
+.code-container {
+  background: #010409;
+  border: 1px solid var(--dev-border);
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+  overflow-x: auto;
+  margin-bottom: 48px;
+}
+
+.code-block {
+  display: none;
+  margin: 0;
+}
+
+.code-block.active {
+  display: block;
+}
+
+.code-block code {
+  color: #C9D1D9;
+}
+
+/* Endpoint Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 48px;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--dev-border);
+}
+
+th {
+  color: #8B949E;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+td {
+  font-size: 0.875rem;
+}
+
+.method {
+  font-family: monospace;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.m-get { color: #3FB950; background: rgba(63, 185, 80, 0.1); }
+.m-post { color: #58A6FF; background: rgba(88, 166, 255, 0.1); }
+.m-patch { color: #D29922; background: rgba(210, 153, 34, 0.1); }
+.m-delete { color: #F85149; background: rgba(248, 81, 73, 0.1); }
+
+.endpoint-path {
+  font-family: monospace;
+  color: var(--dev-highlight);
+}
+
+/* Security Notes */
+.security-notes {
+  background: rgba(210, 153, 34, 0.1);
+  border: 1px solid rgba(210, 153, 34, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.security-notes ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #D29922;
+}
+
+.security-notes li {
+  margin-bottom: 8px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dev-sidebar {
+    display: none;
+  }
+  .dev-main {
+    margin-left: 0;
+    padding: 24px;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

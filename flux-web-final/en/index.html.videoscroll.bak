@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX One — Smart payments globally.</title>
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      </a>
+      
+            <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Products <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>NEXT-GENERATION INFRASTRUCTURE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="#productos">Collection</a></li>
+                  <li><a href="#productos">Disbursement</a></li>
+                  <li><a href="#productos">Reconciliation</a></li>
+                  <li><a href="#para-quien">Nexa</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Developers</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Recursos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>KNOWLEDGE & SUPPORT</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RESOURCES</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="../co/como-funciona.html">How it works</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <!-- COUNTRY SELECTOR -->
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO" id="current-flag-img"> <span id="current-country-text">Col</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="../co/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="../mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
+          </ul>
+        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">EN</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="../co/index.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="index.html"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Log in</button>
+        <button class="btn-primary hide-mobile" onclick="openModal()">Start today</button>
+        
+        <!-- Hamburger Menu — 3 lines for proper X animation -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+        <!-- MOBILE OVERLAY MENU (DRILL-DOWN) -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+      </div>
+      
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          
+          <!-- PANEL 1: MAIN MENU -->
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Products <span class="drilldown-arrow">›</span>
+              </button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Resources <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Developers</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Contact</a>
+            </nav>
+            
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Log in</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Start today</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="../co/index.html">ES</a>
+                <span class="divider">|</span>
+                <a href="index.html" class="active">EN</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Back</button>
+              <div class="panel-title">Products</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="#productos" class="mobile-link" onclick="toggleMenu()">Smart Collection</a>
+              <a href="#productos" class="mobile-link" onclick="toggleMenu()">Disbursement Automática</a>
+              <a href="#productos" class="mobile-link" onclick="toggleMenu()">Real-time reconciliation</a>
+              <a href="#para-quien" class="mobile-link" onclick="toggleMenu()">Nexa</a>
+            </nav>
+          </div>
+
+          <!-- PANEL 3: RECURSOS -->
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Back</button>
+              <div class="panel-title">Recursos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="../co/como-funciona.html" class="mobile-link" onclick="toggleMenu()">How it works</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero hero-gradient" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content hero-grid">
+        <div class="hero-text-col">
+          <p class="hero-eyebrow text-grad sr fade-in" style="font-size: 1.15rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 16px; margin-bottom: 12px; display: inline-block;">What if everything were easier?</p>
+          <h1 class="hero-title sr fade-in">PAY, COLLECT, RECONCILE, DECIDE</h1>
+          <p class="hero-desc sr fade-in delay-2">No more open platforms. No more manual files. No more impossible month-end closings. And for the first time, anticipate what is coming before it happens.</p>
+        
+        <div class="hero-actions sr fade-in delay-4">
+          <button class="btn-primary" onclick="openModal()">Schedule a demo →</button>
+          
+        </div>
+        
+        <div class="hero-localized-badge sr fade-in delay-4">
+          <span>Innovation in the ecosystem <img src="../assets/images/logos/breb.png" alt="Bre-B" style="height: 20px; vertical-align: middle; margin-left: 6px; display: inline-block;"></span>
+        </div>
+        </div>
+        <!-- Right side React Dashboard Preview -->
+        <div class="hero-graphic-col sr hero-video-reveal delay-3">
+          <video src="../assets/videos/co/dashboard.mp4" autoplay muted playsinline class="showcase-video"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- KICKOFF VIDEO SECTION (SCROLL SCALE) -->
+  <section id="kickoff-video-section" class="kickoff-section">
+    <div class="kickoff-sticky">
+      <div class="kickoff-container" id="kickoff-container">
+        
+        <!-- El contenedor del video que se escalará -->
+        <div class="kickoff-video-wrapper" id="kickoff-video-wrapper">
+          <!-- Thumbnail o video de fondo (autostart sin sonido) -->
+          <!-- Usamos el mismo iframe pero lo controlamos por API -->
+          <div style="padding:56.25% 0 0 0;position:relative;" id="vimeo-embed-container">
+            <!-- Cargaremos el iframe vía JS para evitar autoplay no deseado hasta que estemos listos -->
+          </div>
+          
+          <!-- Custom Cursor Area -->
+          <div class="kickoff-cursor-layer" id="kickoff-cursor-layer"></div>
+        </div>
+
+      </div>
+    </div>
+    
+    <!-- Custom Cursor Element -->
+    <div class="kickoff-custom-cursor" id="kickoff-cursor">
+      <span>Reproducir</span>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: SHOWCASE DASHBOARD INTERACTIVO -->
+  <section id="productos" class="dashboard-showcase-section">
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title typewriter-text" data-delay="200" data-speed="40" style="text-transform: uppercase;">PAGAR, COBRAR, DISPERSAR</h2>
+        <p class="section-subtitle" style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">Three moments of money that fluX One connects — with intelligence integrated at every step.</p>
+      </div>
+      
+      <div class="showcase-layout sr fade-in d1">
+        <!-- Columna Izquierda: Tabs Interactivas -->
+        <div class="showcase-tabs-col">
+          
+          <!-- Tab 1: Collection -->
+          <div class="showcase-tab active" data-target="collection">
+            <div class="showcase-tab-header">
+              <span class="showcase-tab-icon"><img src="../assets/images/icons/collection.svg" alt="Collection"></span>
+              <h3 class="showcase-tab-title">Smart Collection <span class="badge-new-sml">Instant Rails</span></h3>
+            </div>
+            <div class="showcase-tab-content">
+              <p>Accept money from any source in a single integration with automatic real-time reconciliation.</p>
+              <ul>
+                <li>Integración multi-riel instantánea</li>
+                <li>Automated Reconciliation T+0</li>
+                <li>AI Delinquency Prediction</li>
+              </ul>
+              <a href="#productos" class="link-arrow showcase-link">Learn more →</a>
+              
+              <!-- Preview Móvil Incrustado (Solo visible en < 1024px) -->
+              <div class="showcase-mobile-dashboard-preview">
+                <div class="dashboard-view active" id="db-view-collection-mobile">
+                  <video src="../assets/videos/co/collections.mp4" autoplay muted playsinline class="showcase-video"></video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Disbursement -->
+          <div class="showcase-tab" data-target="disbursement">
+            <div class="showcase-tab-header">
+              <span class="showcase-tab-icon"><img src="../assets/images/icons/disbursementes.svg" alt="Disbursement"></span>
+              <h3 class="showcase-tab-title">Limitless Disbursement</h3>
+            </div>
+            <div class="showcase-tab-content">
+              <p>Thousands of payments in a single click with immediate settlement and real-time channel optimization.</p>
+              <ul>
+                <li>Thousands of payments in a single click</li>
+                <li>Immediate settlement 24/7</li>
+                <li>Real-time channel optimization</li>
+              </ul>
+              <a href="#productos" class="link-arrow showcase-link">Learn more →</a>
+              
+              <!-- Preview Móvil Incrustado -->
+              <div class="showcase-mobile-dashboard-preview">
+                <div class="dashboard-view" id="db-view-disbursement-mobile">
+                  <video src="../assets/videos/co/disbursementes.mp4" autoplay muted playsinline class="showcase-video"></video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Inteligencia BI -->
+          <div class="showcase-tab" data-target="inteligencia">
+            <div class="showcase-tab-header">
+              <span class="showcase-tab-icon"><img src="../assets/images/icons/capacidades-bi.svg" alt="Inteligencia"></span>
+              <h3 class="showcase-tab-title">Business Intelligence</h3>
+            </div>
+            <div class="showcase-tab-content">
+              <p>Become a proactive leader. Predict delinquency and optimize cash flow with AI.</p>
+              <ul>
+                <li>AI delinquency prediction</li>
+                <li>At-risk portfolio alerts</li>
+                <li>Cash flow analysis</li>
+              </ul>
+              <a href="#productos" class="link-arrow showcase-link">Learn more →</a>
+              
+              <!-- Preview Móvil Incrustado -->
+              <div class="showcase-mobile-dashboard-preview">
+                <div class="dashboard-view" id="db-view-inteligencia-mobile">
+                  <video src="../assets/videos/co/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Vista Dashboard Activa (Solo Desktop) -->
+        <div class="showcase-dashboard-col">
+          <div class="showcase-browser-frame">
+            <div class="browser-topbar">
+              <div class="browser-dot red"></div>
+              <div class="browser-dot yellow"></div>
+              <div class="browser-dot green"></div>
+              <span class="browser-title">fluX One — Dashboard Ejecutivo</span>
+            </div>
+            <div class="browser-content">
+              <!-- PANTALLA RECAUDO -->
+              <div class="dashboard-view active" id="db-view-collection">
+                <video src="../assets/videos/co/collections.mp4" autoplay muted playsinline class="showcase-video"></video>
+              </div>
+              <!-- PANTALLA DISPERSIÓN -->
+              <div class="dashboard-view" id="db-view-disbursement">
+                <video src="../assets/videos/co/disbursementes.mp4" autoplay muted playsinline class="showcase-video"></video>
+              </div>
+              <!-- PANTALLA INTELIGENCIA -->
+              <div class="dashboard-view" id="db-view-inteligencia">
+                <video src="../assets/videos/co/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Script Inline para alternar pestañas del Dashboard -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.showcase-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-target');
+            
+            // Desactivar pestañas anteriores
+            document.querySelectorAll('.showcase-tab').forEach(t => t.classList.remove('active'));
+            // Activar pestaña cliqueada
+            tab.classList.add('active');
+            
+            // Mover dashboard en Desktop
+            document.querySelectorAll('.showcase-dashboard-col .dashboard-view').forEach(view => {
+              view.classList.remove('active');
+            });
+                        const desktopView = document.querySelector(`.showcase-dashboard-col #db-view-${target}`);
+            if (desktopView) {
+              desktopView.classList.add('active');
+              const vid = desktopView.querySelector('video');
+              if (vid) {
+                vid.currentTime = 0;
+                vid.play();
+              }
+            }
+            
+            // Mover dashboard en Móvil
+            document.querySelectorAll('.showcase-mobile-dashboard-preview .dashboard-view').forEach(view => {
+              view.classList.remove('active');
+            });
+            const mobileView = document.querySelector(`.showcase-tab[data-target="${target}"] #db-view-${target}-mobile`);
+            if (mobileView) {
+              mobileView.classList.add('active');
+              const mvid = mobileView.querySelector('video');
+              if (mvid) {
+                mvid.currentTime = 0;
+                mvid.play();
+              }
+            }
+          });
+        });
+      });
+    </script>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: UNA API, TODO EL ECOSISTEMA -->
+  <section id="ecosistema" class="ecosystem-hub-section" style="background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.8) 30%, rgba(5,5,5,0) 70%), url('../assets/images/backgrounds/fondo%202.png') no-repeat center center; background-size: cover; position: relative;">
+
+    <div class="container hub-layout">
+      <!-- Izquierda: Textos -->
+      <div class="hub-text-col sr fade-in">
+        <h2 class="section-title" style="text-transform: uppercase; font-size: clamp(32px, 3.5vw, 48px); font-weight: 300; letter-spacing: -1px; line-height: 1.1;">A SINGLE CONNECTION. ALL MONEY<br>FLOWING.</h2>
+        <p class="section-subtitle">No matter which bank you operate with, which wallet your customer uses, or where the payment comes from — fluX One receives, processes, and reconciles it, all in real-time. Without your operation stopping.</p>
+      </div>
+
+      <!-- Derecha: Iframe Canvas Animado -->
+      <div class="hub-graphic-col sr blur-reveal" style="position: relative; height: 600px; width: 100%; border-radius: 20px; overflow: hidden;">
+        <iframe src="eco-anim.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;"></iframe>
+      </div>
+    </div>
+  
+    <div class="container" style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 60px; padding-bottom: 40px;">
+      <div class="section-header sr fade-in" style="margin-bottom: 40px;">
+        <h2 class="section-title" style="font-size: 2.2rem; font-weight: 300;">The market needs speed.<br>Time is the new interest.</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">With fluX, money arrives and is available instantly—no waiting, no office hours, no limits, just flow.</p>
+      </div>
+
+      <div class="stats-grid-impact">
+
+        <div class="stat-item sr sr-stats delay-1">
+          <h3 class="stat-number">T+0</h3>
+          <p class="stat-caption" style="font-size: 0.95rem; line-height: 1.5; opacity: 0.8;">Instant settlement,<br>funds arrive and are available</p>
+        </div>
+        <div class="stat-item sr sr-stats delay-2">
+          <h3 class="stat-number">24/7</h3>
+          <p class="stat-caption" style="font-size: 0.95rem; line-height: 1.5; opacity: 0.8;">No banking hours,<br>no waiting for the next day</p>
+        </div>
+        <div class="stat-item sr sr-stats delay-3">
+          <h3 class="stat-number">3.8B</h3>
+          <p class="stat-caption">annual TX on PSE / Bre-B</p>
+        </div>
+        <div class="stat-item sr sr-stats delay-4">
+          <h3 class="stat-number">80%</h3>
+          <p class="stat-caption">of B2B value in CO</p>
+        </div>
+      
+      </div>
+    </div>
+</section>
+
+
+  <!-- SECCIÓN: IMPACT STATS (Premium Blurred Background) -->
+  
+
+  <!-- SECCIÓN: TEXTO CRECIENTE (fluX One Portal) -->
+  <section id="brand-transition">
+    <div id="transition-bg">
+      <div id="growing-text">
+        <h2 class="text-grad">Your ecosystem in the universe</h2>
+        <img src="../assets/images/logos/logo-nexa-en-blanco.svg" alt="Nexa">
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: NEXA — EL UNIVERSO EN TUS MANOS (STICKY SCROLL-JACK) -->
+  <section class="section-light" id="para-quien" style="padding: 120px 0; overflow: visible; position: relative;">
+
+    <style>
+      /* Estilos específicos de Nexa Light Sticky Scroll */
+      .nexa-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 184, 148, 0.1);
+        border: 1px solid rgba(0, 184, 148, 0.25);
+        border-radius: 100px;
+        padding: 6px 16px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #00B894;
+        margin-bottom: 24px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .nexa-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #00B894;
+        animation: nexaPulse 2s ease-in-out infinite;
+      }
+      @keyframes nexaPulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.7); }
+      }
+      .nexa-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 32px;
+        border-radius: 100px;
+        background: linear-gradient(135deg, #00B894 0%, #2563EB 100%);
+        color: white !important;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 8px 32px rgba(0, 184, 148, 0.25);
+        text-decoration: none;
+      }
+      .nexa-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 48px rgba(0, 184, 148, 0.35);
+      }
+
+      /* Estilos específicos y refinados de las Scroll Cards en White Background */
+      .scroll-card.card.glass {
+        background: rgba(248, 250, 252, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(15, 23, 42, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.01), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: scale(0.96);
+        opacity: 0.25;
+      }
+      .scroll-card.card.glass.active {
+        opacity: 1;
+        transform: scale(1.02);
+        background: #ffffff;
+        border-color: rgba(0, 184, 148, 0.25);
+        box-shadow: 0 24px 60px rgba(0, 184, 148, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+      .scroll-card-accent {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #00B894, #2563EB);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      .scroll-card.card.glass.active .scroll-card-accent {
+        opacity: 1;
+      }
+
+      /* Optimizaciones de espacio y alineación */
+      #para-quien .sticky-wrapper {
+        gap: 40px;
+      }
+      #para-quien .sticky-left {
+        width: 42%;
+        padding-right: 24px;
+      }
+      #para-quien .scrolling-right {
+        width: 58%;
+      }
+      
+      @media (max-width: 900px) {
+        #para-quien .sticky-wrapper {
+          flex-direction: column !important;
+          gap: 24px !important;
+        }
+        #para-quien .sticky-left {
+          width: 100% !important;
+          padding-right: 0 !important;
+          position: relative !important;
+          text-align: center;
+        }
+        #para-quien .scrolling-right {
+          width: 100% !important;
+        }
+        
+        /* Ajustar subtitulo y cta para que se vean bien centrados */
+        #para-quien .section-subtitle {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        #para-quien .nexa-cta {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+
+    <div class="container" style="max-width: 1400px; padding: 0 40px;">
+      <div class="sticky-wrapper">
+        <!-- Columna Fija Izquierda -->
+        <div class="sticky-left">
+          <div class="nexa-eyebrow">
+            <div class="nexa-eyebrow-dot"></div>
+            Nexa by fluX
+          </div>
+          <h2 class="section-title" style="margin: 0; font-size: clamp(28px, 3vw, 42px); font-weight: 300; line-height: 1.25; letter-spacing: -0.01em; color: #0F172A;">
+            THE SMARTEST COLLECTOR YOU HAVE EVER HAD
+          </h2>
+          <p class="section-subtitle" style="margin-top: 24px; font-size: 1.15rem; color: #64748B; line-height: 1.7;">
+            Nexa centralizes all your customers' recurring payments: invoices, direct debits, top-ups, and smart alerts. Fully automated, all in real-time. And when it's time to collect, Nexa doesn't send a link — it opens a conversation.
+          </p>
+          <div style="margin-top: 40px;" class="sr fade-in">
+            <a href="#para-quien" class="nexa-cta">Conoce Nexa →</a>
+          </div>
+        </div>
+        
+        <!-- Columna de Scroll Derecha -->
+        <div class="scrolling-right">
+          <!-- Tarjeta 1 -->
+          <div class="scroll-card card glass">
+            <div class="scroll-card-accent"></div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div class="card-icon" style="background: rgba(0, 184, 148, 0.08); border: 1px solid rgba(0, 184, 148, 0.15); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">🔔</div>
+              <h3 class="card-title" style="font-size: 1.35rem; font-weight: 300; color: #0F172A; margin: 0;">1. WHATSAPP AGENT</h3>
+            </div>
+            <p class="card-desc" style="color: #475569; font-size: 0.95rem; line-height: 1.7; margin: 0; flex: none;">98% of users have WhatsApp. Nexa collects payments there. It doesn't send reminders — it manages the collection: checks balances, answers questions, and closes the payment without any human intervention. A collection via WhatsApp has 5 times more opens than email.</p>
+          </div>
+          
+          <!-- Tarjeta 2 -->
+          <div class="scroll-card card glass">
+            <div class="scroll-card-accent"></div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div class="card-icon" style="background: rgba(0, 184, 148, 0.08); border: 1px solid rgba(0, 184, 148, 0.15); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">💳</div>
+              <h3 class="card-title" style="font-size: 1.35rem; font-weight: 300; color: #0F172A; margin: 0;">2. AUTOMATIC DIRECT DEBIT</h3>
+            </div>
+            <p class="card-desc" style="color: #475569; font-size: 0.95rem; line-height: 1.7; margin: 0; flex: none;">Cobro automático mensual vía tokenización. Prevent service cuts and secure timely collection with zero manual intervention.</p>
+          </div>
+          
+          <!-- Tarjeta 3 -->
+          <div class="scroll-card card glass">
+            <div class="scroll-card-accent"></div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div class="card-icon" style="background: rgba(0, 184, 148, 0.08); border: 1px solid rgba(0, 184, 148, 0.15); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">⚡</div>
+              <h3 class="card-title" style="font-size: 1.35rem; font-weight: 300; color: #0F172A; margin: 0;">3. ONE-CLICK BILL PAYMENT</h3>
+            </div>
+            <p class="card-desc" style="color: #475569; font-size: 0.95rem; line-height: 1.7; margin: 0; flex: none;">Your customers see all their outstanding invoices in one place and pay with a tap. Sin entrar a múltiples portales, sin esperas, sin fricciones.</p>
+          </div>
+
+          <!-- Tarjeta 4 -->
+          <div class="scroll-card card glass">
+            <div class="scroll-card-accent"></div>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div class="card-icon" style="background: rgba(0, 184, 148, 0.08); border: 1px solid rgba(0, 184, 148, 0.15); width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;">📊</div>
+              <h3 class="card-title" style="font-size: 1.35rem; font-weight: 300; color: #0F172A; margin: 0;">4. BEHAVIOR VISIBILITY</h3>
+            </div>
+            <p class="card-desc" style="color: #475569; font-size: 0.95rem; line-height: 1.7; margin: 0; flex: none;">Know what invoice each customer paid, when, and how. Detect delinquency patterns before they happen — with real-time dashboards connected to fluX BI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contenedor de la barra de progreso inferior de scroll -->
+    <div class="scroll-progress-container" style="background: rgba(0, 0, 0, 0.08);">
+      <div class="scroll-progress-bar" id="scroll-progress" style="background: linear-gradient(90deg, #00B894, #2563EB);"></div>
+    </div>
+  </section>
+
+  
+  <!-- SECCIÓN NUEVA: INDUSTRIA -->
+  <section class="section-light" id="industrias" style="padding: 100px 0;">
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title">SAME SYSTEM. RESULTS FOR YOUR INDUSTRY.</h2>
+        <p class="section-subtitle">fluX One is not a generic tool. Every sector has its own payment dynamics — and fluX One knows it.</p>
+      </div>
+
+      <div class="grid-3 sr fade-in">
+        <div class="card glass d1">
+          <h3 class="card-title">Public utilities</h3>
+          <p class="card-desc">Digital invoice, smart WhatsApp notification via Nexa, 4-click payment, and automatic reconciliation. No collection call center. No accumulated delinquency.</p>
+        </div>
+        <div class="card glass d2">
+          <h3 class="card-title">Financial institutions</h3>
+          <p class="card-desc">Portfolio management with predictive BI. Delinquency detected before it occurs. Nexa manages the collection via WhatsApp when the system identifies risk — without team intervention.</p>
+        </div>
+        <div class="card glass d3">
+          <h3 class="card-title">ISPs & telecommunications</h3>
+          <p class="card-desc">Direct synchronization with your CRM. The subscriber receives Nexa's message, pays before the cutoff, and the system updates automatically. No calls, no friction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6: POR QUÉ ELEGIR fluX -->
+  <section class="section-light" id="por-que">
+    <style>
+      /* Estilos Premium para las Tarjetas Interactivas (Trigger Popup) */
+      .clickable-card {
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(15, 23, 42, 0.08) !important;
+        background: #ffffff !important;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+      .clickable-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 184, 148, 0.3) !important;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+      }
+      .clickable-card .card-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .clickable-card .toggle-indicator {
+        font-size: 1.1rem;
+        color: #64748B;
+        transition: transform 0.4s ease, color 0.4s ease;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #F1F5F9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .clickable-card:hover .toggle-indicator {
+        color: #00B894;
+        background: rgba(0, 184, 148, 0.08);
+        transform: scale(1.1);
+      }
+
+      /* Estilos Premium del Modal / Popup */
+      .flux-modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        overflow-y: auto;
+        padding: 80px 20px 40px;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .flux-modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Modal Card */
+      .flux-modal-card {
+        background: #ffffff;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 28px;
+        width: 100%;
+        max-width: 900px;
+        padding: 40px;
+        box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+        position: relative;
+        transform: translateY(30px) scale(0.96);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        text-align: left;
+        box-sizing: border-box;
+      }
+      .flux-modal-overlay.active .flux-modal-card {
+        transform: translateY(0) scale(1);
+      }
+
+      /* Close Button */
+      .flux-modal-close {
+        position: absolute;
+        top: 24px; right: 24px;
+        background: #F1F5F9;
+        border: none;
+        border-radius: 50%;
+        width: 36px; height: 36px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1rem; color: #64748B;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 10;
+      }
+      .flux-modal-close:hover {
+        background: #E2E8F0;
+        color: #0F172A;
+        transform: rotate(90deg);
+      }
+
+      /* Modal Typography */
+      .flux-modal-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #0F172A;
+        margin-top: 0;
+        margin-bottom: 8px;
+        letter-spacing: -0.02em;
+        text-align: left;
+      }
+      .flux-modal-subtitle {
+        font-size: 0.95rem;
+        color: #64748B;
+        margin-top: 0;
+        margin-bottom: 28px;
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      /* Comparison Columns */
+      .flux-modal-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 28px;
+      }
+      @media (max-width: 600px) {
+        .flux-modal-comparison {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+      .comparison-col {
+        padding: 16px;
+        border-radius: 12px;
+        text-align: left;
+      }
+      .comparison-col.traditional {
+        background: rgba(239, 68, 68, 0.02);
+        border: 1px solid rgba(239, 68, 68, 0.08);
+      }
+      .comparison-col.traditional h4 {
+        color: #EF4444;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+      .comparison-col.traditional p {
+        color: #64748B;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .comparison-col.flux-way {
+        background: rgba(0, 184, 148, 0.02);
+        border: 1px solid rgba(0, 184, 148, 0.1);
+      }
+      .comparison-col.flux-way h4 {
+        color: #00B894;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+      .comparison-col.flux-way p {
+        color: #0F172A;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Speed Widget */
+      .flux-speed-widget {
+        background: #F8FAFC;
+        border: 1px solid #E2E8F0;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 28px;
+        box-sizing: border-box;
+      }
+      .flux-speed-widget .widget-title {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #475569;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      .speed-track {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      .speed-track:last-child {
+        margin-bottom: 0;
+      }
+      .speed-track .track-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 8px;
+      }
+      .speed-track .track-bar-container {
+        height: 8px;
+        background: #E2E8F0;
+        border-radius: 100px;
+        overflow: hidden;
+        position: relative;
+      }
+      .speed-track .track-bar {
+        height: 100%;
+        width: 0;
+        border-radius: 100px;
+        transition: width 0.1s linear;
+      }
+      .speed-track.traditional .track-bar {
+        background: #EF4444;
+      }
+      .speed-track.flux-way .track-bar {
+        background: #00B894;
+        box-shadow: 0 0 10px rgba(0, 184, 148, 0.4);
+      }
+      .speed-track .track-status {
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-top: 6px;
+        height: 16px;
+      }
+      .speed-track.traditional .track-status {
+        color: #94A3B8;
+      }
+      .speed-track.flux-way .track-status {
+        color: #00B894;
+        font-weight: 600;
+      }
+
+      /* Call to Action Question */
+      .easier-question {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        background: linear-gradient(90deg, rgba(0, 184, 148, 0.06) 0%, rgba(37, 99, 235, 0.03) 100%);
+        border-radius: 100px;
+        border: 1px solid rgba(0, 184, 148, 0.15);
+        box-sizing: border-box;
+      }
+      .easier-question span.q-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #00B894;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        flex-shrink: 0;
+      }
+      .easier-question p.q-text {
+        font-size: 0.85rem;
+        color: #334155;
+        font-weight: 600;
+        margin: 0;
+        text-align: left;
+      }
+    </style>
+
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title">What if everything were easier?</h2>
+      </div>
+
+      <div class="grid-2">
+        <!-- Tarjeta 1 (Trigger) -->
+        <div class="card glass clickable-card sr fade-in d1" onclick="openFluxModal('modal-pagos')">
+          <div class="card-header-row">
+            <h3 class="card-title" style="margin: 0;">Payments that think</h3>
+            <div class="toggle-indicator">&rarr;</div>
+          </div>
+          <p class="card-desc" style="margin-top: 12px; margin-bottom: 0;">No solo procesamos — anticipamos mora, optimizamos canales, informamos decisiones. That is a smart payment.</p>
+        </div>
+
+        <!-- Tarjeta 2 (Trigger) -->
+        <div class="card glass clickable-card sr fade-in d2" onclick="openFluxModal('modal-tiempo-real')">
+          <div class="card-header-row">
+            <h3 class="card-title" style="margin: 0;">Real-time execution, 24/7/365</h3>
+            <div class="toggle-indicator">&rarr;</div>
+          </div>
+          <p class="card-desc" style="margin-top: 12px; margin-bottom: 0;">Process payments and disbursements in seconds, regardless of the bank, day, or time. Money never stops.</p>
+        </div>
+
+        <!-- Tarjeta 3 (Trigger) -->
+        <div class="card glass clickable-card sr fade-in d3" onclick="openFluxModal('modal-visibilidad')">
+          <div class="card-header-row">
+            <h3 class="card-title" style="margin: 0;">Total visibility</h3>
+            <div class="toggle-indicator">&rarr;</div>
+          </div>
+          <p class="card-desc" style="margin-top: 12px; margin-bottom: 0;">Real-time executive dashboards. Know who paid, who didn't, and who is going to fail. Actionable information, not just reports.</p>
+        </div>
+
+        <!-- Tarjeta 4 (Trigger) -->
+        <div class="card glass clickable-card sr fade-in d4" onclick="openFluxModal('modal-automatizacion')">
+          <div class="card-header-row">
+            <h3 class="card-title" style="margin: 0;">End-to-end automation</h3>
+            <div class="toggle-indicator">&rarr;</div>
+          </div>
+          <p class="card-desc" style="margin-top: 12px; margin-bottom: 0;">From collection to accounting reconciliation. No manual tasks, no errors, no chasing invoices.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- MODALES Y ANIMACIONES DE VELOCIDAD -->
+    <!-- ======================================================== -->
+
+    <!-- Modal 1: Payments that think -->
+    <div class="flux-modal-overlay" id="modal-pagos" onclick="closeFluxModalOnOverlay(event, 'modal-pagos')">
+      <div class="flux-modal-card">
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-pagos')">✕</button>
+        <h3 class="flux-modal-title">Payments that think</h3>
+        <p class="flux-modal-subtitle">No solo procesamos — anticipamos mora, optimizamos canales, informamos decisiones.</p>
+        
+        <div class="flux-modal-comparison">
+          <div class="comparison-col traditional">
+            <h4>The traditional method</h4>
+            <p>Calling the customer manually, sending emails that nobody opens, and recording entries by hand. A purely reactive process.</p>
+          </div>
+          <div class="comparison-col flux-way">
+            <h4>The fluX effect</h4>
+            <p>Our Artificial Intelligence predicts delinquency probability before it happens and generates WhatsApp reminders via Nexa.</p>
+          </div>
+        </div>
+
+        <!-- Simulador de Velocidad / Animación de Inteligencia -->
+        <div class="flux-speed-widget" id="speed-pagos">
+          <h4 class="widget-title">Collection Recovery Simulation</h4>
+          <div class="speed-track traditional">
+            <div class="track-label">Physical Queue / Traditional Collection</div>
+            <div class="track-bar-container">
+              <div class="track-bar traditional-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status traditional-status">Waiting for payment voucher...</div>
+          </div>
+          <div class="speed-track flux-way">
+            <div class="track-label">Orquestación Inteligente fluX One</div>
+            <div class="track-bar-container">
+              <div class="track-bar flux-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status flux-status">Starting analysis...</div>
+          </div>
+        </div>
+
+        <div class="easier-question">
+          <span class="q-badge">What if everything were easier?</span>
+          <p class="q-text">With fluX, your payment system thinks and acts proactively for you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Tiempo Real -->
+    <div class="flux-modal-overlay" id="modal-tiempo-real" onclick="closeFluxModalOnOverlay(event, 'modal-tiempo-real')">
+      <div class="flux-modal-card">
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-tiempo-real')">✕</button>
+        <h3 class="flux-modal-title">Real-time execution, 24/7/365</h3>
+        <p class="flux-modal-subtitle">Process payments and disbursements in seconds, regardless of the bank, day, or time.</p>
+        
+        <div class="flux-modal-comparison">
+          <div class="comparison-col traditional">
+            <h4>The traditional method</h4>
+            <p>Waiting in long bank queues, subject to banking hours, or waiting 48 business hours for a transfer to settle.</p>
+          </div>
+          <div class="comparison-col flux-way">
+            <h4>The fluX effect</h4>
+            <p>Instant T+0 settlement and revenue in seconds via instant payment rails. Your money is available from the first moment.</p>
+          </div>
+        </div>
+
+        <!-- Simulador de Velocidad / Animación de Liquidación -->
+        <div class="flux-speed-widget" id="speed-tiempo-real">
+          <h4 class="widget-title">Transactional Settlement Simulation</h4>
+          <div class="speed-track traditional">
+            <div class="track-label">Physical queue / Traditional transfer</div>
+            <div class="track-bar-container">
+              <div class="track-bar traditional-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status traditional-status">Waiting for payment voucher...</div>
+          </div>
+          <div class="speed-track flux-way">
+            <div class="track-label">T+0 Settlement fluX One</div>
+            <div class="track-bar-container">
+              <div class="track-bar flux-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status flux-status">Connecting...</div>
+          </div>
+        </div>
+
+        <div class="easier-question">
+          <span class="q-badge">What if everything were easier?</span>
+          <p class="q-text">Free yourself from slow physical collection. With fluX, your cash flow never stops.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Visibilidad -->
+    <div class="flux-modal-overlay" id="modal-visibilidad" onclick="closeFluxModalOnOverlay(event, 'modal-visibilidad')">
+      <div class="flux-modal-card">
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-visibilidad')">✕</button>
+        <h3 class="flux-modal-title">Total visibility</h3>
+        <p class="flux-modal-subtitle">Real-time executive dashboards. Know who paid, who didn't, and who is going to fail.</p>
+        
+        <div class="flux-modal-comparison">
+          <div class="comparison-col traditional">
+            <h4>The traditional method</h4>
+            <p>Download statement PDFs at the end of the month, guess which invoice belongs to which payment, and lose hours reconciling accounts.</p>
+          </div>
+          <div class="comparison-col flux-way">
+            <h4>The fluX effect</h4>
+            <p>A single centralized dashboard showing income, collection, delinquency, and cash projections in real-time with full transparency.</p>
+          </div>
+        </div>
+
+        <!-- Simulador de Velocidad / Animación de Visibilidad -->
+        <div class="flux-speed-widget" id="speed-visibilidad">
+          <h4 class="widget-title">Data Consolidation Simulation</h4>
+          <div class="speed-track traditional">
+            <div class="track-label">Manual statement consolidation</div>
+            <div class="track-bar-container">
+              <div class="track-bar traditional-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status traditional-status">Waiting for payment voucher...</div>
+          </div>
+          <div class="speed-track flux-way">
+            <div class="track-label">Real-Time Consolidation fluX One</div>
+            <div class="track-bar-container">
+              <div class="track-bar flux-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status flux-status">Reconciling data...</div>
+          </div>
+        </div>
+
+        <div class="easier-question">
+          <span class="q-badge">What if everything were easier?</span>
+          <p class="q-text">Take absolute control of your finances from a single integrated dashboard in real-time.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4: Automatización -->
+    <div class="flux-modal-overlay" id="modal-automatizacion" onclick="closeFluxModalOnOverlay(event, 'modal-automatizacion')">
+      <div class="flux-modal-card">
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-automatizacion')">✕</button>
+        <h3 class="flux-modal-title">End-to-end automation</h3>
+        <p class="flux-modal-subtitle">From collection to accounting reconciliation. No manual tasks, no errors.</p>
+        
+        <div class="flux-modal-comparison">
+          <div class="comparison-col traditional">
+            <h4>The traditional method</h4>
+            <p>Manually reconciling each transfer against your ERP, searching for lost invoices, and chasing payment vouchers.</p>
+          </div>
+          <div class="comparison-col flux-way">
+            <h4>The fluX effect</h4>
+            <p>Automated orchestration: the customer makes the payment, and the system reconciles it in your ERP instantly in real-time.</p>
+          </div>
+        </div>
+
+        <!-- Simulador de Velocidad / Animación de Automatización ERP -->
+        <div class="flux-speed-widget" id="speed-automatizacion">
+          <h4 class="widget-title">ERP Reconciliation Simulation</h4>
+          <div class="speed-track traditional">
+            <div class="track-label">Manual Accounting Reconciliation</div>
+            <div class="track-bar-container">
+              <div class="track-bar traditional-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status traditional-status">Waiting for payment voucher...</div>
+          </div>
+          <div class="speed-track flux-way">
+            <div class="track-label">ERP Autoreconciliation fluX One</div>
+            <div class="track-bar-container">
+              <div class="track-bar flux-progress" style="width:0%;"></div>
+            </div>
+            <div class="track-status flux-status">Starting orchestration...</div>
+          </div>
+        </div>
+
+        <div class="easier-question">
+          <span class="q-badge">What if everything were easier?</span>
+          <p class="q-text">Automate the entire flow and completely eliminate accounting errors.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS MODAL & ANIMATION LOGIC -->
+    <script>
+      let activeTimers = [];
+
+      function openFluxModal(modalId) {
+        // Close previous modals
+        document.querySelectorAll('.flux-modal-overlay').forEach(m => m.classList.remove('active'));
+        
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Evitar scroll
+          
+          // Start speed simulation for this modal
+          startSpeedSimulation(modalId);
+        }
+      }
+
+      function closeFluxModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = ''; // Restaurar scroll
+          
+          // Detener y resetear simulación
+          resetSpeedSimulation(modalId);
+        }
+      }
+
+      function closeFluxModalOnOverlay(event, modalId) {
+        if (event.target.id === modalId) {
+          closeFluxModal(modalId);
+        }
+      }
+
+      function startSpeedSimulation(modalId) {
+        // Limpiar timers anteriores
+        activeTimers.forEach(t => clearInterval(t));
+        activeTimers = [];
+        
+        const widget = document.querySelector('#' + modalId + ' .flux-speed-widget');
+        if (!widget) return;
+        
+        const tradProgress = widget.querySelector('.traditional-progress');
+        const tradStatus = widget.querySelector('.traditional-status');
+        const fluxProgress = widget.querySelector('.flux-progress');
+        const fluxStatus = widget.querySelector('.flux-status');
+        
+        // Reset a cero
+        tradProgress.style.width = '0%';
+        fluxProgress.style.width = '0%';
+        
+        // --- 1. SIMULACIÓN FLUX (HIPER-RÁPIDA) ---
+        fluxStatus.innerHTML = 'Orquestando pago...';
+        fluxStatus.style.color = '#00B894';
+        
+        setTimeout(() => {
+          fluxProgress.style.width = '100%';
+          fluxStatus.innerHTML = 'Collected and Reconciled in T+0! ✅';
+          fluxStatus.style.fontWeight = 'bold';
+        }, 300);
+
+        // --- 2. SIMULACIÓN TRADICIONAL (SUPER LENTA Y DECEPCIONANTE) ---
+        let currentTradPercent = 0;
+        
+        // Mensajes de paso a paso según el modal
+        let steps = [];
+        if (modalId === 'modal-pagos') {
+          steps = [
+            'Llamando al cliente para recordar pago...',
+            'El cliente promete enviar soporte mañana...',
+            'Waiting for bank transfer...',
+            'Reviewing PDF payment voucher...',
+            'Verifying voucher validity...',
+            'Recording payment manually in system...',
+            'Recovery completed (4-day delay) ❌'
+          ];
+        } else if (modalId === 'modal-tiempo-real') {
+          steps = [
+            'Waiting in line at physical payment point...',
+            'Waiting to be served at the counter...',
+            'Making physical payment...',
+            'Waiting for bank clearance...',
+            'Waiting 24 business hours...',
+            'Waiting 48 business hours...',
+            'Funds available (T+2 business days) ❌'
+          ];
+        } else if (modalId === 'modal-visibilidad') {
+          steps = [
+            'Downloading statement PDFs...',
+            'Exporting bank movements to Excel...',
+            'Searching for matching invoice for each payment...',
+            'Identifying transfers with missing reference...',
+            'Asking the team about phantom payments...',
+            'Reconciling statements from previous month...',
+            'Financial closing completed (T+30 days) ❌'
+          ];
+        } else {
+          steps = [
+            'Reviewing received bank transfers...',
+            'Searching for customer's open invoices...',
+            'Checking for penny discrepancies...',
+            'Generating manual accounting entry...',
+            'Updating status in the ERP...',
+            'Notifying the accounts receivable team...',
+            'Invoice manually self-reconciled (T+3 days) ❌'
+          ];
+        }
+
+        tradStatus.innerHTML = steps[0];
+        tradStatus.style.color = '#EF4444';
+        
+        const totalDuration = 7000; // 7 segundos de fila tradicional
+        const intervalTime = 100;
+        const totalIntervals = totalDuration / intervalTime;
+        let elapsed = 0;
+        
+        const tradTimer = setInterval(() => {
+          elapsed += intervalTime;
+          currentTradPercent = Math.min((elapsed / totalDuration) * 100, 100);
+          tradProgress.style.width = currentTradPercent + '%';
+          
+          // Cambiar mensaje según el porcentaje
+          const stepIndex = Math.min(Math.floor((currentTradPercent / 100) * steps.length), steps.length - 1);
+          tradStatus.innerHTML = steps[stepIndex];
+          
+          if (currentTradPercent >= 100) {
+            clearInterval(tradTimer);
+            tradStatus.style.fontWeight = 'bold';
+          }
+        }, intervalTime);
+        
+        activeTimers.push(tradTimer);
+      }
+
+      function resetSpeedSimulation(modalId) {
+        activeTimers.forEach(t => clearInterval(t));
+        activeTimers = [];
+        
+        const widget = document.querySelector('#' + modalId + ' .flux-speed-widget');
+        if (!widget) return;
+        
+        widget.querySelector('.traditional-progress').style.width = '0%';
+        widget.querySelector('.flux-progress').style.width = '0%';
+        widget.querySelector('.traditional-status').innerHTML = 'Waiting for payment voucher...';
+        widget.querySelector('.traditional-status').style.fontWeight = 'normal';
+        widget.querySelector('.flux-status').innerHTML = 'Connecting...';
+        widget.querySelector('.flux-status').style.fontWeight = 'normal';
+      }
+    </script>
+  </section>
+
+  <!-- SECCIÓN 5: SEGURIDAD Y CUMPLIMIENTO -->
+  <section id="seguridad">
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title">Bank-grade security.</h2>
+      </div>
+
+      <div class="certifications-row sr fade-in">
+        <div class="cert-badge">
+          <div class="cert-logo-box">
+            <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001:2022" class="iso-logo">
+          </div>
+          <p>ISO 27001:2022</p>
+          <span class="cert-desc">Comprehensive information security management</span>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-logo-box">
+            <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS" class="pci-logo">
+          </div>
+          <p>PCI DSS</p>
+          <span class="cert-desc">Compliance for the protection of cardholder data</span>
+        </div>
+      </div>
+
+      <div class="grid-3 sr fade-in">
+        <div class="card glass d1">
+          <h3 class="card-title">Regulatory compliance</h3>
+          <p class="card-desc">We operate under compliance with top banking and financial authorities. We comply with all applicable SARLAFT and data protection regulations.</p>
+        </div>
+        <div class="card glass d2">
+          <h3 class="card-title">Certified data protection</h3>
+          <p class="card-desc">ISO 27001 and PCI DSS validate our security controls. End-to-end encryption. Secure storage. Continuous audits.</p>
+        </div>
+        <div class="card glass d3">
+          <h3 class="card-title">24/7 Monitoring</h3>
+          <p class="card-desc">Real-time anomaly detection. Automatic alerts. Full traceability of every transaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- SECCIÓN 8: CTA FINAL + FORMULARIO -->
+  <section class="form-section" id="contacto" style="padding: 120px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container sr fade-in">
+      <div class="grid-2" style="align-items: center; gap: 80px;">
+        <div style="text-align: left;">
+          <p style="font-size: 0.875rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-bottom: 16px;">PSST...</p>
+          <h2 class="section-title typewriter-text sr fade-in" data-delay="100" data-speed="40" style="margin-bottom: 24px; ">The future of enterprise payments has arrived</h2>
+          <p class="section-subtitle sr fade-in fade-delay-mid" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem;">Schedule a personalized 15-minute demo. We will show you how fluX integrates with your ERP and optimizes your operations from day 1.</p>
+          <ul style="list-style: none; padding: 0; color: rgba(255, 255, 255, 0.8);">
+            <li style="margin-bottom: 16px;">✓ Integration in days, not months.</li>
+            <li style="margin-bottom: 16px;">✓ Documentation Developer-grade API.</li>
+            <li style="margin-bottom: 16px;">✓ Specialized support local.</li>
+          </ul>
+        </div>
+        
+        <div class="form-wrapper glass d2" style="max-width: 100%; padding: 40px;">
+          <form id="demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+            <input type="text" name="nombre" placeholder="Nombre completo" required style="margin-bottom: 12px;">
+            <input type="email" name="email" placeholder="Email corporativo" required style="margin-bottom: 12px;">
+            <input type="text" name="empresa" placeholder="Empresa" required style="margin-bottom: 12px;">
+            <input type="tel" name="telefono" placeholder="Teléfono (opcional)" style="margin-bottom: 12px;">
+            
+            <div style="margin-bottom: 24px;">
+              <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 12px; letter-spacing: 0.05em;">¿QUÉ NECESITAS?</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: rgba(255,255,255,0.7); transition: all 0.2s;">
+                  <input type="radio" name="necesidad" value="collection" style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Collection
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: rgba(255,255,255,0.7); transition: all 0.2s;">
+                  <input type="radio" name="necesidad" value="disbursement" style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Disbursement
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: rgba(255,255,255,0.7); transition: all 0.2s;">
+                  <input type="radio" name="necesidad" value="reconciliation" style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Reconciliation
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: rgba(255,255,255,0.7); transition: all 0.2s;">
+                  <input type="radio" name="necesidad" value="bi" style="width: auto; margin: 0; accent-color: var(--flux-primary);"> BI
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: rgba(255,255,255,0.7); transition: all 0.2s;">
+                  <input type="radio" name="necesidad" value="todo" checked style="width: auto; margin: 0; accent-color: var(--flux-primary);"> All
+                </label>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 16px;">Schedule a demo →</button>
+          </form>
+          <p class="legal-text" style="color: rgba(255, 255, 255, 0.5); margin-top: 16px; font-size: 0.75rem; text-align: center;">By sending this form you accept our <a href="../politica-privacidad.html" style="color: #fff;">privacy policy</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Experience<br>the liftoff</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#productos">Collection</a></li>
+            <li><a href="#productos">Disbursement</a></li>
+            <li><a href="#productos">Reconciliation</a></li>
+            <li><a href="#productos">Capacidades BI</a></li>
+            <li><a href="#para-quien">Nexa</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#">Integration Guides</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One" class="footer-logo-main" style="height: 36px; width: auto;">
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <img src="../assets/images/logos/praxis en blanco.svg" alt="Praxis" class="footer-logo-small" style="height: 28px; width: auto; opacity: 1;">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Privacy Policies</a>
+        <a href="#">Security</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL STRUCTURE -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      
+      <div class="modal-header">
+        <h2>Schedule your fluX demo</h2>
+        <p>We will contact you in less than 24 business hours</p>
+      </div>
+      
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+        </div>
+        
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <select name="pais" required>
+            <option value="">País</option>
+            <option value="CO" selected>Colombia</option>
+            <option value="MX">México</option>
+          </select>
+        </div>
+        
+        <div class="form-row">
+          <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+          <select name="necesidad" required>
+            <option value="">¿Qué necesitas?</option>
+            <option value="collection">Collection</option>
+            <option value="disbursement">Disbursement</option>
+            <option value="reconciliation">Reconciliation</option>
+            <option value="bi">Business Intelligence</option>
+            <option value="todo">All of the above</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">Send request →</button>
+        
+        <p class="legal-text">
+          By sending this form you accept our <a href="../politica-privacidad.html">privacy policy</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js?v=61"></script>
+  <script src="../js/modal.js"></script>
+
+  <!-- VIMEO API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <!-- KICKOFF VIDEO SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const section = document.getElementById('kickoff-video-section');
+      const wrapper = document.getElementById('kickoff-video-wrapper');
+      const cursorLayer = document.getElementById('kickoff-cursor-layer');
+      const customCursor = document.getElementById('kickoff-cursor');
+      const embedContainer = document.getElementById('vimeo-embed-container');
+      
+      if(!section || !wrapper) return;
+
+      // Use IntersectionObserver to inject the video only when it is about to be visible
+      // This prevents the video from loading ahead while the user has not scrolled to it.
+      let videoInjected = false;
+      const observer = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && !videoInjected) {
+          videoInjected = true;
+          const iframeHtml = '<iframe id="vimeo-player" src="https://player.vimeo.com/video/1196116582?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
+          embedContainer.innerHTML = iframeHtml;
+        }
+      }, { threshold: 0.1 });
+      
+      observer.observe(wrapper);
+      
+      // Scroll Animation
+      window.addEventListener('scroll', () => {
+        const rect = section.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionHeight = rect.height;
+        const windowHeight = window.innerHeight;
+        
+        let progress = -sectionTop / (sectionHeight - windowHeight);
+        progress = Math.max(0, Math.min(1, progress));
+        
+        let animProgress = Math.min(1, progress * 2);
+        
+        const easeOutQuad = t => t * (2 - t);
+        const ease = easeOutQuad(animProgress);
+        
+        const scale = 0.5 + (0.5 * ease);
+        const rotateX = 25 - (25 * ease);
+        const translateY = 150 - (150 * ease);
+        
+        wrapper.style.transform = 'translateY(' + translateY + 'px) rotateX(' + rotateX + 'deg) scale(' + scale + ')';
+      });
+
+      // Custom Cursor Logic
+      cursorLayer.addEventListener('mouseenter', () => {
+        customCursor.classList.add('visible');
+      });
+      
+      cursorLayer.addEventListener('mouseleave', () => {
+        customCursor.classList.remove('visible');
+      });
+      
+      cursorLayer.addEventListener('mousemove', (e) => {
+        customCursor.style.left = e.clientX + 'px';
+        customCursor.style.top = e.clientY + 'px';
+      });
+
+      // Click para reproducir con sonido
+      cursorLayer.addEventListener('click', () => {
+        customCursor.classList.remove('visible');
+        wrapper.classList.add('is-playing');
+        
+        const activeIframeHtml = '<iframe id="vimeo-player-modal" src="https://player.vimeo.com/video/1196116582?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
+        embedContainer.innerHTML = activeIframeHtml;
+      });
+    });
+  </script>
+
+
+  <script>
+    // Global Mobile Menu Logic
+    
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      
+      // Cerrar otros si queremos (opcional, aquí permitimos abrir múltiples)
+      
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px"; // 16 por el margin top simulado
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    // Backward compatibility
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+
+    <script>
+    // Panel Navigation Logic
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    // Override toggleMenu to reset panels on close
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         // Reset panels when closing
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+    </script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                             

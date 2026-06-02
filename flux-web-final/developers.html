@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX Developers — API Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── FLUX DESIGN SYSTEM TOKENS (from styles.css) ── */
+    :root {
+      --flux-primary:      #3CB8EB;
+      --flux-secondary:    #ab4b96;
+      --flux-tertiary:     #F5B5D2;
+      --flux-purple-deep:  #4E154F;
+      --flux-dark:         #000000;
+      --flux-gradient:     linear-gradient(135deg, #3CB8EB 0%, #ab4b96 50%, #F5B5D2 100%);
+      --flux-gradient-2:   linear-gradient(135deg, #3CB8EB 0%, #ab4b96 100%);
+      --flux-white:        #FFFFFF;
+      --flux-gray-100:     #F8F9FA;
+      --flux-gray-300:     #A0AEC0;
+      --flux-gray-700:     #4A5568;
+      --flux-gray-900:     #1A202C;
+      --glass-bg:          rgba(255,255,255,0.04);
+      --glass-border:      rgba(255,255,255,0.08);
+      --flux-success:      #22c55e;
+      --flux-warning:      #fbbf24;
+      --flux-error:        #f87171;
+      --font-family:       'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono:         'Fira Code', 'Cascadia Code', monospace;
+      --sidebar-w:         268px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--flux-dark);
+      color: var(--flux-white);
+      font-family: var(--font-family);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 { text-transform: uppercase; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: #050505;
+      border-right: 1px solid var(--glass-border);
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      padding: 24px 20px 20px;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sidebar-logo img { height: 20px; width: auto; }
+
+    .dev-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: linear-gradient(#000,#000) padding-box,
+                  var(--flux-gradient) border-box;
+      border: 1px solid transparent;
+      color: var(--flux-primary);
+      letter-spacing: 0.06em;
+    }
+
+    .sidebar-nav { flex: 1; padding: 20px 12px; overflow-y: auto; }
+
+    .nav-group { margin-bottom: 28px; }
+
+    .nav-group-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--flux-gray-700);
+      padding: 0 8px;
+      margin-bottom: 6px;
+    }
+
+    .nav-group ul { list-style: none; }
+
+    .nav-group ul li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      font-size: 0.84rem;
+      color: var(--flux-gray-300);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+
+    .nav-group ul li a:hover { color: var(--flux-white); background: var(--glass-bg); }
+
+    .nav-group ul li a.active {
+      color: var(--flux-primary);
+      background: rgba(60,184,235,0.08);
+      font-weight: 500;
+    }
+
+    .nav-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .nav-group ul li a.active .nav-dot { opacity: 1; box-shadow: 0 0 6px var(--flux-primary); }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .api-status { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--flux-gray-300); }
+
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--flux-success);
+      box-shadow: 0 0 8px rgba(34,197,94,0.7);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 6px rgba(34,197,94,0.6); }
+      50%      { box-shadow: 0 0 14px rgba(34,197,94,1); }
+    }
+
+    .status-latency { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-success); }
+
+    .sidebar-back {
+      display: flex; align-items: center; gap: 6px;
+      margin-top: 12px; font-size: 0.8rem; color: var(--flux-gray-700);
+      text-decoration: none; transition: color 0.2s;
+    }
+
+    .sidebar-back:hover { color: var(--flux-primary); }
+
+    /* ── MAIN ── */
+    .main { margin-left: var(--sidebar-w); flex: 1; }
+
+    /* ── HERO ── */
+    .dev-hero {
+      position: relative;
+      padding: 88px 64px 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 70% -10%, rgba(60,184,235,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 100% 100%, rgba(171,75,150,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--flux-primary);
+      background: rgba(60,184,235,0.07);
+      border: 1px solid rgba(60,184,235,0.2);
+      padding: 6px 14px; border-radius: 4px;
+      margin-bottom: 28px; letter-spacing: 0.08em;
+      text-transform: none;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--flux-primary);
+      box-shadow: 0 0 8px var(--flux-primary);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--flux-white);
+      margin-bottom: 20px;
+    }
+
+    .text-grad {
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--flux-gray-300);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 560px;
+      text-transform: none;
+    }
+
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+
+    /* fluX btn-primary style (from styles.css) */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px;
+      color: var(--flux-white);
+      font-size: 0.9rem; font-weight: 600;
+      border-radius: 100px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background-image: linear-gradient(#000, #000), var(--flux-gradient);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      position: relative; overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--flux-gradient);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-primary:hover { transform: translateY(-1px); }
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px;
+      color: var(--flux-gray-300); font-size: 0.9rem; font-weight: 500;
+      border-radius: 100px; text-decoration: none;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--flux-white); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); }
+
+    /* ── STATS BAR ── */
+    .hero-stats {
+      display: flex; gap: 0;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .stat-item { flex: 1; padding: 28px 32px; border-right: 1px solid var(--glass-border); }
+    .stat-item:last-child { border-right: none; }
+
+    .stat-value {
+      font-size: 1.9rem; font-weight: 700;
+      background: var(--flux-gradient);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1; margin-bottom: 4px;
+    }
+
+    .stat-label { font-size: 0.78rem; color: var(--flux-gray-700); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ── CONTENT ── */
+    .content { padding: 56px 64px; max-width: 880px; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .section-icon {
+      width: 32px; height: 32px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      background: linear-gradient(#000,#000) padding-box, var(--flux-gradient) border-box;
+      border: 1px solid transparent;
+      flex-shrink: 0;
+    }
+
+    .section-title { font-size: 1.3rem; font-weight: 700; color: var(--flux-white); letter-spacing: 0.02em; }
+
+    .section-block { margin-bottom: 64px; scroll-margin-top: 24px; }
+
+    /* ── GLASS CARD ── */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(160%);
+      -webkit-backdrop-filter: blur(28px) saturate(160%);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      padding: 14px 18px; border-radius: 8px; border-left: 2px solid;
+      margin-bottom: 20px; font-size: 0.875rem; line-height: 1.6;
+    }
+
+    .callout.info  { background: rgba(60,184,235,0.07);  border-color: var(--flux-primary);  color: #93C5FD; }
+    .callout.warn  { background: rgba(251,191,36,0.07);  border-color: var(--flux-warning);  color: #FCD34D; }
+    .callout.ok    { background: rgba(34,197,94,0.07);   border-color: var(--flux-success);  color: #6EE7B7; }
+    .callout strong { color: var(--flux-white); }
+
+    /* ── INLINE CODE ── */
+    code {
+      font-family: var(--font-mono); font-size: 0.85em;
+      background: rgba(60,184,235,0.08); border: 1px solid rgba(60,184,235,0.15);
+      padding: 2px 7px; border-radius: 4px; color: var(--flux-primary);
+    }
+
+    /* ── BASE URL ── */
+    .base-url {
+      display: flex; align-items: stretch;
+      background: #050505; border: 1px solid var(--glass-border);
+      border-radius: 8px; overflow: hidden; margin-bottom: 20px;
+      font-family: var(--font-mono); font-size: 0.875rem;
+    }
+
+    .base-url-label {
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03); border-right: 1px solid var(--glass-border);
+      color: var(--flux-gray-700); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+    }
+
+    .base-url-value { padding: 12px 16px; color: var(--flux-primary); flex: 1; }
+
+    .base-url-copy {
+      padding: 0 14px; background: none; border: none;
+      border-left: 1px solid var(--glass-border); color: var(--flux-gray-700);
+      cursor: pointer; font-size: 1rem; transition: color 0.15s;
+    }
+
+    .base-url-copy:hover { color: var(--flux-primary); }
+
+    /* ── API KEY BOX ── */
+    .key-card { background: #050505; border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+
+    .key-card-header {
+      padding: 12px 18px; border-bottom: 1px solid var(--glass-border);
+      font-size: 0.8rem; font-weight: 700; color: var(--flux-gray-300);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+
+    .key-row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(0,0,0,0.3); }
+
+    .live-badge {
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 4px;
+      background: rgba(34,197,94,0.1); color: var(--flux-success); border: 1px solid rgba(34,197,94,0.25);
+    }
+
+    #api-key-value { font-family: var(--font-mono); font-size: 0.875rem; color: var(--flux-gray-300); flex: 1; }
+
+    .btn-icon {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: var(--flux-gray-300); width: 30px; height: 30px;
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 0.85rem; transition: all 0.15s; flex-shrink: 0;
+    }
+
+    .btn-icon:hover { background: rgba(255,255,255,0.1); color: var(--flux-white); }
+
+    .key-footer {
+      padding: 10px 18px; font-size: 0.78rem; color: var(--flux-warning);
+      background: rgba(251,191,36,0.05); border-top: 1px solid rgba(251,191,36,0.1);
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── CODE BLOCKS ── */
+    .code-card { background: #050505; border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+
+    .code-tabs {
+      display: flex; align-items: center;
+      padding: 0 4px; border-bottom: 1px solid var(--glass-border); gap: 2px;
+    }
+
+    .code-tab {
+      font-family: var(--font-mono); font-size: 0.76rem;
+      padding: 10px 14px; color: var(--flux-gray-700);
+      background: none; border: none; cursor: pointer;
+      border-bottom: 2px solid transparent; transition: all 0.15s;
+    }
+
+    .code-tab.active { color: var(--flux-primary); border-bottom-color: var(--flux-primary); }
+    .code-tab:hover:not(.active) { color: var(--flux-gray-300); }
+
+    .copy-btn {
+      margin-left: auto; margin-right: 8px;
+      font-size: 0.73rem; font-family: var(--font-sans);
+      padding: 4px 12px; border-radius: 4px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: var(--flux-gray-700); cursor: pointer; transition: all 0.15s;
+    }
+
+    .copy-btn:hover { background: rgba(255,255,255,0.08); color: var(--flux-white); }
+    .copy-btn.copied { color: var(--flux-success); border-color: rgba(34,197,94,0.3); }
+
+    .code-panel { display: none; padding: 20px 24px; overflow-x: auto; }
+    .code-panel.active { display: block; }
+
+    .code-panel pre {
+      font-family: var(--font-mono); font-size: 0.84rem;
+      line-height: 1.72; color: #CBD5E1; margin: 0; white-space: pre;
+    }
+
+    /* Syntax — fluX palette */
+    .s  { color: #F5B5D2; }   /* string  → pink */
+    .k  { color: #3CB8EB; }   /* keyword → cyan */
+    .c  { color: #ab4b96; }   /* command → violet */
+    .p  { color: #93C5FD; }   /* property */
+    .n  { color: #fbbf24; }   /* number  */
+    .cm { color: #4A5568; font-style: italic; } /* comment */
+
+    /* ── FEATURE GRID ── */
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 48px; }
+
+    .feature-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 16px 18px;
+      display: flex; align-items: flex-start; gap: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover { border-color: rgba(60,184,235,0.25); }
+
+    .feature-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+
+    .feature-icon.cyan   { background: rgba(60,184,235,0.1);  border: 1px solid rgba(60,184,235,0.2); }
+    .feature-icon.violet { background: rgba(171,75,150,0.1);  border: 1px solid rgba(171,75,150,0.2); }
+
+    .feature-name { font-size: 0.85rem; font-weight: 700; color: var(--flux-white); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .feature-desc { font-size: 0.78rem; color: var(--flux-gray-700); line-height: 1.4; text-transform: none; }
+
+    /* ── ENDPOINT TABLE ── */
+    .endpoint-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+
+    .endpoint-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+    .endpoint-table th {
+      text-align: left; padding: 10px 14px;
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--flux-gray-700);
+    }
+
+    .endpoint-table tbody tr { border-bottom: 1px solid var(--glass-border); transition: background 0.15s; }
+    .endpoint-table tbody tr:hover { background: var(--glass-bg); }
+    .endpoint-table td { padding: 13px 14px; font-size: 0.845rem; color: var(--flux-gray-300); vertical-align: top; }
+
+    .method-badge {
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px; display: inline-block;
+    }
+
+    .m-get    { background: rgba(34,197,94,0.1);   color: #4ade80;  border: 1px solid rgba(34,197,94,0.2); }
+    .m-post   { background: rgba(60,184,235,0.1);  color: #3CB8EB;  border: 1px solid rgba(60,184,235,0.2); }
+    .m-patch  { background: rgba(251,191,36,0.1);  color: #fbbf24;  border: 1px solid rgba(251,191,36,0.2); }
+    .m-delete { background: rgba(248,113,113,0.1); color: #f87171;  border: 1px solid rgba(248,113,113,0.2); }
+
+    .ep-path  { font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-white); }
+    .ep-param { color: var(--flux-secondary); }
+    .ep-desc  { font-size: 0.82rem; line-height: 1.5; }
+
+    /* ── PARAM TABLE ── */
+    .param-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .param-table th { text-align: left; padding: 8px 12px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--flux-gray-700); border-bottom: 1px solid var(--glass-border); }
+    .param-table td { padding: 10px 12px; font-size: 0.82rem; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+    .param-name { font-family: var(--font-mono); color: var(--flux-primary); }
+    .param-type { font-family: var(--font-mono); font-size: 0.74rem; color: var(--flux-secondary); }
+    .param-req  { font-size: 0.68rem; padding: 2px 6px; border-radius: 3px; background: rgba(248,113,113,0.1); color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
+    .param-opt  { font-size: 0.68rem; padding: 2px 6px; border-radius: 3px; background: var(--glass-bg); color: var(--flux-gray-700); border: 1px solid var(--glass-border); }
+    .param-desc { color: var(--flux-gray-300); line-height: 1.5; }
+
+    /* ── ERRORS ── */
+    .error-grid { display: flex; flex-direction: column; gap: 8px; }
+    .error-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; font-size: 0.85rem; }
+    .error-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; padding: 2px 10px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+    .e-4xx { background: rgba(251,191,36,0.1); color: #fbbf24; }
+    .e-5xx { background: rgba(248,113,113,0.1); color: #f87171; }
+    .error-msg  { color: var(--flux-white); font-weight: 600; font-size: 0.85rem; }
+    .error-desc { color: var(--flux-gray-700); font-size: 0.79rem; margin-top: 2px; }
+
+    /* ── SECURITY ── */
+    .security-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; }
+    .security-header { padding: 14px 20px; border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.85rem; color: var(--flux-warning); background: rgba(251,191,36,0.03); text-transform: uppercase; letter-spacing: 0.06em; }
+    .security-list { list-style: none; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .security-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.865rem; color: var(--flux-gray-300); line-height: 1.5; }
+    .security-list li::before { content: '—'; color: var(--flux-primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── DIVIDER ── */
+    .section-divider { height: 1px; background: var(--glass-border); margin: 48px 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .dev-hero, .content { padding: 40px 24px; }
+      .hero-stats { flex-wrap: wrap; }
+      .stat-item { min-width: 50%; }
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="./assets/images/logos/flux one en blanco_1.svg" alt="fluX">
+      <span class="dev-badge">API v1.0</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group">
+        <div class="nav-group-label">Getting Started</div>
+        <ul>
+          <li><a href="#intro" class="active"><span class="nav-dot"></span>Introducción</a></li>
+          <li><a href="#auth"><span class="nav-dot"></span>Autenticación</a></li>
+          <li><a href="#quickstart"><span class="nav-dot"></span>Quick Start</a></li>
+          <li><a href="#errors"><span class="nav-dot"></span>Errores</a></li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Endpoints</div>
+        <ul>
+          <li><a href="#banks"><span class="nav-dot"></span>Bancos</a></li>
+          <li><a href="#accounts"><span class="nav-dot"></span>Cuentas</a></li>
+          <li><a href="#instruments"><span class="nav-dot"></span>Instrumentos</a></li>
+          <li><a href="#transactions"><span class="nav-dot"></span>Transacciones</a></li>
+          <li><a href="#webhooks"><span class="nav-dot"></span>Webhooks</a></li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Referencia</div>
+        <ul>
+          <li><a href="#security"><span class="nav-dot"></span>Seguridad</a></li>
+          <li><a href="#all-endpoints"><span class="nav-dot"></span>Todos los endpoints</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="api-status">
+        <span class="status-dot"></span>
+        <span>API operativa</span>
+        <span class="status-latency" id="latency-display">24ms</span>
+      </div>
+      <a href="/co/index.html" class="sidebar-back">← Volver al sitio</a>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="dev-hero" id="intro">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">fluX Partners API</div>
+        <h1 class="hero-title">
+          Integra pagos<br>en tu plataforma<br><span class="text-grad">sin fricciones</span>
+        </h1>
+        <p class="hero-subtitle">
+          API REST diseñada para integradores. Recaudo, dispersión, cuentas virtuales y webhooks en tiempo real — todo desde un solo endpoint.
+        </p>
+        <div class="hero-ctas">
+          <a href="#quickstart" class="btn-primary">
+            <span>⚡ Quick Start</span>
+          </a>
+          <a href="#all-endpoints" class="btn-ghost">
+            Ver todos los endpoints →
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-value">99.9%</div>
+          <div class="stat-label">Uptime garantizado</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">&lt;30ms</div>
+          <div class="stat-label">Latencia promedio</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">13</div>
+          <div class="stat-label">Endpoints</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">REST</div>
+          <div class="stat-label">JSON · HTTPS · Webhooks</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- Feature cards -->
+      <div class="feature-grid" style="margin-bottom:56px;">
+        <div class="feature-card">
+          <div class="feature-icon cyan">💸</div>
+          <div>
+            <div class="feature-name">Dispersión</div>
+            <div class="feature-desc">Envía fondos a cuentas bancarias en tiempo real.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon violet">📥</div>
+          <div>
+            <div class="feature-name">Recaudo</div>
+            <div class="feature-desc">Recibe pagos y notifícalos vía webhook al instante.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon cyan">🏦</div>
+          <div>
+            <div class="feature-name">Cuentas virtuales</div>
+            <div class="feature-desc">Crea y administra cuentas e instrumentos por cliente.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon violet">🔔</div>
+          <div>
+            <div class="feature-name">Webhooks</div>
+            <div class="feature-desc">Eventos push para money-in, money-out y estados.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUTENTICACIÓN -->
+      <div class="section-block" id="auth">
+        <div class="section-header">
+          <div class="section-icon">🔑</div>
+          <h2 class="section-title">Autenticación</h2>
+        </div>
+        <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+          Todas las peticiones requieren el header <code>X-API-Key</code>. Las claves tienen prefijo <code>sk_live_</code> para producción y <code>sk_test_</code> para sandbox.
+        </p>
+        <div class="base-url">
+          <span class="base-url-label">Base URL</span>
+          <span class="base-url-value">https://api.flux.finance</span>
+          <button class="base-url-copy" onclick="copyText('https://api.flux.finance', this)" title="Copiar">⎘</button>
+        </div>
+        <div class="key-card">
+          <div class="key-card-header">🔐 &nbsp;Tu API Key</div>
+          <div class="key-row">
+            <span class="live-badge">LIVE</span>
+            <span id="api-key-value">sk_live_••••••••••••••••••••</span>
+            <button class="btn-icon" onclick="revealKey()" title="Mostrar/ocultar">👁</button>
+            <button class="btn-icon" onclick="copyKey()" title="Copiar">⎘</button>
+          </div>
+          <div class="key-footer">⚠️ Nunca compartas tu API Key en repositorios públicos ni código cliente.</div>
+        </div>
+        <div class="callout info"><strong>Header requerido:</strong> <code>X-API-Key: &lt;FLUX_API_KEY&gt;</code> en cada request.</div>
+      </div>
+
+      <!-- QUICK START -->
+      <div class="section-block" id="quickstart">
+        <div class="section-header">
+          <div class="section-icon">⚡</div>
+          <h2 class="section-title">Quick Start</h2>
+        </div>
+        <p style="color:var(--flux-gray-300);font-size:0.9rem;margin-bottom:20px;line-height:1.65;text-transform:none;">Tu primera petición — lista el catálogo de bancos disponibles.</p>
+
+        <div class="code-card">
+          <div class="code-tabs">
+            <button class="code-tab active" data-lang="curl">cURL</button>
+            <button class="code-tab" data-lang="node">Node.js</button>
+            <button class="code-tab" data-lang="python">Python</button>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="code-panel active" id="panel-curl">
+<pre><span class="c">curl</span> -X <span class="k">GET</span> https://api.flux.finance/partners/banks \
+  -H <span class="s">"X-API-Key: &lt;FLUX_API_KEY&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span></pre>
+          </div>
+          <div class="code-panel" id="panel-node">
+<pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
+
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">get</span>(<span class="s">'https://api.flux.finance/partners/banks'</span>, {
+  headers: {
+    <span class="s">'X-API-Key'</span>: <span class="s">'&lt;FLUX_API_KEY&gt;'</span>,
+    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+  }
+});
+console.<span class="c">log</span>(response.data);</pre>
+          </div>
+          <div class="code-panel" id="panel-python">
+<pre><span class="k">import</span> requests
+
+response = requests.<span class="c">get</span>(
+  <span class="s">'https://api.flux.finance/partners/banks'</span>,
+  headers={
+    <span class="s">'X-API-Key'</span>: <span class="s">'&lt;FLUX_API_KEY&gt;'</span>,
+    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+  }
+)
+<span class="c">print</span>(response.json())</pre>
+          </div>
+        </div>
+
+        <p style="color:var(--flux-gray-300);font-size:0.88rem;margin-bottom:14px;text-transform:none;">Respuesta esperada:</p>
+        <div class="code-card">
+          <div class="code-tabs">
+            <button class="code-tab active">200 OK</button>
+            <button class="copy-btn">Copiar</button>
+          </div>
+          <div class="code-panel active">
+<pre>{
+  <span class="p">"data"</span>: [
+    {
+      <span class="p">"id"</span>:      <span class="s">"bancolombia"</span>,
+      <span class="p">"name"</span>:    <span class="s">"Bancolombia"</span>,
+      <span class="p">"code"</span>:    <span class="s">"007"</span>,
+      <span class="p">"country"</span>: <span class="s">"CO"</span>,
+      <span class="p">"active"</span>:  <span class="k">true</span>
+    }
+  ],
+  <span class="p">"page"</span>:      <span class="n">1</span>,
+  <span class="p">"page_size"</span>: <span class="n">20</span>,
+  <span class="p">"total"</span>:     <span class="n">48</span>
+}</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERRORES -->
+      <div class="section-block" id="errors">
+        <div class="section-header">
+          <div class="section-icon">🚨</div>
+          <h2 class="section-title">Errores</h2>
+        </div>
+        <p style="color:var(--flux-gray-300);font-size:0.9rem;margin-bottom:20px;line-height:1.65;text-transform:none;">
+          La API usa códigos HTTP estándar. Los errores retornan <code>error.code</code> y <code>error.message</code>.
+        </p>
+        <div class="error-grid">
+          <div class="error-row"><span class="error-code e-4xx">401</span><div><div class="error-msg">Unauthorized</div><div class="error-desc">API Key ausente o inválida.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">400</span><div><div class="error-msg">Bad Request</div><div class="error-desc">Parámetros faltantes o con formato incorrecto.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">404</span><div><div class="error-msg">Not Found</div><div class="error-desc">El recurso solicitado no existe.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">409</span><div><div class="error-msg">Conflict</div><div class="error-desc">Request duplicado — usa <code>Idempotency-Key</code>.</div></div></div>
+          <div class="error-row"><span class="error-code e-5xx">500</span><div><div class="error-msg">Internal Server Error</div><div class="error-desc">Reintenta con backoff exponencial.</div></div></div>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- BANCOS -->
+      <div class="section-block" id="banks">
+        <div class="section-header">
+          <div class="section-icon">🏦</div>
+          <h2 class="section-title">Bancos</h2>
+        </div>
+        <div class="code-card" style="margin-bottom:16px;">
+          <div class="code-tabs"><button class="code-tab active">GET</button></div>
+          <div class="code-panel active"><pre><span class="k">GET</span> /partners/banks?<span class="p">page</span>=<span class="n">1</span>&amp;<span class="p">page_size</span>=<span class="n">20</span></pre></div>
+        </div>
+        <table class="param-table">
+          <thead><tr><th>Parámetro</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td class="param-name">page</td><td class="param-type">integer</td><td><span class="param-opt">opcional</span></td><td class="param-desc">Número de página. Default: 1</td></tr>
+            <tr><td class="param-name">page_size</td><td class="param-type">integer</td><td><span class="param-opt">opcional</span></td><td class="param-desc">Items por página. Máx: 100</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CUENTAS -->
+      <div class="section-block" id="accounts">
+        <div class="section-header">
+          <div class="section-icon">💳</div>
+          <h2 class="section-title">Cuentas</h2>
+        </div>
+        <div class="code-card" style="margin-bottom:16px;">
+          <div class="code-tabs">
+            <button class="code-tab active" data-group="acct" data-tab="list-acct">Listar</button>
+            <button class="code-tab" data-group="acct" data-tab="create-acct">Crear</button>
+          </div>
+          <div class="code-panel active" id="panel-list-acct"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/accounts</pre></div>
+          <div class="code-panel" id="panel-create-acct">
+<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/private-accounts
+
+{
+  <span class="p">"alias"</span>:    <span class="s">"cuenta-principal"</span>,
+  <span class="p">"currency"</span>: <span class="s">"COP"</span>
+}</pre>
+          </div>
+        </div>
+        <table class="param-table">
+          <thead><tr><th>Parámetro</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
+          <tbody><tr><td class="param-name">clientId</td><td class="param-type">UUID</td><td><span class="param-req">requerido</span></td><td class="param-desc">ID único del cliente.</td></tr></tbody>
+        </table>
+      </div>
+
+      <!-- INSTRUMENTOS -->
+      <div class="section-block" id="instruments">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h2 class="section-title">Instrumentos</h2>
+        </div>
+        <div class="code-card" style="margin-bottom:16px;">
+          <div class="code-tabs">
+            <button class="code-tab active" data-group="inst" data-tab="list-inst">Listar</button>
+            <button class="code-tab" data-group="inst" data-tab="get-inst">Detalle</button>
+            <button class="code-tab" data-group="inst" data-tab="create-inst">Crear</button>
+          </div>
+          <div class="code-panel active" id="panel-list-inst"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/instruments</pre></div>
+          <div class="code-panel" id="panel-get-inst"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/instruments/<span class="p">{instrumentId}</span></pre></div>
+          <div class="code-panel" id="panel-create-inst">
+<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/instruments
+
+{
+  <span class="p">"type"</span>:           <span class="s">"bank_account"</span>,
+  <span class="p">"bank_id"</span>:        <span class="s">"bancolombia"</span>,
+  <span class="p">"account_number"</span>: <span class="s">"1234567890"</span>,
+  <span class="p">"account_type"</span>:   <span class="s">"savings"</span>
+}</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSACCIONES -->
+      <div class="section-block" id="transactions">
+        <div class="section-header">
+          <div class="section-icon">💸</div>
+          <h2 class="section-title">Transacciones</h2>
+        </div>
+        <div class="callout warn" style="margin-bottom:20px;">
+          <strong>Idempotencia:</strong> Envía un UUID único en <code>Idempotency-Key</code>. Reintentos con el mismo key no generan cobros dobles.
+        </div>
+        <div class="code-card" style="margin-bottom:16px;">
+          <div class="code-tabs">
+            <button class="code-tab active" data-group="tx" data-tab="money-out">Money Out</button>
+            <button class="code-tab" data-group="tx" data-tab="refund">Reembolso</button>
+          </div>
+          <div class="code-panel active" id="panel-money-out">
+<pre><span class="k">POST</span> /partners/transactions/money-out
+Idempotency-Key: <span class="s">550e8400-e29b-41d4-a716-446655440000</span>
+
+{
+  <span class="p">"client_id"</span>:     <span class="s">"uuid-del-cliente"</span>,
+  <span class="p">"instrument_id"</span>: <span class="s">"uuid-del-instrumento"</span>,
+  <span class="p">"amount"</span>:        <span class="n">150000</span>,
+  <span class="p">"currency"</span>:      <span class="s">"COP"</span>,
+  <span class="p">"description"</span>:   <span class="s">"Pago nómina semana 21"</span>
+}</pre>
+          </div>
+          <div class="code-panel" id="panel-refund">
+<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/transactions/<span class="p">{transactionId}</span>/refund
+
+{
+  <span class="p">"amount"</span>: <span class="n">150000</span>,
+  <span class="p">"reason"</span>: <span class="s">"customer_request"</span>
+}</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEBHOOKS -->
+      <div class="section-block" id="webhooks">
+        <div class="section-header">
+          <div class="section-icon">🔔</div>
+          <h2 class="section-title">Webhooks</h2>
+        </div>
+        <div class="callout ok" style="margin-bottom:20px;">
+          <code>POST /partners/webhooks/money-in</code> es llamado <em>por fluX hacia tu servidor</em>. Valida <code>X-Webhook-Token</code>.
+        </div>
+        <div class="code-card">
+          <div class="code-tabs">
+            <button class="code-tab active" data-group="wh" data-tab="list-wh">Listar</button>
+            <button class="code-tab" data-group="wh" data-tab="create-wh">Crear</button>
+            <button class="code-tab" data-group="wh" data-tab="update-wh">Actualizar</button>
+            <button class="code-tab" data-group="wh" data-tab="delete-wh">Eliminar</button>
+          </div>
+          <div class="code-panel active" id="panel-list-wh"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/webhooks</pre></div>
+          <div class="code-panel" id="panel-create-wh">
+<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/webhooks
+
+{
+  <span class="p">"url"</span>:    <span class="s">"https://tuapp.com/webhooks/flux"</span>,
+  <span class="p">"events"</span>: [<span class="s">"money_in"</span>, <span class="s">"money_out"</span>],
+  <span class="p">"active"</span>: <span class="k">true</span>
+}</pre>
+          </div>
+          <div class="code-panel" id="panel-update-wh"><pre><span class="k">PATCH</span> /partners/clients/<span class="p">{clientId}</span>/webhooks/<span class="p">{id}</span>
+
+{ <span class="p">"active"</span>: <span class="k">false</span> }</pre></div>
+          <div class="code-panel" id="panel-delete-wh"><pre><span class="k">DELETE</span> /partners/clients/<span class="p">{clientId}</span>/webhooks/<span class="p">{id}</span></pre></div>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- SEGURIDAD -->
+      <div class="section-block" id="security">
+        <div class="section-header">
+          <div class="section-icon">🛡</div>
+          <h2 class="section-title">Seguridad</h2>
+        </div>
+        <div class="security-card">
+          <div class="security-header">⚠️ Buenas prácticas</div>
+          <ul class="security-list">
+            <li>No loguear tokens ni API Keys en texto plano — usa gestores de secretos (Vault, AWS SSM).</li>
+            <li>Aplicar rate-limit por API Key en tu gateway.</li>
+            <li>Validación estricta de UUIDs y montos en el borde antes de llamar a fluX.</li>
+            <li>Idempotencia obligatoria en money-out: guarda el <code>Idempotency-Key</code> antes de enviar.</li>
+            <li>Valida el header <code>X-Webhook-Token</code> en cada evento de money-in.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TODOS LOS ENDPOINTS -->
+      <div class="section-block" id="all-endpoints">
+        <div class="section-header">
+          <div class="section-icon">📋</div>
+          <h2 class="section-title">Todos los endpoints</h2>
+        </div>
+        <table class="endpoint-table">
+          <thead><tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/banks</td><td class="ep-desc">Catálogo bancario</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/accounts</td><td class="ep-desc">Listar cuentas</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/private-accounts</td><td class="ep-desc">Crear cuenta privada</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/instruments</td><td class="ep-desc">Listar instrumentos</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/instruments/<span class="ep-param">{instrumentId}</span></td><td class="ep-desc">Detalle de instrumento</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/instruments</td><td class="ep-desc">Crear instrumento</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/transactions/money-out</td><td class="ep-desc">Money out — requiere <code>Idempotency-Key</code></td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/transactions/<span class="ep-param">{transactionId}</span>/refund</td><td class="ep-desc">Reembolso</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks</td><td class="ep-desc">Listar webhooks</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks</td><td class="ep-desc">Crear webhook</td></tr>
+            <tr><td><span class="method-badge m-patch">PATCH</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks/<span class="ep-param">{id}</span></td><td class="ep-desc">Actualizar webhook</td></tr>
+            <tr><td><span class="method-badge m-delete">DELETE</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks/<span class="ep-param">{id}</span></td><td class="ep-desc">Eliminar webhook</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/webhooks/money-in</td><td class="ep-desc">Evento entrante — valida <code>X-Webhook-Token</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    /* ── TABS ── */
+    document.querySelectorAll('.code-tab[data-lang]').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const card = this.closest('.code-card');
+        card.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        const panel = document.getElementById('panel-' + this.dataset.lang);
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.code-tab[data-group]').forEach(tab => {
+      tab.addEventListener('click', function() {
+        const card = this.closest('.code-card');
+        card.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        const panel = document.getElementById('panel-' + this.dataset.tab);
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    /* ── COPY BUTTONS ── */
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        if (btn) { const o = btn.textContent; btn.textContent = '✓'; setTimeout(() => btn.textContent = o, 1400); }
+      });
+    }
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const active = this.closest('.code-card').querySelector('.code-panel.active pre');
+        if (!active) return;
+        navigator.clipboard.writeText(active.textContent).then(() => {
+          this.textContent = '✓ Copiado';
+          this.classList.add('copied');
+          setTimeout(() => { this.textContent = 'Copiar'; this.classList.remove('copied'); }, 1600);
+        });
+      });
+    });
+
+    /* ── API KEY ── */
+    const KEY_REAL = 'sk_live_x8F2k9Mz2nQ8pL3wY5vR1';
+    const KEY_MASK = 'sk_live_••••••••••••••••••••';
+    let keyVisible = false;
+    function revealKey() {
+      keyVisible = !keyVisible;
+      document.getElementById('api-key-value').textContent = keyVisible ? KEY_REAL : KEY_MASK;
+    }
+    function copyKey() {
+      navigator.clipboard.writeText(KEY_REAL).then(() => {
+        const btn = document.querySelector('.key-row .btn-icon:last-child');
+        btn.textContent = '✓'; setTimeout(() => btn.textContent = '⎘', 1400);
+      });
+    }
+
+    /* ── ACTIVE NAV ── */
+    const navLinks = document.querySelectorAll('.nav-group a');
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const match = document.querySelector(`.nav-group a[href="#${e.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' }).observe
+    ;
+    document.querySelectorAll('[id]').forEach(s => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const match = document.querySelector(`.nav-group a[href="#${e.target.id}"]`);
+            if (match) match.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' }).observe(s);
+    });
+
+    /* ── LATENCY ── */
+    const el = document.getElementById('latency-display');
+    setInterval(() => { el.textContent = (18 + Math.floor(Math.random() * 16)) + 'ms'; }, 3000);
+  </script>
+</body>
+</html>

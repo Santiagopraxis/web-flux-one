@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX One — Inteligencia de Negocio</title>
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      </a>
+      
+            <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Productos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>INFRAESTRUCTURA DE NUEVA GENERACIÓN</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="cobranza.html">Cobranza</a></li>
+                  <li><a href="dispersion.html">Dispersión</a></li>
+                  <li><a href="conciliacion.html">Conciliación</a></li>
+                  <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Desarrolladores</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Recursos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>CONOCIMIENTO Y SOPORTE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RECURSOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <!-- COUNTRY SELECTOR -->
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO" id="current-flag-img"> <span id="current-country-text">Méx</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="/co/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+          </ul>
+        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">ES</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="index.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="../en/index.html"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Iniciar sesión</button>
+        <button class="btn-primary" onclick="openModal()">Comienza hoy</button>
+        <!-- Hamburger Menu -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+      <!-- MOBILE OVERLAY MENU (DRILL-DOWN) -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+      </div>
+      
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          
+          <!-- PANEL 1: MAIN MENU -->
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Productos <span class="drilldown-arrow">›</span>
+              </button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Recursos <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Desarrolladores</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Hablemos</a>
+            </nav>
+            
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Iniciar sesión</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Comienza hoy</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="index.html" class="active">ES</a>
+                <span class="divider">|</span>
+                <a href="../en/index.html">EN</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Volver</button>
+              <div class="panel-title">Productos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="cobranza.html" class="mobile-link" onclick="toggleMenu()">Cobranza Inteligente</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Dispersión Automática</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Conciliación en tiempo real</a>
+              <a href="#" class="mobile-link" style="pointer-events: none; opacity: 0.5;" onclick="toggleMenu()">Nexa (Pronto)</a>
+            </nav>
+          </div>
+
+          <!-- PANEL 3: RECURSOS -->
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Volver</button>
+              <div class="panel-title">Recursos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">Preguntas Frecuentes</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero hero-gradient" id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content hero-grid">
+        <div class="hero-text-col">
+          <div class="badge-new sr fade-in" style="display:inline-block; margin-bottom: 24px;">PRODUCTO: CAPACIDADES BI</div>
+          <h1 class="hero-title sr fade-in delay-2">Inteligencia que convierte datos en<br><span class="text-grad">decisiones.</span></h1>
+          <p class="hero-desc sr fade-in delay-3">Cada transacción genera información. fluX la convierte en inteligencia accionable para optimizar tu operación, reducir cartera vencida y tomar decisiones basadas en datos.</p>
+          
+          <div class="hero-actions sr fade-in delay-4">
+            <button class="btn-primary" onclick="openModal()">Agenda una demo →</button>
+          </div>
+        </div>
+        <div class="hero-graphic-col sr hero-video-reveal delay-3">
+          <video src="../assets/videos/mx/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITECTURA FLUX ONE -->
+  <section style="padding: 80px 0;">
+    <div class="container">
+      <div class="section-header sr fade-in" style="text-align:center; margin-bottom:48px;">
+        <p style="color:#ec4899; font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:12px;">T+0 · 24/7 · MULTI-RIEL</p>
+        <h2 class="section-title">Inteligencia que transforma pagos en valor</h2>
+        <p style="color:var(--flux-gray-300); max-width:620px; margin:16px auto 0; font-size:1rem; line-height:1.7;">Transformamos cada pago en información estratégica para tomar mejores decisiones — cobranza, orquestación y analítica en una sola capa tecnológica.</p>
+      </div>
+
+      <div class="sr fade-in" style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+        <div style="display:flex; gap:1px; min-width:960px; background:rgba(255,255,255,0.06); border-radius:16px; overflow:hidden;">
+
+          <!-- 01 INPUT -->
+          <div style="flex:1; padding:28px 16px; background:#0d0d12;">
+            <span style="display:block; color:rgba(255,255,255,0.3); font-size:0.6rem; font-weight:700; letter-spacing:0.15em; margin-bottom:6px;">01 — INPUT</span>
+            <h4 style="color:#fff; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid #ec4899;">Fuentes de Cobranza</h4>
+            <p style="color:#ec4899; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 5px;">Propios</p>
+            <ul style="list-style:none; padding:0; margin:0 0 10px;">
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">fluX Web/App</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">PSE</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">NeXa</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Botón de Pago</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Débito Automático</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Bancos Aliados</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Corresponsales</li>
+            </ul>
+            <p style="color:#ec4899; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 5px;">Externos</p>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Bancos externos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Pasarelas / Wallets</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Convenios emp.</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; align-items:center; padding:0 4px; background:#0d0d12; color:rgba(255,255,255,0.15); font-size:1rem;">→</div>
+
+          <!-- 02 INTEGRACIÓN -->
+          <div style="flex:1; padding:28px 16px; background:#0d0d12;">
+            <span style="display:block; color:rgba(255,255,255,0.3); font-size:0.6rem; font-weight:700; letter-spacing:0.15em; margin-bottom:6px;">02 — INTEGRACIÓN</span>
+            <h4 style="color:#fff; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid #06b6d4;">Capa API · Pull Engine</h4>
+            <p style="color:#06b6d4; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 8px;">API Pull / Aggregator</p>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Conexión vía APIs con canales externos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Extracción de transacciones</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Validación y normalización</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Enriquecimiento de datos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Estandarización de formatos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Control de errores y reintentos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Log y auditoría de integraciones</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; align-items:center; padding:0 4px; background:#0d0d12; color:rgba(255,255,255,0.15); font-size:1rem;">→</div>
+
+          <!-- 03 CORE -->
+          <div style="flex:1; padding:28px 16px; background:#0d0d12;">
+            <span style="display:block; color:rgba(255,255,255,0.3); font-size:0.6rem; font-weight:700; letter-spacing:0.15em; margin-bottom:6px;">03 — CORE</span>
+            <h4 style="color:#fff; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid #06b6d4;">Orquestador Transaccional</h4>
+            <p style="color:#06b6d4; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 8px;">fluX Core</p>
+            <ul style="list-style:none; padding:0; margin:0 0 10px;">
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Recepción de pagos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Validaciones de negocio</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Enrutamiento inteligente</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Confirmación en tiempo real</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Conciliación y reversos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Gestión de liquidaciones</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Eventos y notificaciones</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">APIs de servicios</li>
+            </ul>
+            <p style="color:rgba(255,255,255,0.35); font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:8px 0 4px;">Monitoreo</p>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li style="color:rgba(255,255,255,0.5); font-size:0.68rem; padding:2px 0;">Trazabilidad end-to-end</li>
+              <li style="color:rgba(255,255,255,0.5); font-size:0.68rem; padding:2px 0;">Alerta Operativa</li>
+              <li style="color:rgba(255,255,255,0.5); font-size:0.68rem; padding:2px 0;">Control de excepciones</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; align-items:center; padding:0 4px; background:#0d0d12; color:rgba(255,255,255,0.15); font-size:1rem;">→</div>
+
+          <!-- 04 DATA -->
+          <div style="flex:1; padding:28px 16px; background:#0d0d12;">
+            <span style="display:block; color:rgba(255,255,255,0.3); font-size:0.6rem; font-weight:700; letter-spacing:0.15em; margin-bottom:6px;">04 — DATA</span>
+            <h4 style="color:#fff; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid #8b5cf6;">Capa de Datos · Data Lake</h4>
+            <p style="color:#8b5cf6; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 8px;">Data Lake Transaccional</p>
+            <ul style="list-style:none; padding:0; margin:0 0 10px;">
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Datos crudos de transacciones</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Datos normalizados y estructurados</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Históricos consolidados</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Catálogos y maestros</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Información enriquecida</li>
+            </ul>
+            <p style="color:rgba(255,255,255,0.35); font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:8px 0 4px;">Gobierno de Datos</p>
+            <p style="color:rgba(255,255,255,0.5); font-size:0.68rem; margin:0;">Calidad · seguridad · linaje · auditoría</p>
+          </div>
+
+          <div style="display:flex; align-items:center; padding:0 4px; background:#0d0d12; color:rgba(255,255,255,0.15); font-size:1rem;">→</div>
+
+          <!-- 05 INTELLIGENCE (destacado) -->
+          <div style="flex:1; padding:28px 16px; background:rgba(139,92,246,0.1); border-left:1px solid rgba(139,92,246,0.4); border-right:1px solid rgba(139,92,246,0.4);">
+            <span style="display:block; color:rgba(255,255,255,0.4); font-size:0.6rem; font-weight:700; letter-spacing:0.15em; margin-bottom:6px;">05 — INTELLIGENCE</span>
+            <h4 style="color:#fff; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid #a78bfa;">Módulo de Business Intelligence</h4>
+            <p style="color:#a78bfa; font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 8px;">Capacidades BI</p>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Analítica de comportamiento de pago</li>
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Modelos predictivos de cartera</li>
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Segmentación inteligente de usuarios</li>
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Optimización de canales de cobranza</li>
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Geointeligencia comercial</li>
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Dashboards ejecutivos en tiempo real</li>
+              <li style="color:rgba(255,255,255,0.8); font-size:0.68rem; padding:3px 0;">Alertas y notificaciones inteligentes</li>
+            </ul>
+          </div>
+
+          <div style="display:flex; align-items:center; padding:0 4px; background:#0d0d12; color:rgba(255,255,255,0.15); font-size:1rem;">→</div>
+
+          <!-- 06 OUTPUT -->
+          <div style="flex:1; padding:28px 16px; background:#0d0d12;">
+            <span style="display:block; color:rgba(255,255,255,0.3); font-size:0.6rem; font-weight:700; letter-spacing:0.15em; margin-bottom:6px;">06 — OUTPUT</span>
+            <h4 style="color:#fff; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid #f59e0b;">Consumo de Información</h4>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Dashboards ejecutivos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Reportes operativos</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Análisis avanzado</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Alertas automatizadas</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Integración ERP · CRM · DWH</li>
+              <li style="color:rgba(255,255,255,0.6); font-size:0.68rem; padding:2px 0;">Toma de decisiones estratégicas</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Leyenda -->
+      <div class="sr fade-in" style="display:flex; gap:20px; justify-content:center; margin-top:20px; flex-wrap:wrap; opacity:0.5;">
+        <span style="font-size:0.6rem; font-weight:700; letter-spacing:0.1em; color:#fff; display:flex; align-items:center; gap:6px;"><span style="width:20px; height:2px; background:#ec4899; display:inline-block;"></span>Integración</span>
+        <span style="font-size:0.6rem; font-weight:700; letter-spacing:0.1em; color:#fff; display:flex; align-items:center; gap:6px;"><span style="width:20px; height:2px; background:#06b6d4; display:inline-block;"></span>Transaccional</span>
+        <span style="font-size:0.6rem; font-weight:700; letter-spacing:0.1em; color:#fff; display:flex; align-items:center; gap:6px;"><span style="width:20px; height:2px; background:#8b5cf6; display:inline-block;"></span>Datos</span>
+        <span style="font-size:0.6rem; font-weight:700; letter-spacing:0.1em; color:#fff; display:flex; align-items:center; gap:6px;"><span style="width:20px; height:2px; background:#a78bfa; display:inline-block;"></span>Inteligencia</span>
+        <span style="font-size:0.6rem; font-weight:700; letter-spacing:0.1em; color:#fff; display:flex; align-items:center; gap:6px;"><span style="width:20px; height:2px; background:#f59e0b; display:inline-block;"></span>Consumo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPACIDADES BI -->
+  <section class="section-light">
+    <div class="container">
+      <div class="section-header sr fade-in">
+        <h2 class="section-title">Capacidades de Business Intelligence</h2>
+      </div>
+
+      <div class="grid-3 sr fade-in">
+        <div class="card glass-light d1">
+          <h3 class="card-title">1. Analítica de comportamiento de pago</h3>
+          <p class="card-desc">Frecuencia, días de pago, historial de mora, ciclo de cobranza, ticket promedio. Entiende hábitos para diseñar estrategias de fidelización y cobranza.</p>
+        </div>
+        <div class="card glass-light d2">
+          <h3 class="card-title">2. Modelos predictivos de cartera</h3>
+          <p class="card-desc">Identificación de riesgo de mora, probabilidad de pago tardío, segmentos de recuperación. Anticipa cartera vencida antes de que ocurra.</p>
+        </div>
+        <div class="card glass-light d3">
+          <h3 class="card-title">3. Segmentación inteligente de usuarios</h3>
+          <p class="card-desc">Clasificación por canal preferido, recurrencia, cumplimiento, volumen de pago. Personaliza campañas y mejora efectividad comercial.</p>
+        </div>
+        <div class="card glass-light d1">
+          <h3 class="card-title">4. Optimización de canales de cobranza</h3>
+          <p class="card-desc">Medición de KPIs por canal: tasa de éxito, costos transaccionales, tiempo promedio. Decide dónde invertir y dónde optimizar.</p>
+        </div>
+        <div class="card glass-light d2">
+          <h3 class="card-title">5. Geointeligencia comercial</h3>
+          <p class="card-desc">Visualización territorial de zonas de mora, concentración de pagos, cobertura comercial. Toma decisiones con criterio geográfico.</p>
+        </div>
+        <div class="card glass-light d3">
+          <h3 class="card-title">6. Dashboards ejecutivos en tiempo real</h3>
+          <p class="card-desc">Cobranza diaria, cumplimiento presupuestal, cartera vencida, recuperación, efectividad por canal. Visibilidad inmediata para CFOs y gerentes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section style="padding: 80px 0; background: #050508;">
+    <div class="container">
+      <div class="section-header sr fade-in" style="text-align:center; margin-bottom:56px;">
+        <p style="color:#ec4899; font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:12px;">BENEFICIOS</p>
+        <h2 class="section-title">El valor que genera fluX BI</h2>
+      </div>
+
+      <div class="grid-3 sr fade-in">
+        <div class="card" style="background:#0d0d12; border:1px solid rgba(255,255,255,0.06); padding:40px 32px;">
+          <div style="font-size:2.8rem; font-weight:200; color:#06b6d4; line-height:1; margin-bottom:16px;">360°</div>
+          <div style="width:32px; height:2px; background:linear-gradient(90deg,#ec4899,#8b5cf6); margin-bottom:20px;"></div>
+          <h3 style="color:#fff; font-size:1rem; font-weight:600; margin:0 0 8px; line-height:1.4;">Visión de toda la cobranza en un solo lugar</h3>
+          <p style="color:rgba(255,255,255,0.35); font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0;">Visibilidad</p>
+        </div>
+        <div class="card d1" style="background:#0d0d12; border:1px solid rgba(255,255,255,0.06); padding:40px 32px;">
+          <div style="font-size:2.8rem; font-weight:200; color:#06b6d4; line-height:1; margin-bottom:16px;">T+0</div>
+          <div style="width:32px; height:2px; background:linear-gradient(90deg,#ec4899,#8b5cf6); margin-bottom:20px;"></div>
+          <h3 style="color:#fff; font-size:1rem; font-weight:600; margin:0 0 8px; line-height:1.4;">Mayor control y trazabilidad de la información</h3>
+          <p style="color:rgba(255,255,255,0.35); font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0;">Control</p>
+        </div>
+        <div class="card d2" style="background:#0d0d12; border:1px solid rgba(255,255,255,0.06); padding:40px 32px;">
+          <div style="font-size:2.8rem; font-weight:200; color:#ec4899; line-height:1; margin-bottom:16px;">−18%</div>
+          <div style="width:32px; height:2px; background:linear-gradient(90deg,#ec4899,#8b5cf6); margin-bottom:20px;"></div>
+          <h3 style="color:#fff; font-size:1rem; font-weight:600; margin:0 0 8px; line-height:1.4;">Reducción de cartera vencida con modelos predictivos</h3>
+          <p style="color:rgba(255,255,255,0.35); font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0;">Cartera</p>
+        </div>
+        <div class="card" style="background:#0d0d12; border:1px solid rgba(255,255,255,0.06); padding:40px 32px;">
+          <div style="font-size:2.8rem; font-weight:200; color:#ec4899; line-height:1; margin-bottom:16px;">∞</div>
+          <div style="width:32px; height:2px; background:linear-gradient(90deg,#ec4899,#8b5cf6); margin-bottom:20px;"></div>
+          <h3 style="color:#fff; font-size:1rem; font-weight:600; margin:0 0 8px; line-height:1.4;">Optimización de canales y costos operativos</h3>
+          <p style="color:rgba(255,255,255,0.35); font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0;">Eficiencia</p>
+        </div>
+        <div class="card d1" style="background:#0d0d12; border:1px solid rgba(255,255,255,0.06); padding:40px 32px;">
+          <div style="font-size:2.8rem; font-weight:200; color:#06b6d4; line-height:1; margin-bottom:16px;">24/7</div>
+          <div style="width:32px; height:2px; background:linear-gradient(90deg,#ec4899,#8b5cf6); margin-bottom:20px;"></div>
+          <h3 style="color:#fff; font-size:1rem; font-weight:600; margin:0 0 8px; line-height:1.4;">Mejor experiencia para el usuario final</h3>
+          <p style="color:rgba(255,255,255,0.35); font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0;">Experiencia</p>
+        </div>
+        <div class="card d2" style="background:#0d0d12; border:1px solid rgba(255,255,255,0.06); padding:40px 32px;">
+          <div style="font-size:2.8rem; font-weight:200; color:#f59e0b; line-height:1; margin-bottom:16px;">→</div>
+          <div style="width:32px; height:2px; background:linear-gradient(90deg,#ec4899,#8b5cf6); margin-bottom:20px;"></div>
+          <h3 style="color:#fff; font-size:1rem; font-weight:600; margin:0 0 8px; line-height:1.4;">Información estratégica para decisiones basadas en datos</h3>
+          <p style="color:rgba(255,255,255,0.35); font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0;">Decisión</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUALIZACIÓN DASHBOARD -->
+  <section>
+    <div class="container" style="text-align: center;">
+      <div class="sr fade-in" style="max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.02); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="width:100%;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6);background:#111827;border:1px solid rgba(255,255,255,0.08);">
+  <!-- Topbar -->
+  <div style="background:#0D1421;padding:12px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="width:10px;height:10px;border-radius:50%;background:#EF4444;"></div>
+    <div style="width:10px;height:10px;border-radius:50%;background:#F59E0B;"></div>
+    <div style="width:10px;height:10px;border-radius:50%;background:#10B981;"></div>
+    <span style="margin-left:12px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-family:monospace;">fluX BI · Dashboard ejecutivo</span>
+  </div>
+  <!-- KPI row -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.05);margin:20px 20px 0;">
+    <div style="background:#111827;padding:16px;border-radius:8px 0 0 8px;">
+      <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Cobranza hoy</div>
+      <div style="font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#00B894,#2563EB);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$2.4B</div>
+      <div style="font-size:0.7rem;color:#10B981;margin-top:4px;">▲ 12.4%</div>
+    </div>
+    <div style="background:#111827;padding:16px;">
+      <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">TX procesadas</div>
+      <div style="font-size:1.4rem;font-weight:700;color:#fff;">18,342</div>
+      <div style="font-size:0.7rem;color:#10B981;margin-top:4px;">▲ 8.1%</div>
+    </div>
+    <div style="background:#111827;padding:16px;">
+      <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Mora proyectada</div>
+      <div style="font-size:1.4rem;font-weight:700;color:#fff;">3.2%</div>
+      <div style="font-size:0.7rem;color:#EF4444;margin-top:4px;">▲ 0.4%</div>
+    </div>
+    <div style="background:#111827;padding:16px;border-radius:0 8px 8px 0;">
+      <div style="font-size:0.65rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Tasa de éxito</div>
+      <div style="font-size:1.4rem;font-weight:700;color:#fff;">98.7%</div>
+      <div style="font-size:0.7rem;color:#10B981;margin-top:4px;">▲ 0.2%</div>
+    </div>
+  </div>
+  <!-- Chart area -->
+  <div style="padding:20px;display:grid;grid-template-columns:2fr 1fr;gap:16px;">
+    <!-- Line chart mock -->
+    <div style="background:#0D1421;border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:14px;">Flujo de cobranza — últimas 8 semanas</div>
+      <svg viewBox="0 0 300 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00B894" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#00B894" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Grid lines -->
+        <line x1="0" y1="72" x2="300" y2="72" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="0" y1="28" x2="300" y2="28" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <!-- Area fill -->
+        <path d="M10,62 L52,48 L94,55 L136,35 L178,42 L220,28 L262,20 L290,15 L290,80 L10,80 Z" fill="url(#lg1)"/>
+        <!-- Line -->
+        <path d="M10,62 L52,48 L94,55 L136,35 L178,42 L220,28 L262,20 L290,15" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Dots -->
+        <circle cx="290" cy="15" r="3.5" fill="#00B894"/>
+        <circle cx="10" cy="62" r="3" fill="#00B894" opacity="0.5"/>
+        <!-- Labels -->
+        <text x="10" y="88" font-size="7" fill="rgba(255,255,255,0.3)" font-family="monospace">S1</text>
+        <text x="255" y="88" font-size="7" fill="rgba(255,255,255,0.3)" font-family="monospace">S8</text>
+      </svg>
+    </div>
+    <!-- Bar chart mock -->
+    <div style="background:#0D1421;border-radius:10px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:14px;">Canales activos</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:3px;"><span>ACH</span><span>64%</span></div>
+          <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:3px;"><div style="width:64%;height:100%;background:linear-gradient(90deg,#00B894,#2563EB);border-radius:3px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:3px;"><span>SPEI</span><span>21%</span></div>
+          <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:3px;"><div style="width:21%;height:100%;background:#2563EB;border-radius:3px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:3px;"><span>PSE</span><span>11%</span></div>
+          <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:3px;"><div style="width:11%;height:100%;background:#6366F1;border-radius:3px;"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:rgba(255,255,255,0.4);margin-bottom:3px;"><span>Billeteras</span><span>4%</span></div>
+          <div style="height:5px;background:rgba(255,255,255,0.06);border-radius:3px;"><div style="width:4%;height:100%;background:#F59E0B;border-radius:3px;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <p style="color: var(--flux-gray-300); margin-top: 20px; font-size: 0.875rem;">Dashboard ejecutivo en tiempo real</p>
+        <a href="#" onclick="openModal(); return false;" class="link-arrow" style="margin-top: 16px;">Agenda una demo →</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- CTA FINAL -->
+  <section class="section-light" style="padding: 120px 0; border-top: 1px solid rgba(0,0,0,0.05);">
+    <div class="container sr fade-in">
+      <div class="grid-2" style="align-items: center; gap: 80px;">
+        <div style="text-align: left;">
+          <p style="font-size: 0.875rem; letter-spacing: 0.15em; color: var(--flux-gray-500); margin-bottom: 16px; font-weight: 600;">PSST...</p>
+          <h2 class="section-title sr fade-in" style="margin-bottom: 24px; text-align: left;">¿Quieres ver fluX One en acción con tus datos?</h2>
+          <p class="section-subtitle sr fade-in fade-delay-mid" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem; color: var(--flux-gray-700);">Agenda una demo personalizada de 15 minutos. Te mostramos cómo fluX One optimiza tu operación financiera desde el día 1.</p>
+          <ul style="list-style: none; padding: 0; color: var(--flux-gray-700); text-align: left;">
+            <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Tiempos de integración en días, no meses.
+            </li>
+            <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Documentación API de nivel desarrollador.
+            </li>
+            <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Acompañamiento especializado local.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="form-wrapper glass-light d2" style="max-width: 100%; padding: 40px; text-align: left;">
+          <form class="demo-form" onsubmit="submitDemoForm(event)">
+            <input type="hidden" name="pais" value="MX">
+            <input type="text" name="nombre" placeholder="Nombre completo" required style="margin-bottom: 12px;">
+            <input type="email" name="email" placeholder="Email corporativo" required style="margin-bottom: 12px;">
+            <input type="text" name="empresa" placeholder="Empresa" required style="margin-bottom: 12px;">
+            <input type="tel" name="telefono" placeholder="Teléfono (opcional)" style="margin-bottom: 12px;">
+            
+            <div style="margin-bottom: 24px;">
+              <p style="font-size: 0.75rem; color: var(--flux-gray-600); margin-bottom: 12px; letter-spacing: 0.05em; font-weight: 600;">¿QUÉ NECESITAS?</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="recaudo"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Recaudo
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="dispersion"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Dispersión
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="conciliacion"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Conciliación
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="bi" checked style="width: auto; margin: 0; accent-color: var(--flux-primary);"> BI
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="todo"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Todo
+                </label>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 16px;">Agenda una demo →</button>
+          </form>
+          <p class="legal-text" style="color: var(--flux-gray-500); margin-top: 16px; font-size: 0.75rem; text-align: center;">Al enviar este formulario aceptas nuestra <a href="../politica-privacidad.html" style="color: var(--flux-dark);">política de privacidad</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer footer-light">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Empieza a<br>fluir</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="cobranza.html">Cobranza</a></li>
+            <li><a href="dispersion.html">Dispersión</a></li>
+            <li><a href="conciliacion.html">Conciliación</a></li>
+            <li><a href="bi.html">Capacidades BI</a></li>
+            <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Desarrolladores</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Guías de Integración</a></li>
+            <li><a href="#" class="disabled-link">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom-row">
+              <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+          <img src="../assets/images/logos/flux one en negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
+          <span style="color: rgba(0,0,0,0.2);">|</span>
+          <img src="../assets/images/logos/PRAXIS COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="height: 28px; width: auto; opacity: 1;">
+        </div>
+      <div class="footer-legal-links">
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Políticas de Privacidad</a>
+        <a href="#">Seguridad</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Agenda tu demo de fluX</h2>
+        <p>Te contactamos en menos de 24 horas hábiles</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <select name="pais" required>
+            <option value="">País</option>
+            <option value="CO" selected>Colombia</option>
+            <option value="MX">México</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+          <select name="necesidad" required>
+            <option value="">¿Qué necesitas?</option>
+            <option value="cobranza">Cobranza</option>
+            <option value="dispersion">Dispersión</option>
+            <option value="conciliacion">Conciliación</option>
+            <option value="bi" selected>Inteligencia de Negocio</option>
+            <option value="todo">Todo lo anterior</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">Enviar solicitud →</button>
+        <p class="legal-text">
+          Al enviar este formulario aceptas nuestra <a href="../politica-privacidad.html">política de privacidad</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+
+  <script>
+    // Global Mobile Menu Logic
+    
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      
+      // Cerrar otros si queremos (opcional, aquí permitimos abrir múltiples)
+      
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px"; // 16 por el margin top simulado
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    // Backward compatibility
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+
+    <script>
+    // Panel Navigation Logic
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    // Override toggleMenu to reset panels on close
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         // Reset panels when closing
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+    </script>
+
+</body>
+</html>
