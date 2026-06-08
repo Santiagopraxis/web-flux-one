@@ -199,7 +199,7 @@
         <div class="kickoff-video-wrapper" id="kickoff-video-wrapper">
           <!-- Thumbnail o video de fondo (autostart sin sonido) -->
           <!-- Usamos el mismo iframe pero lo controlamos por API -->
-          <div style="padding:56.25% 0 0 0;position:relative;" id="vimeo-embed-container">
+          <div style="padding:75% 0 0 0;position:relative;" id="vimeo-embed-container">
             <!-- Cargaremos el iframe vía JS para evitar autoplay no deseado hasta que estemos listos -->
           </div>
           
@@ -1520,7 +1520,7 @@
         videoInjected = true;
         
         // Pre-inject background player configuration to preload immediately on first scroll
-        const iframeHtml = '<iframe id="vimeo-player" src="https://player.vimeo.com/video/1196779688?h=f632025c22&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
+        const iframeHtml = '<iframe id="vimeo-player" src="https://player.vimeo.com/video/1199284738?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
         embedContainer.innerHTML = iframeHtml;
         
         // Initialize Vimeo Player API object
@@ -1594,7 +1594,7 @@
         customCursor.classList.remove('visible');
         wrapper.classList.add('is-playing');
         
-        const activeIframeHtml = '<iframe id="vimeo-player-modal" src="https://player.vimeo.com/video/1196779688?h=f632025c22&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
+        const activeIframeHtml = '<iframe id="vimeo-player-modal" src="https://player.vimeo.com/video/1199284738?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
         embedContainer.innerHTML = activeIframeHtml;
 
         // Crear objeto Vimeo.Player para escuchar el evento 'ended'
