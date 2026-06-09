@@ -149,13 +149,14 @@
   <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
     <div class="mobile-menu-drawer">
       <div class="mobile-menu-header">
-        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <a href="index.html" style="display: flex; align-items: center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
         <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
       </div>
       <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
         <div class="menu-panels-container">
           <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
             <nav class="mobile-nav">
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Home</a>
               <button class="drilldown-btn" onclick="openPanel('panel-productos')">Products <span class="drilldown-arrow">›</span></button>
               <button class="drilldown-btn" onclick="openPanel('panel-recursos')">Resources <span class="drilldown-arrow">›</span></button>
               <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Developers</a>
@@ -163,6 +164,14 @@
             <div class="mobile-cta-group">
               <a href="../co/login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Log in</a>
               <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Get Started</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="index.html">ES</a>
+                <span class="divider">|</span>
+                <a href="../en/index.html" class="active">EN</a>
+              </div>
             </div>
           </div>
           <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">

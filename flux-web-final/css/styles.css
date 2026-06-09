@@ -3443,8 +3443,8 @@ section {
   min-height: 72px;
 }
 .mobile-drawer-logo {
-  height: 16px !important;
-  max-height: 16px !important;
+  height: 30px !important;
+  max-height: 30px !important;
   width: auto !important;
   display: block;
 }

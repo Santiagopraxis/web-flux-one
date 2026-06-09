@@ -101,7 +101,7 @@
   <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
     <div class="mobile-menu-drawer">
       <div class="mobile-menu-header">
-        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <a href="index.html" style="display: flex; align-items: center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
         <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
       </div>
       
@@ -111,6 +111,7 @@
           <!-- PANEL 1: MAIN MENU -->
           <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
             <nav class="mobile-nav">
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Home</a>
               <button class="drilldown-btn" onclick="openPanel('panel-productos')">
                 Products <span class="drilldown-arrow">›</span>
               </button>
