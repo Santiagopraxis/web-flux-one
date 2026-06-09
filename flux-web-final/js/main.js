@@ -174,9 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const fadeStart = 0.3; 
       if (animProgress > fadeStart) {
         const fadeProgress = (animProgress - fadeStart) / 0.5;
-        transitionBg.style.opacity = Math.max(0, 1 - fadeProgress);
+        const opacity = Math.max(0, 1 - fadeProgress);
+        transitionBg.style.opacity = opacity;
+        
+        // Smoothly transition background of parent section from black to white to prevent white leak gap
+        const rgbVal = Math.round((1 - opacity) * 255);
+        brandSection.style.backgroundColor = `rgb(${rgbVal}, ${rgbVal}, ${rgbVal})`;
       } else {
         transitionBg.style.opacity = 1;
+        brandSection.style.backgroundColor = '#000000';
       }
       
       requestAnimationFrame(updatePortal);

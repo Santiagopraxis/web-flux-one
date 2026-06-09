@@ -1698,7 +1698,7 @@ input:focus, select:focus {
 #brand-transition {
   position: relative;
   height: 300vh; /* Scroll height for desktop */
-  background: #ffffff; /* Reveals white background */
+  background: #000000; /* Starts as black instead of #ffffff to prevent subpixel white leak */
   padding: 0;
   margin: 0;
   overflow: visible;
@@ -3166,6 +3166,21 @@ section {
     justify-content: flex-start !important;
   }
   
+  .hero-localized-badge {
+    margin-top: 24px !important;
+    font-size: 0.9rem !important;
+    justify-content: flex-start !important;
+  }
+  .hero-localized-badge::before {
+    display: none !important;
+  }
+  .hero-localized-badge span {
+    gap: 6px !important;
+  }
+  .hero-localized-badge img {
+    height: 16px !important;
+  }
+  
   /* Evitar roturas de palabras en títulos gigantes */
   .nx-title, .nxc-title, h1 {
     font-size: clamp(2rem, 8vw, 2.8rem) !important;
@@ -3279,8 +3294,9 @@ section {
     width: 44px !important;
     height: 44px !important;
     font-size: 1.25rem !important;
-    background: #E2E8F0 !important;
+    background: rgba(15, 23, 42, 0.08) !important;
     color: #0F172A !important;
+    border: none !important;
   }
   .flux-modal-title {
     font-size: 1.5rem !important;
@@ -3394,7 +3410,8 @@ section {
   width: 85vw;
   max-width: 400px;
   height: 100vh;
-  background: #0B1121;
+  background: var(--flux-dark);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   transform: translateX(100%);

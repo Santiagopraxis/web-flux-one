@@ -737,18 +737,18 @@
       .flux-modal-close {
         position: absolute;
         top: 24px; right: 24px;
-        background: #F1F5F9;
+        background: rgba(15, 23, 42, 0.08);
         border: none;
         border-radius: 50%;
         width: 36px; height: 36px;
         display: flex; align-items: center; justify-content: center;
-        font-size: 1rem; color: #64748B;
+        font-size: 1rem; color: #0F172A;
         cursor: pointer;
         transition: all 0.3s;
         z-index: 10;
       }
       .flux-modal-close:hover {
-        background: #E2E8F0;
+        background: rgba(15, 23, 42, 0.15);
         color: #0F172A;
         transform: rotate(90deg);
       }
@@ -974,7 +974,7 @@
     <!-- Modal 1: Payments that think -->
     <div class="flux-modal-overlay" id="modal-pagos" onclick="closeFluxModalOnOverlay(event, 'modal-pagos')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-pagos')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-pagos')">&times;</button>
         <h3 class="flux-modal-title">Payments that think</h3>
         <p class="flux-modal-subtitle">No solo procesamos — anticipamos mora, optimizamos canales, informamos decisiones.</p>
         
@@ -1018,7 +1018,7 @@
     <!-- Modal 2: Tiempo Real -->
     <div class="flux-modal-overlay" id="modal-tiempo-real" onclick="closeFluxModalOnOverlay(event, 'modal-tiempo-real')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-tiempo-real')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-tiempo-real')">&times;</button>
         <h3 class="flux-modal-title">Real-time execution, 24/7/365</h3>
         <p class="flux-modal-subtitle">Process payments and disbursements in seconds, regardless of the bank, day, or time.</p>
         
@@ -1062,7 +1062,7 @@
     <!-- Modal 3: Visibilidad -->
     <div class="flux-modal-overlay" id="modal-visibilidad" onclick="closeFluxModalOnOverlay(event, 'modal-visibilidad')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-visibilidad')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-visibilidad')">&times;</button>
         <h3 class="flux-modal-title">Total visibility</h3>
         <p class="flux-modal-subtitle">Real-time executive dashboards. Know who paid, who didn't, and who is going to fail.</p>
         
@@ -1106,7 +1106,7 @@
     <!-- Modal 4: Automatización -->
     <div class="flux-modal-overlay" id="modal-automatizacion" onclick="closeFluxModalOnOverlay(event, 'modal-automatizacion')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-automatizacion')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-automatizacion')">&times;</button>
         <h3 class="flux-modal-title">End-to-end automation</h3>
         <p class="flux-modal-subtitle">From collection to accounting reconciliation. No manual tasks, no errors.</p>
         
@@ -1599,10 +1599,32 @@
 
         // Crear objeto Vimeo.Player para escuchar el evento 'ended'
         const modalPlayer = new Vimeo.Player(document.getElementById('vimeo-player-modal'));
+        
+        // Entrar en pantalla completa
+        modalPlayer.requestFullscreen().catch(() => {
+          const iframe = document.getElementById('vimeo-player-modal');
+          if (iframe) {
+            if (iframe.requestFullscreen) {
+              iframe.requestFullscreen().catch(() => {});
+            } else if (iframe.webkitRequestFullscreen) {
+              iframe.webkitRequestFullscreen().catch(() => {});
+            } else if (iframe.msRequestFullscreen) {
+              iframe.msRequestFullscreen().catch(() => {});
+            }
+          }
+        });
+
         modalPlayer.on('ended', () => {
           wrapper.classList.remove('is-playing');
           videoInjected = false;
           tryInjectVideo(); // Restaura el reproductor en bucle y silenciado
+          
+          // Salir de pantalla completa si está activo
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen().catch(() => {});
+          }
         });
       });
     });
