@@ -1517,6 +1517,7 @@
       // This prevents the video from loading ahead while the user has not scrolled to it.
       let videoInjected = false;
       let player = null;
+      let isIntersecting = false; // Track viewport visibility
 
       const tryInjectVideo = () => {
         if (videoInjected) return;
@@ -1528,6 +1529,11 @@
         
         // Initialize Vimeo Player API object
         player = new Vimeo.Player(document.getElementById('vimeo-player'));
+        
+        // If already intersecting, play immediately!
+        if (isIntersecting) {
+          player.play().catch(() => {});
+        }
       };
 
       // PRELOAD ACTION: Pre-inject as soon as user scrolls even 1px, or instantly if already scrolled down
@@ -1545,12 +1551,17 @@
       // IntersectionObserver strictly plays/pauses the preloaded video as it enters/leaves the viewport
       const observer = new IntersectionObserver((entries) => {
         const entry = entries[0];
+        isIntersecting = entry.isIntersecting;
+        
         if (player) {
-          if (entry.isIntersecting) {
+          if (isIntersecting) {
             player.play().catch(() => {});
           } else {
             player.pause().catch(() => {});
           }
+        } else if (isIntersecting) {
+          // If we enter viewport but video is not injected yet, inject it!
+          tryInjectVideo();
         }
       }, { threshold: 0.1 });
       
@@ -1571,11 +1582,16 @@
         const easeOutQuad = t => t * (2 - t);
         const ease = easeOutQuad(animProgress);
         
-        const scale = 0.5 + (0.5 * ease);
-        const rotateX = 25 - (25 * ease);
-        const translateY = 150 - (150 * ease);
-        
-        wrapper.style.transform = 'translateY(' + translateY + 'px) rotateX(' + rotateX + 'deg) scale(' + scale + ')';
+        if (window.innerWidth < 768) {
+          // Simplified smooth zoom for mobile: scale from 0.85 to 1 without rotation or vertical offset
+          const scale = 0.85 + (0.15 * ease);
+          wrapper.style.transform = 'scale(' + scale + ')';
+        } else {
+          const scale = 0.5 + (0.5 * ease);
+          const rotateX = 25 - (25 * ease);
+          const translateY = 150 - (150 * ease);
+          wrapper.style.transform = 'translateY(' + translateY + 'px) rotateX(' + rotateX + 'deg) scale(' + scale + ')';
+        }
       });
 
       // Custom Cursor Logic

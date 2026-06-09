@@ -43,11 +43,16 @@ html {
   --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
+html, body {
+  overflow-x: hidden; /* Fallback for older browsers */
+  overflow-x: clip;   /* Modern standard: clips horizontal overflow without breaking position: sticky */
+  width: 100%;
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--flux-dark);
   color: var(--flux-white);
-  overflow-x: hidden;
   line-height: 1.6;
 }
 
@@ -3266,10 +3271,13 @@ section {
     justify-content: center !important;
   }
   .kickoff-video-wrapper {
-    transform: none !important;
-    width: 92% !important;
+    width: 94% !important;
     margin: 0 auto !important;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
+    transform-origin: center center !important;
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.8), 
+      -20px 0 60px rgba(60, 184, 235, 0.25),
+      20px 0 60px rgba(171, 75, 150, 0.25) !important;
   }
   .kickoff-custom-cursor {
     display: none !important;
@@ -3397,6 +3405,7 @@ section {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  overflow: hidden; /* Prevent horizontal layout leakage from translated children */
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .mobile-menu-overlay.active {
