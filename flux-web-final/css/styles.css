@@ -54,6 +54,10 @@ body {
   background-color: var(--flux-dark);
   color: var(--flux-white);
   line-height: 1.6;
+  /* Desactivar ligaduras fl/fi de Plus Jakarta Sans globalmente.
+     La ligadura "fl" une la F y la L haciéndolas parecer una H en "fluX". */
+  font-feature-settings: "liga" 0, "clig" 0;
+  -webkit-font-feature-settings: "liga" 0, "clig" 0;
 }
 
 img {
