@@ -1592,34 +1592,40 @@ input:focus, select:focus {
 .footer-certs img[src*="pci-dss"] {
   height: 28px;
 }
-/* ── Stats 2x2 Grid — Recaudo ── */
+/* ── Stats Grid — Recaudo ── */
+/* Desktop: fila unica de 4 columnas */
 .stats-grid-2x2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto;
   width: 100%;
 }
 .stats-grid-2x2 .stat-card {
   padding: 48px 24px;
 }
-.stats-grid-2x2 .stat-card:nth-child(1),
-.stats-grid-2x2 .stat-card:nth-child(3) {
+.stats-grid-2x2 .stat-card:not(:last-child) {
   border-right: 1px solid rgba(0,0,0,0.08);
 }
-.stats-grid-2x2 .stat-card:nth-child(1),
-.stats-grid-2x2 .stat-card:nth-child(2) {
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
+/* Mobile: cuadricula 2x2 */
 @media (max-width: 600px) {
   .stats-grid-2x2 {
-    max-width: 100%;
-    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
   .stats-grid-2x2 .stat-card {
     padding: 32px 16px;
+  }
+  /* Restaurar bordes correctos en 2x2 */
+  .stats-grid-2x2 .stat-card:not(:last-child) {
+    border-right: none;
+  }
+  .stats-grid-2x2 .stat-card:nth-child(1),
+  .stats-grid-2x2 .stat-card:nth-child(3) {
+    border-right: 1px solid rgba(0,0,0,0.08);
+  }
+  .stats-grid-2x2 .stat-card:nth-child(1),
+  .stats-grid-2x2 .stat-card:nth-child(2) {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
 }
 
