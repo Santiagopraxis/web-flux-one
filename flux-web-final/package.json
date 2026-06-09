@@ -1,0 +1,13 @@
+{
+  "name": "flux-web-final",
+  "version": "1.0.0",
+  "description": "Static web server for fluX One",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
