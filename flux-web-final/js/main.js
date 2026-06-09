@@ -286,4 +286,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       typewriterElements.forEach(el => typeObserver.observe(el));
     }
+
+    // Click en videos de showcase para ver en pantalla completa sin reiniciar
+    document.querySelectorAll('.showcase-video').forEach(video => {
+      video.style.cursor = 'pointer';
+      video.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita que el click se propague a la pestaña contenedora y reinicie la animación
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen(); // Soporte para iOS Safari
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      });
+    });
 });
