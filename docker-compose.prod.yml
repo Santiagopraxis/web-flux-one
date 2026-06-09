@@ -7,3 +7,9 @@ services:
     ports:
       - "4447:3000"
     restart: unless-stopped
+    networks:
+      - flux-net
+
+networks:
+  flux-net:
+    external: true
