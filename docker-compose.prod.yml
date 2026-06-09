@@ -1,8 +1,9 @@
 services:
   web-flux:
     image: ghcr.io/santiagopraxis/web-flux-one:latest
-    context: ./flux-web-final
-    dockerfile: Dockerfile
+    build:
+      context: ./flux-web-final
+      dockerfile: Dockerfile
     container_name: flux_web_one_prod
     ports:
       - "4447:3000"
