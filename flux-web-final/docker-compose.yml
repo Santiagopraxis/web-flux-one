@@ -1,0 +1,9 @@
+services:
+  web-flux:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flux_web_one
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
