@@ -1,8 +1,8 @@
 services:
   web-flux:
-    build:
-      context: ./flux-web-final
-      dockerfile: Dockerfile
+    image: ghcr.io/josgarcia1997/web-flux-one:lastest
+    context: ./flux-web-final
+    dockerfile: Dockerfile
     container_name: flux_web_one_prod
     ports:
       - "4447:3000"
