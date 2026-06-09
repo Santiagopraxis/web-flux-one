@@ -294,17 +294,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Click en videos de showcase para ver en pantalla completa sin reiniciar
+    // En iOS (iPhone/iPad) NO activamos fullscreen programático porque webkitEnterFullscreen()
+    // dispara el reproductor nativo del sistema y produce un zoom extremo no deseado.
+    // En iOS los videos ya se ven bien inline gracias al atributo playsinline.
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
     document.querySelectorAll('.showcase-video').forEach(video => {
-      video.style.cursor = 'pointer';
-      video.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evita que el click se propague a la pestaña contenedora y reinicie la animación
-        if (video.requestFullscreen) {
-          video.requestFullscreen();
-        } else if (video.webkitEnterFullscreen) {
-          video.webkitEnterFullscreen(); // Soporte para iOS Safari
-        } else if (video.msRequestFullscreen) {
-          video.msRequestFullscreen();
-        }
-      });
+      if (isIOS) {
+        // En iOS: solo detenemos la propagación para no reiniciar la animación de la pestaña
+        video.style.cursor = 'default';
+        video.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      } else {
+        video.style.cursor = 'pointer';
+        video.addEventListener('click', (e) => {
+          e.stopPropagation(); // Evita que el click se propague a la pestaña contenedora y reinicie la animación
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+          }
+        });
+      }
     });
 });
