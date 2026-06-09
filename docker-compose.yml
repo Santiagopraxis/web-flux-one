@@ -1,6 +1,6 @@
 services:
   web-flux:
-    image: ghcr.io/josgarcia1997/web-flux-one:lastest
+    image: ghcr.io/santiagopraxis/web-flux-one:latest
     context: ./flux-web-final
     dockerfile: Dockerfile
     container_name: flux_web_one
