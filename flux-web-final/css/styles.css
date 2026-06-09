@@ -3124,6 +3124,13 @@ section {
     padding-bottom: 60px !important;
   }
   
+  .hero {
+    padding-top: 120px !important;
+    padding-bottom: 40px !important;
+    min-height: auto !important;
+    justify-content: flex-start !important;
+  }
+  
   /* Evitar roturas de palabras en títulos gigantes */
   .nx-title, .nxc-title, h1 {
     font-size: clamp(2rem, 8vw, 2.8rem) !important;
@@ -3132,7 +3139,7 @@ section {
   }
   
   /* 2. Botones Touch-Friendly (Gordos y a todo ancho) */
-  .btn-primary, .btn-secondary, .nxc-btn {
+  .btn-primary:not(.hide-mobile), .btn-secondary:not(.hide-mobile), .nxc-btn:not(.hide-mobile) {
     width: 100% !important;
     display: flex !important;
     justify-content: center !important;
