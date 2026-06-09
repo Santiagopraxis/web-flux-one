@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -293,23 +293,64 @@ document.addEventListener('DOMContentLoaded', () => {
       typewriterElements.forEach(el => typeObserver.observe(el));
     }
 
-    // Click en videos de showcase para ver en pantalla completa sin reiniciar
-    // En iOS (iPhone/iPad) NO activamos fullscreen programático porque webkitEnterFullscreen()
-    // dispara el reproductor nativo del sistema y produce un zoom extremo no deseado.
-    // En iOS los videos ya se ven bien inline gracias al atributo playsinline.
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    // ── Video Modal para mobile ──────────────────────────────────────────────
+    // En iOS/Android NO usamos la API nativa de fullscreen porque causa zoom
+    // extremo. En su lugar mostramos el video en un modal CSS propio.
+    const isIOS    = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isMobile = isIOS || /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 1024;
 
-    document.querySelectorAll('.showcase-video').forEach(video => {
-      if (isIOS) {
-        // En iOS: solo detenemos la propagación para no reiniciar la animación de la pestaña
-        video.style.cursor = 'default';
-        video.addEventListener('click', (e) => {
+    // Crear el overlay del modal una sola vez
+    if (!document.getElementById('video-modal-overlay')) {
+      const overlay = document.createElement('div');
+      overlay.id = 'video-modal-overlay';
+      overlay.innerHTML = [
+        '<div id="video-modal-inner">',
+        '  <button id="video-modal-close" aria-label="Cerrar">&#x2715;</button>',
+        '  <video id="video-modal-player" controls playsinline></video>',
+        '</div>'
+      ].join('');
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay || e.target.id === 'video-modal-close') {
+          closeVideoModal();
+        }
+      });
+    }
+
+    function openVideoModal(src) {
+      var overlay = document.getElementById('video-modal-overlay');
+      var player  = document.getElementById('video-modal-player');
+      player.src = src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      player.play().catch(function() {});
+    }
+
+    function closeVideoModal() {
+      var overlay = document.getElementById('video-modal-overlay');
+      var player  = document.getElementById('video-modal-player');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      player.pause();
+      player.src = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+
+    document.querySelectorAll('.showcase-video').forEach(function(video) {
+      if (isMobile) {
+        video.style.cursor = 'zoom-in';
+        video.addEventListener('click', function(e) {
           e.stopPropagation();
+          openVideoModal(video.src || video.currentSrc);
         });
       } else {
         video.style.cursor = 'pointer';
-        video.addEventListener('click', (e) => {
-          e.stopPropagation(); // Evita que el click se propague a la pestaña contenedora y reinicie la animación
+        video.addEventListener('click', function(e) {
+          e.stopPropagation();
           if (video.requestFullscreen) {
             video.requestFullscreen();
           } else if (video.webkitRequestFullscreen) {
