@@ -2578,6 +2578,18 @@ section {
   .showcase-mobile-dashboard-preview {
     display: block;
   }
+  .showcase-mobile-dashboard-preview .dashboard-view {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
   .showcase-tab.active .showcase-tab-content {
     max-height: 1000px;
   }
@@ -2628,10 +2640,25 @@ section {
    ========================================================== */
 .hub-graphic-col {
   position: relative;
-  height: 550px;
+  height: 600px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .hub-graphic-col {
+    height: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hub-graphic-col {
+    height: 320px;
+  }
 }
 
 .network-hub-graphic {
@@ -2642,7 +2669,6 @@ section {
 }
 
 @media (max-width: 500px) {
-  .hub-graphic-col { height: 450px; }
   .network-hub-graphic { transform: scale(0.85); }
 }
 
