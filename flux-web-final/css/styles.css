@@ -4006,3 +4006,5 @@ p, span, a, li, .card-desc {
   white-space: nowrap !important;
   display: inline-block !important;
 }
+/* Fix orphan words typography */
+p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
