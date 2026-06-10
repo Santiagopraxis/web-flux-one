@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -3966,4 +3966,18 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   filter: blur(90px);
   z-index: 1;
   pointer-events: none;
+}
+
+/* Prevent word wrapping/breaks inside words globally for paragraphs and desc */
+p, span, a, li, .card-desc {
+  word-break: keep-all;
+  word-wrap: normal;
+  overflow-wrap: normal;
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+}
+
+.nobreak {
+  white-space: nowrap !important;
+  display: inline-block !important;
 }
