@@ -404,4 +404,49 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
       }
     };
+
+    // ── Highlight Active Page & Auto-Open Subpanel in Mobile Menu ──
+    const currentPath = window.location.pathname;
+    const currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+    
+    let activePanelId = null;
+
+    document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref) {
+        const linkFile = linkHref.substring(linkHref.lastIndexOf('/') + 1);
+        if (linkFile === currentFile) {
+          link.classList.add('active-mobile-link');
+          link.style.fontWeight = '700'; // bold active link
+          link.style.color = 'var(--cyan, #3CB8EB)'; // brand cyan color
+          
+          // Find parent sub-panel
+          const parentPanel = link.closest('.menu-panel');
+          if (parentPanel && parentPanel.id !== 'panel-main') {
+            activePanelId = parentPanel.id;
+          }
+        }
+      }
+    });
+
+    // Automatically transition to the active sub-panel when mobile menu overlay is opened
+    const mobMenu = document.getElementById('mobile-menu');
+    if (mobMenu && activePanelId) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            const isActive = mobMenu.classList.contains('active');
+            if (isActive) {
+              const mainPanel = document.getElementById('panel-main');
+              const subPanel = document.getElementById(activePanelId);
+              if (mainPanel && subPanel) {
+                mainPanel.classList.add('slide-out');
+                subPanel.classList.add('active');
+              }
+            }
+          }
+        });
+      });
+      observer.observe(mobMenu, { attributes: true });
+    }
 });
