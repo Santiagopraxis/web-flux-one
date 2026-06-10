@@ -39,9 +39,12 @@ const server = http.createServer((req, res) => {
   // Resolve file path
   let safeUrl = req.url.split('?')[0];
   if (safeUrl === '/') {
-    safeUrl = '/co/index.html'; // Default to Colombia landing
+    // Redirect (not just serve) so relative links/iframes resolve against /co/
+    res.writeHead(302, { Location: '/co/index.html' });
+    res.end();
+    return;
   }
-  
+
   // Decode percent-encoded URLs (e.g. fondo%202.png -> fondo 2.png)
   let decodedUrl;
   try {
@@ -59,7 +62,7 @@ const server = http.createServer((req, res) => {
       const htmlFilePath = filePath + '.html';
       fs.stat(htmlFilePath, (errHtml, statsHtml) => {
         if (!errHtml && statsHtml.isFile()) {
-          serveFile(htmlFilePath, res);
+          serveFile(htmlFilePath, req, res);
         } else {
           serve404(res);
         }
@@ -70,7 +73,7 @@ const server = http.createServer((req, res) => {
         const indexPatch = path.join(filePath, 'index.html');
         fs.stat(indexPatch, (errIndex, statsIndex) => {
           if (!errIndex && statsIndex.isFile()) {
-            serveFile(indexPatch, res);
+            serveFile(indexPatch, req, res);
           } else {
             serve404(res);
           }
@@ -79,28 +82,61 @@ const server = http.createServer((req, res) => {
         serve404(res);
       }
     } else {
-      serveFile(filePath, res);
+      serveFile(filePath, req, res);
     }
   });
 });
 
-function serveFile(filePath, res) {
+function serveFile(filePath, req, res) {
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
   
-  fs.readFile(filePath, (err, data) => {
+  fs.stat(filePath, (err, stats) => {
     if (err) {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
       res.end('Internal Server Error: ' + err.code);
+      return;
+    }
+    
+    const range = req.headers.range;
+    if (range && contentType.startsWith('video/')) {
+      const parts = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+      
+      if (start >= stats.size || end >= stats.size) {
+        res.writeHead(416, { 'Content-Range': `bytes */${stats.size}` });
+        res.end();
+        return;
+      }
+      
+      const chunksize = (end - start) + 1;
+      const file = fs.createReadStream(filePath, { start, end });
+      file.on('error', (streamErr) => {
+        console.error('Stream error:', streamErr);
+      });
+      res.writeHead(206, {
+        'Content-Range': `bytes ${start}-${end}/${stats.size}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': chunksize,
+        'Content-Type': contentType,
+        'Cache-Control': 'no-cache'
+      });
+      file.pipe(res);
     } else {
       res.writeHead(200, { 
+        'Content-Length': stats.size,
         'Content-Type': contentType,
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
         'Pragma': 'no-cache',
         'Expires': '0',
         'Surrogate-Control': 'no-store'
       });
-      res.end(data);
+      const stream = fs.createReadStream(filePath);
+      stream.on('error', (streamErr) => {
+        console.error('Stream error:', streamErr);
+      });
+      stream.pipe(res);
     }
   });
 }

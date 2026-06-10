@@ -46,7 +46,7 @@ function brandColor(t) {
 const canvas = document.getElementById('c');
 const ctx    = canvas.getContext('2d');
 
-let W, H, cx, cy, sc;
+let W, H, cx, cy, sc, dpr = 1;
 let xoImg   = null;
 let nodes   = [];
 let ambient = [];
@@ -94,8 +94,13 @@ function roundRect(ctx, x, y, w, h, r) {
 }
 
 function resize() {
-  W  = canvas.width  = window.innerWidth;
-  H  = canvas.height = window.innerHeight;
+  dpr = window.devicePixelRatio || 1;
+  W  = window.innerWidth;
+  H  = window.innerHeight;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
   cx = W / 2;
   cy = H / 2;
   sc = Math.min(W, H) / 900;
@@ -166,7 +171,9 @@ function update() {
 }
 
 function draw() {
-  ctx.clearRect(0, 0, W, H);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.save();
+  ctx.scale(dpr, dpr);
   ctx.globalAlpha = introOp;
 
   ambient.forEach(p => {
@@ -352,6 +359,7 @@ function draw() {
   }
 
   ctx.globalAlpha = 1;
+  ctx.restore();
 }
 
 function hitTest(mx, my) {

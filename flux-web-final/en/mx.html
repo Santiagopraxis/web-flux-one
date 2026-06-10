@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,11 +14,11 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container">
-      <a href="index.html" class="logo nav-logo">
-        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      <a href="mx.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One">
       </a>
       
-            <ul class="nav-menu">
+      <ul class="nav-menu">
         <li class="dropdown mega-dropdown">
           <a href="#">Products <span>▾</span></a>
           <div class="dropdown-menu mega-menu-panel">
@@ -30,9 +30,9 @@
               <div class="mega-menu-list-container">
                 <span class="mega-menu-subtitle">PRODUCTS</span>
                 <ul class="mega-menu-links vertical-links">
-                  <li><a href="mx.html">Collection</a></li>
-                  <li><a href="#productos">Disbursement</a></li>
-                  <li><a href="#productos">Reconciliation</a></li>
+                  <li><a href="mx.html#productos">Collection</a></li>
+                  <li><a href="mx.html#productos">Disbursement</a></li>
+                  <li><a href="mx.html#productos">Reconciliation</a></li>
                   <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Coming Soon)</a></li>
                 </ul>
               </div>
@@ -52,6 +52,8 @@
                 <span class="mega-menu-subtitle">RESOURCES</span>
                 <ul class="mega-menu-links vertical-links">
                   <li><a href="../co/como-funciona.html">How it works</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
                 </ul>
               </div>
             </div>
@@ -61,14 +63,11 @@
         <!-- COUNTRY SELECTOR -->
         <li class="country-selector dropdown">
           <a href="#" id="current-country">
-            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> <span id="current-country-text">Mex</span> <span>▾</span>
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" id="current-flag-img"> <span id="current-country-text">Mex</span> <span>▾</span>
           </a>
           <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
-            <li><a href="/en/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
-            <li><a href="/en/mx.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
-          </ul>
-        </li>
-            <li><a href="../mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
+            <li><a href="index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="mx.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
           </ul>
         </li>
         
@@ -101,7 +100,7 @@
   <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
     <div class="mobile-menu-drawer">
       <div class="mobile-menu-header">
-        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
+        <a href="mx.html" style="display: flex; align-items: center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
         <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
       </div>
       
@@ -111,6 +110,7 @@
           <!-- PANEL 1: MAIN MENU -->
           <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
             <nav class="mobile-nav">
+              <a href="mx.html" class="mobile-link" onclick="toggleMenu()">Home</a>
               <button class="drilldown-btn" onclick="openPanel('panel-productos')">
                 Products <span class="drilldown-arrow">›</span>
               </button>
@@ -142,9 +142,9 @@
               <div class="panel-title">Products</div>
             </div>
             <nav class="mobile-nav">
-              <a href="mx.html" class="mobile-link" onclick="toggleMenu()">Smart Collection</a>
-              <a href="#productos" class="mobile-link" onclick="toggleMenu()">Automatic Disbursement</a>
-              <a href="#productos" class="mobile-link" onclick="toggleMenu()">Real-time reconciliation</a>
+              <a href="mx.html#productos" class="mobile-link" onclick="toggleMenu()">Smart Collection</a>
+              <a href="mx.html#productos" class="mobile-link" onclick="toggleMenu()">Automated Disbursement</a>
+              <a href="mx.html#productos" class="mobile-link" onclick="toggleMenu()">Real-time reconciliation</a>
               <a href="#" class="mobile-link" style="pointer-events: none; opacity: 0.5;" onclick="toggleMenu()">Nexa (Coming Soon)</a>
             </nav>
           </div>
@@ -156,6 +156,7 @@
               <div class="panel-title">Resources</div>
             </div>
             <nav class="mobile-nav">
+              <a href="../co/como-funciona.html" class="mobile-link" onclick="toggleMenu()">How it works</a>
               <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
               <a href="faq.html" class="mobile-link" onclick="toggleMenu()">FAQ</a>
             </nav>
@@ -222,9 +223,9 @@
   <!-- SECCIÓN 2: SHOWCASE DASHBOARD INTERACTIVO -->
   <section id="productos" class="dashboard-showcase-section">
     <div class="container">
-      <div class="section-header sr fade-in">
-        <h2 class="section-title typewriter-text" data-delay="200" data-speed="40">Pay, collect, reconcile</h2>
-        <p class="section-subtitle" style="margin-top:20px; max-width:800px; margin-left:auto; margin-right:auto;">Three moments of money that fluX One connects — with intelligence integrated at every step.</p>
+      <div class="section-header sr fade-in" style="text-align: left; margin-left: 0; max-width: 800px;">
+        <h2 class="section-title typewriter-text" data-delay="200" data-speed="40" style="text-align: left;">Pay, collect, reconcile</h2>
+        <p class="section-subtitle" style="margin-top:20px; max-width:800px; margin-left:0; text-align: left;">Three moments of money that fluX One connects — with intelligence integrated at every step.</p>
       </div>
       
       <div class="showcase-layout sr fade-in d1">
@@ -383,7 +384,7 @@
       </div>
 
       <!-- Derecha: Iframe Canvas Animado -->
-      <div class="hub-graphic-col sr blur-reveal" style="position: relative; height: 600px; width: 100%; border-radius: 20px; overflow: hidden;">
+      <div class="hub-graphic-col sr blur-reveal">
         <iframe src="eco-anim.html" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;"></iframe>
       </div>
     </div>
@@ -707,7 +708,7 @@
         justify-content: center;
         overflow-y: auto;
         padding: 80px 20px 40px;
-        z-index: 9999;
+        z-index: 50000;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s ease;
@@ -740,18 +741,18 @@
       .flux-modal-close {
         position: absolute;
         top: 24px; right: 24px;
-        background: #F1F5F9;
+        background: rgba(15, 23, 42, 0.08);
         border: none;
         border-radius: 50%;
         width: 36px; height: 36px;
         display: flex; align-items: center; justify-content: center;
-        font-size: 1rem; color: #64748B;
+        font-size: 1rem; color: #0F172A;
         cursor: pointer;
         transition: all 0.3s;
         z-index: 10;
       }
       .flux-modal-close:hover {
-        background: #E2E8F0;
+        background: rgba(15, 23, 42, 0.15);
         color: #0F172A;
         transform: rotate(90deg);
       }
@@ -977,7 +978,7 @@
     <!-- Modal 1: Payments that think -->
     <div class="flux-modal-overlay" id="modal-pagos" onclick="closeFluxModalOnOverlay(event, 'modal-pagos')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-pagos')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-pagos')">&times;</button>
         <h3 class="flux-modal-title">Payments that think</h3>
         <p class="flux-modal-subtitle">We don't just process — we anticipate delinquency, optimize channels, and inform decisions.</p>
         
@@ -1021,7 +1022,7 @@
     <!-- Modal 2: Tiempo Real -->
     <div class="flux-modal-overlay" id="modal-tiempo-real" onclick="closeFluxModalOnOverlay(event, 'modal-tiempo-real')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-tiempo-real')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-tiempo-real')">&times;</button>
         <h3 class="flux-modal-title">Real-time execution, 24/7/365</h3>
         <p class="flux-modal-subtitle">Process payments and collections in seconds, regardless of the bank, the day, or the hour.</p>
         
@@ -1065,7 +1066,7 @@
     <!-- Modal 3: Visibilidad -->
     <div class="flux-modal-overlay" id="modal-visibilidad" onclick="closeFluxModalOnOverlay(event, 'modal-visibilidad')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-visibilidad')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-visibilidad')">&times;</button>
         <h3 class="flux-modal-title">Total visibility</h3>
         <p class="flux-modal-subtitle">Real-time executive dashboards. Know who paid, who didn't, and who is going to fail.</p>
         
@@ -1109,7 +1110,7 @@
     <!-- Modal 4: Automatización -->
     <div class="flux-modal-overlay" id="modal-automatizacion" onclick="closeFluxModalOnOverlay(event, 'modal-automatizacion')">
       <div class="flux-modal-card">
-        <button class="flux-modal-close" onclick="closeFluxModal('modal-automatizacion')">✕</button>
+        <button class="flux-modal-close" onclick="closeFluxModal('modal-automatizacion')">&times;</button>
         <h3 class="flux-modal-title">End-to-end automation</h3>
         <p class="flux-modal-subtitle">From collection to accounting reconciliation. No manual tasks, no errors.</p>
         
@@ -1312,14 +1313,14 @@
       <div class="certifications-row sr fade-in">
         <div class="cert-badge">
           <div class="cert-logo-box">
-            <img src="../assets/images/logos/iso-27001-negro.svg" alt="ISO 27001:2022" class="iso-logo">
+            <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001:2022" class="iso-logo">
           </div>
           <p style="color: var(--flux-dark); font-weight: 600;">ISO 27001:2022</p>
           <span class="cert-desc" style="color: var(--flux-gray-700);">Comprehensive information security management</span>
         </div>
         <div class="cert-badge">
           <div class="cert-logo-box">
-            <img src="../assets/images/logos/pci-dss-negro.svg" alt="PCI DSS" class="pci-logo">
+            <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS" class="pci-logo">
           </div>
           <p style="color: var(--flux-dark); font-weight: 600;">PCI DSS</p>
           <span class="cert-desc" style="color: var(--flux-gray-700);">Compliance for the protection of cardholder data</span>
@@ -1345,13 +1346,14 @@
 
 
 <!-- SECCIÓN 8: CTA FINAL + FORMULARIO -->
-  <section class="section-light form-section" id="contacto" style="padding: 120px 0; border-top: 1px solid rgba(0,0,0,0.05); background: #ffffff;">
-    <div class="container sr fade-in">
+  <section class="section-light form-section" id="contacto" style="padding: 120px 0; border-top: 1px solid rgba(0,0,0,0.05); background: #ffffff; position: relative; overflow: hidden;">
+    <img src="../assets/images/backgrounds/footer-waves.png" alt="" class="form-bg-waves">
+    <div class="container sr fade-in" style="position: relative; z-index: 1;">
       <div class="grid-2" style="align-items: center; gap: 80px;">
         <div style="text-align: left;">
           <p style="font-size: 0.875rem; letter-spacing: 0.15em; color: var(--flux-gray-500); margin-bottom: 16px; font-weight: 600;">PSST...</p>
           <h2 class="section-title typewriter-text sr fade-in" data-delay="100" data-speed="40" style="margin-bottom: 24px; color: var(--flux-dark);">The future of enterprise payments has arrived</h2>
-          <p class="section-subtitle sr fade-in fade-delay-mid typewriter-delayed" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem; color: var(--flux-gray-700);">Schedule a personalized 15-minute demo. We will show you how fluX integrates with your ERP and optimizes your operations from day 1.</p>
+          <p class="section-subtitle sr fade-in fade-delay-mid typewriter-delayed" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem; color: var(--flux-gray-700);">Schedule a personalized 15-minute demo. We will show you how fluX integrates with your ERP and optimizes your operations from day&nbsp;1.</p>
           <ul class="typewriter-delayed" style="list-style: none; padding: 0; color: var(--flux-gray-700);">
             <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
               <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Integration in days, not months.
@@ -1405,7 +1407,7 @@
   <footer class="footer footer-light">
     <div class="footer-top-row">
       <div class="footer-liftoff-col">
-        <h3>Start<br>flowing</h3>
+        <h3>Start flowing</h3>
       </div>
       <div class="footer-links-cols">
         <div class="footer-col">
@@ -1431,9 +1433,9 @@
     
     <div class="footer-bottom-row">
               <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
-          <img src="../assets/images/logos/flux one en negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
-          <span style="color: rgba(0,0,0,0.2);">|</span>
-          <img src="../assets/images/logos/PRAXIS COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="height: 28px; width: auto; opacity: 1;">
+          <img src="../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
+          <span style="color: rgba(255,255,255,0.2);">|</span>
+          <img src="../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
         </div>
       <div class="footer-legal-links">
         <a href="#">Terms and Conditions</a>
@@ -1442,8 +1444,8 @@
       </div>
       <div class="footer-bottom-right">
         <div class="footer-certs">
-          <img src="../assets/images/logos/pci-dss-negro.svg" alt="PCI DSS">
-          <img src="../assets/images/logos/iso-27001-negro.svg" alt="ISO 27001">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
         </div>
       </div>
     </div>
@@ -1517,6 +1519,7 @@
       // This prevents the video from loading ahead while the user has not scrolled to it.
       let videoInjected = false;
       let player = null;
+      let isIntersecting = false; // Track viewport visibility
 
       const tryInjectVideo = () => {
         if (videoInjected) return;
@@ -1528,6 +1531,11 @@
         
         // Initialize Vimeo Player API object
         player = new Vimeo.Player(document.getElementById('vimeo-player'));
+        
+        // If already intersecting, play immediately!
+        if (isIntersecting) {
+          player.play().catch(() => {});
+        }
       };
 
       // PRELOAD ACTION: Pre-inject as soon as user scrolls even 1px, or instantly if already scrolled down
@@ -1545,14 +1553,19 @@
       // IntersectionObserver strictly plays/pauses the preloaded video as it enters/leaves the viewport
       const observer = new IntersectionObserver((entries) => {
         const entry = entries[0];
+        isIntersecting = entry.isIntersecting;
+        
         if (player) {
-          if (entry.isIntersecting) {
+          if (isIntersecting) {
             player.play().catch(() => {});
           } else {
             player.pause().catch(() => {});
           }
+        } else if (isIntersecting) {
+          // If we enter viewport but video is not injected yet, inject it!
+          tryInjectVideo();
         }
-      }, { threshold: 0.1 });
+      }, { rootMargin: '0px 0px 500px 0px', threshold: 0 });
       
       observer.observe(wrapper);
       
@@ -1571,11 +1584,16 @@
         const easeOutQuad = t => t * (2 - t);
         const ease = easeOutQuad(animProgress);
         
-        const scale = 0.5 + (0.5 * ease);
-        const rotateX = 25 - (25 * ease);
-        const translateY = 150 - (150 * ease);
-        
-        wrapper.style.transform = 'translateY(' + translateY + 'px) rotateX(' + rotateX + 'deg) scale(' + scale + ')';
+        if (window.innerWidth < 768) {
+          // Simplified smooth zoom for mobile: scale from 0.85 to 1 without rotation or vertical offset
+          const scale = 0.85 + (0.15 * ease);
+          wrapper.style.transform = 'scale(' + scale + ')';
+        } else {
+          const scale = 0.5 + (0.5 * ease);
+          const rotateX = 25 - (25 * ease);
+          const translateY = 150 - (150 * ease);
+          wrapper.style.transform = 'translateY(' + translateY + 'px) rotateX(' + rotateX + 'deg) scale(' + scale + ')';
+        }
       });
 
       // Custom Cursor Logic
@@ -1602,10 +1620,32 @@
 
         // Crear objeto Vimeo.Player para escuchar el evento 'ended'
         const modalPlayer = new Vimeo.Player(document.getElementById('vimeo-player-modal'));
+        
+        // Entrar en pantalla completa
+        modalPlayer.requestFullscreen().catch(() => {
+          const iframe = document.getElementById('vimeo-player-modal');
+          if (iframe) {
+            if (iframe.requestFullscreen) {
+              iframe.requestFullscreen().catch(() => {});
+            } else if (iframe.webkitRequestFullscreen) {
+              iframe.webkitRequestFullscreen().catch(() => {});
+            } else if (iframe.msRequestFullscreen) {
+              iframe.msRequestFullscreen().catch(() => {});
+            }
+          }
+        });
+
         modalPlayer.on('ended', () => {
           wrapper.classList.remove('is-playing');
           videoInjected = false;
           tryInjectVideo(); // Restaura el reproductor en bucle y silenciado
+          
+          // Salir de pantalla completa si está activo
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen().catch(() => {});
+          }
         });
       });
     });

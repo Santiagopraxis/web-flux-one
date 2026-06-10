@@ -16,9 +16,9 @@
       }
 
       .cls-3 {
-        font-family: LeagueSpartan-ExtraBold, 'League Spartan';
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
         font-size: 98.71px;
-        font-variation-settings: 'wght' 800;
+        font-weight: 800;
       }
     </style>
   </defs>

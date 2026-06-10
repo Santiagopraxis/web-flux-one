@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     .faq-hero {
       padding: 140px 0 80px 0;
       text-align: center;
-      background: radial-gradient(circle at top, rgba(0, 184, 148, 0.1) 0%, rgba(5, 5, 8, 0) 60%);
+      background: radial-gradient(circle at top, rgba(60, 184, 235, 0.1) 0%, rgba(5, 5, 8, 0) 60%);
     }
     .faq-container {
       max-width: 800px;
@@ -56,7 +56,7 @@
     .faq-icon {
       font-size: 1.2rem;
       transition: transform 0.3s ease;
-      color: #00B894;
+      color: var(--cyan, #3CB8EB);
     }
     .faq-item.active .faq-icon {
       transform: rotate(45deg);
@@ -69,8 +69,9 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo nav-logo">
-        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One">
       </a>
+      
       <ul class="nav-menu">
         <li class="dropdown mega-dropdown">
           <a href="#">Productos <span>▾</span></a>
@@ -112,31 +113,34 @@
             </div>
           </div>
         </li>
+        
+        <!-- COUNTRY SELECTOR -->
         <li class="country-selector dropdown">
           <a href="#" id="current-country">
-            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> <span id="current-country-text">Mex</span> <span>▾</span>
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" id="current-flag-img"> <span id="current-country-text">Méx</span> <span>▾</span>
           </a>
           <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
-            <li><a href="/co/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
-            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+            <li><a href="../co/faq.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="faq.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
           </ul>
         </li>
-            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
-          </ul>
-        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
         <li class="language-selector dropdown" style="margin-left: 8px;">
           <a href="#" id="current-lang">
             <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">ES</span> <span>▾</span>
           </a>
           <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
-            <li><a href="index.html"><span style="font-size: 0.85rem;">Español</span></a></li>
-            <li><a href="../en/index.html"><span style="font-size: 0.85rem;">English</span></a></li>
+            <li><a href="faq.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="../en/faq.html"><span style="font-size: 0.85rem;">English</span></a></li>
           </ul>
         </li>
       </ul>
       <div class="nav-actions">
         <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Iniciar sesión</button>
-        <button class="btn-primary" onclick="openModal()">Comienza hoy</button>
+        <button class="btn-primary hide-mobile" onclick="openModal()">Comienza hoy</button>
+        
+        <!-- Hamburger Menu — 3 lines for proper X animation -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
           <span></span>
           <span></span>
@@ -150,22 +154,42 @@
   <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
     <div class="mobile-menu-drawer">
       <div class="mobile-menu-header">
-        <img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo">
-        <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+        <a href="index.html" style="display: flex; align-items: center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
       </div>
+      
       <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
         <div class="menu-panels-container">
+          
+          <!-- PANEL 1: MAIN MENU -->
           <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
             <nav class="mobile-nav">
-              <button class="drilldown-btn" onclick="openPanel('panel-productos')">Productos <span class="drilldown-arrow">›</span></button>
-              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">Recursos <span class="drilldown-arrow">›</span></button>
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Inicio</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Productos <span class="drilldown-arrow">›</span>
+              </button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Recursos <span class="drilldown-arrow">›</span>
+              </button>
               <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Desarrolladores</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Hablemos</a>
             </nav>
+            
             <div class="mobile-cta-group">
               <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Iniciar sesión</a>
               <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Comienza hoy</a>
             </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="faq.html" class="active">ES</a>
+                <span class="divider">|</span>
+                <a href="../en/faq.html">EN</a>
+              </div>
+            </div>
           </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
           <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
             <div class="panel-header">
               <button class="back-btn" onclick="closePanel('panel-productos')">‹ Volver</button>
@@ -179,6 +203,8 @@
               <a href="#" class="mobile-link" style="pointer-events: none; opacity: 0.5;" onclick="toggleMenu()">Nexa (Pronto)</a>
             </nav>
           </div>
+
+          <!-- PANEL 3: RECURSOS -->
           <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
             <div class="panel-header">
               <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Volver</button>
@@ -189,6 +215,7 @@
               <a href="faq.html" class="mobile-link" onclick="toggleMenu()">Preguntas Frecuentes</a>
             </nav>
           </div>
+
         </div>
       </div>
     </div>
@@ -197,7 +224,7 @@
   <!-- HERO -->
   <header class="faq-hero">
     <div class="container">
-      <p style="color: #00B894; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">SOPORTE Y RESPUESTAS</p>
+      <p style="color: var(--cyan, #3CB8EB); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">SOPORTE Y RESPUESTAS</p>
       <h1 class="section-title" style="font-size: clamp(32px, 4vw, 56px); margin-bottom: 20px;">Preguntas Frecuentes</h1>
       <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">Encuentra respuestas rápidas sobre nuestra infraestructura transaccional multi-riel, conciliación y seguridad bancaria.</p>
     </div>
@@ -225,7 +252,7 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          <p>Procesamos tus recaudos y pagos en segundos utilizando tecnología de orquestación transaccional multi-riel integrada de forma nativa con los rieles inmediatos locales (como Bre-B en Colombia y SPEI en México), sin importar el banco, el día o la hora.</p>
+          <p>Procesamos tus recaudos y pagos en segundos utilizando tecnología de orquestación transaccional multi-riel integrada de forma nativa con los rieles inmediatos locales (como <span class="nobreak">Bre-B</span> en Colombia y SPEI en México), sin importar el banco, el día o la hora.</p>
         </div>
       </div>
 
@@ -302,7 +329,7 @@
   <footer class="footer">
     <div class="footer-top-row">
       <div class="footer-liftoff-col">
-        <h3>Empieza a<br>fluir</h3>
+        <h3>Empieza a fluir</h3>
       </div>
       <div class="footer-links-cols">
         <div class="footer-col">
@@ -320,7 +347,27 @@
           <ul>
             <li><a href="../developers.html">API Reference</a></li>
             <li><a href="#" class="disabled-link">Guías de Integración</a></li>
+            <li><a href="#" class="disabled-link">Status</a></li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <img src="../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Políticas de Privacidad</a>
+        <a href="#">Seguridad</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
         </div>
       </div>
     </div>

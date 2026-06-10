@@ -4,142 +4,195 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg" media="(prefers-color-scheme: dark)">
   <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fluX One — Blog Corporativo</title>
+  <title>SPEI, CoDi y la revolución de los cobros en México — fluX One Blog</title>
+  <meta name="description" content="Cómo la nueva infraestructura del Banco de México cambiará el ecosistema B2B y por qué tu empresa debe prepararse hoy.">
   <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
   <style>
-    .blog-hero {
-      padding: 140px 0 80px 0;
-      text-align: center;
-      background: radial-gradient(circle at top, rgba(60, 184, 235, 0.1) 0%, rgba(5, 5, 8, 0) 60%);
-    }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-      margin-bottom: 80px;
-    }
-    .blog-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-    }
-    .blog-card:hover {
-      transform: translateY(-6px);
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(60, 184, 235, 0.3);
-      box-shadow: 0 12px 30px rgba(60, 184, 235, 0.08);
-    }
-    .blog-img {
-      height: 200px;
-      background: linear-gradient(135deg, rgba(60, 184, 235, 0.15), rgba(171, 75, 150, 0.15));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .post-hero {
+      padding: 140px 0 0 0;
+      background: #050508;
       position: relative;
       overflow: hidden;
-      border-radius: 20px 20px 0 0;
-      transform: translateZ(0);
     }
-    .blog-img::after {
+    .post-hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 50%, rgba(5,5,8,0.8));
-      z-index: 2;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(60,184,235,0.12) 0%, transparent 60%);
       pointer-events: none;
-      border-radius: inherit;
     }
-    .blog-card-video, .blog-card-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      transition: transform 0.5s ease;
-    }
-    .blog-card:hover .blog-card-video,
-    .blog-card:hover .blog-card-img {
-      transform: scale(1.05);
-    }
-    .blog-card-content {
-      padding: 24px;
-      flex: 1;
+    .post-meta-bar {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
     }
-    .blog-tag {
-      align-self: flex-start;
-      font-size: 0.65rem;
+    .post-tag {
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--flux-primary);
-      background: rgba(60, 184, 235, 0.1);
-      padding: 4px 10px;
+      background: rgba(60,184,235,0.1);
+      padding: 5px 12px;
       border-radius: 100px;
-      margin-bottom: 16px;
     }
-    .blog-card-title {
+    .post-date {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .post-author {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .post-title {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      text-transform: none;
+      word-break: break-word;
+      hyphens: none;
+    }
+    .post-title span {
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .post-lead {
       font-size: 1.25rem;
-      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .post-cover {
+      width: 100%;
+      max-width: 900px;
+      height: 420px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 16px 16px 0 0;
+      display: block;
+      margin: 0 auto;
+    }
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 48px 100px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.85;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+    .post-body h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: #fff;
+      margin: 56px 0 20px;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      word-break: break-word;
+    }
+    .post-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 36px 0 12px;
+      text-transform: none;
+    }
+    .post-body p { margin-bottom: 24px; }
+    .post-body ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+    .post-body li { margin-bottom: 10px; }
+    .post-body strong { color: #fff; font-weight: 600; }
+    .post-callout {
+      background: rgba(60,184,235,0.06);
+      border-left: 3px solid var(--flux-primary);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+    }
+    .post-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .post-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .post-stat-num {
+      font-size: 2.2rem;
+      font-weight: 300;
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .post-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .post-cta-block {
+      background: linear-gradient(135deg, rgba(60,184,235,0.1), rgba(171,75,150,0.1));
+      border: 1px solid rgba(60,184,235,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .post-cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
       color: #fff;
       margin-bottom: 12px;
-      line-height: 1.4;
+      text-transform: none;
     }
-    .blog-card-desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
-      margin-bottom: 20px;
-      flex: 1;
+    .post-cta-block p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
     }
-    .blog-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 16px;
-    }
-  
-    .blog-readmore {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--flux-primary);
+    .post-back {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-      margin-top: 16px;
-      cursor: pointer;
+      gap: 8px;
+      color: var(--cyan, #3CB8EB);
+      font-size: 0.9rem;
+      font-weight: 500;
       text-decoration: none;
+      margin-bottom: 40px;
+      transition: opacity 0.2s;
     }
-    .blog-readmore:hover {
-      color: var(--flux-white);
-    }
-    .blog-readmore:hover span {
-      transform: translateX(4px);
-    }
-
+    .post-back:hover { opacity: 0.7; }
     @media (max-width: 768px) {
-      .blog-hero {
-        padding: 100px 0 40px 0;
-      }
-      .blog-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 40px;
-      }
+      .post-hero { padding-top: 110px; }
+      .post-body { padding: 40px 24px 80px; }
+      .post-cover { height: 240px; border-radius: 12px 12px 0 0; }
+      .post-stat-grid { grid-template-columns: 1fr; gap: 16px; }
+      .post-cta-block { padding: 28px 20px; }
+      .post-lead { font-size: 1.05rem; }
     }
-    </style>
+  </style>
 </head>
 <body>
 
@@ -228,7 +281,7 @@
     </div>
   </nav>
 
-  <!-- MOBILE OVERLAY MENU -->
+  <!-- MOBILE MENU -->
   <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
     <div class="mobile-menu-drawer">
       <div class="mobile-menu-header">
@@ -299,81 +352,79 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <header class="blog-hero">
+  <!-- POST HERO -->
+  <section class="post-hero">
     <div class="container">
-      <p style="color: var(--flux-primary); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;">CONOCIMIENTO Y ANÁLISIS</p>
-      <h1 class="section-title" style="font-size: clamp(32px, 4vw, 56px); margin-bottom: 20px;">El pulso de los pagos inteligentes</h1>
-      <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">Explora tendencias de infraestructura de pagos, automatización de tesorería y el futuro de los flujos de capital en México y América Latina.</p>
+      <a href="blog.html" class="post-back">← Volver al Blog</a>
+      <div class="post-meta-bar">
+        <span class="post-tag">Pagos Inmediatos</span>
+        <span class="post-date">29 Mayo, 2026</span>
+        <span class="post-author">· Por Equipo de Producto</span>
+      </div>
+      <h1 class="post-title">SPEI, CoDi y la revolución de los <span>cobros interbancarios</span> en México</h1>
+      <p class="post-lead">Cómo la infraestructura del Banco de México cambiará el ecosistema B2B y por qué tu empresa debe integrarse hoy.</p>
     </div>
-  </header>
+    <div class="container" style="max-width:1000px;">
+      <img src="../assets/images/blog/blog_spei.png" alt="SPEI CoDi México pagos inmediatos" class="post-cover">
+    </div>
+  </section>
 
-  <!-- GRID -->
-  <section class="container" style="padding-top: 40px; padding-bottom: 80px;">
-    <div class="blog-grid">
-      
-      <!-- Card 1 -->
-      <article class="blog-card">
-        <div class="blog-img">
-          <img src="../assets/images/blog/blog_spei.png" alt="SPEI CoDi" class="blog-card-img">
-        </div>
-        <div class="blog-card-content">
-          <span class="blog-tag">Pagos Inmediatos</span>
-          <h3 class="blog-card-title">SPEI, CoDi y la revolución de los cobros interbancarios instantáneas en México</h3>
-          <p class="blog-card-desc">Cómo la nueva infraestructura del Banco de México cambiará el ecosistema B2B y por qué tu empresa debe prepararse hoy.</p>
-          <div class="blog-meta" style="margin-top: auto; padding-top: 16px; width: 100%;">
-            
-            <span>Por Equipo de Producto</span>
-            <span>29 Mayo, 2026</span>
-          
-          </div>
-          <a href="blog-spei.html" class="blog-readmore">
-            Leer más <span style="display: inline-block; transition: transform 0.2s;">→</span>
-          </a>
-        </div>
-      </article>
+  <!-- POST BODY -->
+  <section style="background:#050508;">
+    <div class="post-body">
 
-      <!-- Card 2 -->
-      <article class="blog-card">
-        <div class="blog-img">
-          <img src="../assets/images/blog/blog_real_2.png" alt="Conciliación Manual" class="blog-card-img">
-        </div>
-        <div class="blog-card-content">
-          <span class="blog-tag">Tesorería</span>
-          <h3 class="blog-card-title">El costo oculto de la conciliación manual: Más allá de Excel</h3>
-          <p class="blog-card-desc">Un análisis cuantitativo del impacto operativo y financiero de procesar extractos bancarios a mano en empresas en crecimiento.</p>
-          <div class="blog-meta" style="margin-top: auto; padding-top: 16px; width: 100%;">
-            
-            <span>Por Equipo de Finanzas</span>
-            <span>25 Mayo, 2026</span>
-          
-          </div>
-          <a href="blog-conciliacion.html" class="blog-readmore">
-            Leer más <span style="display: inline-block; transition: transform 0.2s;">→</span>
-          </a>
-        </div>
-      </article>
+      <h2>¿Qué está pasando con los pagos en México?</h2>
+      <p>El Sistema de Pagos Electrónicos Interbancarios (SPEI) del Banco de México ha sido históricamente uno de los sistemas de transferencia electrónica más avanzados del mundo. Sin embargo, su uso a nivel empresarial se ha visto limitado por la falta de automatización y la complejidad de la conciliación. Con la masificación de <strong>CoDi (Cobro Digital)</strong> y el despliegue reciente de <strong>DiMo (Dinero Móvil)</strong>, el ecosistema de cobros inmediatos finalmente ha alcanzado el nivel de madurez necesario para transformar el mercado corporativo B2B y B2C.</p>
 
-      <!-- Card 3 -->
-      <article class="blog-card">
-        <div class="blog-img">
-          <img src="../assets/images/blog/blog_real_1.png" alt="Liquidación T+0" class="blog-card-img">
+      <p>Hoy en día, las empresas mexicanas pueden liquidar cobros en segundos, automatizar las dispersiones de nómina o pago a proveedores, y prescindir de los altos costos de adquirencia de tarjetas.</p>
+
+      <div class="post-stat-grid">
+        <div class="post-stat">
+          <div class="post-stat-num">2s</div>
+          <div class="post-stat-label">Tiempo promedio de liquidación</div>
         </div>
-        <div class="blog-card-content">
-          <span class="blog-tag">Orquestación</span>
-          <h3 class="blog-card-title">Liquidación T+0: Optimización de capital de trabajo en tiempo real</h3>
-          <p class="blog-card-desc">Descubre cómo eliminar los tiempos muertos bancarios permite reinvertir flujos de recaudo el mismo día de la transacción.</p>
-          <div class="blog-meta" style="margin-top: auto; padding-top: 16px; width: 100%;">
-            
-            <span>Por Tech Lead fluX</span>
-            <span>18 Mayo, 2026</span>
-          
-          </div>
-          <a href="blog-liquidacion.html" class="blog-readmore">
-            Leer más <span style="display: inline-block; transition: transform 0.2s;">→</span>
-          </a>
+        <div class="post-stat">
+          <div class="post-stat-num">0%</div>
+          <div class="post-stat-label">Tasa de contracargos</div>
         </div>
-      </article>
+        <div class="post-stat">
+          <div class="post-stat-num">24/7</div>
+          <div class="post-stat-label">Disponibilidad del servicio</div>
+        </div>
+      </div>
+
+      <h2>La oportunidad: CoDi y SPEI Automatizado</h2>
+      <p>Tradicionalmente, conciliar transferencias SPEI implicaba que un usuario administrativo revisara los conceptos de pago y las CLABEs emisoras en el portal del banco corporativo. Esto creaba cuellos de botella operativos enormes.</p>
+
+      <p>Con fluX One, transformamos el SPEI tradicional en una herramienta automatizada de venta:</p>
+      <ul>
+        <li><strong>CLABEs Dinámicas:</strong> Asignamos una CLABE interbancaria única y temporal a cada factura o transacción de cobro, permitiendo el match contable automático en el instante en que el cliente transfiere.</li>
+        <li><strong>CoDi QR Corporativo:</strong> Genera códigos QR que tus clientes pueden escanear desde sus apps bancarias para realizar pagos instantáneos con autorización biométrica de manera 100% segura y con liquidación inmediata.</li>
+      </ul>
+
+      <div class="post-callout">
+        "En México, las ventas que se cobran a través de CoDi y SPEI Dinámico tienen un costo financiero hasta 90% menor que las procesadas con terminales de tarjetas tradicionales."
+      </div>
+
+      <h2>Beneficios Clave para Empresas en México</h2>
+
+      <h3>1. Cero Contracargos</h3>
+      <p>A diferencia de los cobros con tarjeta, las transferencias de SPEI y CoDi son iniciadas e instruidas directamente por el cliente desde su portal bancario seguro. Esto significa que **el riesgo de contracargos por fraude es prácticamente inexistente**.</p>
+
+      <h3>2. Dispersión Masiva Inmediata</h3>
+      <p>Conéctate directamente a la red SPEI para pagar a proveedores, contratistas o reembolsar viáticos en segundos, sin importar el banco de destino ni el día de la semana.</p>
+
+      <h3>3. Conciliación Inteligente con el SAT</h3>
+      <p>Cada cobro y pago automatizado con fluX One se vincula directamente a las facturas electrónicas (CFDI 4.0) pertinentes, automatizando la emisión de los Complementos de Pago necesarios para cumplir con las normativas del SAT de manera transparente.</p>
+
+      <h2>¿Cómo te ayuda fluX One?</h2>
+      <p>fluX One es el orquestador de pagos que integra tus sistemas (ERP, plataformas de e-commerce o sistemas internos) con la red SPEI y CoDi de manera nativa. Proporcionamos una API única y amigable para el mercado mexicano, gestionando la complejidad técnica, la seguridad y el cumplimiento normativo para que tu equipo se concentre en hacer crecer el negocio.</p>
+
+      <div class="post-cta-block">
+        <h3>¿Listo para modernizar tus pagos en México?</h3>
+        <p>Agenda una sesión de 15 minutos con nuestros especialistas de producto en México y descubre el poder del SPEI automatizado.</p>
+        <button class="btn-primary" onclick="openModal()">Agenda una demo →</button>
+      </div>
 
     </div>
   </section>
@@ -388,11 +439,10 @@
         <div class="footer-col">
           <h4>Productos</h4>
           <ul>
-            <li><a href="cobranza.html">Cobranza</a></li>
+            <li><a href="recaudo.html">Recaudo</a></li>
             <li><a href="dispersion.html">Dispersión</a></li>
             <li><a href="conciliacion.html">Conciliación</a></li>
             <li><a href="bi.html">Capacidades BI</a></li>
-            <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -400,28 +450,19 @@
           <ul>
             <li><a href="../developers.html">API Reference</a></li>
             <li><a href="#" class="disabled-link">Guías de Integración</a></li>
-            <li><a href="#" class="disabled-link">Status</a></li>
           </ul>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom-row">
-      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
-        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
-        <span style="color: rgba(255,255,255,0.2);">|</span>
+      <div class="footer-bottom-left" style="display:flex;align-items:center;gap:24px;">
+        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height:36px;width:auto;">
+        <span style="color:rgba(0,0,0,0.2);">|</span>
         <img src="../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
       </div>
       <div class="footer-legal-links">
         <a href="#">Términos y condiciones</a>
         <a href="#">Políticas de Privacidad</a>
-        <a href="#">Seguridad</a>
-      </div>
-      <div class="footer-bottom-right">
-        <div class="footer-certs">
-          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
-          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
-        </div>
       </div>
     </div>
   </footer>
@@ -440,7 +481,15 @@
           <input type="text" name="nombre" placeholder="Nombre completo" required>
           <input type="email" name="email" placeholder="Email corporativo" required>
         </div>
-        <button type="submit" class="btn-primary" style="margin-top: 24px;">Enviar solicitud →</button>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <select name="pais" required>
+            <option value="">País</option>
+            <option value="CO">Colombia</option>
+            <option value="MX" selected>México</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top:24px;">Enviar solicitud →</button>
       </form>
     </div>
   </div>
@@ -457,14 +506,23 @@
         document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
       }
     }
-    function openPanel(panelId) {
+    function openPanel(id) {
       document.getElementById('panel-main').classList.add('slide-out');
-      document.getElementById(panelId).classList.add('active');
+      document.getElementById(id).classList.add('active');
     }
-    function closePanel(panelId) {
-      document.getElementById(panelId).classList.remove('active');
+    function closePanel(id) {
+      document.getElementById(id).classList.remove('active');
       document.getElementById('panel-main').classList.remove('slide-out');
     }
+    const origToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+        document.getElementById('panel-main').classList.remove('slide-out');
+        document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      origToggle();
+    };
   </script>
 </body>
 </html>
