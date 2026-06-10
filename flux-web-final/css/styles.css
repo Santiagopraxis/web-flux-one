@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -3896,8 +3896,22 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   right: -10%;
   width: 75%;
   height: 90%;
-  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.16) 0%, transparent 70%);
-  filter: blur(90px);
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.22) 0%, rgba(60, 184, 235, 0.05) 50%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+.product-hero-bg.bg-recaudo::after,
+.product-hero-bg.bg-cobranza::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, rgba(60, 184, 235, 0.15) 0%, transparent 80%);
+  filter: blur(50px);
+  transform: rotate(-15deg);
   z-index: 1;
   pointer-events: none;
 }
@@ -3910,8 +3924,19 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   left: -5%;
   width: 75%;
   height: 90%;
-  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.15) 0%, transparent 70%);
-  filter: blur(90px);
+  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.2) 0%, rgba(171, 75, 150, 0.04) 50%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+.product-hero-bg.bg-dispersion::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(171, 75, 150, 0.04) 0%, transparent 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -3924,8 +3949,8 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   right: 5%;
   width: 65%;
   height: 80%;
-  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.12) 0%, transparent 70%);
-  filter: blur(85px);
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.18) 0%, transparent 70%);
+  filter: blur(75px);
   z-index: 1;
   pointer-events: none;
 }
@@ -3936,13 +3961,13 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   left: 5%;
   width: 65%;
   height: 75%;
-  background: radial-gradient(circle at center, rgba(245, 181, 210, 0.08) 0%, transparent 75%);
-  filter: blur(95px);
+  background: radial-gradient(circle at center, rgba(245, 181, 210, 0.12) 0%, transparent 75%);
+  filter: blur(85px);
   z-index: 1;
   pointer-events: none;
 }
 
-/* BI: Deep magenta and blue mesh representing data intelligence */
+/* BI: Deep magenta and blue mesh representing data intelligence + futuristic mesh texture */
 .product-hero-bg.bg-bi::before {
   content: '';
   position: absolute;
@@ -3950,8 +3975,8 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   right: -5%;
   width: 65%;
   height: 75%;
-  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.12) 0%, transparent 70%);
-  filter: blur(90px);
+  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.18) 0%, transparent 70%);
+  filter: blur(80px);
   z-index: 1;
   pointer-events: none;
 }
@@ -3962,10 +3987,14 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   left: -5%;
   width: 65%;
   height: 75%;
-  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.11) 0%, transparent 70%);
-  filter: blur(90px);
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.16) 0%, transparent 70%);
+  filter: blur(80px);
   z-index: 1;
   pointer-events: none;
+}
+.product-hero-bg.bg-bi {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
 }
 
 /* Prevent word wrapping/breaks inside words globally for paragraphs and desc */
