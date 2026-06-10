@@ -1840,7 +1840,7 @@ input:focus, select:focus {
   .scrolling-right { width: 100%; padding: 40px 0; gap: 40px; }
   
   /* Growing Text */
-  #brand-transition { height: 150vh !important; }
+  #brand-transition { height: auto !important; }
 }
 
 @media (max-width: 600px) {
@@ -3303,6 +3303,9 @@ section {
     display: none;
   }
 
+  
+  
+
   .nx-feat-card, .stats-card-impact, .stats-card {
     flex: 0 0 85% !important; /* Cada tarjeta ocupa 85% del ancho, revelando un poco de la siguiente */
     scroll-snap-align: center;
@@ -3329,14 +3332,7 @@ section {
   }
   
   /* Ajustes de Kickoff Video en móviles (sticky y con animación de zoom) */
-  .kickoff-section {
-    position: relative !important;
-    width: 100% !important;
-    height: 150vh !important;
-    background: var(--flux-dark) !important;
-    z-index: 10 !important;
-    padding: 0 !important;
-  }
+  
   .kickoff-sticky {
     position: sticky !important;
     top: 0 !important;
