@@ -534,6 +534,16 @@ p {
   background: rgba(255, 255, 255, 0.07);
 }
 
+.active-nav-link {
+  font-weight: 700 !important;
+  color: var(--cyan, #3CB8EB) !important;
+}
+
+.active-parent-link {
+  font-weight: 700 !important;
+  color: #ffffff !important;
+}
+
 /* ===== DROPDOWNS & MEGA MENUS ===== */
 .dropdown {
   position: relative;
@@ -3868,37 +3878,92 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
   }
 }
 
-/* ── Product Page Hero Background (Brand Glow Aura) ── */
+/* ── Product Page Hero Background (Pure Black & Unique Ambient Detail) ── */
 .product-hero-bg {
   position: absolute;
   inset: 0;
-  background: #050508;
+  background: #000000 !important; /* Pure black total */
   z-index: 0;
   overflow: hidden;
 }
 
-.product-hero-bg::before {
+/* Recaudo & Cobranza: Cyan/blue glow details representing incoming cash flow */
+.product-hero-bg.bg-recaudo::before,
+.product-hero-bg.bg-cobranza::before {
   content: '';
   position: absolute;
   top: -20%;
   right: -10%;
   width: 75%;
   height: 90%;
-  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.15) 0%, rgba(171, 75, 150, 0.03) 55%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.16) 0%, transparent 70%);
   filter: blur(90px);
   z-index: 1;
   pointer-events: none;
 }
 
-.product-hero-bg::after {
+/* Dispersión: Violet/pink glow representing payouts */
+.product-hero-bg.bg-dispersion::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -5%;
+  width: 75%;
+  height: 90%;
+  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.15) 0%, transparent 70%);
+  filter: blur(90px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Conciliación: Combined cyan and pink glow representing matching balance */
+.product-hero-bg.bg-conciliacion::before {
+  content: '';
+  position: absolute;
+  top: -25%;
+  right: 5%;
+  width: 65%;
+  height: 80%;
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.12) 0%, transparent 70%);
+  filter: blur(85px);
+  z-index: 1;
+  pointer-events: none;
+}
+.product-hero-bg.bg-conciliacion::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 5%;
+  width: 65%;
+  height: 75%;
+  background: radial-gradient(circle at center, rgba(245, 181, 210, 0.08) 0%, transparent 75%);
+  filter: blur(95px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* BI: Deep magenta and blue mesh representing data intelligence */
+.product-hero-bg.bg-bi::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 65%;
+  height: 75%;
+  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.12) 0%, transparent 70%);
+  filter: blur(90px);
+  z-index: 1;
+  pointer-events: none;
+}
+.product-hero-bg.bg-bi::after {
   content: '';
   position: absolute;
   bottom: -15%;
-  left: -15%;
-  width: 70%;
-  height: 80%;
-  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.09) 0%, rgba(245, 181, 210, 0.01) 60%, transparent 80%);
-  filter: blur(100px);
+  left: -5%;
+  width: 65%;
+  height: 75%;
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.11) 0%, transparent 70%);
+  filter: blur(90px);
   z-index: 1;
   pointer-events: none;
 }

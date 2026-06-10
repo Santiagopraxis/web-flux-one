@@ -409,6 +409,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname;
     const currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
     
+    // Highlight Active Page in Desktop Nav Menu
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref) {
+        const linkFile = linkHref.substring(linkHref.lastIndexOf('/') + 1);
+        if (linkFile === currentFile && currentFile !== 'index.html' && currentFile !== '') {
+          link.classList.add('active-nav-link');
+          link.style.fontWeight = '700'; // bold active link
+          link.style.color = 'var(--cyan, #3CB8EB)'; // brand cyan color
+          
+          // Also highlight the parent dropdown trigger (Productos, Recursos)
+          const dropdownParent = link.closest('.dropdown');
+          if (dropdownParent) {
+            const parentTrigger = dropdownParent.querySelector('a');
+            if (parentTrigger) {
+              parentTrigger.classList.add('active-parent-link');
+              parentTrigger.style.fontWeight = '700';
+              parentTrigger.style.color = '#ffffff'; // Ensure white text for parent Category
+            }
+          }
+        }
+      }
+    });
+
     let activePanelId = null;
 
     document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
