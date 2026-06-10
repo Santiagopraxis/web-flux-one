@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -3307,23 +3307,33 @@ section {
     padding: 0 20px !important;
   }
   
-  /* Ajustes de Kickoff Video en móviles (no sticky, sin animación rota) */
+  /* Ajustes de Kickoff Video en móviles (sticky y con animación de zoom) */
   .kickoff-section {
-    height: auto !important;
-    padding: 60px 0 !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 150vh !important;
+    background: var(--flux-dark) !important;
+    z-index: 10 !important;
+    padding: 0 !important;
   }
   .kickoff-sticky {
-    position: relative !important;
-    height: auto !important;
+    position: sticky !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    overflow: hidden !important;
   }
   .kickoff-video-wrapper {
-    width: 94% !important;
+    width: 90% !important;
+    max-width: 600px !important;
     margin: 0 auto !important;
     transform-origin: center center !important;
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7) !important;
+    transform: scale(0.85);
+    will-change: transform;
   }
   .kickoff-custom-cursor {
     display: none !important;
@@ -3714,4 +3724,89 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
 }
 #video-modal-close:hover {
   background: rgba(255,255,255,0.25);
+}
+/* ── Títulos responsive: evitar corte de palabras ── */
+@media (max-width: 768px) {
+  .blog-card-title,
+  .blog-hero h1,
+  .blog-hero h2,
+  .faq-title,
+  .section-title,
+  h1, h2, h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  
+  /* Blog grid en mobile: 1 columna con padding correcto */
+  .blog-hero {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  
+  .blog-hero h1 {
+    font-size: clamp(1.8rem, 7vw, 2.6rem) !important;
+    line-height: 1.2 !important;
+  }
+  
+  .blog-hero p {
+    font-size: 1rem !important;
+  }
+}
+
+/* ── Vimeo Modal Overlay ── */
+#vimeo-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+#vimeo-modal-overlay.active {
+  display: flex;
+}
+#vimeo-modal-inner {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  background: #000;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 100px rgba(60, 184, 235, 0.2);
+}
+#vimeo-modal-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+#vimeo-modal-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  #vimeo-modal-close {
+    top: -42px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
 }

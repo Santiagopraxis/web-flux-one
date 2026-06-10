@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Payments: The Next Giant Leap for LATAM Treasury — fluX One Blog</title>
+  <meta name="description" content="How modern real-time rails are reshaping B2B cash flows and why your enterprise should integrate today.">
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+  <style>
+    .post-hero {
+      padding: 140px 0 0 0;
+      background: #050508;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(60,184,235,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .post-meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .post-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--flux-primary);
+      background: rgba(60,184,235,0.1);
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+    .post-date {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .post-author {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .post-title {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      text-transform: none;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    .post-title span {
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .post-lead {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .post-cover {
+      width: 100%;
+      max-width: 900px;
+      height: 420px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 16px 16px 0 0;
+      display: block;
+      margin: 0 auto;
+    }
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 48px 100px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.85;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+    .post-body h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: #fff;
+      margin: 56px 0 20px;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      word-break: break-word;
+    }
+    .post-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 36px 0 12px;
+      text-transform: none;
+    }
+    .post-body p { margin-bottom: 24px; }
+    .post-body ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+    .post-body li { margin-bottom: 10px; }
+    .post-body strong { color: #fff; font-weight: 600; }
+    .post-callout {
+      background: rgba(60,184,235,0.06);
+      border-left: 3px solid var(--flux-primary);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+    }
+    .post-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .post-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .post-stat-num {
+      font-size: 2.2rem;
+      font-weight: 300;
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .post-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .post-cta-block {
+      background: linear-gradient(135deg, rgba(60,184,235,0.1), rgba(171,75,150,0.1));
+      border: 1px solid rgba(60,184,235,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .post-cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 12px;
+      text-transform: none;
+    }
+    .post-cta-block p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
+    }
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan, #3CB8EB);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: opacity 0.2s;
+    }
+    .post-back:hover { opacity: 0.7; }
+    @media (max-width: 768px) {
+      .post-hero { padding-top: 110px; }
+      .post-body { padding: 40px 24px 80px; }
+      .post-cover { height: 240px; border-radius: 12px 12px 0 0; }
+      .post-stat-grid { grid-template-columns: 1fr; gap: 16px; }
+      .post-cta-block { padding: 28px 20px; }
+      .post-lead { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      </a>
+      <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Products <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase"><h3>NEXT-GENERATION INFRASTRUCTURE</h3></div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="recaudo.html">Collection</a></li>
+                  <li><a href="dispersion.html">Disbursement</a></li>
+                  <li><a href="conciliacion.html">Reconciliation</a></li>
+                  <li><a href="bi.html">BI Capabilities</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Developers</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Resources <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase"><h3>KNOWLEDGE & SUPPORT</h3></div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RESOURCES</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Log in</button>
+        <button class="btn-primary" onclick="openModal()">Get Started</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <a href="index.html" style="display:flex;align-items:center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+      </div>
+      <div class="menu-content" style="padding:0;flex:1;display:flex;">
+        <div class="menu-panels-container">
+          <div class="menu-panel panel-main" id="panel-main" style="padding:32px;">
+            <nav class="mobile-nav">
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Home</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">Products <span class="drilldown-arrow">›</span></button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">Resources <span class="drilldown-arrow">›</span></button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Developers</a>
+            </nav>
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Log in</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu();openModal();">Get Started</a>
+            </div>
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="../co/blog.html">ES</a>
+                <span class="divider">|</span>
+                <a href="blog-realtime.html" class="active">EN</a>
+              </div>
+            </div>
+          </div>
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding:32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Back</button>
+              <div class="panel-title">Products</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="recaudo.html" class="mobile-link" onclick="toggleMenu()">Smart Collection</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Automatic Disbursement</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Real-Time Reconciliation</a>
+              <a href="bi.html" class="mobile-link" onclick="toggleMenu()">BI Capabilities</a>
+            </nav>
+          </div>
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding:32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Back</button>
+              <div class="panel-title">Resources</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">FAQ</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <a href="blog.html" class="post-back">← Back to Blog</a>
+      <div class="post-meta-bar">
+        <span class="post-tag">Instant Payments</span>
+        <span class="post-date">29 May, 2026</span>
+        <span class="post-author">· By Product Team</span>
+      </div>
+      <h1 class="post-title">Real-Time Payments: The Next Giant Leap for <span>LATAM Treasury</span></h1>
+      <p class="post-lead">How modern real-time rails are reshaping B2B cash flows and why your enterprise should integrate today.</p>
+    </div>
+    <div class="container" style="max-width:1000px;">
+      <img src="../assets/images/blog/blog_breb.png" alt="Real-Time Payments Latin America" class="post-cover">
+    </div>
+  </section>
+
+  <!-- POST BODY -->
+  <section style="background:#050508;">
+    <div class="post-body">
+
+      <h2>The Instant Revolution in Latin America</h2>
+      <p>Across Latin America, a payment revolution is quietly unfolding. Driven by central bank initiatives, real-time settlement networks like Pix in Brazil, SPEI in Mexico, and the newly deployed Bre-B in Colombia are rapidly replacing traditional slow batch payment mechanisms. While these networks started as retail consumer solutions, their impact on corporate treasury is where the true value lies.</p>
+
+      <p>B2B transactions, which historically took 24 to 48 hours to clear, can now settle in less than 5 seconds, 24/7/365.</p>
+
+      <div class="post-stat-grid">
+        <div class="post-stat">
+          <div class="post-stat-num">&lt;5s</div>
+          <div class="post-stat-label">Settlement Time</div>
+        </div>
+        <div class="post-stat">
+          <div class="post-stat-num">24/7</div>
+          <div class="post-stat-label">Availability</div>
+        </div>
+        <div class="post-stat">
+          <div class="post-stat-num">100%</div>
+          <div class="post-stat-label">Interoperable</div>
+        </div>
+      </div>
+
+      <h2>Why Traditional Rails Are Failing B2B Scale</h2>
+      <p>Historically, corporate collections in the region suffered from deep operational friction:</p>
+      <ul>
+        <li>Payments generated outside bank hours were delayed until the next business day.</li>
+        <li>Batch file processing made intraday liquidity management impossible.</li>
+        <li>Teams wasted valuable hours manually matching bank receipts to ERP invoices.</li>
+      </ul>
+
+      <div class="post-callout">
+        "By switching B2B collection to real-time rails, enterprises can slash Days Sales Outstanding (DSO) by up to 15 days."
+      </div>
+
+      <p>With real-time API integrations, every transaction is confirmed instantly. Funds are immediately available for reinvestment, payroll, or paying suppliers.</p>
+
+      <h2>How fluX One Orchestrates Real-Time Payments</h2>
+      <p>fluX One acts as the unified middleware layer connecting your systems directly to the region's real-time rails. Through our API, your enterprise can:</p>
+      <ul>
+        <li><strong>Generate Dynamic Identifiers:</strong> Assign unique payment identifiers for instant, automated reconciliation.</li>
+        <li><strong>Automate Disbursements:</strong> Trigger payouts immediately upon receiving collections, optimizing cash loops.</li>
+        <li><strong>Unify Multi-Country Operations:</strong> Manage SPEI (Mexico), Bre-B (Colombia), and more through a single dashboard and integration.</li>
+      </ul>
+
+      <div class="post-cta-block">
+        <h3>Ready to Transition to Real-Time?</h3>
+        <p>Schedule a 15-minute product tour and see how fluX One can upgrade your treasury operations.</p>
+        <button class="btn-primary" onclick="openModal()">Book a Demo →</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Start Flowing</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="recaudo.html">Collection</a></li>
+            <li><a href="dispersion.html">Disbursement</a></li>
+            <li><a href="conciliacion.html">Reconciliation</a></li>
+            <li><a href="bi.html">BI Capabilities</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Integration Guides</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display:flex;align-items:center;gap:24px;">
+        <img src="../assets/images/logos/flux one en negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height:36px;width:auto;">
+        <span style="color:rgba(0,0,0,0.2);">|</span>
+        <img src="../assets/images/logos/PRAXIS COLOR.svg" alt="Praxis" class="footer-logo-small no-invert">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Schedule a demo of fluX</h2>
+        <p>We'll contact you in less than 24 business hours</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Full name" required>
+          <input type="email" name="email" placeholder="Corporate email" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Company" required>
+          <select name="pais" required>
+            <option value="">Country</option>
+            <option value="CO">Colombia</option>
+            <option value="MX">Mexico</option>
+            <option value="US">United States</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top:24px;">Send Request →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if (menu) {
+        menu.classList.toggle('active');
+        if (btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    function openPanel(id) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(id).classList.add('active');
+    }
+    function closePanel(id) {
+      document.getElementById(id).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    const origToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+        document.getElementById('panel-main').classList.remove('slide-out');
+        document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      origToggle();
+    };
+  </script>
+</body>
+</html>

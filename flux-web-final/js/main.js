@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -361,4 +361,47 @@
         });
       }
     });
+
+    // ── Vimeo Modal (Kickoff Video) ───────────────────────────────────────────
+    window.openVimeoModal = function(vimeoId) {
+      let overlay = document.getElementById('vimeo-modal-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'vimeo-modal-overlay';
+        overlay.innerHTML = [
+          '<div id="vimeo-modal-inner">',
+          '  <button id="vimeo-modal-close" aria-label="Cerrar">&#x2715;</button>',
+          '  <div id="vimeo-modal-iframe-container" style="position:relative; width:100%; height:0; padding-top:56.25%;"></div>',
+          '</div>'
+        ].join('');
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay || e.target.id === 'vimeo-modal-close') {
+            window.closeVimeoModal();
+          }
+        });
+        
+        // Escape key to close
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') window.closeVimeoModal();
+        });
+      }
+
+      const container = document.getElementById('vimeo-modal-iframe-container');
+      container.innerHTML = '<iframe src="https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;" title="Vimeo Player"></iframe>';
+      
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeVimeoModal = function() {
+      const overlay = document.getElementById('vimeo-modal-overlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+        const container = document.getElementById('vimeo-modal-iframe-container');
+        if (container) container.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+    };
 });

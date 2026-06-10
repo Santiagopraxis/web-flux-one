@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg" media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquidación T+0: Optimización de capital de trabajo en tiempo real — fluX One Blog</title>
+  <meta name="description" content="Descubre cómo eliminar los tiempos muertos bancarios permite reinvertir flujos de recaudo el mismo día de la transacción.">
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v67">
+  <style>
+    .post-hero {
+      padding: 140px 0 0 0;
+      background: #050508;
+      position: relative;
+      overflow: hidden;
+    }
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(60,184,235,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .post-meta-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .post-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--flux-primary);
+      background: rgba(60,184,235,0.1);
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+    .post-date {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .post-author {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .post-title {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      text-transform: none;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    .post-title span {
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .post-lead {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 680px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    .post-cover {
+      width: 100%;
+      max-width: 900px;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 16px 16px 0 0;
+      display: block;
+      margin: 0 auto;
+    }
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 48px 100px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.85;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+    .post-body h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      color: #fff;
+      margin: 56px 0 20px;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      word-break: break-word;
+    }
+    .post-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin: 36px 0 12px;
+      text-transform: none;
+    }
+    .post-body p { margin-bottom: 24px; }
+    .post-body ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+    .post-body li { margin-bottom: 10px; }
+    .post-body strong { color: #fff; font-weight: 600; }
+    .post-callout {
+      background: rgba(60,184,235,0.06);
+      border-left: 3px solid var(--flux-primary);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 36px 0;
+      color: rgba(255,255,255,0.75);
+      font-style: italic;
+    }
+    .post-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .post-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .post-stat-num {
+      font-size: 2.2rem;
+      font-weight: 300;
+      background: var(--flux-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .post-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    .post-cta-block {
+      background: linear-gradient(135deg, rgba(60,184,235,0.1), rgba(171,75,150,0.1));
+      border: 1px solid rgba(60,184,235,0.2);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 48px 0;
+    }
+    .post-cta-block h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 12px;
+      text-transform: none;
+    }
+    .post-cta-block p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
+    }
+    .post-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan, #3CB8EB);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: opacity 0.2s;
+    }
+    .post-back:hover { opacity: 0.7; }
+    @media (max-width: 768px) {
+      .post-hero { padding-top: 110px; }
+      .post-body { padding: 40px 24px 80px; }
+      .post-cover { height: 240px; border-radius: 12px 12px 0 0; }
+      .post-stat-grid { grid-template-columns: 1fr; gap: 16px; }
+      .post-cta-block { padding: 28px 20px; }
+      .post-lead { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux one en blanco_1.svg" alt="fluX One">
+      </a>
+      <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Productos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase"><h3>INFRAESTRUCTURA DE NUEVA GENERACIÓN</h3></div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="recaudo.html">Recaudo</a></li>
+                  <li><a href="dispersion.html">Dispersión</a></li>
+                  <li><a href="conciliacion.html">Conciliación</a></li>
+                  <li><a href="bi.html">Capacidades BI</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Desarrolladores</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Recursos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase"><h3>CONOCIMIENTO Y SOPORTE</h3></div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RECURSOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Iniciar sesión</button>
+        <button class="btn-primary" onclick="openModal()">Comienza hoy</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <a href="index.html" style="display:flex;align-items:center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+      </div>
+      <div class="menu-content" style="padding:0;flex:1;display:flex;">
+        <div class="menu-panels-container">
+          <div class="menu-panel panel-main" id="panel-main" style="padding:32px;">
+            <nav class="mobile-nav">
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Inicio</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">Productos <span class="drilldown-arrow">›</span></button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">Recursos <span class="drilldown-arrow">›</span></button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Desarrolladores</a>
+            </nav>
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Iniciar sesión</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu();openModal();">Comienza hoy</a>
+            </div>
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="blog-liquidacion.html" class="active">ES</a>
+                <span class="divider">|</span>
+                <a href="../en/blog.html">EN</a>
+              </div>
+            </div>
+          </div>
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding:32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Volver</button>
+              <div class="panel-title">Productos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="recaudo.html" class="mobile-link" onclick="toggleMenu()">Recaudo Inteligente</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Dispersión Automática</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Conciliación en tiempo real</a>
+              <a href="bi.html" class="mobile-link" onclick="toggleMenu()">Capacidades BI</a>
+            </nav>
+          </div>
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding:32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Volver</button>
+              <div class="panel-title">Recursos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">Preguntas Frecuentes</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST HERO -->
+  <section class="post-hero">
+    <div class="container">
+      <a href="blog.html" class="post-back">← Volver al Blog</a>
+      <div class="post-meta-bar">
+        <span class="post-tag">Orquestación</span>
+        <span class="post-date">18 Mayo, 2026</span>
+        <span class="post-author">· Por Tech Lead fluX</span>
+      </div>
+      <h1 class="post-title">Liquidación T+0: Optimización de <span>capital de trabajo</span> en tiempo real</h1>
+      <p class="post-lead">Descubre cómo eliminar los tiempos muertos bancarios permite reinvertir flujos de recaudo el mismo día de la transacción en México.</p>
+    </div>
+    <div class="container" style="max-width:1000px;">
+      <img src="../assets/images/blog/blog_liquidacion.png" alt="Liquidación T+0 optimización capital de trabajo" class="post-cover">
+    </div>
+  </section>
+
+  <!-- POST BODY -->
+  <section style="background:#050508;">
+    <div class="post-body">
+
+      <h2>El costo de la espera: El ciclo financiero tradicional</h2>
+      <p>En el comercio B2B y retail a gran escala en México, vender no equivale a tener el dinero disponible. Los ciclos de liquidación bancaria tradicionales (conocidos como T+1, T+2 o incluso T+3) actúan como un peaje temporal implícito. Cuando tu cliente paga con tarjeta de crédito, débito o vía transferencias interbancarias tradicionales en un fin de semana, ese dinero permanece en un "limbo" interbancario o de adquirencia antes de acreditarse efectivamente en tu cuenta principal.</p>
+
+      <p>Durante ese tiempo de espera, tu capital de trabajo está congelado. No puedes usarlo para pagar proveedores, liberar inventario o liquidar obligaciones operativas, obligando a tu empresa a recurrir a costosas líneas de crédito revolvente o sobregiros.</p>
+
+      <div class="post-stat-grid">
+        <div class="post-stat">
+          <div class="post-stat-num">T+0</div>
+          <div class="post-stat-label">Liquidación fluX</div>
+        </div>
+        <div class="post-stat">
+          <div class="post-stat-num">0%</div>
+          <div class="post-stat-label">Dependencia de líneas de crédito</div>
+        </div>
+        <div class="post-stat">
+          <div class="post-stat-num">100%</div>
+          <div class="post-stat-label">Liquidez intradía</div>
+        </div>
+      </div>
+
+      <h2>¿Qué es la Liquidación T+0?</h2>
+      <p>La **Liquidación T+0** es la capacidad de procesar, confirmar y acreditar los fondos recaudados en las cuentas de tu empresa el mismo día en que se realiza la transacción, sin esperar al cierre del ciclo bancario o al día hábil siguiente.</p>
+
+      <p>Con fluX One, esta capacidad no solo es posible, sino que es automatizada. A través de rieles de pago rápido (como SPEI y CoDi en México) y nuestra infraestructura de orquestación, logramos canalizar la liquidez de manera inmediata.</p>
+
+      <h2>Principales Beneficios Estratégicos</h2>
+
+      <h3>1. Mayor poder de negociación con proveedores</h3>
+      <p>Al contar con fondos líquidos el mismo día de las ventas, puedes ofrecer pagos anticipados a tus proveedores clave a cambio de descuentos por pronto pago. Esto incrementa directamente tu margen operativo neto.</p>
+
+      <h3>2. Reducción de costos financieros (intereses)</h3>
+      <p>Si tu empresa utiliza factoring o cupos de crédito rotativo para solventar la operación diaria mientras se liquidan los cobros, T+0 elimina esa necesidad financiera. Usas tu propio dinero en lugar del dinero caro del banco.</p>
+
+      <div class="post-callout">
+        "Las compañías que operan con liquidación en tiempo real T+0 reducen su costo financiero de capital de trabajo en promedio un 14% anual."
+      </div>
+
+      <h3>3. Automatización de desembolsos en cadena</h3>
+      <p>fluX One permite crear flujos automatizados de dispersión a partir del recaudo. Por ejemplo, en el momento en que se liquida un pago T+0 de un cliente, el sistema puede transferir automáticamente el porcentaje correspondiente al proveedor del inventario o al comisionista, sin intervención humana y sin demoras bancarias.</p>
+
+      <h2>¿Cómo funciona con la API de fluX One?</h2>
+      <p>Nuestra plataforma unifica la dispersión y el recaudo. Esto significa que las reglas de negocio pueden configurarse directamente en el dashboard de fluX One:</p>
+      <ul>
+        <li><strong>Trigger de Recaudo:</strong> Se detecta un pago exitoso a través de cualquier canal (QR, transferencias, link de pago).</li>
+        <li><strong>Acreditación T+0:</strong> El dinero se procesa en rails instantáneos y se consolida en tu saldo disponible fluX.</li>
+        <li><strong>Dispersión Inteligente:</strong> El saldo se redistribuye según tus prioridades: pagos a nómina, pago a proveedores o transferencias automáticas a cuentas de inversión.</li>
+      </ul>
+
+      <div class="post-cta-block">
+        <h3>¿Quieres acelerar tu flujo de caja?</h3>
+        <p>Hablemos sobre cómo fluX One puede llevar la tesorería de tu empresa a la velocidad del tiempo real.</p>
+        <button class="btn-primary" onclick="openModal()">Agenda una demo →</button>
+      </div>
+
+      <h2>Hacia una tesorería en tiempo real</h2>
+      <p>Mantener el dinero quieto o esperar a que los bancos completen sus ciclos manuales pertenece a la década pasada. Con fluX One, impulsamos tu liquidez diaria para que el capital de trabajo de tu empresa se mueva a la velocidad de tus ideas.</p>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Empieza a fluir</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="recaudo.html">Recaudo</a></li>
+            <li><a href="dispersion.html">Dispersión</a></li>
+            <li><a href="conciliacion.html">Conciliación</a></li>
+            <li><a href="bi.html">Capacidades BI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Desarrolladores</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Guías de Integración</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display:flex;align-items:center;gap:24px;">
+        <img src="../assets/images/logos/flux one en negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height:36px;width:auto;">
+        <span style="color:rgba(0,0,0,0.2);">|</span>
+        <img src="../assets/images/logos/PRAXIS COLOR.svg" alt="Praxis" class="footer-logo-small no-invert">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Políticas de Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Agenda tu demo de fluX</h2>
+        <p>Te contactamos en menos de 24 horas hábiles</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <select name="pais" required>
+            <option value="">País</option>
+            <option value="CO">Colombia</option>
+            <option value="MX" selected>México</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top:24px;">Enviar solicitud →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if (menu) {
+        menu.classList.toggle('active');
+        if (btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    function openPanel(id) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(id).classList.add('active');
+    }
+    function closePanel(id) {
+      document.getElementById(id).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    const origToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+        document.getElementById('panel-main').classList.remove('slide-out');
+        document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      origToggle();
+    };
+  </script>
+</body>
+</html>

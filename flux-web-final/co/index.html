@@ -1607,43 +1607,11 @@
         customCursor.style.top = e.clientY + 'px';
       });
 
-      // Click para reproducir con sonido
+      // Click para reproducir con sonido en modal premium
       cursorLayer.addEventListener('click', () => {
-        customCursor.classList.remove('visible');
-        wrapper.classList.add('is-playing');
-        
-        const activeIframeHtml = '<iframe id="vimeo-player-modal" src="https://player.vimeo.com/video/1199284738?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="kickoff flux one"></iframe>';
-        embedContainer.innerHTML = activeIframeHtml;
-
-        // Crear objeto Vimeo.Player para escuchar el evento 'ended'
-        const modalPlayer = new Vimeo.Player(document.getElementById('vimeo-player-modal'));
-        
-        // Entrar en pantalla completa
-        modalPlayer.requestFullscreen().catch(() => {
-          const iframe = document.getElementById('vimeo-player-modal');
-          if (iframe) {
-            if (iframe.requestFullscreen) {
-              iframe.requestFullscreen().catch(() => {});
-            } else if (iframe.webkitRequestFullscreen) {
-              iframe.webkitRequestFullscreen().catch(() => {});
-            } else if (iframe.msRequestFullscreen) {
-              iframe.msRequestFullscreen().catch(() => {});
-            }
-          }
-        });
-
-        modalPlayer.on('ended', () => {
-          wrapper.classList.remove('is-playing');
-          videoInjected = false;
-          tryInjectVideo(); // Restaura el reproductor en bucle y silenciado
-          
-          // Salir de pantalla completa si está activo
-          if (document.exitFullscreen) {
-            document.exitFullscreen().catch(() => {});
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen().catch(() => {});
-          }
-        });
+        if (typeof window.openVimeoModal === 'function') {
+          window.openVimeoModal('1199284738');
+        }
       });
     });
   </script>
