@@ -4008,3 +4008,14 @@ p, span, a, li, .card-desc {
 }
 /* Fix orphan words typography */
 p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
+
+/* ── Ensure footer logo visibility in dark and light modes ── */
+.footer.footer-light .footer-logo-main {
+  filter: invert(1) brightness(0) !important;
+}
+.footer.footer-light .footer-logo-small {
+  filter: none !important;
+}
+.footer:not(.footer-light) .footer-logo-small {
+  filter: brightness(0) invert(1) !important;
+}

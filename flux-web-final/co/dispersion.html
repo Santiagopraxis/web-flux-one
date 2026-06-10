@@ -18,7 +18,7 @@
         <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One">
       </a>
       
-            <ul class="nav-menu">
+      <ul class="nav-menu">
         <li class="dropdown mega-dropdown">
           <a href="#">Productos <span>▾</span></a>
           <div class="dropdown-menu mega-menu-panel">
@@ -66,8 +66,8 @@
             <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO" id="current-flag-img"> <span id="current-country-text">Col</span> <span>▾</span>
           </a>
           <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
-            <li><a href="/co/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
-            <li><a href="/mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+            <li><a href="index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="../mx/index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
           </ul>
         </li>
         
@@ -84,9 +84,10 @@
       </ul>
       <div class="nav-actions">
         <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Iniciar sesión</button>
-        <button class="btn-primary" onclick="openModal()">Comienza hoy</button>
-        <!-- Hamburger Menu -->
-        <button class="menu-toggle" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <button class="btn-primary hide-mobile" onclick="openModal()">Comienza hoy</button>
+        
+        <!-- Hamburger Menu — 3 lines for proper X animation -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
           <span></span>
           <span></span>
           <span></span>
@@ -353,7 +354,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer footer-light">
     <div class="footer-top-row">
       <div class="footer-liftoff-col">
         <h3>Empieza a fluir</h3>
