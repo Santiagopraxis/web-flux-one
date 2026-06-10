@@ -3867,3 +3867,38 @@ body.nexa-page .navbar:not(.scrolled) .menu-toggle span { background-color: #0F1
     gap: 12px !important;
   }
 }
+
+/* ── Product Page Hero Background (Brand Glow Aura) ── */
+.product-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: #050508;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.product-hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 75%;
+  height: 90%;
+  background: radial-gradient(circle at center, rgba(60, 184, 235, 0.15) 0%, rgba(171, 75, 150, 0.03) 55%, transparent 70%);
+  filter: blur(90px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.product-hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  left: -15%;
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(circle at center, rgba(171, 75, 150, 0.09) 0%, rgba(245, 181, 210, 0.01) 60%, transparent 80%);
+  filter: blur(100px);
+  z-index: 1;
+  pointer-events: none;
+}
