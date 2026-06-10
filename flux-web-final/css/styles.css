@@ -738,7 +738,7 @@ p {
   border-radius: 100px;
   text-transform: uppercase;
   color: var(--flux-white);
-  background: var(--flux-gradient);
+  background: linear-gradient(135deg, #3CB8EB 0%, #2563EB 100%);
   border: none;
   white-space: nowrap;
   -webkit-text-fill-color: var(--flux-white);
@@ -4011,7 +4011,7 @@ p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
 
 /* ── Ensure footer logo visibility in dark and light modes ── */
 .footer.footer-light .footer-logo-main {
-  filter: invert(1) brightness(0) !important;
+  filter: none !important;
 }
 .footer.footer-light .footer-logo-small {
   filter: none !important;

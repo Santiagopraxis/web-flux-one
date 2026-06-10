@@ -39,9 +39,12 @@ const server = http.createServer((req, res) => {
   // Resolve file path
   let safeUrl = req.url.split('?')[0];
   if (safeUrl === '/') {
-    safeUrl = '/co/index.html'; // Default to Colombia landing
+    // Redirect (not just serve) so relative links/iframes resolve against /co/
+    res.writeHead(302, { Location: '/co/index.html' });
+    res.end();
+    return;
   }
-  
+
   // Decode percent-encoded URLs (e.g. fondo%202.png -> fondo 2.png)
   let decodedUrl;
   try {
