@@ -3328,7 +3328,7 @@ section {
   
   
 
-  .nx-feat-card, .stats-card-impact, .stats-card {
+  .nx-feat-card, .stats-card-impact, .stats-card, .stat-item {
     flex: 0 0 85% !important; /* Cada tarjeta ocupa 85% del ancho, revelando un poco de la siguiente */
     scroll-snap-align: center;
     box-sizing: border-box;
@@ -4033,7 +4033,7 @@ p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
 
 /* ── Ensure footer logo visibility in dark and light modes ── */
 .footer.footer-light .footer-logo-main {
-  filter: invert(1) brightness(0) !important;
+  filter: none !important;
 }
 .footer.footer-light .footer-logo-small {
   filter: none !important;
