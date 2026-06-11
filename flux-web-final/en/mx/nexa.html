@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa — Your Brand's Financial Ecosystem | fluX</title>
+  <link rel="stylesheet" href="../../css/styles.css?v=ultra_v68">
+  <style>
+    :root {
+      --nexa-teal-400: #00D4AA;
+      --nexa-teal-500: #00B894;
+      --nexa-teal-600: #009B7D;
+      --nexa-blue-400: #4C8EF7;
+      --nexa-blue-500: #2563EB;
+      --nexa-bg:       #FFFFFF;
+      --nexa-bg-soft:  #F0F4F8;
+      --nexa-card:     #FFFFFF;
+      --nexa-border:   #E2E8F0;
+      --nexa-text-1:   #0F172A;
+      --nexa-text-2:   #475569;
+      --nexa-text-3:   #94A3B8;
+      --nexa-dark-bg:  #0D1421;
+      --nexa-dark-surface: #151F30;
+      --nexa-dark-card:    #1E2D42;
+      --nexa-dark-border:  #2D3F57;
+      --nexa-dark-text-1:  #F1F5F9;
+      --nexa-dark-text-2:  #94A3B8;
+      --nexa-grad: linear-gradient(135deg, #00B894 0%, #2563EB 100%);
+    }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--nexa-bg); }
+    /* Dropdown always on top */
+    .navbar .dropdown-menu { z-index: 99999 !important; }
+    .nx-container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .nx-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(0,184,148,0.08); border:1px solid rgba(0,184,148,0.25); color:#009B7D; font-size:0.6875rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:6px 16px; border-radius:100px; margin-bottom:28px; }
+    .nx-badge::before { content:''; width:5px; height:5px; border-radius:50%; background:#00B894; }
+    .nx-label { font-size:0.6875rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#00B894; margin-bottom:14px; }
+    .nx-title { font-size:clamp(2.25rem,4.5vw,3.5rem); font-weight:300; color:var(--nexa-text-1); line-height:1.1; letter-spacing:-0.02em; margin-bottom:20px; }
+    .nx-title-dark { color:var(--nexa-dark-text-1); }
+    .nx-title strong { font-weight:300; background:var(--nexa-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nx-desc { font-size:1.0625rem; color:var(--nexa-text-2); line-height:1.7; max-width:520px; }
+    .nx-desc-dark { color:var(--nexa-dark-text-2); }
+    .btn-nx-primary { background:var(--nexa-grad); color:#fff; font-size:0.9375rem; font-weight:600; padding:14px 28px; border-radius:100px; border:none; cursor:pointer; box-shadow:0 4px 20px rgba(0,184,148,0.3); transition:transform 0.2s,box-shadow 0.2s; position:relative; overflow:hidden; }
+    .btn-nx-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,184,148,0.4); }
+    .btn-nx-outline { background:transparent; color:var(--nexa-text-2); font-size:0.9375rem; font-weight:500; padding:14px 28px; border-radius:100px; border:1.5px solid var(--nexa-border); cursor:pointer; transition:border-color 0.2s,color 0.2s; }
+    .btn-nx-outline:hover { border-color:#00B894; color:#009B7D; }
+    .nx-hero { background:var(--nexa-bg); padding:140px 0 100px; position:relative; overflow:hidden; }
+    .nx-hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .nx-hero-actions { display:flex; gap:14px; flex-wrap:wrap; margin:36px 0 48px; }
+    .nx-stats { display:flex; gap:40px; flex-wrap:wrap; }
+    .nx-stat-val { font-size:1.625rem; font-weight:300; background:var(--nexa-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; margin-bottom:4px; }
+    .nx-stat-lbl { font-size:0.8125rem; color:var(--nexa-text-3); }
+    .nx-title-line { display:block; height:2px; width:0; background:var(--nexa-grad); border-radius:2px; margin-top:12px; transition:width 1s ease 0.8s; }
+    .nx-title-line.visible { width:80px; }
+    .nx-orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none; opacity:0; animation:orbFloat 6s ease-in-out infinite, orbFadeIn 1.2s ease forwards; }
+    .nx-orb-1 { width:480px; height:480px; background:radial-gradient(circle,rgba(0,184,148,0.15) 0%,transparent 70%); top:-120px; right:-60px; animation-delay:0s,0.3s; }
+    .nx-orb-2 { width:340px; height:340px; background:radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%); bottom:0; left:-80px; animation-delay:3s,0.6s; }
+    @keyframes orbFadeIn { to { opacity:1; } }
+    @keyframes orbFloat { 0%,100% { transform:translateY(0) scale(1); } 50% { transform:translateY(-28px) scale(1.04); } }
+    .nx-phone { width:272px; margin:0 auto; background:#fff; border-radius:40px; border:1px solid var(--nexa-border); padding:24px 20px; box-shadow:0 24px 60px rgba(15,23,42,0.1); animation:phoneFloat 5s ease-in-out infinite; }
+    @keyframes phoneFloat { 0%,100% { transform:translateY(0) rotate(-1deg); } 50% { transform:translateY(-16px) rotate(1deg); } }
+    .nx-phone-notch { width:72px; height:7px; background:var(--nexa-border); border-radius:4px; margin:0 auto 20px; }
+    .nx-card-balance { border-radius:18px; padding:18px 20px; background:var(--nexa-grad); box-shadow:0 8px 24px rgba(0,184,148,0.22); margin-bottom:16px; position:relative; overflow:hidden; }
+    .nx-card-balance::after { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); animation:shimmer 3.5s ease-in-out infinite 1.5s; }
+    @keyframes shimmer { 0% { left:-60%; } 100% { left:130%; } }
+    .nx-card-lbl { font-size:10px; color:rgba(255,255,255,0.8); margin-bottom:4px; }
+    .nx-card-amt { font-size:24px; font-weight:700; color:#fff; margin-bottom:10px; }
+    .nx-card-pills { display:flex; gap:6px; flex-wrap:wrap; }
+    .nx-pill { background:rgba(255,255,255,0.22); backdrop-filter:blur(4px); padding:4px 9px; border-radius:20px; font-size:10px; font-weight:600; color:#fff; }
+    .nx-list-lbl { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--nexa-text-3); margin:14px 0 8px; }
+    .nx-bill-row { display:flex; align-items:center; gap:10px; background:var(--nexa-bg-soft); border-radius:12px; padding:11px 13px; margin-bottom:7px; border:1px solid var(--nexa-border); }
+    .nx-bill-icon { width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .nx-bill-info { flex:1; }
+    .nx-bill-name { font-size:12px; font-weight:600; color:var(--nexa-text-1); }
+    .nx-bill-sub { font-size:10px; color:var(--nexa-text-3); margin-top:1px; }
+    .nx-bill-amt { font-size:12px; font-weight:700; color:#009B7D; }
+    .nx-chip { display:inline-block; padding:2px 7px; border-radius:8px; font-size:9px; font-weight:600; }
+    .nx-chip-warn { background:rgba(245,158,11,0.12); color:#B45309; }
+    .nx-chip-ok   { background:rgba(16,185,129,0.1);  color:#059669; }
+    .nx-pay-btn { width:100%; margin-top:14px; background:var(--nexa-grad); color:#fff; font-size:12px; font-weight:700; padding:13px; border-radius:100px; border:none; cursor:default; box-shadow:0 4px 14px rgba(0,184,148,0.28); }
+    .nx-section-soft  { background:var(--nexa-bg-soft); padding:100px 0; }
+    .nx-section-white { background:var(--nexa-bg); padding:100px 0; }
+    .nx-section-dark  { background:var(--nexa-dark-bg); padding:100px 0; position:relative; overflow:hidden; }
+    .nx-section-dark::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:800px; height:400px; background:radial-gradient(ellipse,rgba(0,184,148,0.07) 0%,transparent 70%); pointer-events:none; }
+    .nx-section-header { max-width:1000px; margin:0 auto; text-align:center; margin-bottom:64px; }
+    .nx-features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    .nx-feat-card { background:var(--nexa-card); border:1px solid var(--nexa-border); border-radius:20px; padding:28px; transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s; }
+    .nx-feat-card:hover { border-color:rgba(0,184,148,0.35); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,184,148,0.08); }
+    .nx-feat-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+    .nx-feat-title { font-size:1rem; font-weight:500; color:var(--nexa-text-1); margin-bottom:10px; }
+    .nx-feat-desc { font-size:0.875rem; color:var(--nexa-text-2); line-height:1.65; }
+    .nx-wl-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .nx-wl-panel { background:var(--nexa-bg-soft); border-radius:24px; border:1px solid var(--nexa-border); padding:32px; position:relative; overflow:hidden; }
+    .nx-wl-panel::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--nexa-grad); }
+    .nx-wl-brand-row { display:flex; align-items:center; gap:12px; background:#fff; border-radius:14px; padding:16px 18px; border:1px solid var(--nexa-border); margin-bottom:12px; }
+    .nx-wl-logo { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:#fff; flex-shrink:0; }
+    .nx-wl-brand-name { font-size:14px; font-weight:600; color:var(--nexa-text-1); }
+    .nx-wl-brand-sub  { font-size:11px; color:var(--nexa-text-3); margin-top:1px; }
+    .nx-color-dots { display:flex; gap:6px; margin-top:8px; }
+    .nx-color-dot { width:16px; height:16px; border-radius:50%; }
+    .nx-wl-tag { margin-left:auto; font-size:10px; font-weight:600; padding:3px 8px; border-radius:6px; }
+    .nx-check-list { list-style:none; display:flex; flex-direction:column; gap:16px; margin-top:32px; }
+    .nx-check-list li { display:flex; align-items:flex-start; gap:12px; font-size:0.9375rem; color:var(--nexa-text-2); line-height:1.55; }
+    .nx-check { width:20px; height:20px; border-radius:6px; flex-shrink:0; background:rgba(0,184,148,0.1); display:flex; align-items:center; justify-content:center; margin-top:1px; }
+    .nx-powered-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:56px; }
+    .nx-powered-card { background:rgba(255,255,255,0.03); border:1px solid var(--nexa-dark-border); border-radius:18px; padding:28px; text-align:center; transition:border-color 0.2s; }
+    .nx-powered-card:hover { border-color:rgba(0,184,148,0.3); }
+    .nx-powered-icon { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+    .nx-powered-title { font-size:0.9375rem; font-weight:500; color:var(--nexa-dark-text-1); margin-bottom:8px; }
+    .nx-powered-desc  { font-size:0.8125rem; color:var(--nexa-dark-text-2); line-height:1.6; }
+    .logo-negro  { display:block; height:32px; width:auto; }
+    .logo-blanco { display:none;  height:32px; width:auto; }
+    /* Navbar siempre blanco en Nexa */
+    .navbar .menu-toggle span { background-color: #0F172A !important; }
+
+    .navbar { background:#ffffff !important; border-bottom:1px solid rgba(0,0,0,0.05) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    
+    /* Logo oscuro siempre */
+    .navbar .logo-blanco { display:none !important; }
+    .navbar .logo-negro { display:block !important; height:32px; width:auto; }
+
+    /* Enlaces oscuros siempre */
+    .navbar .nav-menu > li > a,
+    .navbar .nav-actions .btn-text { color:#0F172A !important; }
+    
+    .navbar .nav-menu > li > a:hover,
+    .navbar .nav-actions .btn-text:hover { color:#009B7D !important; }
+
+    /* Dropdowns estandar blancos */
+    .navbar .dropdown-menu { background:#ffffff !important; border:1px solid #E2E8F0 !important; box-shadow:0 8px 24px rgba(15,23,42,0.1) !important; z-index:99999 !important; }
+    .navbar .dropdown-menu a { color:#334155 !important; }
+    .navbar .dropdown-menu a:hover { color:#0F172A !important; background:#F0F4F8 !important; }
+
+    /* Navbar siempre blanco incluso en hover del mega menu */
+    .navbar:has(.mega-dropdown:hover) { background: #ffffff !important; border-bottom-color: transparent !important; }
+    
+    /* Invertir el Mega Menu a Blanco solo en Nexa */
+    .navbar .mega-menu-panel { background:#ffffff !important; border-bottom: 1px solid rgba(0,0,0,0.05) !important; }
+    .navbar .mega-menu-phrase h3 { color: #0F172A !important; }
+    .navbar .mega-menu-divider { background: rgba(0,0,0,0.1) !important; }
+    .navbar .mega-menu-subtitle { color: #64748B !important; }
+    .navbar .mega-menu-links a { color: #334155 !important; }
+    .navbar .mega-menu-links a:hover { color: #009B7D !important; background: #F0F4F8 !important; }
+    .nxc-section { background:var(--nexa-dark-bg); padding:100px 0; }
+    .nxc-grid { display:grid; grid-template-columns:360px 1fr; gap:60px; align-items:start; }
+    .nxc-controls { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:24px; padding:32px; }
+    .nxc-field { margin-bottom:24px; }
+    .nxc-label { display:block; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#64748B; margin-bottom:10px; }
+    .nxc-input { width:100%; padding:12px 16px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; color:#F1F5F9 !important; -webkit-text-fill-color:#F1F5F9 !important; font-size:0.9375rem; font-family:inherit; outline:none; caret-color:#00B894; transition:border-color 0.2s; box-sizing:border-box; }
+    .nxc-input::placeholder { color:#475569; -webkit-text-fill-color:#475569; }
+    .nxc-input:focus { border-color:rgba(0,184,148,0.5); background:rgba(255,255,255,0.09); -webkit-text-fill-color:#F1F5F9 !important; }
+    .nxc-color-row { display:flex; gap:12px; align-items:center; }
+    .nxc-color { width:44px; height:44px; border-radius:12px; border:2px solid rgba(255,255,255,0.1); cursor:pointer; padding:3px; background:transparent; }
+    .nxc-color-presets { display:flex; gap:8px; flex-wrap:wrap; }
+    .nxc-preset { width:26px; height:26px; border-radius:50%; cursor:pointer; border:2px solid rgba(255,255,255,0.1); transition:transform 0.15s,border-color 0.15s; }
+    .nxc-preset:hover { transform:scale(1.2); border-color:rgba(255,255,255,0.5); }
+    .nxc-toggle-row { display:flex; gap:8px; }
+    .nxc-toggle { flex:1; padding:10px; border-radius:10px; font-size:0.875rem; font-weight:600; border:1px solid rgba(255,255,255,0.1); background:transparent; color:#64748B; cursor:pointer; transition:all 0.2s; }
+    .nxc-toggle.active { background:rgba(0,184,148,0.12); border-color:rgba(0,184,148,0.4); color:#00D4AA; }
+    .nxc-preview { display:flex; justify-content:center; position:sticky; top:100px; }
+    .nxc-phone { width:300px; border-radius:36px; padding:16px 16px 24px; box-shadow:0 24px 48px rgba(15,23,42,0.12); transition:background 0.4s,border-color 0.4s; }
+    .nxc-phone.dark-mode { background:#0D1421; border:1px solid #1E2D42; }
+    .nxc-phone.light-mode { background:#F0F4F8; border:1px solid #E2E8F0; }
+    .nxc-status { display:flex; justify-content:space-between; align-items:center; padding:4px 8px 10px; font-size:10px; font-weight:600; }
+    .dark-mode .nxc-status { color:#94A3B8; }
+    .light-mode .nxc-status { color:#64748B; }
+    .nxc-app-header { display:flex; align-items:center; gap:10px; padding:10px 12px 14px; }
+    .nxc-app-logo { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; color:#fff; transition:background 0.3s; }
+    .nxc-app-brand { font-size:15px; font-weight:700; transition:color 0.2s; }
+    .dark-mode .nxc-app-brand { color:#F1F5F9; }
+    .light-mode .nxc-app-brand { color:#0F172A; }
+    .nxc-app-sub { font-size:10px; color:#64748B; margin-top:1px; }
+    .nxc-bill-card { border-radius:16px; padding:16px; margin:0 0 12px; transition:background 0.3s,border-color 0.3s; }
+    .dark-mode .nxc-bill-card { background:#1E2D42; border:1px solid #2D3F57; }
+    .light-mode .nxc-bill-card { background:#fff; border:1px solid #E2E8F0; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+    .nxc-bill-name { font-size:14px; font-weight:700; }
+    .dark-mode .nxc-bill-name { color:#F1F5F9; }
+    .light-mode .nxc-bill-name { color:#0F172A; }
+    .nxc-bill-company { font-size:11px; color:#64748B; margin-top:2px; }
+    .nxc-bill-logo { width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:800; color:#fff; transition:background 0.3s; }
+    .nxc-bill-lbl { font-size:10px; color:#64748B; margin-bottom:3px; }
+    .nxc-bill-amt { font-size:20px; font-weight:800; transition:color 0.3s; }
+    .nxc-bill-due { font-size:13px; font-weight:600; }
+    .dark-mode .nxc-bill-due { color:#F1F5F9; }
+    .light-mode .nxc-bill-due { color:#0F172A; }
+    .nxc-eco-label { font-size:9px; font-weight:700; letter-spacing:0.12em; color:#475569; padding:0 4px; margin-bottom:8px; }
+    .nxc-eco-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px; }
+    .nxc-eco-item { border-radius:12px; padding:10px 8px; text-align:center; transition:background 0.3s,border-color 0.3s; }
+    .dark-mode .nxc-eco-item { background:#1E2D42; border:1px solid #2D3F57; }
+    .light-mode .nxc-eco-item { background:#fff; border:1px solid #E2E8F0; }
+    .nxc-eco-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; margin:0 auto 6px; transition:background 0.3s,color 0.3s; }
+    .nxc-eco-txt { font-size:9px; font-weight:600; color:#64748B; }
+    .nxc-chart-box { border-radius:14px; padding:14px; margin-bottom:12px; transition:background 0.3s,border-color 0.3s; }
+    .dark-mode .nxc-chart-box { background:#1E2D42; border:1px solid #2D3F57; }
+    .light-mode .nxc-chart-box { background:#fff; border:1px solid #E2E8F0; }
+    .nxc-chart-title { font-size:11px; font-weight:700; margin-bottom:10px; transition:color 0.2s; }
+    .dark-mode .nxc-chart-title { color:#F1F5F9; }
+    .light-mode .nxc-chart-title { color:#0F172A; }
+    .nxc-chart-svg { width:100%; height:auto; display:block; }
+    .nxc-pay-btn { width:100%; padding:14px; border-radius:100px; border:none; cursor:default; font-size:13px; font-weight:700; color:#fff; transition:background 0.3s,box-shadow 0.3s; }
+    .nx-word { display:inline-block; opacity:0; transform:translateY(40px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .nx-word.visible { opacity:1; transform:translateY(0); }
+    .nx-feat-card { opacity:0; transform:translateY(32px); transition:opacity 0.55s ease,transform 0.55s ease,border-color 0.2s,box-shadow 0.2s; }
+    .nx-feat-card.visible { opacity:1; transform:translateY(0); }
+    .nx-slide-left { opacity:0; transform:translateX(-40px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .nx-slide-right { opacity:0; transform:translateX(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .nx-slide-left.visible, .nx-slide-right.visible { opacity:1; transform:translateX(0); }
+    .nx-powered-card { opacity:0; transform:translateY(24px); transition:opacity 0.5s ease,transform 0.5s ease,border-color 0.2s; }
+    .nx-powered-card.visible { opacity:1; transform:translateY(0); }
+    .nx-fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.65s ease,transform 0.65s ease; }
+    .nx-fade-up.visible { opacity:1; transform:translateY(0); }
+    @media (max-width:900px) {
+      .nx-hero-grid, .nx-wl-grid, .nxc-grid { grid-template-columns:1fr; gap:48px; }
+      .nx-phone { width:240px; }
+      .nx-title { font-size:2.25rem; }
+      .nxc-preview { position:static; }
+    }
+    @media (max-width:600px) {
+      .nx-stats { gap:24px; }
+      .nx-features-grid { grid-template-columns:1fr; }
+      .nxc-phone { width:260px; }
+    }
+    .nx-sep-line { border-top:1px solid #E2E8F0 !important; }
+    .nxc-phone { transition:none !important; }
+    @media (min-width: 768px) {
+      .nx-title-single { white-space: nowrap !important; }
+    }
+
+    /* Balance de Grid */
+    .nxc-grid { grid-template-columns: 440px 1fr !important; gap: 80px !important; max-width: 1040px !important; margin: 0 auto !important; align-items: flex-start !important; }
+    @media (max-width: 900px) {
+      .nxc-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body class="nexa-page">
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="../mx.html" class="logo nav-logo">
+        <img src="../../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="flux One">
+      </a>
+      
+      <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Products <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>NEXT-GENERATION INFRASTRUCTURE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="cobranza.html">Collection</a></li>
+                  <li><a href="dispersion.html">Disbursements</a></li>
+                  <li><a href="conciliacion.html">Reconciliation</a></li>
+                  <li><a href="bi.html">BI Capabilities</a></li>
+                  <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Soon)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../../developers.html">Developers</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Resources <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>KNOWLEDGE AND SUPPORT</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RESOURCES</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <!-- COUNTRY SELECTOR -->
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" id="current-flag-img"> <span id="current-country-text">Mex</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="../index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="../mx.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
+          </ul>
+        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">EN</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="../../mx/nexa.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="#"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Log in</button>
+        <button class="btn-primary hide-mobile" onclick="openModal()">Get started</button>
+        
+        <!-- Hamburger Menu — 3 lines for proper X animation -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY MENU (DRILL-DOWN) -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <a href="../mx.html" style="display: flex; align-items: center;"><img src="../../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+      </div>
+      
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          
+          <!-- PANEL 1: MAIN MENU -->
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <a href="../mx.html" class="mobile-link" onclick="toggleMenu()">Home</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Products <span class="drilldown-arrow">›</span>
+              </button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Resources <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="../../developers.html" class="mobile-link" onclick="toggleMenu()">Developers</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Let's talk</a>
+            </nav>
+            
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Log in</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Get started</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="../../mx/nexa.html">ES</a>
+                <span class="divider">|</span>
+                <a href="#" class="active">EN</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Back</button>
+              <div class="panel-title">Products</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="cobranza.html" class="mobile-link" onclick="toggleMenu()">Smart Collection</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Automated Disbursements</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Real-Time Reconciliation</a>
+              <a href="bi.html" class="mobile-link" onclick="toggleMenu()">BI Capabilities</a>
+              <a href="#" class="mobile-link" style="pointer-events: none; opacity: 0.5;" onclick="toggleMenu()">Nexa (Soon)</a>
+            </nav>
+          </div>
+
+          <!-- PANEL 3: RECURSOS -->
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Back</button>
+              <div class="panel-title">Resources</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">FAQ</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="nx-hero">
+    <div class="nx-orb nx-orb-1"></div>
+    <div class="nx-orb nx-orb-2"></div>
+    <div class="nx-container">
+      <div class="nx-hero-grid">
+        <div>
+          <div class="nx-badge nx-fade-up">Nexa by fluX</div>
+          <h1 class="nx-title" id="nx-hero-title">The financial universe<br><strong>of your brand.</strong></h1>
+          <span class="nx-title-line" id="nx-title-line"></span>
+          <p class="nx-desc nx-fade-up" style="transition-delay:0.3s;">Nexa is the app where your users pay all their bills, recharge their transit cards, and manage their digital wallet — all in one place, under your brand identity.</p>
+          <div class="nx-hero-actions nx-fade-up" style="transition-delay:0.5s;">
+            <button class="btn-nx-primary" onclick="openModal()">Discover Nexa &rarr;</button>
+            <button class="btn-nx-outline" onclick="openModal()">Book a demo</button>
+          </div>
+          <div class="nx-stats nx-fade-up" style="transition-delay:0.7s;">
+            <div>
+              <div class="nx-stat-val" data-count="100" data-suffix="%">0%</div>
+              <div class="nx-stat-lbl">Custom-branded</div>
+            </div>
+            <div>
+              <div class="nx-stat-val" data-count="4" data-prefix="+" data-suffix=" h">+0 h</div>
+              <div class="nx-stat-lbl">Recovered per month</div>
+            </div>
+            <div>
+              <div class="nx-stat-val" data-count="24" data-suffix="/7">0/7</div>
+              <div class="nx-stat-lbl">Always available</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center;" class="nx-fade-up">
+          <div class="nx-phone">
+            <div class="nx-phone-notch"></div>
+            <div class="nx-card-balance">
+              <div class="nx-card-lbl">Total pending this month</div>
+              <div class="nx-card-amt">$312,400</div>
+              <div class="nx-card-pills">
+                <span class="nx-pill">Wallet $120k</span>
+                <span class="nx-pill">Mobility Card $15k</span>
+              </div>
+            </div>
+            <div class="nx-list-lbl">Pending bills</div>
+            <div class="nx-bill-row">
+              <div class="nx-bill-icon" style="background:rgba(245,158,11,0.1);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="nx-bill-info">
+                <div class="nx-bill-name">Electricity</div>
+                <div class="nx-bill-sub"><span class="nx-chip nx-chip-warn">Due in 3 days</span></div>
+              </div>
+              <div class="nx-bill-amt">$156,800</div>
+            </div>
+            <div class="nx-bill-row">
+              <div class="nx-bill-icon" style="background:rgba(37,99,235,0.08);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div class="nx-bill-info">
+                <div class="nx-bill-name">Water</div>
+                <div class="nx-bill-sub"><span class="nx-chip nx-chip-ok">Due in 12 days</span></div>
+              </div>
+              <div class="nx-bill-amt">$88,200</div>
+            </div>
+            <div class="nx-bill-row">
+              <div class="nx-bill-icon" style="background:rgba(0,184,148,0.08);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 1 8 8c0 5-8 13-8 13S4 15 4 10a8 8 0 0 1 8-8z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              </div>
+              <div class="nx-bill-info">
+                <div class="nx-bill-name">Natural Gas</div>
+                <div class="nx-bill-sub"><span class="nx-chip nx-chip-ok">Due in 18 days</span></div>
+              </div>
+              <div class="nx-bill-amt">$67,400</div>
+            </div>
+            <button class="nx-pay-btn">Pay all ($312,400) &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="nx-section-soft">
+    <div class="nx-container">
+      <div class="nx-section-header nx-fade-up">
+        <div class="nx-label">The Experience</div>
+        <h2 class="nx-title nx-title-single">All your bills,<br><strong>in a single click</strong></h2>
+        <p class="nx-desc" style="margin:0 auto;text-align:center;">Your users don't need to log into multiple portals or remember due dates. Nexa finds, organizes, and pays them in a single action.</p>
+      </div>
+      <div class="nx-features-grid">
+        <div class="nx-feat-card">
+          <div class="nx-feat-icon" style="background:rgba(0,184,148,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/><path d="M14 15h4"/></svg></div>
+          <div class="nx-feat-title">Instant Multi-Payment</div>
+          <p class="nx-feat-desc">Gas, water, electricity, internet — all in a single transaction. No lines, no portals, no passwords to remember.</p>
+        </div>
+        <div class="nx-feat-card">
+          <div class="nx-feat-icon" style="background:rgba(37,99,235,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
+          <div class="nx-feat-title">Transit Card Recharges</div>
+          <p class="nx-feat-desc">Recharge transit cards directly from the app in seconds. No queues, no physical reload stations, no interruptions.</p>
+        </div>
+        <div class="nx-feat-card">
+          <div class="nx-feat-icon" style="background:rgba(245,158,11,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <div class="nx-feat-title">Smart Alerts</div>
+          <p class="nx-feat-desc">Notifications before due dates, when a bill amount increases, or when your balance is running low.</p>
+        </div>
+        <div class="nx-feat-card">
+          <div class="nx-feat-icon" style="background:rgba(0,184,148,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><circle cx="7" cy="15" r="1"/></svg></div>
+          <div class="nx-feat-title">Integrated Digital Wallet</div>
+          <p class="nx-feat-desc">Load funds once and pay whenever you want. Easy top-ups, clear transaction history, and balance always visible on screen.</p>
+        </div>
+        <div class="nx-feat-card">
+          <div class="nx-feat-icon" style="background:rgba(37,99,235,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8v4l3 3"/></svg></div>
+          <div class="nx-feat-title">Auto-Pay (Direct Debit)</div>
+          <p class="nx-feat-desc">Users enable auto-pay and never worry again. No service interruptions, no forgotten deadlines.</p>
+        </div>
+        <div class="nx-feat-card">
+          <div class="nx-feat-icon" style="background:rgba(16,185,129,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-5"/></svg></div>
+          <div class="nx-feat-title">Full History & Control</div>
+          <p class="nx-feat-desc">Every payment logged, every transaction visible. Users understand what they spend and when, without going to the bank.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- WHATSAPP AGENT SECTION -->
+  <section class="nx-section" id="whatsapp-agent" style="background:#ffffff; padding: 120px 0; border-top: 1px solid rgba(15,23,42,0.05);">
+    <style>
+      .wa-container { display:flex; flex-wrap:wrap; align-items:center; gap:60px; max-width:1200px; margin:0 auto; padding: 0 40px; }
+      .wa-text-col { flex: 1; min-width: 320px; }
+      .wa-eyebrow { display:inline-block; padding: 6px 16px; background: rgba(37, 211, 102, 0.1); color: #25D366; border-radius: 100px; font-weight: 600; font-size: 0.85rem; margin-bottom: 24px; border: 1px solid rgba(37, 211, 102, 0.2); text-transform: uppercase; letter-spacing: 0.05em;}
+      .wa-title { font-size: clamp(2.5rem, 4vw, 3.2rem); color: #0F172A; line-height: 1.1; margin-bottom: 24px; font-weight: 700; letter-spacing:-1px;}
+      .wa-desc { font-size: 1.125rem; color: #475569; line-height: 1.6; margin-bottom: 32px; max-width: 500px; }
+      
+      .wa-graphic-col { flex: 1; min-width: 320px; display:flex; justify-content:center; }
+      .wa-phone { width: 340px; background: #F0F2F5; border-radius: 40px; padding: 12px; box-shadow: 0 24px 48px rgba(15,23,42,0.12); border: 8px solid #ffffff; position: relative; overflow:hidden;}
+      
+      .wa-header { background: #075E54; color: white; padding: 20px 20px 16px 20px; display:flex; align-items:center; gap: 12px; border-radius: 28px 28px 0 0; margin: -12px -12px 0 -12px;}
+      .wa-avatar { width: 44px; height: 44px; background: #25D366; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size: 20px; color:white; flex-shrink:0;}
+      .wa-name { font-weight: 600; font-size: 1.15rem; line-height: 1.2; }
+      .wa-status { font-size: 0.85rem; color: rgba(255,255,255,0.8); }
+      
+      .wa-chat-bg { background: #efeae2; padding: 20px 16px; height: 420px; display:flex; flex-direction: column; gap: 16px; overflow-y:auto; border-radius: 0 0 28px 28px; margin: 0 -12px -12px -12px; position:relative;}
+      .wa-chat-bg::before { content:''; position:absolute; top:0;left:0;right:0;bottom:0; opacity:0.06; background-image: radial-gradient(#000 1px, transparent 1px); background-size: 10px 10px; z-index:0; pointer-events:none;}
+      
+      .wa-bubble { padding: 12px 16px; border-radius: 12px; font-size: 0.95rem; line-height: 1.4; max-width: 85%; position:relative; z-index:1; box-shadow: 0 1px 2px rgba(0,0,0,0.05); opacity: 0; transform: translateY(10px); animation: bubblePop 0.4s forwards; }
+      .wa-bubble.in { background: #ffffff; color: #111b21; align-self: flex-start; border-top-left-radius: 0; }
+      .wa-bubble.out { background: #d9fdd3; color: #111b21; align-self: flex-end; border-top-right-radius: 0; }
+      
+      .wa-time { display:block; text-align:right; font-size: 0.7rem; color: rgba(17,27,33,0.5); margin-top: 6px; }
+      .wa-btn { display:block; text-align:center; color: #00A884; font-weight: 600; text-decoration: none; padding: 12px 0 4px 0; border-top: 1px solid #E9EDEF; margin-top: 12px; margin-left: -16px; margin-right: -16px; margin-bottom: -4px; cursor: pointer;}
+      
+      .wa-typing { display:inline-flex; gap: 4px; padding: 12px 16px; background: #ffffff; border-radius: 12px; align-self:flex-start; margin-top: 8px; opacity: 0; animation: waFadeIn 0.5s 2.5s forwards; border-top-left-radius:0; z-index:1; box-shadow: 0 1px 2px rgba(0,0,0,0.05);}
+      .wa-dot { width: 6px; height: 6px; background: #8696a0; border-radius: 50%; animation: waTyping 1.4s infinite ease-in-out both;}
+      .wa-dot:nth-child(1) { animation-delay: -0.32s; }
+      .wa-dot:nth-child(2) { animation-delay: -0.16s; }
+      
+      @keyframes waTyping { 0%, 80%, 100% { transform: scale(0.6); opacity:0.5;} 40% { transform: scale(1); opacity:1;} }
+      @keyframes waFadeIn { to { opacity: 1; } }
+      @keyframes bubblePop { to { opacity: 1; transform: translateY(0); } }
+      
+      .wa-bubble:nth-child(1) { animation-delay: 0.5s; }
+      .wa-bubble:nth-child(2) { animation-delay: 2s; }
+      .wa-bubble:nth-child(4) { animation-delay: 4.5s; }
+      
+      @media(max-width: 900px) {
+        .wa-container { flex-direction:column; gap:40px; }
+        .wa-text-col, .wa-graphic-col { width: 100%; min-width:100%; }
+      }
+    </style>
+    
+    <div class="nx-container wa-container">
+      <div class="wa-text-col nx-fade-up">
+        <span class="wa-eyebrow">The channel everyone uses</span>
+        <h2 class="wa-title">An agent that collects for you</h2>
+        <p class="wa-desc">Nexa doesn't send emails that get ignored. It manages collections directly via WhatsApp, sending bill reminders, answering questions, and enabling payments right within the chat for a frictionless experience.</p>
+        <ul style="list-style:none; padding:0; margin-bottom:32px; color:#475569; font-size: 1.05rem;">
+          <li style="margin-bottom:16px; display:flex; align-items:center; gap:12px;"><span style="color:#25D366; font-weight:bold; font-size:1.2rem;">✓</span> One-click payment right from the chat</li>
+          <li style="margin-bottom:16px; display:flex; align-items:center; gap:12px;"><span style="color:#25D366; font-weight:bold; font-size:1.2rem;">✓</span> Proactive delinquency notifications</li>
+          <li style="margin-bottom:16px; display:flex; align-items:center; gap:12px;"><span style="color:#25D366; font-weight:bold; font-size:1.2rem;">✓</span> Automated real-time reconciliation</li>
+        </ul>
+      </div>
+      
+      <div class="wa-graphic-col nx-fade-up">
+        <div class="wa-phone">
+          <div class="wa-header">
+            <div class="wa-avatar">N</div>
+            <div>
+              <div class="wa-name">Nexa - Your Agent</div>
+              <div class="wa-status">Official business account</div>
+            </div>
+          </div>
+          <div class="wa-chat-bg">
+            <div class="wa-bubble in">
+              Hi Carlos 👋. Your electricity bill for this month of <strong>$45,200</strong> is due tomorrow. Would you like to pay it now using your saved payment method?
+              <a class="wa-btn">Yes, pay now</a>
+              <span class="wa-time">10:42 AM</span>
+            </div>
+            
+            <div class="wa-bubble out">
+              Yes, pay now
+              <span class="wa-time">10:45 AM</span>
+            </div>
+            
+            <div class="wa-typing">
+              <div class="wa-dot"></div><div class="wa-dot"></div><div class="wa-dot"></div>
+            </div>
+            
+            <div class="wa-bubble in">
+              Payment successful! ✅ Here is your receipt. Thanks for staying up to date.
+              <span class="wa-time">10:45 AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND CONFIGURATOR (después de Tu marca. Nuestra tecnología.) -->
+  <section class="nxc-section">
+    <div class="nx-container">
+      
+      <style>
+    /* Forzar modo claro en el configurador */
+    .nxc-section { background:#ffffff !important; padding:120px 0 !important; }
+    .nxc-controls { background:#ffffff !important; border:1px solid #E2E8F0 !important; box-shadow:0 24px 48px rgba(15,23,42,0.05) !important; }
+    .nxc-label { color:#64748B !important; }
+    .nxc-input { background:#F8FAFC !important; border:1px solid #E2E8F0 !important; color:#0F172A !important; -webkit-text-fill-color:#0F172A !important; }
+    .nxc-input:focus { border-color:#00B894 !important; background:#ffffff !important; box-shadow:0 0 0 3px rgba(0,184,148,0.1) !important; color:#0F172A !important; -webkit-text-fill-color:#0F172A !important; }
+    .nxc-input::placeholder { color:#94A3B8 !important; -webkit-text-fill-color:#94A3B8 !important; }
+    .nxc-icon-upload-label { background:#F8FAFC !important; border:1px dashed #CBD5E1 !important; color:#475569 !important; }
+    .nxc-color { border-color:#E2E8F0 !important; }
+    .nxc-preset { border-color:#E2E8F0 !important; }
+    .nxc-toggle-row { gap:0 !important; padding:4px !important; background:#F1F5F9 !important; border-radius:12px !important; border:1px solid #E2E8F0 !important; }
+    .nxc-toggle { color:#64748B !important; border:none !important; }
+    .nxc-toggle.active { background:#ffffff !important; color:#00B894 !important; box-shadow:0 2px 8px rgba(15,23,42,0.05) !important; border-radius:8px !important; border:none !important; }
+    .nx-sep-line { border-top:1px solid #E2E8F0 !important; }
+    .nxc-phone { transition:none !important; }
+    @media (min-width: 768px) {
+      .nx-title-single { white-space: nowrap !important; }
+    }
+
+    /* Balance de Grid */
+    .nxc-grid { grid-template-columns: 440px 1fr !important; gap: 80px !important; max-width: 1040px !important; margin: 0 auto !important; align-items: flex-start !important; }
+    @media (max-width: 900px) {
+      .nxc-grid { grid-template-columns: 1fr !important; }
+    }
+      </style>
+      <div style="text-align:center;margin-bottom:60px;" class="nx-fade-up">
+        <h2 class="nx-title" style="margin:0 auto 20px;max-width:600px;font-size:clamp(2.25rem,4vw,3.5rem);color:#0F172A;line-height:1.15;">Your brand. <strong>Our technology.</strong></h2>
+        <p class="nx-desc" style="margin:0 auto;text-align:center;max-width:800px;font-size:1.1rem;color:#475569;">Nexa fully adapts to your company's visual identity. Your users will never know there is a fluX engine behind it — they only see your brand in action.</p>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:24px; margin: 60px auto; max-width:1080px; text-align:left;">
+          
+          <div style="background:#ffffff; border:1px solid #E2E8F0; padding:24px; border-radius:16px; box-shadow:0 4px 20px rgba(15,23,42,0.03); transition:transform 0.3s; cursor:default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(0,184,148,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+            </div>
+            <h3 style="font-size:1.125rem; color:#0F172A; font-weight:600; margin-bottom:8px;">Absolute Identity</h3>
+            <p style="font-size:0.875rem; color:#475569; line-height:1.6; margin:0;">Your app features your name, your logo, and your colors. Your users interact with you, not a third party.</p>
+          </div>
+
+          <div style="background:#ffffff; border:1px solid #E2E8F0; padding:24px; border-radius:16px; box-shadow:0 4px 20px rgba(15,23,42,0.03); transition:transform 0.3s; cursor:default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(37,99,235,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
+            <h3 style="font-size:1.125rem; color:#0F172A; font-weight:600; margin-bottom:8px;">Modular Ecosystem</h3>
+            <p style="font-size:0.875rem; color:#475569; line-height:1.6; margin:0;">Enable only the services your business needs, from bill payments to transit card recharges.</p>
+          </div>
+
+          <div style="background:#ffffff; border:1px solid #E2E8F0; padding:24px; border-radius:16px; box-shadow:0 4px 20px rgba(15,23,42,0.03); transition:transform 0.3s; cursor:default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(245,158,11,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h3 style="font-size:1.125rem; color:#0F172A; font-weight:600; margin-bottom:8px;">Time-to-Market</h3>
+            <p style="font-size:0.875rem; color:#475569; line-height:1.6; margin:0;">No months of development or high engineering costs. Ready-to-go technology to go live fast.</p>
+          </div>
+
+          <div style="background:#ffffff; border:1px solid #E2E8F0; padding:24px; border-radius:16px; box-shadow:0 4px 20px rgba(15,23,42,0.03); transition:transform 0.3s; cursor:default;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(0,184,148,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+            </div>
+            <h3 style="font-size:1.125rem; color:#0F172A; font-weight:600; margin-bottom:8px;">Bank-Grade Security</h3>
+            <p style="font-size:0.875rem; color:#475569; line-height:1.6; margin:0;">Automated reconciliation, ISO 27001 security, and built-in real-time processing.</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="nxc-grid">
+        <div class="nxc-controls nx-slide-left">
+          <div class="nxc-field">
+            <label class="nxc-label">Your Brand Name</label>
+            <input class="nxc-input" id="nxc-brand" type="text" placeholder="My company" maxlength="24" autocomplete="off">
+          </div>
+          <div class="nxc-field">
+            <label class="nxc-label">Service Name</label>
+            <input class="nxc-input" id="nxc-service" type="text" placeholder="e.g., Electricity, Water..." maxlength="24" autocomplete="off">
+          </div>
+          <div class="nxc-field">
+            <label class="nxc-label">Brand Icon</label>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div id="nxc-icon-preview" style="width:44px;height:44px;border-radius:12px;background:#00B894;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;overflow:hidden;flex-shrink:0;">N</div>
+              <label class="nxc-icon-upload-label" style="flex:1;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;cursor:pointer;transition:border-color 0.2s;font-size:0.8125rem;color:#64748B;" onmouseover="this.style.borderColor='rgba(0,184,148,0.5)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span id="nxc-icon-label">Upload Icon (PNG, SVG)</span>
+                <input type="file" id="nxc-icon-file" accept="image/*,.svg" style="display:none;" onchange="handleIconUpload(event)">
+              </label>
+            </div>
+          </div>
+          <div class="nxc-field">
+            <label class="nxc-label">Primary Color</label>
+            <div class="nxc-color-row">
+              <input class="nxc-color" id="nxc-color1" type="color" value="#00B894">
+              <div class="nxc-color-presets">
+                <div class="nxc-preset" data-target="nxc-color1" style="background:#00B894;"></div>
+                <div class="nxc-preset" data-target="nxc-color1" style="background:#E63946;"></div>
+                <div class="nxc-preset" data-target="nxc-color1" style="background:#F59E0B;"></div>
+                <div class="nxc-preset" data-target="nxc-color1" style="background:#8B5CF6;"></div>
+                <div class="nxc-preset" data-target="nxc-color1" style="background:#0EA5E9;"></div>
+                <div class="nxc-preset" data-target="nxc-color1" style="background:#EC4899;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="nxc-field">
+            <label class="nxc-label">Screen Mode</label>
+            <div class="nxc-toggle-row">
+              <button class="nxc-toggle" id="nxc-dark-btn" onclick="setMode('dark')" style="display:flex;align-items:center;justify-content:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> Dark
+              </button>
+              <button class="nxc-toggle active" id="nxc-light-btn" onclick="setMode('light')" style="display:flex;align-items:center;justify-content:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg> Light
+              </button>
+            </div>
+          </div>
+          <div class="nx-sep-line" style="margin-top:32px;padding-top:24px;">
+            <p style="font-size:0.8125rem;color:#475569;margin-bottom:20px;line-height:1.6;">Like what you see? Let's talk and get it ready for your company.</p>
+            <button class="btn-nx-primary" onclick="openModal()" style="width:100%;justify-content:center;display:flex;">I want to launch this &rarr;</button>
+          </div>
+        </div>
+        <div class="nxc-preview">
+          <div class="nxc-phone light-mode" id="nxc-phone">
+            <div class="nxc-status">
+              <span>9:41</span>
+              <div style="display:flex;gap:4px;align-items:center;">
+                <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><rect x="0" y="3" width="2" height="7" rx="0.5" fill="currentColor" opacity="0.5"/><rect x="3" y="2" width="2" height="8" rx="0.5" fill="currentColor" opacity="0.7"/><rect x="6" y="0" width="2" height="10" rx="0.5" fill="currentColor"/><rect x="9" y="1" width="2" height="9" rx="0.5" fill="currentColor"/></svg>
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0.5" y="0.5" width="11" height="9" rx="1.5" stroke="currentColor" opacity="0.5"/><rect x="2" y="2" width="7" height="6" rx="0.5" fill="currentColor"/><rect x="12" y="3.5" width="1.5" height="3" rx="0.5" fill="currentColor" opacity="0.4"/></svg>
+              </div>
+            </div>
+            <div class="nxc-app-header">
+              <div class="nxc-app-logo" id="nxc-app-logo">N</div>
+              <div>
+                <div class="nxc-app-brand" id="nxc-app-brand">Nexa</div>
+                <div class="nxc-app-sub">Financial ecosystem</div>
+              </div>
+            </div>
+            <div class="nxc-bill-card" id="nxc-bill-card">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+                <div>
+                  <div class="nxc-bill-name">Service</div>
+                  <div class="nxc-bill-company" id="nxc-bill-brand">Nexa</div>
+                </div>
+                <div class="nxc-bill-logo" id="nxc-bill-logo">N</div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+                <div>
+                  <div class="nxc-bill-lbl">Amount to pay</div>
+                  <div class="nxc-bill-amt" id="nxc-bill-amt">$45,200</div>
+                </div>
+                <div style="text-align:right;">
+                  <div class="nxc-bill-lbl">Due Date</div>
+                  <div class="nxc-bill-due">May 18</div>
+                </div>
+              </div>
+            </div>
+            <div class="nxc-eco-label"><span id="nxc-eco-brand">NEXA</span> ECOSYSTEM</div>
+            <div class="nxc-eco-grid">
+              <div class="nxc-eco-item">
+                <div class="nxc-eco-icon" id="nxc-eco-icon-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div class="nxc-eco-txt">Contact</div>
+              </div>
+              <div class="nxc-eco-item">
+                <div class="nxc-eco-icon" id="nxc-eco-icon-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+                <div class="nxc-eco-txt">News</div>
+              </div>
+              <div class="nxc-eco-item">
+                <div class="nxc-eco-icon" id="nxc-eco-icon-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+                <div class="nxc-eco-txt">Alerts</div>
+              </div>
+            </div>
+            <div class="nxc-chart-box">
+              <div class="nxc-chart-title">Consumption History</div>
+              <svg viewBox="0 0 220 90" class="nxc-chart-svg">
+                <defs>
+                  <linearGradient id="nxc-area-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" id="nxc-grad-top" stop-color="#00B894" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#00B894" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <polygon id="nxc-chart-area" points="10,62 55,38 110,18 165,28 210,66 210,75 10,75" fill="url(#nxc-area-grad)"/>
+                <polyline id="nxc-chart-line" points="10,62 55,38 110,18 165,28 210,66" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle id="nxc-chart-dot" cx="110" cy="18" r="4" fill="#00B894"/>
+                <circle id="nxc-chart-dot-ring" cx="110" cy="18" r="7" fill="#00B894" fill-opacity="0.2"/>
+                <text x="8"   y="86" font-size="8.5" fill="#64748B">Jan</text>
+                <text x="50"  y="86" font-size="8.5" fill="#64748B">Feb</text>
+                <text x="103" y="86" font-size="8.5" fill="#64748B">Mar</text>
+                <text x="157" y="86" font-size="8.5" fill="#64748B">Apr</text>
+                <text x="203" y="86" font-size="8.5" fill="#64748B">May</text>
+              </svg>
+            </div>
+            <button class="nxc-pay-btn" id="nxc-pay-btn">Pay $45,200 &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POWERED BY FLUX -->
+  <section class="nx-section-dark">
+    <div class="nx-container">
+      <div class="nx-section-header nx-fade-up" style="margin-bottom:0;">
+        <div class="nx-label">The Infrastructure</div>
+        <h2 class="nx-title nx-title-dark">Backed by<br><strong>the full power of fluX</strong></h2>
+        <p class="nx-desc nx-desc-dark" style="margin:0 auto;text-align:center;">Nexa runs on the transactional infrastructure that powers the movement of funds for the country's most demanding enterprises.</p>
+      </div>
+      <div class="nx-powered-grid">
+        <div class="nx-powered-card">
+          <div class="nx-powered-icon" style="background:rgba(0,184,148,0.1);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="nx-powered-title">Real-Time Collection</div>
+          <p class="nx-powered-desc">Every payment processed instantly, without intermediaries or delays.</p>
+        </div>
+        <div class="nx-powered-card">
+          <div class="nx-powered-icon" style="background:rgba(37,99,235,0.12);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4C8EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M16 12H8"/><path d="M12 8l-4 4 4 4"/></svg></div>
+          <div class="nx-powered-title">Automated Reconciliation</div>
+          <p class="nx-powered-desc">Every transaction balanced to the cent. No manual labor.</p>
+        </div>
+        <div class="nx-powered-card">
+          <div class="nx-powered-icon" style="background:rgba(0,184,148,0.1);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-5"/></svg></div>
+          <div class="nx-powered-title">Business Intelligence</div>
+          <p class="nx-powered-desc">Real-time data to make decisions, not just reports.</p>
+        </div>
+        <div class="nx-powered-card">
+          <div class="nx-powered-icon" style="background:rgba(37,99,235,0.12);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4C8EF7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="nx-powered-title">ISO 27001 · PCI DSS</div>
+          <p class="nx-powered-desc">Bank-grade security. Certified. Non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer footer-light">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Start flowing</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="cobranza.html">Collection</a></li>
+            <li><a href="dispersion.html">Disbursements</a></li>
+            <li><a href="conciliacion.html">Reconciliation</a></li>
+            <li><a href="bi.html">BI Capabilities</a></li>
+            <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Soon)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="../../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Integration Guides</a></li>
+            <li><a href="#" class="disabled-link">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+        <img src="../../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main" style="height: 36px; width: auto;">
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <img src="../../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Security</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      <div class="modal-header">
+        <h2>Discover Nexa</h2>
+        <p>We'll show you how it looks with your brand in under 15 minutes</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Full name" required>
+          <input type="email" name="email" placeholder="Corporate email" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Company" required>
+          <select name="pais" required>
+            <option value="">Country</option>
+            <option value="CO">Colombia</option>
+            <option value="MX" selected>Mexico</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="tel" name="telefono" placeholder="Phone (optional)">
+          <select name="necesidad" required>
+            <option value="">What are you evaluating?</option>
+            <option value="nexa-nuevo">I want to launch a custom-branded app</option>
+            <option value="nexa-upgrade">I have an app and want to modernize it</option>
+            <option value="nexa-flux">I'm interested in the entire fluX ecosystem</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top:24px;width:100%;padding:16px;">Book the demo &rarr;</button>
+        <p class="legal-text">By submitting, you agree to our <a href="../../politica-privacidad.html">privacy policy</a>.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../../js/main.js"></script>
+  <script src="../../js/modal.js"></script>
+  <script>
+    (function() {
+      var title = document.getElementById('nx-hero-title');
+      if (!title) return;
+      var idx = 0;
+      // Wrap plain text nodes word by word; treat <strong>/<em> as one unit
+      function processNode(node) {
+        if (node.nodeType === 3) {
+          var words = node.textContent.split(/(\s+)/);
+          var frag = document.createDocumentFragment();
+          words.forEach(function(w) {
+            if (/\S/.test(w)) {
+              var sp = document.createElement('span');
+              sp.className = 'nx-word';
+              sp.textContent = w;
+              sp.dataset.idx = idx++;
+              frag.appendChild(sp);
+            } else if (w) {
+              frag.appendChild(document.createTextNode(w));
+            }
+          });
+          node.parentNode.replaceChild(frag, node);
+        } else if (node.nodeType === 1) {
+          if (node.tagName === 'STRONG' || node.tagName === 'EM') {
+            // Animate the whole element as one word-unit, preserving gradient
+            node.classList.add('nx-word');
+            node.dataset.idx = idx++;
+          } else if (node.tagName !== 'BR') {
+            Array.from(node.childNodes).forEach(processNode);
+          }
+        }
+      }
+      Array.from(title.childNodes).forEach(processNode);
+      title.querySelectorAll('.nx-word').forEach(function(w, i) {
+        setTimeout(function() { w.classList.add('visible'); }, 100 + i * 100);
+      });
+    })();
+
+    setTimeout(function() {
+      var line = document.getElementById('nx-title-line');
+      if (line) line.classList.add('visible');
+    }, 800);
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.nx-fade-up, .nx-slide-left, .nx-slide-right, .nx-feat-card, .nx-powered-card').forEach(function(el) { io.observe(el); });
+    document.querySelectorAll('.nx-feat-card').forEach(function(c, i) { c.style.transitionDelay = (i * 0.08) + 's'; });
+    document.querySelectorAll('.nx-powered-card').forEach(function(c, i) { c.style.transitionDelay = (i * 0.1) + 's'; });
+    document.querySelectorAll('.nx-hero .nx-fade-up').forEach(function(el) { setTimeout(function() { el.classList.add('visible'); }, 200); });
+
+    function animateCounter(el, target, prefix, suffix, duration) {
+      var start = performance.now();
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        el.textContent = (prefix || '') + Math.round(easeOut(progress) * target) + (suffix || '');
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    var statsObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.querySelectorAll('[data-count]').forEach(function(v) {
+          animateCounter(v, parseInt(v.dataset.count), v.dataset.prefix || '', v.dataset.suffix || '', 2200);
+        });
+        statsObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+    var statsEl = document.querySelector('.nx-stats');
+    if (statsEl) statsObs.observe(statsEl);
+
+    var brandMode = 'light';
+    window.nxcIconDataUrl = null;
+
+    function handleIconUpload(event) {
+      var file = event.target.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        window.nxcIconDataUrl = e.target.result;
+        var preview = document.getElementById('nxc-icon-preview');
+        preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">';
+        var appLogo = document.getElementById('nxc-app-logo');
+        var billLogo = document.getElementById('nxc-bill-logo');
+        appLogo.innerHTML = '<img src="' + e.target.result + '" style="width:28px;height:28px;object-fit:contain;">';
+        billLogo.innerHTML = '<img src="' + e.target.result + '" style="width:28px;height:28px;object-fit:contain;">';
+        appLogo.style.background = 'transparent';
+        billLogo.style.background = 'transparent';
+        document.getElementById('nxc-icon-label').textContent = file.name.length > 18 ? file.name.slice(0,16)+'...' : file.name;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updatePreview() {
+      var brand  = document.getElementById('nxc-brand').value || 'Nexa';
+      var color1 = document.getElementById('nxc-color1').value;
+      var serviceName = document.getElementById('nxc-service') ? (document.getElementById('nxc-service').value || 'Service') : 'Service';
+      var phone  = document.getElementById('nxc-phone');
+
+      phone.className = 'nxc-phone ' + (brandMode === 'dark' ? 'dark-mode' : 'light-mode');
+
+      var initial = brand.charAt(0).toUpperCase();
+      document.getElementById('nxc-app-brand').textContent  = brand;
+      document.getElementById('nxc-bill-brand').textContent = brand;
+      document.getElementById('nxc-eco-brand').textContent  = brand.toUpperCase();
+      if (!window.nxcIconDataUrl) {
+        document.getElementById('nxc-app-logo').textContent   = initial;
+        document.getElementById('nxc-bill-logo').textContent  = initial;
+      }
+      if (!window.nxcIconDataUrl) {
+        document.getElementById('nxc-app-logo').style.background  = color1;
+        document.getElementById('nxc-bill-logo').style.background = color1;
+      }
+      document.getElementById('nxc-pay-btn').style.background   = color1;
+      document.getElementById('nxc-pay-btn').style.boxShadow    = '0 4px 20px ' + color1 + '55';
+      document.getElementById('nxc-bill-amt').style.color       = color1;
+      var billNameEl = document.querySelector('.nxc-bill-name'); if (billNameEl) billNameEl.textContent = serviceName;
+
+      ['nxc-eco-icon-1', 'nxc-eco-icon-2', 'nxc-eco-icon-3'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) { el.style.background = color1 + '22'; el.style.color = color1; }
+      });
+
+      document.getElementById('nxc-chart-line').setAttribute('stroke', color1);
+      document.getElementById('nxc-chart-dot').setAttribute('fill', color1);
+      document.getElementById('nxc-chart-dot-ring').setAttribute('fill', color1);
+      document.getElementById('nxc-grad-top').setAttribute('stop-color', color1);
+      // Icon preview bg: solid color if no icon uploaded
+      if (!window.nxcIconDataUrl) {
+        document.getElementById('nxc-icon-preview').style.background = color1;
+      }
+    }
+
+    function setMode(mode) {
+      brandMode = mode;
+      document.getElementById('nxc-dark-btn').classList.toggle('active', mode === 'dark');
+      document.getElementById('nxc-light-btn').classList.toggle('active', mode === 'light');
+      updatePreview();
+    }
+
+    document.getElementById('nxc-brand').addEventListener('input', updatePreview);
+    document.getElementById('nxc-color1').addEventListener('input', updatePreview);
+    var svcInput = document.getElementById('nxc-service');
+    if (svcInput) svcInput.addEventListener('input', updatePreview);
+
+    document.querySelectorAll('.nxc-preset').forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = canvas.height = 1;
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = dot.style.background;
+        ctx.fillRect(0, 0, 1, 1);
+        var d = ctx.getImageData(0, 0, 1, 1).data;
+        var hex = '#' + [d[0], d[1], d[2]].map(function(x) { return x.toString(16).padStart(2, '0'); }).join('');
+        document.getElementById(dot.dataset.target).value = hex;
+        updatePreview();
+      });
+    });
+
+    updatePreview();
+  </script>
+
+  <script>
+    // Global Mobile Menu Logic
+    
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      
+      // Cerrar otros si queremos (opcional, aquí permitimos abrir múltiples)
+      
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px"; // 16 por el margin top simulado
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    // Backward compatibility
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+  <script>
+    // Panel Navigation Logic
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    // Override toggleMenu to reset panels on close
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         // Reset panels when closing
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+  </script>
+
+</body>
+</html>

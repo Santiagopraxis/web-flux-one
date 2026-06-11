@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX One — Automated Reconciliation</title>
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v68">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One">
+      </a>
+      
+      <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Products <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>NEXT-GENERATION INFRASTRUCTURE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="recaudo.html">Collection</a></li>
+                  <li><a href="dispersion.html">Disbursements</a></li>
+                  <li><a href="conciliacion.html">Reconciliation</a></li>
+                  <li><a href="bi.html">BI Capabilities</a></li>
+                  <li><a href="nexa.html" style="pointer-events: none; opacity: 0.5;">Nexa (Coming Soon)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="../developers.html">Developers</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Resources <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>KNOWLEDGE & SUPPORT</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RESOURCES</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <!-- COUNTRY SELECTOR -->
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO" id="current-flag-img"> <span id="current-country-text">Col</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="index.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="mx.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
+          </ul>
+        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">EN</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="../co/conciliacion.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="#"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Log in</button>
+        <button class="btn-primary hide-mobile" onclick="openModal()">Start today</button>
+        
+        <!-- Hamburger Menu — 3 lines for proper X animation -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+      <!-- MOBILE OVERLAY MENU (DRILL-DOWN) -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <a href="index.html" style="display: flex; align-items: center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+      </div>
+      
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          
+          <!-- PANEL 1: MAIN MENU -->
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Home</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Products <span class="drilldown-arrow">›</span>
+              </button>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Resources <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Developers</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Contact</a>
+            </nav>
+            
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Log in</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Start today</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="../co/conciliacion.html">ES</a>
+                <span class="divider">|</span>
+                <a href="#" class="active">EN</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Back</button>
+              <div class="panel-title">Products</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="recaudo.html" class="mobile-link" onclick="toggleMenu()">Smart Collection</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Automatic Disbursements</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Real-Time Reconciliation</a>
+              <a href="bi.html" class="mobile-link" onclick="toggleMenu()">BI Capabilities</a>
+              <a href="nexa.html" class="mobile-link" style="pointer-events: none; opacity: 0.5;" onclick="toggleMenu()">Nexa (Coming Soon)</a>
+            </nav>
+          </div>
+
+          <!-- PANEL 3: RECURSOS -->
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Back</button>
+              <div class="panel-title">Resources</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">FAQ</a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero hero-gradient" id="hero">
+    <div class="product-hero-bg bg-conciliacion"></div>
+    <div class="container">
+      <div class="hero-content hero-grid">
+        <div class="hero-text-col">
+          <div class="badge-new sr fade-in" style="display:inline-block; margin-bottom: 24px;">PRODUCT: RECONCILIATION</div>
+          <h1 class="hero-title sr fade-in delay-2">It's 11:00 PM on the 30th.<br><span class="text-grad">The numbers match.</span></h1>
+          <p class="hero-desc sr fade-in delay-3">They have been matching all month. Real-time ledger. Every peso identified instantly. No Excel. No month-end surprises.</p>
+          
+          <div class="hero-actions sr fade-in delay-4">
+            <button class="btn-primary" onclick="openModal()">Schedule a demo →</button>
+          </div>
+        </div>
+        <div class="hero-graphic-col sr hero-video-reveal delay-3">
+          <video src="../assets/videos/co/dashboard.mp4" autoplay muted playsinline class="showcase-video"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN NÚMEROS -->
+  <section class="section-light" style="padding: 60px 0; background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container">
+      <div class="stats-grid-2x2">
+        <div class="stat-card sr fade-in">
+          <h2 style="font-size: clamp(32px, 6vw, 64px); font-weight: 200; background: var(--flux-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">100%</h2>
+          <p style="color: var(--flux-gray-700); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; font-weight: 600; margin-top: 8px; text-align: center;">automatic match</p>
+        </div>
+        <div class="stat-card sr fade-in d1">
+          <h2 style="font-size: clamp(32px, 6vw, 64px); font-weight: 200; background: var(--flux-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">1.2s</h2>
+          <p style="color: var(--flux-gray-700); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; font-weight: 600; margin-top: 8px; text-align: center;">per transaction</p>
+        </div>
+        <div class="stat-card sr fade-in d2">
+          <h2 style="font-size: clamp(32px, 6vw, 64px); font-weight: 200; background: var(--flux-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">0</h2>
+          <p style="color: var(--flux-gray-700); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; font-weight: 600; margin-top: 8px; text-align: center;">manual intervention</p>
+        </div>
+        <div class="stat-card sr fade-in d3">
+          <h2 style="font-size: clamp(32px, 6vw, 64px); font-weight: 200; background: var(--flux-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block;">24/7</h2>
+          <p style="color: var(--flux-gray-700); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; font-weight: 600; margin-top: 8px; text-align: center;">in real time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CÓMO FUNCIONA (Timeline) -->
+  <section class="section-light" style="padding: 100px 0; background: #F8F9FA; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container">
+      <div class="section-header sr fade-in" style="margin-bottom: 60px; text-align: center;">
+        <h2 class="section-title">How reconciliation works</h2>
+        <p class="section-subtitle" style="color: var(--flux-gray-700); max-width: 600px; margin: 20px auto 0; text-align: center;">The real-time reconciliation flow of fluX One.</p>
+      </div>
+      <div style="max-width: 800px; margin: 0 auto; position: relative; padding-left: 40px; border-left: 2px solid rgba(60,184,235,0.2);">
+        <div class="sr fade-in" style="position: relative; margin-bottom: 40px;">
+          <div style="position: absolute; left: -51px; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--flux-primary); border: 4px solid #ffffff; box-shadow: 0 0 10px rgba(60,184,235,0.4);"></div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--flux-dark); margin-bottom: 8px; text-transform: none;">9:12 AM — Transfer</h4>
+          <p style="color: var(--flux-gray-700); font-size: 0.95rem;">A customer transfers $4,520,000. fluX detects it in 1.2 seconds.</p>
+        </div>
+        <div class="sr fade-in d1" style="position: relative; margin-bottom: 40px;">
+          <div style="position: absolute; left: -51px; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--flux-secondary); border: 4px solid #ffffff; box-shadow: 0 0 10px rgba(171,75,150,0.4);"></div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--flux-dark); margin-bottom: 8px; text-transform: none;">Match</h4>
+          <p style="color: var(--flux-gray-700); font-size: 0.95rem;">The system matches the amount with the corresponding invoice. Reconciled. With zero manual effort.</p>
+        </div>
+        <div class="sr fade-in d2" style="position: relative;">
+          <div style="position: absolute; left: -51px; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: var(--flux-tertiary); border: 4px solid #ffffff; box-shadow: 0 0 10px rgba(245,181,210,0.4);"></div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--flux-dark); margin-bottom: 8px; text-transform: none;">Ready</h4>
+          <p style="color: var(--flux-gray-700); font-size: 0.95rem;">An immutable record in the ledger. Your accountant sees it instantly. No calls. No Excel. No doubts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN HISTORIAS -->
+  <section class="section-light" style="padding: 100px 0; background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container">
+      <div class="section-header sr fade-in" style="margin-bottom: 60px; text-align: center;">
+        <h2 class="section-title">fluX in action</h2>
+        <p class="section-subtitle" style="color: var(--flux-gray-700); max-width: 600px; margin: 20px auto 0; text-align: center;">Three ways we transform your business operations.</p>
+      </div>
+      <div class="grid-3 sr fade-in">
+        <div class="card glass-light d1" style="padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(0,0,0,0.06); height: 100%;">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--flux-secondary); letter-spacing: 0.1em; text-transform: uppercase;">Story 01</span>
+            <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--flux-dark); margin: 16px 0 20px; line-height: 1.3; text-transform: none; text-align: left;">Three days a month.</h3>
+            <p style="color: var(--flux-gray-700); font-size: 0.95rem; line-height: 1.6; text-align: left;">Three days a month spent cross-referencing bank statements with invoices in Excel. With fluX, every day is closed before you finish your coffee.</p>
+          </div>
+        </div>
+        <div class="card glass-light d2" style="padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(0,0,0,0.06); height: 100%;">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--flux-secondary); letter-spacing: 0.1em; text-transform: uppercase;">Story 02</span>
+            <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--flux-dark); margin: 16px 0 20px; line-height: 1.3; text-transform: none; text-align: left;">Unique virtual accounts.</h3>
+            <p style="color: var(--flux-gray-700); font-size: 0.95rem; line-height: 1.6; text-align: left;">Hundreds of incoming transfers, but no one knows who they are from. With unique virtual accounts per client, every single peso is automatically identified.</p>
+          </div>
+        </div>
+        <div class="card glass-light d3" style="padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border-color: rgba(0,0,0,0.06); height: 100%;">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--flux-secondary); letter-spacing: 0.1em; text-transform: uppercase;">Story 03</span>
+            <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--flux-dark); margin: 16px 0 20px; line-height: 1.3; text-transform: none; text-align: left;">Audit-ready for the DIAN.</h3>
+            <p style="color: var(--flux-gray-700); font-size: 0.95rem; line-height: 1.6; text-align: left;">The complete history of the year. Ready for the DIAN. Exportable in one click. No searches needed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CASOS DE USO -->
+  <section class="section-light" style="padding: 100px 0; background: #F8F9FA; border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container">
+      <div class="section-header sr fade-in" style="margin-bottom: 60px; text-align: center;">
+        <h2 class="section-title">Use Cases</h2>
+      </div>
+      <div class="grid-3 sr fade-in">
+        <div class="card glass-light d1">
+          <h3 class="card-title">For high-volume companies</h3>
+          <p class="card-desc">Green is reconciled. Red requires attention. No surprises at month-end close.</p>
+        </div>
+        <div class="card glass-light d2">
+          <h3 class="card-title">For businesses with partial payments</h3>
+          <p class="card-desc">Partial payments, overpayments, and credit notes. The engine handles them automatically.</p>
+        </div>
+        <div class="card glass-light d3">
+          <h3 class="card-title">For accounting teams</h3>
+          <p class="card-desc">Month-end close is no longer an extra week. It's just a number on a screen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- CTA FINAL -->
+  <section class="section-light" style="padding: 120px 0; border-top: 1px solid rgba(0,0,0,0.05); position: relative; overflow: hidden;">
+    <img src="../assets/images/backgrounds/footer-waves.png" alt="" class="form-bg-waves">
+    <div class="container sr fade-in" style="position: relative; z-index: 1;">
+      <div class="grid-2" style="align-items: center; gap: 80px;">
+        <div style="text-align: left;">
+          <p style="font-size: 0.875rem; letter-spacing: 0.15em; color: var(--flux-gray-500); margin-bottom: 16px; font-weight: 600;">PSST...</p>
+          <h2 class="section-title sr fade-in" style="margin-bottom: 24px; text-align: left;">What if the numbers always balanced themselves?</h2>
+          <p class="section-subtitle sr fade-in fade-delay-mid" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem; color: var(--flux-gray-700);">Schedule a personalized 15-minute demo. We'll show you how fluX One optimizes your financial operations from day 1.</p>
+          <ul style="list-style: none; padding: 0; color: var(--flux-gray-700); text-align: left;">
+            <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Integration times in days, not months.
+            </li>
+            <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Developer-first API documentation.
+            </li>
+            <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Dedicated local support.
+            </li>
+          </ul>
+        </div>
+        
+        <div class="form-wrapper glass-light d2" style="max-width: 100%; padding: 40px; text-align: left;">
+          <form class="demo-form" onsubmit="submitDemoForm(event)">
+            <input type="hidden" name="pais" value="CO">
+            <input type="text" name="nombre" placeholder="Full name" required style="margin-bottom: 12px;">
+            <input type="email" name="email" placeholder="Corporate email" required style="margin-bottom: 12px;">
+            <input type="text" name="empresa" placeholder="Company" required style="margin-bottom: 12px;">
+            <input type="tel" name="telefono" placeholder="Phone (optional)" style="margin-bottom: 12px;">
+            
+            <div style="margin-bottom: 24px;">
+              <p style="font-size: 0.75rem; color: var(--flux-gray-600); margin-bottom: 12px; letter-spacing: 0.05em; font-weight: 600;">WHAT DO YOU NEED?</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="recaudo"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Collection
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="dispersion"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Disbursements
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="conciliacion" checked style="width: auto; margin: 0; accent-color: var(--flux-primary);"> Reconciliation
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="bi"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> BI
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 100px; cursor: pointer; font-size: 0.8rem; color: var(--flux-gray-700); transition: all 0.2s; background: rgba(0,0,0,0.01);">
+                  <input type="radio" name="necesidad" value="todo"  style="width: auto; margin: 0; accent-color: var(--flux-primary);"> All
+                </label>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 16px;">Schedule a demo →</button>
+          </form>
+          <p class="legal-text" style="color: var(--flux-gray-500); margin-top: 16px; font-size: 0.75rem; text-align: center;">By submitting this form, you accept our <a href="../politica-privacidad.html" style="color: var(--flux-dark);">privacy policy</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer footer-light">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Start flowing</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="recaudo.html">Collection</a></li>
+            <li><a href="dispersion.html">Disbursements</a></li>
+            <li><a href="conciliacion.html">Reconciliation</a></li>
+            <li><a href="bi.html">BI Capabilities</a></li>
+            <li><a href="nexa.html" style="pointer-events: none; opacity: 0.5;">Nexa (Coming Soon)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Developers</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Integration Guides</a></li>
+            <li><a href="#" class="disabled-link">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+        <img src="../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <img src="../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Terms and conditions</a>
+        <a href="#">Privacy Policies</a>
+        <a href="#">Security</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Schedule your fluX demo</h2>
+        <p>We will contact you in less than 24 business hours</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Full name" required>
+          <input type="email" name="email" placeholder="Corporate email" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Company" required>
+          <select name="pais" required>
+            <option value="">Country</option>
+            <option value="CO" selected>Colombia</option>
+            <option value="MX">Mexico</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="tel" name="telefono" placeholder="Phone (optional)">
+          <select name="necesidad" required>
+            <option value="">What do you need?</option>
+            <option value="recaudo">Collection</option>
+            <option value="dispersion">Disbursements</option>
+            <option value="conciliacion" selected>Reconciliation</option>
+            <option value="bi">Business Intelligence</option>
+            <option value="todo">All of the above</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">Submit request →</button>
+        <p class="legal-text">
+          By submitting this form, you accept our <a href="../politica-privacidad.html">privacy policy</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+
+  <script>
+    // Global Mobile Menu Logic
+    
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      
+      // Close others if we want (optional, here we allow opening multiple)
+      
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px"; // 16 for simulated margin top
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    // Backward compatibility
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+
+    <script>
+    // Panel Navigation Logic
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    // Override toggleMenu to reset panels on close
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         // Reset panels when closing
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+    </script>
+
+</body>
+</html>
