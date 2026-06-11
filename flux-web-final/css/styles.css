@@ -1216,64 +1216,37 @@ input:focus, select:focus {
 }
 
 .stat-item {
-  padding: 40px 32px;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.stat-item::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(60, 184, 235, 0.15), transparent);
-  z-index: 1;
+  padding: 0;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
 }
 
 .stat-item:hover {
-  transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(60, 184, 235, 0.25);
-  box-shadow: 0 12px 40px 0 rgba(60, 184, 235, 0.08);
+  transform: translateY(-4px);
 }
 
 .stat-icon-wrapper {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.02);
-  transition: all 0.3s ease;
-}
-
-.stat-item:hover .stat-icon-wrapper {
-  background: rgba(60, 184, 235, 0.05);
-  border-color: rgba(60, 184, 235, 0.2);
-  box-shadow: 0 0 15px rgba(60, 184, 235, 0.15);
+  display: none !important;
 }
 
 .stat-number {
-  font-size: clamp(40px, 4vw, 56px);
+  font-size: clamp(38px, 4.2vw, 54px);
   font-weight: 300;
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 12px;
-  background: var(--flux-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   display: inline-block;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-clip: initial !important;
 }
 
 .stat-caption {
@@ -1318,7 +1291,7 @@ input:focus, select:focus {
     gap: 16px;
   }
   .stat-item {
-    padding: 32px 24px;
+    padding: 12px 0;
   }
 }
 
