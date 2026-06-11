@@ -1278,20 +1278,20 @@ input:focus, select:focus {
   transform: translateY(0);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .stats-grid-impact {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 36px 40px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .stats-grid-impact {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 28px;
   }
   .stat-item {
-    padding: 12px 0;
+    padding: 8px 0;
   }
 }
 
