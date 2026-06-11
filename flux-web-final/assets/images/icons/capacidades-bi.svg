@@ -1,22 +1,16 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#00B894"/>
-      <stop offset="100%" stop-color="#2563EB"/>
+      <stop offset="0%" stop-color="#3CB8EB"/>
+      <stop offset="100%" stop-color="#ab4b96"/>
     </linearGradient>
   </defs>
-  <!-- Monitor frame -->
-  <rect x="3" y="4" width="26" height="18" rx="2" stroke="url(#g)" stroke-width="1.5" fill="none"/>
-  <!-- Stand -->
-  <path d="M12 22V26H20V22" stroke="url(#g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Base -->
-  <path d="M10 26H22" stroke="url(#g)" stroke-width="1.5" stroke-linecap="round"/>
-  <!-- Bar chart inside -->
-  <rect x="7" y="14" width="3" height="4" rx="0.5" stroke="url(#g)" stroke-width="1.5" fill="none"/>
-  <rect x="11.5" y="11" width="3" height="7" rx="0.5" stroke="url(#g)" stroke-width="1.5" fill="none"/>
-  <rect x="16" y="9" width="3" height="9" rx="0.5" stroke="url(#g)" stroke-width="1.5" fill="none"/>
+  <!-- Monitor screen -->
+  <rect x="4" y="6" width="24" height="16" rx="2" stroke="url(#g)" stroke-width="1.75" fill="none"/>
+  <!-- Monitor stand -->
+  <path d="M12 22L10 26H22L20 22" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- Trend line -->
-  <path d="M8 12L13 9L17 10L24 7" stroke="url(#g)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Dot -->
-  <circle cx="24" cy="7" r="1.5" stroke="url(#g)" stroke-width="1.5" fill="none"/>
+  <path d="M8 17L12 13L16 15L23 9.5" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Star/Sparkle (AI prediction) -->
+  <path d="M23 7.5L24 9.5L26 10L24 10.5L23 12.5L22 10.5L20 10L22 9.5L23 7.5Z" fill="url(#g)"/>
 </svg>
