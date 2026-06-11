@@ -105,10 +105,36 @@ function resize() {
   cy = H / 2;
   sc = Math.min(W, H) / 900;
 
+  // Calculate dynamic orbit scale to fit all nodes on screen (width and height)
+  let orbitSc = sc;
+  const margin = 12; // safety margin from screen edges
+  
+  const fs = Math.max(11, 13 * sc);
+  ctx.font = `600 ${fs}px 'Plus Jakarta Sans', system-ui, sans-serif`;
+  const ch = fs + (11 * sc) * 2; // Approximate height of the node box
+  
+  NODES.forEach(n => {
+    const tw = ctx.measureText(n.label).width;
+    const padX = 18 * sc;
+    const cw = tw + padX * 2;
+    
+    // Check width constraint
+    const maxAllowedDistX = W / 2 - cw / 2 - margin;
+    const reqScX = maxAllowedDistX / Math.abs(n.ax);
+    if (reqScX < orbitSc) orbitSc = reqScX;
+    
+    // Check height constraint
+    const maxAllowedDistY = H / 2 - ch / 2 - margin;
+    const reqScY = maxAllowedDistY / Math.abs(n.ay);
+    if (reqScY < orbitSc) orbitSc = reqScY;
+  });
+  
+  orbitSc = Math.max(0.12 * sc, orbitSc); // safety lower bound
+
   nodes = NODES.map((n, i) => ({
     ...n,
-    x:     cx + n.ax * sc,
-    y:     cy + n.ay * sc,
+    x:     cx + n.ax * orbitSc,
+    y:     cy + n.ay * orbitSc,
     phase: (i / NODES.length) * Math.PI * 2,
     bx: 0, by: 0,
   }));
