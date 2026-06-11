@@ -3331,26 +3331,26 @@ section {
     padding: 0 20px !important;
   }
   
-  /* Ajustes de Kickoff Video en móviles (sticky y con animación de zoom) */
-  
+  /* Ajustes de Kickoff Video en móviles (no sticky, sin espacios en blanco) */
+  .kickoff-section {
+    height: auto !important;
+    padding: 60px 0 !important;
+    background: var(--flux-dark);
+  }
   .kickoff-sticky {
-    position: sticky !important;
-    top: 0 !important;
+    position: relative !important;
+    top: auto !important;
     width: 100% !important;
-    height: 100vh !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
   }
   .kickoff-video-wrapper {
-    width: 90% !important;
+    width: 92% !important;
     max-width: 600px !important;
     margin: 0 auto !important;
-    transform-origin: center center !important;
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7) !important;
-    transform: scale(0.85);
-    will-change: transform;
+    transform: none !important;
   }
   .kickoff-custom-cursor {
     display: none !important;
@@ -4011,11 +4011,24 @@ p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
 
 /* ── Ensure footer logo visibility in dark and light modes ── */
 .footer.footer-light .footer-logo-main {
-  filter: none !important;
+  filter: invert(1) brightness(0) !important;
 }
 .footer.footer-light .footer-logo-small {
   filter: none !important;
 }
 .footer:not(.footer-light) .footer-logo-small {
   filter: brightness(0) invert(1) !important;
+}
+
+/* ── Ensure Nexa page navbar logo and selectors are visible ── */
+.nexa-page .navbar .nav-logo img {
+  filter: invert(1) brightness(0) !important;
+}
+.nexa-page .navbar .country-selector > a,
+.nexa-page .navbar .language-selector > a {
+  color: #0F172A !important;
+}
+.nexa-page .navbar .country-selector > a:hover,
+.nexa-page .navbar .language-selector > a:hover {
+  color: #009B7D !important;
 }
