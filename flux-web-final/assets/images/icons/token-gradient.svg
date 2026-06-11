@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3CB8EB"/>
+      <stop offset="100%" stop-color="#ab4b96"/>
+    </linearGradient>
+  </defs>
+  <!-- Padlock body -->
+  <rect x="6" y="13" width="20" height="14" rx="3" stroke="url(#g)" stroke-width="1.75" fill="none"/>
+  <!-- Padlock shackle -->
+  <path d="M10 13V9C10 5.68629 12.6863 3 16 3C19.3137 3 22 5.68629 22 9V13" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Keyhole dot and slot -->
+  <circle cx="16" cy="19" r="1.5" fill="url(#g)"/>
+  <path d="M16 20.5V23" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round"/>
+</svg>

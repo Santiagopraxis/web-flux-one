@@ -174,9 +174,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const fadeStart = 0.3; 
       if (animProgress > fadeStart) {
         const fadeProgress = (animProgress - fadeStart) / 0.5;
-        transitionBg.style.opacity = Math.max(0, 1 - fadeProgress);
+        const opacity = Math.max(0, 1 - fadeProgress);
+        transitionBg.style.opacity = opacity;
+        
+        // Smoothly transition background of parent section from black to white to prevent white leak gap
+        const rgbVal = Math.round((1 - opacity) * 255);
+        brandSection.style.backgroundColor = `rgb(${rgbVal}, ${rgbVal}, ${rgbVal})`;
       } else {
         transitionBg.style.opacity = 1;
+        brandSection.style.backgroundColor = '#000000';
       }
       
       requestAnimationFrame(updatePortal);
@@ -285,5 +291,186 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { rootMargin: "0px 0px -10% 0px" });
 
       typewriterElements.forEach(el => typeObserver.observe(el));
+    }
+
+    // ── Video Modal para mobile ──────────────────────────────────────────────
+    // En iOS/Android NO usamos la API nativa de fullscreen porque causa zoom
+    // extremo. En su lugar mostramos el video en un modal CSS propio.
+    const isIOS    = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isMobile = isIOS || /Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 1024;
+
+    // Crear el overlay del modal una sola vez
+    if (!document.getElementById('video-modal-overlay')) {
+      const overlay = document.createElement('div');
+      overlay.id = 'video-modal-overlay';
+      overlay.innerHTML = [
+        '<div id="video-modal-inner">',
+        '  <button id="video-modal-close" aria-label="Cerrar">&#x2715;</button>',
+        '  <video id="video-modal-player" controls playsinline></video>',
+        '</div>'
+      ].join('');
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay || e.target.id === 'video-modal-close') {
+          closeVideoModal();
+        }
+      });
+    }
+
+    function openVideoModal(src) {
+      var overlay = document.getElementById('video-modal-overlay');
+      var player  = document.getElementById('video-modal-player');
+      player.src = src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      player.play().catch(function() {});
+    }
+
+    function closeVideoModal() {
+      var overlay = document.getElementById('video-modal-overlay');
+      var player  = document.getElementById('video-modal-player');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      player.pause();
+      player.src = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+
+    document.querySelectorAll('.showcase-video').forEach(function(video) {
+      if (isMobile) {
+        video.style.cursor = 'zoom-in';
+        video.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openVideoModal(video.src || video.currentSrc);
+        });
+      } else {
+        video.style.cursor = 'pointer';
+        video.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+          }
+        });
+      }
+    });
+
+    // ── Vimeo Modal (Kickoff Video) ───────────────────────────────────────────
+    window.openVimeoModal = function(vimeoId) {
+      let overlay = document.getElementById('vimeo-modal-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'vimeo-modal-overlay';
+        overlay.innerHTML = [
+          '<div id="vimeo-modal-inner">',
+          '  <button id="vimeo-modal-close" aria-label="Cerrar">&#x2715;</button>',
+          '  <div id="vimeo-modal-iframe-container" style="position:relative; width:100%; height:0; padding-top:56.25%;"></div>',
+          '</div>'
+        ].join('');
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay || e.target.id === 'vimeo-modal-close') {
+            window.closeVimeoModal();
+          }
+        });
+        
+        // Escape key to close
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') window.closeVimeoModal();
+        });
+      }
+
+      const container = document.getElementById('vimeo-modal-iframe-container');
+      container.innerHTML = '<iframe src="https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;" title="Vimeo Player"></iframe>';
+      
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeVimeoModal = function() {
+      const overlay = document.getElementById('vimeo-modal-overlay');
+      if (overlay) {
+        overlay.classList.remove('active');
+        const container = document.getElementById('vimeo-modal-iframe-container');
+        if (container) container.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+    };
+
+    // ── Highlight Active Page & Auto-Open Subpanel in Mobile Menu ──
+    const currentPath = window.location.pathname;
+    const currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+    
+    // Highlight Active Page in Desktop Nav Menu
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref) {
+        const linkFile = linkHref.substring(linkHref.lastIndexOf('/') + 1);
+        if (linkFile === currentFile && currentFile !== 'index.html' && currentFile !== '') {
+          link.classList.add('active-nav-link');
+          link.style.fontWeight = '700'; // bold active link
+          link.style.color = 'var(--cyan, #3CB8EB)'; // brand cyan color
+          
+          // Also highlight the parent dropdown trigger (Productos, Recursos)
+          const dropdownParent = link.closest('.dropdown');
+          if (dropdownParent) {
+            const parentTrigger = dropdownParent.querySelector('a');
+            if (parentTrigger) {
+              parentTrigger.classList.add('active-parent-link');
+              parentTrigger.style.fontWeight = '700';
+              parentTrigger.style.color = '#ffffff'; // Ensure white text for parent Category
+            }
+          }
+        }
+      }
+    });
+
+    let activePanelId = null;
+
+    document.querySelectorAll('.mobile-menu-overlay a').forEach(link => {
+      const linkHref = link.getAttribute('href');
+      if (linkHref) {
+        const linkFile = linkHref.substring(linkHref.lastIndexOf('/') + 1);
+        if (linkFile === currentFile) {
+          link.classList.add('active-mobile-link');
+          link.style.fontWeight = '700'; // bold active link
+          link.style.color = 'var(--cyan, #3CB8EB)'; // brand cyan color
+          
+          // Find parent sub-panel
+          const parentPanel = link.closest('.menu-panel');
+          if (parentPanel && parentPanel.id !== 'panel-main') {
+            activePanelId = parentPanel.id;
+          }
+        }
+      }
+    });
+
+    // Automatically transition to the active sub-panel when mobile menu overlay is opened
+    const mobMenu = document.getElementById('mobile-menu');
+    if (mobMenu && activePanelId) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            const isActive = mobMenu.classList.contains('active');
+            if (isActive) {
+              const mainPanel = document.getElementById('panel-main');
+              const subPanel = document.getElementById(activePanelId);
+              if (mainPanel && subPanel) {
+                mainPanel.classList.add('slide-out');
+                subPanel.classList.add('active');
+              }
+            }
+          }
+        });
+      });
+      observer.observe(mobMenu, { attributes: true });
     }
 });

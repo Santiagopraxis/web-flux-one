@@ -1,17 +1,16 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#41bcd2"/>
-      <stop offset="50%" stop-color="#ab4b96"/>
-      <stop offset="100%" stop-color="#f5b5d2"/>
+      <stop offset="0%" stop-color="#3CB8EB"/>
+      <stop offset="100%" stop-color="#ab4b96"/>
     </linearGradient>
   </defs>
+  <!-- Card or document peeking out -->
+  <path d="M9 10V6C9 5.44772 9.44772 5 10 5H22C22.5523 5 23 5.44772 23 6V10" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- Wallet body -->
-  <rect x="4" y="10" width="24" height="18" rx="3" stroke="url(#g)" stroke-width="1.5" fill="none"/>
-  <!-- Wallet flap -->
-  <path d="M4 14V9C4 7.34 5.34 6 7 6H25C26.66 6 28 7.34 28 9V14" stroke="url(#g)" stroke-width="1.5" fill="none"/>
-  <!-- Coin slot -->
-  <circle cx="22" cy="19" r="3" stroke="url(#g)" stroke-width="1.5" fill="none"/>
-  <!-- Dollar sign -->
-  <path d="M22 17.5V20.5M21 18.5H23M21 19.5H23" stroke="url(#g)" stroke-width="1" stroke-linecap="round"/>
+  <rect x="5" y="10" width="22" height="17" rx="3" stroke="url(#g)" stroke-width="1.75" fill="none"/>
+  <!-- Flap -->
+  <path d="M20 18.5H25C26.1046 18.5 27 17.6046 27 16.5V16.5C27 15.3954 26.1046 14.5 25 14.5H20C18.8954 14.5 18 15.3954 18 16.5V16.5C18 17.6046 18.8954 18.5 20 18.5Z" stroke="url(#g)" stroke-width="1.75" fill="none"/>
+  <!-- Flap lock circle -->
+  <circle cx="21" cy="16.5" r="1.25" fill="url(#g)"/>
 </svg>

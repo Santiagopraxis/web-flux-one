@@ -1,0 +1,17 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3CB8EB"/>
+      <stop offset="100%" stop-color="#ab4b96"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer circular arrows representing cycle -->
+  <path d="M26 12C24.8 8.5 21.5 6 17.5 6C12.5 6 8.3 9.7 7.6 14.5" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6 18C7.2 21.5 10.5 24 14.5 24C19.5 24 23.7 20.3 24.4 15.5" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrowheads -->
+  <path d="M22 12H26V8" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 18H6V22" stroke="url(#g)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Calendar in the center representing recurrent -->
+  <rect x="11" y="11" width="10" height="10" rx="1.5" stroke="url(#g)" stroke-width="1.5"/>
+  <path d="M14 11V13M18 11V13" stroke="url(#g)" stroke-width="1.5"/>
+</svg>
