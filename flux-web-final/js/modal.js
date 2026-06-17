@@ -43,3 +43,38 @@ document.addEventListener('keydown', function(e) {
     closeModal();
   }
 });
+
+
+// Dynamic language and country options for "Que necesitas" select in modal
+document.addEventListener('DOMContentLoaded', function() {
+  const modalForm = document.getElementById('modal-demo-form');
+  if (modalForm) {
+    const paisSelect = modalForm.querySelector('select[name="pais"]');
+    const necesidadSelect = modalForm.querySelector('select[name="necesidad"]');
+    
+    if (paisSelect && necesidadSelect) {
+      function updateNecesidadOptions() {
+        const country = paisSelect.value;
+        const isEnglish = document.documentElement.lang === 'en';
+        
+        // Find the collection option (it could have value 'recaudo' or 'cobranza')
+        let collectionOption = Array.from(necesidadSelect.options).find(opt => opt.value === 'recaudo' || opt.value === 'cobranza');
+        
+        if (collectionOption) {
+          if (country === 'MX') {
+            collectionOption.value = 'cobranza';
+            collectionOption.textContent = isEnglish ? 'Collection' : 'Cobranza';
+          } else {
+            // Default to CO / recaudo
+            collectionOption.value = 'recaudo';
+            collectionOption.textContent = isEnglish ? 'Collection' : 'Recaudo';
+          }
+        }
+      }
+      
+      paisSelect.addEventListener('change', updateNecesidadOptions);
+      // Run once on load to sync initial state
+      updateNecesidadOptions();
+    }
+  }
+});
