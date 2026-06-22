@@ -4054,3 +4054,96 @@ p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
 .nexa-page .navbar .language-selector > a:hover {
   color: #009B7D !important;
 }
+
+/* ── Smart Light Navbar Theme (Theme-Aware Sticky Navbar) ── */
+.navbar.scrolled-light {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Link Colors */
+.navbar.scrolled-light .nav-menu > li > a,
+.navbar.scrolled-light .nav-actions .btn-text {
+  color: #050508 !important;
+}
+.navbar.scrolled-light .nav-menu > li > a:hover,
+.navbar.scrolled-light .nav-actions .btn-text:hover {
+  color: var(--cyan, #3CB8EB) !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Active Link Casing & Style */
+.navbar.scrolled-light .nav-menu > li > a.active {
+  color: var(--cyan, #3CB8EB) !important;
+  font-weight: 700 !important;
+}
+
+/* Mega Menu / Dropdown Triggers */
+.navbar.scrolled-light .nav-menu > li.dropdown > a span {
+  color: #050508 !important;
+}
+
+/* Language and Country selectors */
+.navbar.scrolled-light .country-selector > a,
+.navbar.scrolled-light .language-selector > a {
+  color: #050508 !important;
+}
+.navbar.scrolled-light .country-selector > a:hover,
+.navbar.scrolled-light .language-selector > a:hover {
+  color: var(--cyan, #3CB8EB) !important;
+}
+
+/* Convert white SVG logo to black */
+.navbar.scrolled-light .nav-logo img {
+  filter: invert(1) brightness(0) !important;
+}
+
+/* Regular Dropdown Menus */
+.navbar.scrolled-light .dropdown-menu {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06) !important;
+}
+.navbar.scrolled-light .dropdown-menu a {
+  color: rgba(5, 5, 8, 0.75) !important;
+}
+.navbar.scrolled-light .dropdown-menu a:hover {
+  color: #050508 !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Mega Menu Panels */
+.navbar.scrolled-light .mega-menu-panel {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05) !important;
+}
+.navbar.scrolled-light .mega-menu-phrase h3 {
+  color: #050508 !important;
+}
+.navbar.scrolled-light .mega-menu-divider {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+.navbar.scrolled-light .mega-menu-subtitle {
+  color: rgba(5, 5, 8, 0.4) !important;
+}
+.navbar.scrolled-light .mega-menu-links a {
+  color: rgba(5, 5, 8, 0.75) !important;
+}
+.navbar.scrolled-light .mega-menu-links a:hover {
+  color: #050508 !important;
+}
+
+/* Mobile hamburger menu toggle */
+.navbar.scrolled-light .menu-toggle span {
+  background-color: #050508 !important;
+}
+
+/* Soften bottom scrolled border line */
+.navbar.scrolled-light::after {
+  opacity: 0.15 !important;
+}
+

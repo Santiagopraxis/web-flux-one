@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Navbar Stickiness (Always visible, changes style on scroll)
   const navbar = document.querySelector('.navbar');
+  const hero = document.querySelector('.hero, #hero');
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
@@ -46,6 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.add('scrolled-200');
     } else {
       navbar.classList.remove('scrolled-200');
+    }
+
+    // Smart light theme for navbar over light content sections
+    const heroHeight = hero ? hero.offsetHeight : 100;
+    if (currentScrollY > (heroHeight - 80)) {
+      navbar.classList.add('scrolled-light');
+    } else {
+      navbar.classList.remove('scrolled-light');
     }
   });
 
