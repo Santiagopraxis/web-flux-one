@@ -28,40 +28,35 @@
       transform: translate(-50%, -50%);
       left: 50%;
       top: 50%;
-      animation: ripple-effect 12s infinite linear;
+      animation: ripple-effect 16s infinite ease-in-out;
       will-change: transform, opacity;
     }
     .ring-1 { width: 100px; animation-delay: 0s; }
-    .ring-2 { width: 180px; animation-delay: 0.8s; }
-    .ring-3 { width: 260px; animation-delay: 1.6s; }
-    .ring-4 { width: 340px; animation-delay: 2.4s; }
-    .ring-5 { width: 420px; animation-delay: 3.2s; }
-    .ring-6 { width: 500px; animation-delay: 4.0s; }
-    .ring-7 { width: 580px; animation-delay: 4.8s; }
-    .ring-8 { width: 660px; animation-delay: 5.6s; }
-    .ring-9 { width: 740px; animation-delay: 6.4s; }
-    .ring-10 { width: 820px; animation-delay: 7.2s; }
-    .ring-11 { width: 900px; animation-delay: 8.0s; }
-    .ring-12 { width: 980px; animation-delay: 8.8s; }
-    .ring-13 { width: 1060px; animation-delay: 9.6s; }
-    .ring-14 { width: 1140px; animation-delay: 10.4s; }
-    .ring-15 { width: 1220px; animation-delay: 11.2s; }
+    .ring-2 { width: 180px; animation-delay: 1.0s; }
+    .ring-3 { width: 260px; animation-delay: 2.0s; }
+    .ring-4 { width: 340px; animation-delay: 3.0s; }
+    .ring-5 { width: 420px; animation-delay: 4.0s; }
+    .ring-6 { width: 500px; animation-delay: 5.0s; }
+    .ring-7 { width: 580px; animation-delay: 6.0s; }
+    .ring-8 { width: 660px; animation-delay: 7.0s; }
+    .ring-9 { width: 740px; animation-delay: 8.0s; }
+    .ring-10 { width: 820px; animation-delay: 9.0s; }
+    .ring-11 { width: 900px; animation-delay: 10.0s; }
+    .ring-12 { width: 980px; animation-delay: 11.0s; }
+    .ring-13 { width: 1060px; animation-delay: 12.0s; }
+    .ring-14 { width: 1140px; animation-delay: 13.0s; }
+    .ring-15 { width: 1220px; animation-delay: 14.0s; }
 
     @keyframes ripple-effect {
       0% {
-        transform: translate(-50%, -50%) scale(0.6);
+        transform: translate(-50%, -50%) scale(0.8);
         opacity: 0;
       }
-      10% {
-        opacity: 1;
-        border-color: rgba(60, 184, 235, 0.15);
-      }
-      90% {
-        opacity: 0.5;
-        border-color: rgba(60, 184, 235, 0.06);
+      50% {
+        opacity: 0.15;
       }
       100% {
-        transform: translate(-50%, -50%) scale(1.5);
+        transform: translate(-50%, -50%) scale(1.25);
         opacity: 0;
       }
     }
@@ -382,7 +377,7 @@
   <footer class="footer footer-light">
     <div class="footer-top-row">
       <div class="footer-liftoff-col">
-        <h3>Empieza a fluir</h3>
+        <h3>fluye a tu manera</h3>
       </div>
       <div class="footer-links-cols">
         <div class="footer-col">
