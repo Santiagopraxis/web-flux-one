@@ -9,74 +9,55 @@
   <title>fluX One — About Us</title>
   <link rel="stylesheet" href="../css/styles.css?v=ultra_v68">
   <style>
-    /* Ambient Pulses Background Animation */
-    .hero-pulses-bg {
+        /* Concentric Circles Background Animation */
+    .circles-bg-layer {
       position: absolute;
       inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       pointer-events: none;
       z-index: 1;
       overflow: hidden;
     }
-    .pulse-glow {
+    .circle-ring {
       position: absolute;
+      border: 1px solid rgba(60, 184, 235, 0.06);
       border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.15;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      animation: ripple-effect 16s infinite ease-in-out;
       will-change: transform, opacity;
     }
-    .glow-1 {
-      width: clamp(300px, 40vw, 600px);
-      height: clamp(300px, 40vw, 600px);
-      background: var(--cyan, #3CB8EB);
-      left: 15%;
-      top: 10%;
-      animation: pulse-slow-1 12s infinite ease-in-out;
-    }
-    .glow-2 {
-      width: clamp(350px, 45vw, 700px);
-      height: clamp(350px, 45vw, 700px);
-      background: var(--violet, #ab4b96);
-      right: 15%;
-      bottom: 10%;
-      animation: pulse-slow-2 16s infinite ease-in-out;
-    }
-    .glow-3 {
-      width: clamp(250px, 30vw, 500px);
-      height: clamp(250px, 30vw, 500px);
-      background: var(--pink, #F5B5D2);
-      left: 45%;
-      top: 30%;
-      animation: pulse-slow-3 14s infinite ease-in-out;
-    }
+    .ring-1 { width: 100px; animation-delay: 0s; }
+    .ring-2 { width: 180px; animation-delay: 1.0s; }
+    .ring-3 { width: 260px; animation-delay: 2.0s; }
+    .ring-4 { width: 340px; animation-delay: 3.0s; }
+    .ring-5 { width: 420px; animation-delay: 4.0s; }
+    .ring-6 { width: 500px; animation-delay: 5.0s; }
+    .ring-7 { width: 580px; animation-delay: 6.0s; }
+    .ring-8 { width: 660px; animation-delay: 7.0s; }
+    .ring-9 { width: 740px; animation-delay: 8.0s; }
+    .ring-10 { width: 820px; animation-delay: 9.0s; }
+    .ring-11 { width: 900px; animation-delay: 10.0s; }
+    .ring-12 { width: 980px; animation-delay: 11.0s; }
+    .ring-13 { width: 1060px; animation-delay: 12.0s; }
+    .ring-14 { width: 1140px; animation-delay: 13.0s; }
+    .ring-15 { width: 1220px; animation-delay: 14.0s; }
 
-    @keyframes pulse-slow-1 {
-      0%, 100% {
-        transform: translate(0, 0) scale(0.9);
-        opacity: 0.12;
+    @keyframes ripple-effect {
+      0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
       }
       50% {
-        transform: translate(5%, 5%) scale(1.1);
-        opacity: 0.22;
+        opacity: 0.15;
       }
-    }
-    @keyframes pulse-slow-2 {
-      0%, 100% {
-        transform: translate(0, 0) scale(1.1);
-        opacity: 0.08;
-      }
-      50% {
-        transform: translate(-5%, -5%) scale(0.9);
-        opacity: 0.16;
-      }
-    }
-    @keyframes pulse-slow-3 {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.05;
-      }
-      50% {
-        transform: translate(-3%, 3%) scale(1.15);
-        opacity: 0.12;
+      100% {
+        transform: translate(-50%, -50%) scale(1.25);
+        opacity: 0;
       }
     }
   </style>
@@ -241,14 +222,26 @@
 
   <!-- HERO SECTION WITH CONCENTRIC CIRCLES -->
   <section class="hero hero-gradient" id="hero" style="min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: #050508;">
-    <div class="hero-pulses-bg">
-      <div class="pulse-glow glow-1"></div>
-      <div class="pulse-glow glow-2"></div>
-      <div class="pulse-glow glow-3"></div>
+    <div class="circles-bg-layer">
+      <div class="circle-ring ring-1"></div>
+      <div class="circle-ring ring-2"></div>
+      <div class="circle-ring ring-3"></div>
+      <div class="circle-ring ring-4"></div>
+      <div class="circle-ring ring-5"></div>
+      <div class="circle-ring ring-6"></div>
+      <div class="circle-ring ring-7"></div>
+      <div class="circle-ring ring-8"></div>
+      <div class="circle-ring ring-9"></div>
+      <div class="circle-ring ring-10"></div>
+      <div class="circle-ring ring-11"></div>
+      <div class="circle-ring ring-12"></div>
+      <div class="circle-ring ring-13"></div>
+      <div class="circle-ring ring-14"></div>
+      <div class="circle-ring ring-15"></div>
     </div>
     
     <div class="container" style="text-align: center; max-width: 900px; position: relative; z-index: 2;">
-      <h1 class="hero-title sr fade-in" style="font-size: clamp(28px, 4vw, 44px); line-height: 1.35; margin: 0 auto 28px; max-width: 800px; font-weight: 300; letter-spacing: -0.01em; text-transform: none;">
+      <h1 class="hero-title sr fade-in" style="font-size: clamp(28px, 4vw, 44px); line-height: 1.35; margin: 0 auto 28px; max-width: 800px; font-weight: 300; letter-spacing: -0.01em; ">
         Financial orchestration of the future <span class="text-grad" style="font-weight: 300;">with global backing.</span>
       </h1>
       <p class="hero-desc sr fade-in delay-2" style="margin: 0 auto; font-size: clamp(1rem, 1.6vw, 1.15rem); max-width: 680px; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.65;">

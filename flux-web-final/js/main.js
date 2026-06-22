@@ -31,30 +31,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Navbar Stickiness (Always visible, changes style on scroll)
   const navbar = document.querySelector('.navbar');
-  const hero = document.querySelector('.hero, #hero');
 
-  window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
-
-    // Fondo más oscuro al scrollear
-    if (currentScrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+  function getThemeUnderNavbar() {
+    if (!navbar) return 'dark';
+    
+    // Check the theme of the section situated at y = 40px (middle of navbar)
+    const y = 40;
+    const x = window.innerWidth / 2;
+    
+    // Temporarily disable pointer events on the navbar so we don't hit it or its children
+    const origPointerEvents = navbar.style.pointerEvents;
+    navbar.style.pointerEvents = 'none';
+    const el = document.elementFromPoint(x, y);
+    navbar.style.pointerEvents = origPointerEvents;
+    
+    if (!el) return 'dark';
+    
+    // Find the closest ancestor section, footer, or body that has a non-transparent background
+    let current = el;
+    let bgColor = 'rgba(0, 0, 0, 0)';
+    
+    while (current) {
+      // Check explicit class identifiers
+      if (current.classList.contains('section-light') || current.classList.contains('footer-light')) {
+        return 'light';
+      }
+      if (current.classList.contains('hero') || current.classList.contains('kickoff-section') || current.classList.contains('impact-stats-section') || current.classList.contains('ecosystem-hub-section') || current.classList.contains('dashboard-showcase-section') || current.classList.contains('footer-dark')) {
+        return 'dark';
+      }
+      
+      const computedBg = window.getComputedStyle(current).backgroundColor;
+      if (computedBg && computedBg !== 'transparent' && computedBg !== 'rgba(0, 0, 0, 0)' && !computedBg.endsWith(', 0)')) {
+        bgColor = computedBg;
+        break;
+      }
+      current = current.parentElement;
     }
     
-    if (currentScrollY > 200) {
-      navbar.classList.add('scrolled-200');
-    } else {
-      navbar.classList.remove('scrolled-200');
+    // Fallback parsing of background color
+    const match = bgColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+      const r = parseInt(match[1]);
+      const g = parseInt(match[2]);
+      const b = parseInt(match[3]);
+      
+      // Compute perceived brightness (Luminance)
+      const brightness = Math.sqrt(
+        0.299 * (r * r) +
+        0.587 * (g * g) +
+        0.114 * (b * b)
+      );
+      
+      return brightness > 130 ? 'light' : 'dark';
     }
+    
+    return 'dark';
+  }
 
-    // Smart light theme for navbar over light content sections
-    const heroHeight = hero ? hero.offsetHeight : 100;
-    if (currentScrollY > (heroHeight - 80)) {
-      navbar.classList.add('scrolled-light');
-    } else {
-      navbar.classList.remove('scrolled-light');
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    if (!scrollTimeout) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+
+        // Fondo más oscuro al scrollear
+        if (currentScrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+        if (currentScrollY > 200) {
+          navbar.classList.add('scrolled-200');
+        } else {
+          navbar.classList.remove('scrolled-200');
+        }
+
+        // Smart light theme for navbar over light content sections
+        const theme = getThemeUnderNavbar();
+        if (theme === 'light') {
+          navbar.classList.add('scrolled-light');
+        } else {
+          navbar.classList.remove('scrolled-light');
+        }
+        scrollTimeout = null;
+      });
+      scrollTimeout = true;
     }
   });
 
