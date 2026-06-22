@@ -39,8 +39,21 @@ const server = http.createServer((req, res) => {
   // Resolve file path
   let safeUrl = req.url.split('?')[0];
   if (safeUrl === '/') {
-    // Redirect (not just serve) so relative links/iframes resolve against /co/
-    res.writeHead(302, { Location: '/co/index.html' });
+    // Redirect to /co/ so relative links resolve correctly
+    res.writeHead(302, { Location: '/co/' });
+    res.end();
+    return;
+  }
+
+  // Redirect files ending with .html to clean URLs
+  if (safeUrl.endsWith('.html')) {
+    let cleanPath;
+    if (safeUrl.endsWith('/index.html')) {
+      cleanPath = safeUrl.slice(0, -10); // Remove "index.html" to keep trailing slash
+    } else {
+      cleanPath = safeUrl.slice(0, -5); // Remove ".html"
+    }
+    res.writeHead(301, { Location: cleanPath });
     res.end();
     return;
   }
@@ -70,6 +83,12 @@ const server = http.createServer((req, res) => {
     } else if (!stats.isFile()) {
       // If it's a directory, check for index.html inside it
       if (stats.isDirectory()) {
+        // Enforce trailing slash for directories to resolve relative links correctly
+        if (!safeUrl.endsWith('/')) {
+          res.writeHead(301, { Location: safeUrl + '/' });
+          res.end();
+          return;
+        }
         const indexPatch = path.join(filePath, 'index.html');
         fs.stat(indexPatch, (errIndex, statsIndex) => {
           if (!errIndex && statsIndex.isFile()) {
