@@ -61,9 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       const computedBg = window.getComputedStyle(current).backgroundColor;
-      if (computedBg && computedBg !== 'transparent' && computedBg !== 'rgba(0, 0, 0, 0)' && !computedBg.endsWith(', 0)')) {
-        bgColor = computedBg;
-        break;
+      if (computedBg && computedBg !== 'transparent' && computedBg !== 'rgba(0, 0, 0, 0)') {
+        const rgbaMatch = computedBg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+        if (rgbaMatch) {
+          const alpha = rgbaMatch[4] !== undefined ? parseFloat(rgbaMatch[4]) : 1.0;
+          if (alpha >= 0.3) {
+            bgColor = computedBg;
+            break;
+          }
+        } else {
+          bgColor = computedBg;
+          break;
+        }
       }
       current = current.parentElement;
     }
