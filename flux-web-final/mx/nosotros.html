@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fluX One — Nosotros</title>
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v68">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo nav-logo">
+        <img src="../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One">
+      </a>
+      
+      <ul class="nav-menu">
+        <li class="dropdown mega-dropdown">
+          <a href="#">Productos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>INFRAESTRUCTURA DE NUEVA GENERACIÓN</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">PRODUCTOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="cobranza.html">Cobranza</a></li>
+                  <li><a href="dispersion.html">Dispersión</a></li>
+                  <li><a href="conciliacion.html">Conciliación</a></li>
+                  <li><a href="bi.html">Capacidades BI</a></li>
+                  <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="nosotros.html" class="active">Nosotros</a></li>
+        <li><a href="../developers.html">Desarrolladores</a></li>
+        <li class="dropdown mega-dropdown">
+          <a href="#">Recursos <span>▾</span></a>
+          <div class="dropdown-menu mega-menu-panel">
+            <div class="mega-menu-content">
+              <div class="mega-menu-phrase">
+                <h3>CONOCIMIENTO Y SOPORTE</h3>
+              </div>
+              <div class="mega-menu-divider"></div>
+              <div class="mega-menu-list-container">
+                <span class="mega-menu-subtitle">RECURSOS</span>
+                <ul class="mega-menu-links vertical-links">
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <!-- COUNTRY SELECTOR -->
+        <li class="country-selector dropdown">
+          <a href="#" id="current-country">
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" id="current-flag-img"> <span id="current-country-text">Mex</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="../co/nosotros.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
+            <li><a href="nosotros.html"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> México</a></li>
+          </ul>
+        </li>
+        
+        <!-- LANGUAGE SELECTOR -->
+        <li class="language-selector dropdown" style="margin-left: 8px;">
+          <a href="#" id="current-lang">
+            <span style="font-size: 0.875rem; font-weight: 500; color: var(--flux-gray-300); vertical-align: middle;">ES</span> <span>▾</span>
+          </a>
+          <ul class="dropdown-menu" style="background: #000000; min-width: 100px; border: 1px solid rgba(255,255,255,0.08);">
+            <li><a href="nosotros.html"><span style="font-size: 0.85rem;">Español</span></a></li>
+            <li><a href="../en/mx/nosotros.html"><span style="font-size: 0.85rem;">English</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-text hide-mobile" onclick="window.location.href='login.html'">Iniciar sesión</button>
+        <button class="btn-primary hide-mobile" onclick="openModal()">Comienza hoy</button>
+        
+        <!-- Hamburger Menu -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY MENU -->
+  <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <a href="index.html" style="display: flex; align-items: center;"><img src="../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Cerrar menú">✕</button>
+      </div>
+      
+      <div class="menu-content" style="padding: 0; flex: 1; display: flex;">
+        <div class="menu-panels-container">
+          <!-- PANEL 1: MAIN MENU -->
+          <div class="menu-panel panel-main" id="panel-main" style="padding: 32px;">
+            <nav class="mobile-nav">
+              <a href="index.html" class="mobile-link" onclick="toggleMenu()">Inicio</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-productos')">
+                Productos <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="nosotros.html" class="mobile-link active" onclick="toggleMenu()">Nosotros</a>
+              <button class="drilldown-btn" onclick="openPanel('panel-recursos')">
+                Recursos <span class="drilldown-arrow">›</span>
+              </button>
+              <a href="../developers.html" class="mobile-link" onclick="toggleMenu()">Desarrolladores</a>
+              <a href="#contacto" class="mobile-link" onclick="toggleMenu()">Hablemos</a>
+            </nav>
+            
+            <div class="mobile-cta-group">
+              <a href="login.html" class="btn-text mobile-login-btn" style="text-decoration:none;" onclick="toggleMenu()">Iniciar sesión</a>
+              <a href="#" class="btn-primary mobile-signup-btn" style="text-decoration:none;" onclick="toggleMenu(); openModal();">Comienza hoy</a>
+            </div>
+            
+            <div class="menu-footer">
+              <div class="menu-lang">
+                <a href="nosotros.html" class="active">ES</a>
+                <span class="divider">|</span>
+                <a href="../en/mx/nosotros.html">EN</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- PANEL 2: PRODUCTOS -->
+          <div class="menu-panel panel-sub" id="panel-productos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-productos')">‹ Volver</button>
+              <div class="panel-title">Productos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="cobranza.html" class="mobile-link" onclick="toggleMenu()">Cobranza Inteligente</a>
+              <a href="dispersion.html" class="mobile-link" onclick="toggleMenu()">Dispersión Automática</a>
+              <a href="conciliacion.html" class="mobile-link" onclick="toggleMenu()">Conciliación en tiempo real</a>
+              <a href="bi.html" class="mobile-link" onclick="toggleMenu()">Capacidades BI</a>
+              <a href="#" class="mobile-link" style="pointer-events: none; opacity: 0.5;" onclick="toggleMenu()">Nexa (Pronto)</a>
+            </nav>
+          </div>
+
+          <!-- PANEL 3: RECURSOS -->
+          <div class="menu-panel panel-sub" id="panel-recursos" style="padding: 32px;">
+            <div class="panel-header">
+              <button class="back-btn" onclick="closePanel('panel-recursos')">‹ Volver</button>
+              <div class="panel-title">Recursos</div>
+            </div>
+            <nav class="mobile-nav">
+              <a href="blog.html" class="mobile-link" onclick="toggleMenu()">Blog</a>
+              <a href="faq.html" class="mobile-link" onclick="toggleMenu()">Preguntas Frecuentes</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero hero-gradient" id="hero" style="padding-bottom: 80px; position: relative;">
+    <div class="hero-bg" style="opacity: 0.15; background: radial-gradient(circle at center, var(--cyan, #3CB8EB) 0%, transparent 60%);"></div>
+    <div class="container" style="text-align: center; max-width: 900px; position: relative; z-index: 2;">
+      <div class="badge-new sr fade-in" style="display:inline-block; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; background: linear-gradient(135deg, rgba(60,184,235,0.1) 0%, rgba(171,75,150,0.1) 100%); border: 1px solid rgba(255,255,255,0.15);">fluX by Praxis</div>
+      <h1 class="hero-title sr fade-in" style="font-size: clamp(32px, 5vw, 64px); line-height: 1.1; margin-bottom: 24px; font-weight: 300;">
+        La orquestación financiera del futuro<br><span class="text-grad" style="font-weight: 700;">con respaldo global.</span>
+      </h1>
+      <p class="hero-desc sr fade-in delay-2" style="margin: 0 auto; font-size: clamp(1.1rem, 2vw, 1.35rem); max-width: 760px; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.6;">
+        Unimos la agilidad de la tecnología financiera de nueva generación con la solidez y experiencia de una multinacional con más de 30 años liderando el sector tecnológico en toda la región.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 1: PRAXIS IT -->
+  <section class="section-light" style="padding: 100px 0; background: #ffffff; color: var(--flux-dark, #050508);">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 64px;">
+        <div class="sr fade-in">
+          <p class="hero-eyebrow" style="color: var(--violet, #ab4b96); font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; margin-bottom: 16px;">RESPALDO CORPORATIVO</p>
+          <h2 class="section-title" style="color: #000000; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.2; margin-bottom: 24px;">Praxis IT: Tres décadas de excelencia e innovación</h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(0,0,0,0.65); margin-bottom: 24px; font-weight: 300;">
+            Fundada con la visión de transformar los negocios a través de la tecnología, Praxis IT se ha consolidado como un socio estratégico para corporaciones multinacionales, bancos y aseguradoras en todo el continente.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(0,0,0,0.65); font-weight: 300;">
+            Aportamos madurez operativa, rigor metodológico y un equipo humano altamente especializado para asegurar que cada línea de código responda a los más altos estándares de exigencia empresarial.
+          </p>
+        </div>
+        <div class="sr fade-in d1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="card glass-light" style="padding: 24px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.02); border-radius: 16px; transition: transform 0.3s ease;">
+            <h3 style="font-size: 2.5rem; font-weight: 700; color: var(--cyan, #3CB8EB); margin-bottom: 8px; line-height: 1;">30+</h3>
+            <h4 style="font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000000; margin-bottom: 8px;">Años de Historia</h4>
+            <p style="font-size: 0.85rem; color: rgba(0,0,0,0.55); line-height: 1.5;">Trayectoria ininterrumpida proveyendo soluciones tecnológicas corporativas de alta complejidad.</p>
+          </div>
+          <div class="card glass-light" style="padding: 24px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.02); border-radius: 16px; transition: transform 0.3s ease;">
+            <h3 style="font-size: 2.5rem; font-weight: 700; color: var(--violet, #ab4b96); margin-bottom: 8px; line-height: 1;">15</h3>
+            <h4 style="font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000000; margin-bottom: 8px;">Especialidades</h4>
+            <p style="font-size: 0.85rem; color: rgba(0,0,0,0.55); line-height: 1.5;">Áreas de conocimiento técnico que abarcan desde arquitectura cloud hasta ciberseguridad avanzada.</p>
+          </div>
+          <div class="card glass-light" style="padding: 24px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.02); border-radius: 16px; transition: transform 0.3s ease;">
+            <h3 style="font-size: 2.5rem; font-weight: 700; color: var(--pink, #F5B5D2); margin-bottom: 8px; line-height: 1;">10+</h3>
+            <h4 style="font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000000; margin-bottom: 8px;">Países con Presencia</h4>
+            <p style="font-size: 0.85rem; color: rgba(0,0,0,0.55); line-height: 1.5;">Oficinas físicas y centros de entrega en México, Colombia, Centroamérica, EE.UU. y Europa.</p>
+          </div>
+          <div class="card glass-light" style="padding: 24px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.02); border-radius: 16px; transition: transform 0.3s ease;">
+            <h3 style="font-size: 2.5rem; font-weight: 700; color: var(--cyan, #3CB8EB); margin-bottom: 8px; line-height: 1;">Bancos</h3>
+            <h4 style="font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #000000; margin-bottom: 8px;">Sector Financiero</h4>
+            <p style="font-size: 0.85rem; color: rgba(0,0,0,0.55); line-height: 1.5;">Confianza de los líderes bancarios y aseguradoras más exigentes del mercado internacional.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FLUX -->
+  <section style="padding: 100px 0; background: #050508; color: #ffffff;">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 64px;">
+        <div class="sr fade-in order-mobile-2">
+          <div class="features-wrapper" style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="feature-item" style="display: flex; gap: 16px; align-items: flex-start; padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;">
+              <div class="feature-icon" style="color: var(--cyan, #3CB8EB); font-size: 1.5rem; line-height: 1;">⚡</div>
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Orquestación Integral</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6;">Conecta de forma directa los sistemas centrales de tu empresa (ERP, CRM) con múltiples entidades financieras.</p>
+              </div>
+            </div>
+            <div class="feature-item" style="display: flex; gap: 16px; align-items: flex-start; padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;">
+              <div class="feature-icon" style="color: var(--violet, #ab4b96); font-size: 1.5rem; line-height: 1;">⚙️</div>
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Automatización en Tiempo Real</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6;">Automatiza la dispersión de pagos, la cobranza y la conciliación de extractos bancarios en segundos, reduciendo errores manuales.</p>
+              </div>
+            </div>
+            <div class="feature-item" style="display: flex; gap: 16px; align-items: flex-start; padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;">
+              <div class="feature-icon" style="color: var(--pink, #F5B5D2); font-size: 1.5rem; line-height: 1;">🛡️</div>
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: #ffffff;">Seguridad de Nivel Bancario</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6;">Operaciones protegidas bajo los más estrictos estándares del sector financiero, con encriptación de extremo a extremo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sr fade-in d1 order-mobile-1">
+          <p class="hero-eyebrow text-grad" style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; margin-bottom: 16px; display: inline-block;">TECNOLOGÍA DE VANGUARDIA</p>
+          <h2 class="section-title" style="font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.2; margin-bottom: 24px; color: #ffffff;">fluX: El motor de tu autonomía financiera</h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.7); margin-bottom: 24px; font-weight: 300;">
+            fluX by Praxis no es solo una pasarela de pago; es la infraestructura que redefine el flujo del dinero corporativo. Desarrollamos tecnología para eliminar los procesos de tesorería manuales y costosos.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.7); font-weight: 300;">
+            Nuestra plataforma actúa como un traductor universal y automatizador entre la banca corporativa tradicional y la modernidad de tus aplicaciones de negocio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: SINERGIA -->
+  <section class="section-light" style="padding: 100px 0; background: #ffffff; color: var(--flux-dark, #050508); border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="container">
+      <div class="section-header sr fade-in" style="text-align: center; max-width: 700px; margin: 0 auto 64px;">
+        <p class="hero-eyebrow" style="color: var(--cyan, #3CB8EB); font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; margin-bottom: 16px;">NUESTRA SINERGIA</p>
+        <h2 class="section-title" style="color: #000000; font-size: clamp(28px, 3.5vw, 40px); font-weight: 700; line-height: 1.2;">Lo que nos une: Lo mejor de dos mundos</h2>
+      </div>
+      
+      <div class="grid-3 sr fade-in" style="gap: 32px;">
+        <div class="card glass-light" style="padding: 32px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.01); border-radius: 20px; transition: all 0.3s ease;">
+          <div style="font-size: 2.2rem; margin-bottom: 20px; color: var(--cyan, #3CB8EB);">🚀</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: #000000; margin-bottom: 16px;">Fintech con Respaldo Enterprise</h3>
+          <p style="font-size: 0.95rem; color: rgba(0,0,0,0.6); line-height: 1.6; font-weight: 300;">fluX combina la innovación, agilidad y simplicidad de una startup fintech de nueva generación con la solidez de procesos y capacidad operativa de una multinacional líder en TI.</p>
+        </div>
+        <div class="card glass-light" style="padding: 32px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.01); border-radius: 20px; transition: all 0.3s ease;">
+          <div style="font-size: 2.2rem; margin-bottom: 20px; color: var(--violet, #ab4b96);">🌍</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: #000000; margin-bottom: 16px;">Soporte y Expansión Local</h3>
+          <p style="font-size: 0.95rem; color: rgba(0,0,0,0.6); line-height: 1.6; font-weight: 300;">Gracias a la red regional de Praxis IT, fluX ofrece soporte operativo y regulatorios locales en múltiples países, asegurando una integración nativa y acompañamiento legal local.</p>
+        </div>
+        <div class="card glass-light" style="padding: 32px; border: 1px solid rgba(0,0,0,0.06); background: rgba(0,0,0,0.01); border-radius: 20px; transition: all 0.3s ease;">
+          <div style="font-size: 2.2rem; margin-bottom: 20px; color: var(--pink, #F5B5D2);">🔒</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: #000000; margin-bottom: 16px;">Cultura de Alta Confianza</h3>
+          <p style="font-size: 0.95rem; color: rgba(0,0,0,0.6); line-height: 1.6; font-weight: 300;">Trabajar con la banca tradicional requiere una cultura de seguridad rigurosa. Heredamos de Praxis los controles, auditorías y certificaciones indispensables para tu total tranquilidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer footer-light">
+    <div class="footer-top-row">
+      <div class="footer-liftoff-col">
+        <h3>Empieza a fluir</h3>
+      </div>
+      <div class="footer-links-cols">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="cobranza.html">Cobranza</a></li>
+            <li><a href="dispersion.html">Dispersión</a></li>
+            <li><a href="conciliacion.html">Conciliación</a></li>
+            <li><a href="bi.html">Capacidades BI</a></li>
+            <li><a href="#" style="pointer-events: none; opacity: 0.5;">Nexa (Pronto)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Desarrolladores</h4>
+          <ul>
+            <li><a href="../developers.html">API Reference</a></li>
+            <li><a href="#" class="disabled-link">Guías de Integración</a></li>
+            <li><a href="#" class="disabled-link">Status</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom-row">
+      <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
+        <img src="../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main no-invert" style="height: 36px; width: auto;">
+        <span style="color: rgba(255,255,255,0.2);">|</span>
+        <img src="../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
+      </div>
+      <div class="footer-legal-links">
+        <a href="#">Términos y condiciones</a>
+        <a href="../politica-privacidad.html">Política de Privacidad</a>
+        <a href="../politica-cookies.html">Política de Cookies</a>
+      </div>
+      <div class="footer-bottom-right">
+        <div class="footer-certs">
+          <img src="../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
+          <img src="../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL STRUCTURE -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <h2>Agenda tu demo de fluX</h2>
+        <p>Te contactamos en menos de 24 horas hábiles</p>
+      </div>
+      <form id="modal-demo-form" class="demo-form" onsubmit="submitDemoForm(event)">
+        <div class="form-row">
+          <input type="text" name="nombre" placeholder="Nombre completo" required>
+          <input type="email" name="email" placeholder="Email corporativo" required>
+        </div>
+        <div class="form-row">
+          <input type="text" name="empresa" placeholder="Empresa" required>
+          <select name="pais" required>
+            <option value="">País</option>
+            <option value="CO">Colombia</option>
+            <option value="MX" selected>México</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="tel" name="telefono" placeholder="Teléfono" required>
+          <select name="necesidad" required>
+            <option value="">¿Qué necesitas?</option>
+            <option value="cobranza">Cobranza</option>
+            <option value="dispersion">Dispersión</option>
+            <option value="conciliacion">Conciliación</option>
+            <option value="bi">Inteligencia de Negocio</option>
+            <option value="todo">Todo lo anterior</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" style="margin-top: 24px;">Enviar solicitud →</button>
+        <p class="legal-text">
+          Al enviar este formulario aceptas nuestra <a href="../politica-privacidad.html">política de privacidad</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/modal.js"></script>
+
+  <script>
+    function toggleAccordion(btn) {
+      const accordion = btn.parentElement;
+      const content = accordion.querySelector('.mobile-accordion-content');
+      const isOpen = accordion.classList.contains('open');
+      if (isOpen) {
+        accordion.classList.remove('open');
+        content.style.maxHeight = null;
+      } else {
+        accordion.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 16 + "px";
+      }
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-toggle');
+      if(menu) {
+        menu.classList.toggle('active');
+        if(btn) btn.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+      }
+    }
+    
+    function closeMenu() {
+      toggleMenu();
+    }
+  </script>
+
+  <script>
+    function openPanel(panelId) {
+      document.getElementById('panel-main').classList.add('slide-out');
+      document.getElementById(panelId).classList.add('active');
+    }
+    function closePanel(panelId) {
+      document.getElementById(panelId).classList.remove('active');
+      document.getElementById('panel-main').classList.remove('slide-out');
+    }
+    
+    const originalToggle = toggleMenu;
+    toggleMenu = function() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('active')) {
+         document.getElementById('panel-main').classList.remove('slide-out');
+         document.querySelectorAll('.panel-sub').forEach(p => p.classList.remove('active'));
+      }
+      originalToggle();
+    };
+  </script>
+</body>
+</html>
