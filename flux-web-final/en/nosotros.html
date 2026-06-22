@@ -22,7 +22,7 @@
     }
     .circle-ring {
       position: absolute;
-      border: 1px solid rgba(60, 184, 235, 0.07);
+      border: 1px solid rgba(60, 184, 235, 0.22);
       border-radius: 50%;
       aspect-ratio: 1;
       width: 100vmax;
@@ -32,6 +32,17 @@
       animation: ripple-effect 12s infinite linear;
       will-change: transform, opacity;
       opacity: 0;
+    }
+    .center-logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: auto;
+      opacity: 0.28;
+      z-index: 2;
+      pointer-events: none;
     }
     .ring-1 { animation-delay: 0s; }
     .ring-2 { animation-delay: 0.8s; }
@@ -55,10 +66,10 @@
         opacity: 0;
       }
       15% {
-        opacity: 0.15;
+        opacity: 0.4;
       }
       85% {
-        opacity: 0.08;
+        opacity: 0.18;
       }
       100% {
         transform: translate(-50%, -50%) scale(1.6);
@@ -229,6 +240,7 @@
   <!-- HERO SECTION WITH CONCENTRIC CIRCLES -->
   <section class="hero hero-gradient" id="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 0 80px; position: relative; overflow: hidden; background: #050508;">
     <div class="circles-bg-layer">
+      <img src="../assets/images/logos/praxis%20en%20blanco.svg" alt="Praxis" class="center-logo">
       <div class="circle-ring ring-1"></div>
       <div class="circle-ring ring-2"></div>
       <div class="circle-ring ring-3"></div>
@@ -246,7 +258,7 @@
       <div class="circle-ring ring-15"></div>
     </div>
     
-    <div class="container" style="text-align: center; max-width: 900px; position: relative; z-index: 2;">
+    <div class="container" style="text-align: center; max-width: 1200px; position: relative; z-index: 2;">
       <h1 class="hero-title sr fade-in" style="font-size: clamp(28px, 4vw, 44px); line-height: 1.35; margin: 0 auto 28px; max-width: 1100px; font-weight: 300; letter-spacing: -0.01em; ">
         Financial orchestration of the future<br><span class="text-grad" style="font-weight: 300;">with global backing.</span>
       </h1>
