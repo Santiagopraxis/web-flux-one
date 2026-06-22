@@ -88,32 +88,40 @@ document.addEventListener('DOMContentLoaded', () => {
     return 'dark';
   }
 
+  function updateNavbar() {
+    if (!navbar) return;
+    const currentScrollY = window.scrollY;
+
+    // Fondo más oscuro al scrollear
+    if (currentScrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    
+    if (currentScrollY > 200) {
+      navbar.classList.add('scrolled-200');
+    } else {
+      navbar.classList.remove('scrolled-200');
+    }
+
+    // Smart light theme for navbar over light content sections
+    const theme = getThemeUnderNavbar();
+    if (theme === 'light') {
+      navbar.classList.add('scrolled-light');
+    } else {
+      navbar.classList.remove('scrolled-light');
+    }
+  }
+
+  // Run initial check on page load
+  updateNavbar();
+
   let scrollTimeout;
   window.addEventListener('scroll', () => {
     if (!scrollTimeout) {
       window.requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-
-        // Fondo más oscuro al scrollear
-        if (currentScrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-        
-        if (currentScrollY > 200) {
-          navbar.classList.add('scrolled-200');
-        } else {
-          navbar.classList.remove('scrolled-200');
-        }
-
-        // Smart light theme for navbar over light content sections
-        const theme = getThemeUnderNavbar();
-        if (theme === 'light') {
-          navbar.classList.add('scrolled-light');
-        } else {
-          navbar.classList.remove('scrolled-light');
-        }
+        updateNavbar();
         scrollTimeout = null;
       });
       scrollTimeout = true;

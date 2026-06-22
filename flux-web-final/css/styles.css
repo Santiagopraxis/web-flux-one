@@ -4096,9 +4096,18 @@ p, li, h1, h2, h3, h4, h5, h6, span, a, .card-desc { text-wrap: pretty; }
   color: var(--cyan, #3CB8EB) !important;
 }
 
-/* Convert white SVG logo to black */
-.navbar.scrolled-light .nav-logo img {
-  filter: invert(1) brightness(0) !important;
+/* Toggle white/black SVG logo based on theme */
+.navbar .logo-blanco {
+  display: block;
+}
+.navbar .logo-negro {
+  display: none;
+}
+.navbar.scrolled-light .logo-blanco {
+  display: none !important;
+}
+.navbar.scrolled-light .logo-negro {
+  display: block !important;
 }
 
 /* Regular Dropdown Menus */
