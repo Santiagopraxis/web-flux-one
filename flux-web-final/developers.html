@@ -786,8 +786,8 @@
         </p>
         <div class="base-url">
           <span class="base-url-label">Base URL</span>
-          <span class="base-url-value">https://api.flux.finance</span>
-          <button class="base-url-copy" onclick="copyText('https://api.flux.finance', this)" title="Copiar">⎘</button>
+          <span class="base-url-value">https://api.fluxone.co/api/v1</span>
+          <button class="base-url-copy" onclick="copyText('https://api.fluxone.co/api/v1', this)" title="Copiar">⎘</button>
         </div>
         <div class="key-card">
           <div class="key-card-header">🔐 &nbsp;Tu API Key</div>
@@ -818,14 +818,14 @@
             <button class="copy-btn">Copiar</button>
           </div>
           <div class="code-panel active" id="panel-curl">
-<pre><span class="c">curl</span> -X <span class="k">GET</span> https://api.flux.finance/partners/banks \
+<pre><span class="c">curl</span> -X <span class="k">GET</span> https://api.fluxone.co/api/v1/partners/banks \
   -H <span class="s">"X-API-Key: &lt;FLUX_API_KEY&gt;"</span> \
   -H <span class="s">"Content-Type: application/json"</span></pre>
           </div>
           <div class="code-panel" id="panel-node">
 <pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
 
-<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">get</span>(<span class="s">'https://api.flux.finance/partners/banks'</span>, {
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">get</span>(<span class="s">'https://api.fluxone.co/api/v1/partners/banks'</span>, {
   headers: {
     <span class="s">'X-API-Key'</span>: <span class="s">'&lt;FLUX_API_KEY&gt;'</span>,
     <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
@@ -837,7 +837,7 @@ console.<span class="c">log</span>(response.data);</pre>
 <pre><span class="k">import</span> requests
 
 response = requests.<span class="c">get</span>(
-  <span class="s">'https://api.flux.finance/partners/banks'</span>,
+  <span class="s">'https://api.fluxone.co/api/v1/partners/banks'</span>,
   headers={
     <span class="s">'X-API-Key'</span>: <span class="s">'&lt;FLUX_API_KEY&gt;'</span>,
     <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
