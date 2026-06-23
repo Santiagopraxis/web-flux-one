@@ -713,18 +713,21 @@ document.addEventListener('DOMContentLoaded', () => {
           color: #ffffff;
         }
         .flux-cookie-btn-accept {
-          background: linear-gradient(135deg, var(--cyan, #3CB8EB) 0%, #ab4b96 100%);
+          background: transparent;
           color: #ffffff;
-          border: none;
-          box-shadow: 0 4px 12px rgba(60, 184, 235, 0.2);
+          border: 1px solid transparent;
+          background-image: linear-gradient(#08080c, #08080c), linear-gradient(135deg, var(--cyan, #3CB8EB) 0%, #ab4b96 50%, #F5B5D2 100%);
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+          box-shadow: 0 4px 12px rgba(60, 184, 235, 0.15);
         }
         .flux-cookie-btn-accept:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 6px 16px rgba(60, 184, 235, 0.35);
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 8px 20px rgba(60, 184, 235, 0.35);
           filter: brightness(1.1);
         }
         .flux-cookie-btn-accept:active {
-          transform: translateY(0);
+          transform: translateY(0) scale(1);
         }
         @media (max-width: 500px) {
           #flux-cookie-banner {
