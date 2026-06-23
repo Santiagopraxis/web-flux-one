@@ -53,6 +53,11 @@
       margin-bottom: 16px;
     }
   </style>
+  <script>
+    if (sessionStorage.getItem('flux_preloader_loaded')) {
+      document.documentElement.classList.add('preloader-skip');
+    }
+  </script>
 </head>
 <body class="preloader-active">
   <!-- fluX Preloader -->
