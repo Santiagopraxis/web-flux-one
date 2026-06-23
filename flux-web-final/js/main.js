@@ -894,4 +894,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initMobileCarousels();
+
+    // ── Preloader Dismissal Logic ─────────────────────────────────────────────
+    const preloader = document.getElementById('flux-preloader');
+    if (preloader) {
+      const hidePreloader = () => {
+        if (!preloader.classList.contains('fade-out')) {
+          preloader.classList.add('fade-out');
+          document.body.classList.remove('preloader-active');
+        }
+      };
+
+      // Hide preloader when everything is loaded
+      window.addEventListener('load', hidePreloader);
+
+      // Safety timeout (max 1000ms)
+      setTimeout(hidePreloader, 1000);
+    }
 });
