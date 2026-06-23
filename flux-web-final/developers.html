@@ -800,6 +800,62 @@
           <div class="key-footer">⚠️ Nunca compartas tu API Key en repositorios públicos ni código cliente.</div>
         </div>
         <div class="callout info"><strong>Header requerido:</strong> <code>X-API-Key: &lt;FLUX_API_KEY&gt;</code> en cada request.</div>
+
+        <div style="margin-top: 32px;">
+          <h3 style="font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 12px; text-transform: none; display: flex; align-items: center; gap: 8px;">
+            🔑 Autenticación por Usuario (Login)
+          </h3>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:16px;font-size:0.9rem;text-transform:none;">
+            Si necesitas autenticarte utilizando credenciales de usuario (email y contraseña) para obtener un token de sesión en la red de fluX.
+          </p>
+          <div class="code-card">
+            <div class="code-tabs">
+              <button class="code-tab active" data-group="login" data-tab="login-curl">cURL</button>
+              <button class="code-tab" data-group="login" data-tab="login-node">Node.js</button>
+              <button class="code-tab" data-group="login" data-tab="login-python">Python</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active" id="panel-login-curl">
+<pre><span class="c">curl</span> -X <span class="k">POST</span> https://api.fluxone.co/api/v1/partners/login \
+  -H <span class="s">"Accept: application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "email": "user@example.com",
+    "password": "password123"
+  }'</span></pre>
+            </div>
+            <div class="code-panel" id="panel-login-node">
+<pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
+
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">post</span>(<span class="s">'https://api.fluxone.co/api/v1/partners/login'</span>, {
+  email: <span class="s">'user@example.com'</span>,
+  password: <span class="s">'password123'</span>
+}, {
+  headers: {
+    <span class="s">'Accept'</span>: <span class="s">'application/json'</span>,
+    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+  }
+});
+console.<span class="c">log</span>(response.data);</pre>
+            </div>
+            <div class="code-panel" id="panel-login-python">
+<pre><span class="k">import</span> requests
+
+response = requests.<span class="c">post</span>(
+  <span class="s">'https://api.fluxone.co/api/v1/partners/login'</span>,
+  headers={
+    <span class="s">'Accept'</span>: <span class="s">'application/json'</span>,
+    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+  },
+  json={
+    <span class="s">'email'</span>: <span class="s">'user@example.com'</span>,
+    <span class="s">'password'</span>: <span class="s">'password123'</span>
+  }
+)
+print(response.json())</pre>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- QUICK START -->
