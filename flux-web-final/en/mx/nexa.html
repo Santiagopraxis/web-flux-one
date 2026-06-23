@@ -241,8 +241,8 @@
   <nav class="navbar">
     <div class="container">
       <a href="../mx" class="logo nav-logo">
-        <img src="../../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One" class="logo-blanco">
-        <img src="../../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="logo-negro">
+        <img src="../../assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX One" class="logo-blanco" decoding="async">
+        <img src="../../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="logo-negro" decoding="async">
       </a>
       
       <ul class="nav-menu">
@@ -291,11 +291,11 @@
         <!-- COUNTRY SELECTOR -->
         <li class="country-selector dropdown">
           <a href="#" id="current-country">
-            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" id="current-flag-img"> <span id="current-country-text">Mex</span> <span>▾</span>
+            <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" id="current-flag-img" loading="lazy" decoding="async"> <span id="current-country-text">Mex</span> <span>▾</span>
           </a>
           <ul class="dropdown-menu" style="background: #000000; border: 1px solid rgba(255,255,255,0.08);">
-            <li><a href="../"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO"> Colombia</a></li>
-            <li><a href="../mx"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX"> Mexico</a></li>
+            <li><a href="../"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="CO" loading="lazy" decoding="async"> Colombia</a></li>
+            <li><a href="../mx"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="18" height="13" style="border-radius:2px;vertical-align:middle;display:inline-block;" alt="MX" loading="lazy" decoding="async"> Mexico</a></li>
           </ul>
         </li>
         
@@ -328,7 +328,7 @@
   <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true">
     <div class="mobile-menu-drawer">
       <div class="mobile-menu-header">
-        <a href="../mx" style="display: flex; align-items: center;"><img src="../../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo"></a>
+        <a href="../mx" style="display: flex; align-items: center;"><img src="../../assets/images/logos/xo%20banco.svg" alt="fluX One" class="mobile-drawer-logo" decoding="async"></a>
         <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
       </div>
       
@@ -872,9 +872,9 @@
     
     <div class="footer-bottom-row">
       <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
-        <img src="../../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main" style="height: 36px; width: auto;">
+        <img src="../../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main" style="height: 36px; width: auto;" decoding="async">
         <span style="color: rgba(255,255,255,0.2);">|</span>
-        <img src="../../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);">
+        <img src="../../assets/images/logos/PRAXIS%20COLOR.svg" alt="Praxis" class="footer-logo-small no-invert" style="filter: brightness(0) invert(1);" decoding="async">
       </div>
       <div class="footer-legal-links">
         <a href="#">Terms & Conditions</a>
@@ -883,8 +883,8 @@
       </div>
       <div class="footer-bottom-right">
         <div class="footer-certs">
-          <img src="../../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS">
-          <img src="../../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001">
+          <img src="../../assets/images/logos/pci-dss-blanco.svg" alt="PCI DSS" decoding="async">
+          <img src="../../assets/images/logos/iso-27001-blanco.svg" alt="ISO 27001" decoding="async">
         </div>
       </div>
     </div>
@@ -1016,11 +1016,11 @@
       reader.onload = function(e) {
         window.nxcIconDataUrl = e.target.result;
         var preview = document.getElementById('nxc-icon-preview');
-        preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:contain;border-radius:10px;">';
+        preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:contain;border-radius:10px;" loading="lazy" decoding="async">';
         var appLogo = document.getElementById('nxc-app-logo');
         var billLogo = document.getElementById('nxc-bill-logo');
-        appLogo.innerHTML = '<img src="' + e.target.result + '" style="width:28px;height:28px;object-fit:contain;">';
-        billLogo.innerHTML = '<img src="' + e.target.result + '" style="width:28px;height:28px;object-fit:contain;">';
+        appLogo.innerHTML = '<img src="' + e.target.result + '" style="width:28px;height:28px;object-fit:contain;" loading="lazy" decoding="async">';
+        billLogo.innerHTML = '<img src="' + e.target.result + '" style="width:28px;height:28px;object-fit:contain;" loading="lazy" decoding="async">';
         appLogo.style.background = 'transparent';
         billLogo.style.background = 'transparent';
         document.getElementById('nxc-icon-label').textContent = file.name.length > 18 ? file.name.slice(0,16)+'...' : file.name;
