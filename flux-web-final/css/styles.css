@@ -4262,3 +4262,12 @@ body.preloader-active {
   }
 }
 
+
+
+/* Avoid FOUC flash of preloader */
+html.preloader-skip #flux-preloader {
+  display: none !important;
+}
+html.preloader-skip body.preloader-active {
+  overflow: visible !important;
+}
