@@ -629,10 +629,10 @@ document.addEventListener('DOMContentLoaded', () => {
           right: 24px;
           width: calc(100% - 48px);
           max-width: 420px;
-          background: rgba(10, 10, 15, 0.85);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 16px;
           padding: 20px 24px;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
