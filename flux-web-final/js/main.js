@@ -795,4 +795,100 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Banner
     initCookieBanner();
+
+    // ── Dynamic Mobile Carousel Indicators ─────────────────────────────────────
+    function initMobileCarousels() {
+      const targets = document.querySelectorAll('.stats-grid-impact, .stats-grid, .nx-grid');
+      if (targets.length === 0) return;
+
+      // Inject CSS Styles for Dots (only once)
+      const dotsStyles = `
+        .carousel-dots-container {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .carousel-dots-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+            padding: 10px 0 20px;
+            width: 100%;
+          }
+          .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .carousel-dot.active {
+            background: var(--cyan, #3CB8EB);
+            transform: scale(1.3);
+            box-shadow: 0 0 8px var(--cyan, #3CB8EB);
+          }
+        }
+      `;
+      const styleEl = document.createElement('style');
+      styleEl.innerHTML = dotsStyles;
+      document.head.appendChild(styleEl);
+
+      targets.forEach(container => {
+        if (!container.children || container.children.length <= 1) return;
+        if (container.nextElementSibling && container.nextElementSibling.classList.contains('carousel-dots-container')) return;
+
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'carousel-dots-container';
+        
+        const count = container.children.length;
+        const dots = [];
+        
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dotsContainer.appendChild(dot);
+          dots.push(dot);
+        }
+        
+        container.parentNode.insertBefore(dotsContainer, container.nextSibling);
+        
+        let scrollTimeout;
+        container.addEventListener('scroll', () => {
+          if (scrollTimeout) {
+            cancelAnimationFrame(scrollTimeout);
+          }
+          scrollTimeout = requestAnimationFrame(() => {
+            const containerRect = container.getBoundingClientRect();
+            const children = container.children;
+            let activeIndex = 0;
+            let minDistance = Infinity;
+
+            for (let i = 0; i < children.length; i++) {
+              if (children[i].classList.contains('carousel-dots-container')) continue;
+              
+              const childRect = children[i].getBoundingClientRect();
+              const childCenter = childRect.left + childRect.width / 2;
+              const containerCenter = containerRect.left + containerRect.width / 2;
+              const distance = Math.abs(childCenter - containerCenter);
+              
+              if (distance < minDistance) {
+                minDistance = distance;
+                activeIndex = i;
+              }
+            }
+
+            dots.forEach((dot, idx) => {
+              if (idx === activeIndex) {
+                dot.classList.add('active');
+              } else {
+                dot.classList.remove('active');
+              }
+            });
+          });
+        });
+      });
+    }
+
+    initMobileCarousels();
 });
