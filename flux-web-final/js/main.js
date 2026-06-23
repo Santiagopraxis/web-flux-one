@@ -898,17 +898,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Preloader Dismissal Logic ─────────────────────────────────────────────
     const preloader = document.getElementById('flux-preloader');
     if (preloader) {
-      const hidePreloader = () => {
-        if (!preloader.classList.contains('fade-out')) {
-          preloader.classList.add('fade-out');
-          document.body.classList.remove('preloader-active');
-        }
-      };
+      const hasLoadedThisSession = sessionStorage.getItem('flux_preloader_loaded');
+      
+      if (hasLoadedThisSession) {
+        // Already loaded in this session: skip preloader completely and immediately
+        preloader.remove();
+        document.body.classList.remove('preloader-active');
+      } else {
+        // First visit in this session: show preloader for exactly 1 second, then fade out
+        sessionStorage.setItem('flux_preloader_loaded', 'true');
+        
+        const hidePreloader = () => {
+          if (!preloader.classList.contains('fade-out')) {
+            preloader.classList.add('fade-out');
+            document.body.classList.remove('preloader-active');
+            
+            // Clean up DOM after transition completes
+            setTimeout(() => {
+              preloader.remove();
+            }, 600);
+          }
+        };
 
-      // Hide preloader when everything is loaded
-      window.addEventListener('load', hidePreloader);
-
-      // Safety timeout (max 1000ms)
-      setTimeout(hidePreloader, 1000);
+        // Trigger fade out after exactly 1000ms (1 second)
+        setTimeout(hidePreloader, 1000);
+      }
     }
 });
