@@ -1,3 +1,28 @@
+// ── CONFIGURACIÓN GLOBAL DE ANALYTICS ─────────────────────────────────────────
+// José: Reemplaza 'G-XXXXXXXXXX' con tu ID real de Google Analytics 4 (GA4).
+// Si lo dejas como 'G-XXXXXXXXXX' o vacío, no se cargará ningún script de rastreo.
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+// Función para cargar Google Analytics dinámicamente
+function loadGoogleAnalytics(id) {
+  if (!id || id === 'G-XXXXXXXXXX') {
+    return;
+  }
+  // 1. Cargar script externo de gtag.js
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+  document.head.appendChild(script);
+
+  // 2. Inicializar la capa de datos (dataLayer)
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function() {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag('js', new Date());
+  window.gtag('config', id, { anonymize_ip: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -561,4 +586,213 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       observer.observe(mobMenu, { attributes: true });
     }
+
+    // ── Cookie Consent Banner System ──────────────────────────────────────────
+    function initCookieBanner() {
+      const consent = localStorage.getItem('flux_cookie_consent');
+      if (consent === 'accepted') {
+        loadGoogleAnalytics(GA_MEASUREMENT_ID);
+        return;
+      } else if (consent === 'rejected') {
+        return;
+      }
+
+      // First time visitor: show banner
+      const isEnglish = window.location.pathname.includes('/en/');
+      let pathPrefix = './';
+      if (window.location.pathname.includes('/en/mx/')) {
+        pathPrefix = '../../';
+      } else if (
+        window.location.pathname.includes('/co/') ||
+        window.location.pathname.includes('/mx/') ||
+        window.location.pathname.includes('/en/')
+      ) {
+        pathPrefix = '../';
+      }
+
+      const cookiePolicyUrl = isEnglish 
+        ? `${pathPrefix}cookies-policy.html` 
+        : `${pathPrefix}politica-cookies.html`;
+
+      const titleText = isEnglish ? 'Cookie Consent' : 'Consentimiento de Cookies';
+      const bodyText = isEnglish
+        ? `We use cookies to optimize your experience and analyze our website traffic. By clicking "Accept", you consent to our use of cookies in accordance with our <a href="${cookiePolicyUrl}" target="_blank">Cookie Policy</a>.`
+        : `Utilizamos cookies para optimizar tu experiencia y analizar el tráfico de nuestro sitio. Al hacer clic en "Aceptar", permites el uso de cookies de acuerdo con nuestra <a href="${cookiePolicyUrl}" target="_blank">Política de Cookies</a>.`;
+      const acceptLabel = isEnglish ? 'Accept' : 'Aceptar';
+      const rejectLabel = isEnglish ? 'Reject' : 'Rechazar';
+
+      // 1. Inject Styles
+      const styles = `
+        #flux-cookie-banner {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          width: calc(100% - 48px);
+          max-width: 420px;
+          background: rgba(10, 10, 15, 0.85);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 16px;
+          padding: 20px 24px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+          z-index: 99999;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          opacity: 0;
+          transform: translateY(40px);
+          transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+          color: rgba(255, 255, 255, 0.9);
+          text-align: left;
+        }
+        #flux-cookie-banner.show {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        #flux-cookie-banner.hide {
+          opacity: 0;
+          transform: translateY(40px);
+          pointer-events: none;
+        }
+        .flux-cookie-title {
+          font-size: 1.05rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .flux-cookie-icon {
+          color: var(--cyan, #3CB8EB);
+          font-size: 1.2rem;
+        }
+        .flux-cookie-text {
+          font-size: 0.875rem;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 400;
+        }
+        .flux-cookie-text a {
+          color: var(--cyan, #3CB8EB);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.2s ease;
+          border-bottom: 1px solid transparent;
+        }
+        .flux-cookie-text a:hover {
+          color: #ffffff;
+          border-bottom-color: var(--cyan, #3CB8EB);
+        }
+        .flux-cookie-actions {
+          display: flex;
+          gap: 12px;
+          justify-content: flex-end;
+          margin-top: 4px;
+        }
+        .flux-cookie-btn {
+          padding: 10px 20px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          border-radius: 30px;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          font-family: inherit;
+          outline: none;
+        }
+        .flux-cookie-btn-reject {
+          background: transparent;
+          color: rgba(255, 255, 255, 0.8);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .flux-cookie-btn-reject:hover {
+          background: rgba(255, 255, 255, 0.05);
+          border-color: rgba(255, 255, 255, 0.3);
+          color: #ffffff;
+        }
+        .flux-cookie-btn-accept {
+          background: linear-gradient(135deg, var(--cyan, #3CB8EB) 0%, #ab4b96 100%);
+          color: #ffffff;
+          border: none;
+          box-shadow: 0 4px 12px rgba(60, 184, 235, 0.2);
+        }
+        .flux-cookie-btn-accept:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(60, 184, 235, 0.35);
+          filter: brightness(1.1);
+        }
+        .flux-cookie-btn-accept:active {
+          transform: translateY(0);
+        }
+        @media (max-width: 500px) {
+          #flux-cookie-banner {
+            bottom: 16px;
+            right: 16px;
+            width: calc(100% - 32px);
+            padding: 16px 20px;
+          }
+          .flux-cookie-actions {
+            flex-direction: column-reverse;
+          }
+          .flux-cookie-btn {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      `;
+
+      const styleEl = document.createElement('style');
+      styleEl.innerHTML = styles;
+      document.head.appendChild(styleEl);
+
+      // 2. Inject HTML
+      const banner = document.createElement('div');
+      banner.id = 'flux-cookie-banner';
+      banner.innerHTML = `
+        <div class="flux-cookie-title">
+          <span class="flux-cookie-icon">🍪</span>
+          <span>${titleText}</span>
+        </div>
+        <div class="flux-cookie-text">${bodyText}</div>
+        <div class="flux-cookie-actions">
+          <button class="flux-cookie-btn flux-cookie-btn-reject" id="flux-cookie-reject">${rejectLabel}</button>
+          <button class="flux-cookie-btn flux-cookie-btn-accept" id="flux-cookie-accept">${acceptLabel}</button>
+        </div>
+      `;
+      document.body.appendChild(banner);
+
+      // 3. Trigger Slide-in Animation
+      setTimeout(() => {
+        banner.classList.add('show');
+      }, 1000);
+
+      // 4. Set Event Listeners
+      const acceptBtn = document.getElementById('flux-cookie-accept');
+      const rejectBtn = document.getElementById('flux-cookie-reject');
+
+      function hideBanner() {
+        banner.classList.remove('show');
+        banner.classList.add('hide');
+        // Remove from DOM after transition completes
+        setTimeout(() => {
+          banner.remove();
+        }, 500);
+      }
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('flux_cookie_consent', 'accepted');
+        hideBanner();
+        loadGoogleAnalytics(GA_MEASUREMENT_ID);
+      });
+
+      rejectBtn.addEventListener('click', () => {
+        localStorage.setItem('flux_cookie_consent', 'rejected');
+        hideBanner();
+      });
+    }
+
+    // Initialize Banner
+    initCookieBanner();
 });
