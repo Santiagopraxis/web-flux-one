@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ── FLUX DESIGN SYSTEM TOKENS (from styles.css) ── */
+    /* ── FLUX DESIGN SYSTEM TOKENS ── */
     :root {
-      --flux-primary:      #3CB8EB;
-      --flux-secondary:    #ab4b96;
+      --flux-primary:      #3CB8EB; /* Cyan (México SPEI Theme) */
+      --flux-secondary:    #ab4b96; /* Purple (Colombia Bre-B Theme) */
       --flux-tertiary:     #F5B5D2;
       --flux-purple-deep:  #4E154F;
       --flux-dark:         #000000;
@@ -24,14 +24,14 @@
       --flux-gray-300:     #A0AEC0;
       --flux-gray-700:     #4A5568;
       --flux-gray-900:     #1A202C;
-      --glass-bg:          rgba(255,255,255,0.04);
-      --glass-border:      rgba(255,255,255,0.08);
+      --glass-bg:          rgba(255,255,255,0.03);
+      --glass-border:      rgba(255,255,255,0.06);
       --flux-success:      #22c55e;
       --flux-warning:      #fbbf24;
       --flux-error:        #f87171;
       --font-family:       'Plus Jakarta Sans', system-ui, sans-serif;
       --font-mono:         'Fira Code', 'Cascadia Code', monospace;
-      --sidebar-w:         268px;
+      --sidebar-w:         280px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,8 +63,7 @@
     }
 
     .sidebar-logo {
-      padding: 24px 20px 20px;
-      border-bottom: 1px solid var(--glass-border);
+      padding: 24px 20px 16px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -72,25 +71,63 @@
 
     .sidebar-logo img { height: 20px; width: auto; }
 
-    .dev-badge {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      font-weight: 500;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: linear-gradient(#000,#000) padding-box,
-                  var(--flux-gradient) border-box;
+    /* ── COUNTRY SELECTOR ── */
+    .country-selector {
+      display: flex;
+      padding: 6px 12px 14px;
+      gap: 6px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .country-tab {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 8px;
+      background: none;
       border: 1px solid transparent;
+      color: var(--flux-gray-300);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+    }
+
+    .country-tab:hover {
+      color: var(--flux-white);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .country-tab.active[data-country="mx"] {
       color: var(--flux-primary);
-      letter-spacing: 0.06em;
+      background: rgba(60, 184, 235, 0.08);
+      border-color: rgba(60, 184, 235, 0.2);
+    }
+
+    .country-tab.active[data-country="co"] {
+      color: #b757a3;
+      background: rgba(171, 75, 150, 0.08);
+      border-color: rgba(171, 75, 150, 0.2);
+    }
+
+    .country-flag {
+      width: 14px;
+      height: auto;
+      border-radius: 2px;
+      object-fit: cover;
     }
 
     .sidebar-nav { flex: 1; padding: 20px 12px; overflow-y: auto; }
 
-    .nav-group { margin-bottom: 28px; }
+    .nav-group { margin-bottom: 24px; }
 
     .nav-group-label {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -106,7 +143,7 @@
       align-items: center;
       gap: 8px;
       padding: 7px 8px;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--flux-gray-300);
       text-decoration: none;
       border-radius: 6px;
@@ -115,28 +152,43 @@
 
     .nav-group ul li a:hover { color: var(--flux-white); background: var(--glass-bg); }
 
-    .nav-group ul li a.active {
+    /* Estilos de navegación activa por país */
+    body[data-active-country="mx"] .nav-group ul li a.active {
       color: var(--flux-primary);
-      background: rgba(60,184,235,0.08);
-      font-weight: 500;
+      background: rgba(60,184,235,0.06);
+      font-weight: 600;
+    }
+    body[data-active-country="mx"] .nav-group ul li a.active .nav-dot {
+      opacity: 1;
+      background: var(--flux-primary);
+      box-shadow: 0 0 6px var(--flux-primary);
+    }
+
+    body[data-active-country="co"] .nav-group ul li a.active {
+      color: var(--flux-secondary);
+      background: rgba(171,75,150,0.06);
+      font-weight: 600;
+    }
+    body[data-active-country="co"] .nav-group ul li a.active .nav-dot {
+      opacity: 1;
+      background: var(--flux-secondary);
+      box-shadow: 0 0 6px var(--flux-secondary);
     }
 
     .nav-dot {
       width: 4px; height: 4px;
       border-radius: 50%;
-      background: currentColor;
+      background: var(--flux-gray-700);
       opacity: 0.5;
       flex-shrink: 0;
     }
-
-    .nav-group ul li a.active .nav-dot { opacity: 1; box-shadow: 0 0 6px var(--flux-primary); }
 
     .sidebar-footer {
       padding: 16px 20px;
       border-top: 1px solid var(--glass-border);
     }
 
-    .api-status { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--flux-gray-300); }
+    .api-status { display: flex; align-items: center; gap: 8px; font-size: 0.76rem; color: var(--flux-gray-300); }
 
     .status-dot {
       width: 7px; height: 7px;
@@ -151,18 +203,18 @@
       50%      { box-shadow: 0 0 14px rgba(34,197,94,1); }
     }
 
-    .status-latency { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-success); }
+    .status-latency { margin-left: auto; font-family: var(--font-mono); font-size: 0.68rem; color: var(--flux-success); }
 
     .sidebar-back {
       display: flex; align-items: center; gap: 6px;
-      margin-top: 12px; font-size: 0.8rem; color: var(--flux-gray-700);
+      margin-top: 12px; font-size: 0.78rem; color: var(--flux-gray-700);
       text-decoration: none; transition: color 0.2s;
     }
 
     .sidebar-back:hover { color: var(--flux-primary); }
 
     /* ── MAIN ── */
-    .main { margin-left: var(--sidebar-w); flex: 1; }
+    .main { margin-left: var(--sidebar-w); flex: 1; display: flex; flex-direction: column; }
 
     /* ── HERO ── */
     .dev-hero {
@@ -175,78 +227,84 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 70% -10%, rgba(60,184,235,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 100% 100%, rgba(171,75,150,0.08) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 60% at 70% -10%, rgba(60,184,235,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 100% 100%, rgba(171,75,150,0.05) 0%, transparent 60%);
       pointer-events: none;
     }
 
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
       background-size: 48px 48px;
       pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-mono); font-size: 0.75rem;
+      font-family: var(--font-mono); font-size: 0.72rem;
       color: var(--flux-primary);
-      background: rgba(60,184,235,0.07);
-      border: 1px solid rgba(60,184,235,0.2);
+      background: rgba(60,184,235,0.06);
+      border: 1px solid rgba(60,184,235,0.15);
       padding: 6px 14px; border-radius: 4px;
-      margin-bottom: 28px; letter-spacing: 0.08em;
+      margin-bottom: 24px; letter-spacing: 0.08em;
       text-transform: none;
+    }
+
+    body[data-active-country="co"] .hero-eyebrow {
+      color: var(--flux-secondary);
+      background: rgba(171,75,150,0.06);
+      border-color: rgba(171,75,150,0.15);
     }
 
     .hero-eyebrow::before {
       content: '';
       width: 5px; height: 5px; border-radius: 50%;
-      background: var(--flux-primary);
-      box-shadow: 0 0 8px var(--flux-primary);
+      background: currentColor;
+      box-shadow: 0 0 8px currentColor;
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
       font-weight: 300;
-      line-height: 1.05;
+      line-height: 1.1;
       letter-spacing: -0.02em;
       color: var(--flux-white);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .text-grad {
-      background: var(--flux-gradient);
+      background: var(--flux-gradient-2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .hero-subtitle {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       color: var(--flux-gray-300);
-      line-height: 1.65;
-      margin-bottom: 36px;
-      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 580px;
       text-transform: none;
     }
 
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
 
-    /* fluX btn-primary style (from styles.css) */
+    /* buttons */
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 28px;
+      padding: 11px 26px;
       color: var(--flux-white);
-      font-size: 0.9rem; font-weight: 600;
+      font-size: 0.88rem; font-weight: 600;
       border-radius: 100px;
       text-decoration: none;
       cursor: pointer;
       border: 1px solid transparent;
-      background-image: linear-gradient(#000, #000), var(--flux-gradient);
+      background-image: linear-gradient(#000, #000), var(--flux-gradient-2);
       background-origin: border-box;
       background-clip: padding-box, border-box;
       position: relative; overflow: hidden;
@@ -256,7 +314,7 @@
     .btn-primary::after {
       content: '';
       position: absolute; inset: 0;
-      background: var(--flux-gradient);
+      background: var(--flux-gradient-2);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -267,15 +325,15 @@
 
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 24px;
-      color: var(--flux-gray-300); font-size: 0.9rem; font-weight: 500;
+      padding: 10px 22px;
+      color: var(--flux-gray-300); font-size: 0.88rem; font-weight: 500;
       border-radius: 100px; text-decoration: none;
       border: 1px solid var(--glass-border);
       background: var(--glass-bg);
       transition: all 0.2s;
     }
 
-    .btn-ghost:hover { color: var(--flux-white); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.07); }
+    .btn-ghost:hover { color: var(--flux-white); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); }
 
     /* ── STATS BAR ── */
     .hero-stats {
@@ -283,41 +341,65 @@
       border-top: 1px solid var(--glass-border);
     }
 
-    .stat-item { flex: 1; padding: 28px 32px; border-right: 1px solid var(--glass-border); }
+    .stat-item { flex: 1; padding: 24px 28px; border-right: 1px solid var(--glass-border); }
     .stat-item:last-child { border-right: none; }
 
     .stat-value {
-      font-size: 1.9rem; font-weight: 700;
-      background: var(--flux-gradient);
+      font-size: 1.7rem; font-weight: 700;
+      background: var(--flux-gradient-2);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
       line-height: 1; margin-bottom: 4px;
     }
 
-    .stat-label { font-size: 0.78rem; color: var(--flux-gray-700); text-transform: uppercase; letter-spacing: 0.08em; }
+    .stat-label { font-size: 0.72rem; color: var(--flux-gray-700); text-transform: uppercase; letter-spacing: 0.08em; }
 
     /* ── CONTENT ── */
-    .content { padding: 56px 64px; max-width: 880px; }
+    .content { padding: 48px 64px; max-width: 900px; }
 
     /* ── SECTION HEADER ── */
     .section-header {
       display: flex; align-items: center; gap: 12px;
-      margin-bottom: 24px; padding-bottom: 16px;
+      margin-bottom: 20px; padding-bottom: 12px;
       border-bottom: 1px solid var(--glass-border);
     }
 
     .section-icon {
-      width: 32px; height: 32px;
+      width: 28px; height: 28px;
       display: flex; align-items: center; justify-content: center;
       color: var(--flux-primary);
       flex-shrink: 0;
     }
+    body[data-active-country="co"] .section-icon {
+      color: var(--flux-secondary);
+    }
     .section-icon svg {
-      width: 22px; height: 22px;
+      width: 20px; height: 20px;
     }
 
-    .section-title { font-size: 1.3rem; font-weight: 300; color: var(--flux-white); letter-spacing: 0.04em; }
+    .section-title { font-size: 1.25rem; font-weight: 300; color: var(--flux-white); letter-spacing: 0.04em; }
 
-    .section-block { margin-bottom: 64px; scroll-margin-top: 24px; }
+    .section-block { margin-bottom: 56px; scroll-margin-top: 40px; }
+
+    /* ── DYNAMIC COUNTRY ELEMENTS ── */
+    [data-country-content] {
+      display: none;
+    }
+    body[data-active-country="mx"] [data-country-content="mx"] {
+      display: block;
+    }
+    body[data-active-country="co"] [data-country-content="co"] {
+      display: block;
+    }
+
+    [data-country-nav] {
+      display: none;
+    }
+    body[data-active-country="mx"] [data-country-nav="mx"] {
+      display: block;
+    }
+    body[data-active-country="co"] [data-country-nav="co"] {
+      display: block;
+    }
 
     /* ── GLASS CARD ── */
     .glass-card {
@@ -332,19 +414,22 @@
     /* ── CALLOUT ── */
     .callout {
       padding: 14px 18px; border-radius: 8px; border-left: 2px solid;
-      margin-bottom: 20px; font-size: 0.875rem; line-height: 1.6;
+      margin-bottom: 20px; font-size: 0.85rem; line-height: 1.55;
     }
 
-    .callout.info  { background: rgba(60,184,235,0.07);  border-color: var(--flux-primary);  color: #93C5FD; }
-    .callout.warn  { background: rgba(251,191,36,0.07);  border-color: var(--flux-warning);  color: #FCD34D; }
-    .callout.ok    { background: rgba(34,197,94,0.07);   border-color: var(--flux-success);  color: #6EE7B7; }
+    .callout.info  { background: rgba(60,184,235,0.05);  border-color: var(--flux-primary);  color: #93C5FD; }
+    .callout.warn  { background: rgba(251,191,36,0.05);  border-color: var(--flux-warning);  color: #FCD34D; }
+    .callout.ok    { background: rgba(34,197,94,0.05);   border-color: var(--flux-success);  color: #6EE7B7; }
     .callout strong { color: var(--flux-white); }
 
     /* ── INLINE CODE ── */
     code {
       font-family: var(--font-mono); font-size: 0.85em;
-      background: rgba(60,184,235,0.08); border: 1px solid rgba(60,184,235,0.15);
-      padding: 2px 7px; border-radius: 4px; color: var(--flux-primary);
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      padding: 2px 6px; border-radius: 4px; color: var(--flux-primary);
+    }
+    body[data-active-country="co"] code {
+      color: #d175bc;
     }
 
     /* ── BASE URL ── */
@@ -352,22 +437,24 @@
       display: flex; align-items: stretch;
       background: #050505; border: 1px solid var(--glass-border);
       border-radius: 8px; overflow: hidden; margin-bottom: 20px;
-      font-family: var(--font-mono); font-size: 0.875rem;
+      font-family: var(--font-mono); font-size: 0.85rem;
     }
 
     .base-url-label {
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.03); border-right: 1px solid var(--glass-border);
-      color: var(--flux-gray-700); font-size: 0.7rem; font-weight: 700;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.02); border-right: 1px solid var(--glass-border);
+      color: var(--flux-gray-700); font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap;
+      display: flex; align-items: center;
     }
 
-    .base-url-value { padding: 12px 16px; color: var(--flux-primary); flex: 1; }
+    .base-url-value { padding: 10px 14px; color: var(--flux-primary); flex: 1; display: flex; align-items: center; }
+    body[data-active-country="co"] .base-url-value { color: var(--flux-secondary); }
 
     .base-url-copy {
       padding: 0 14px; background: none; border: none;
       border-left: 1px solid var(--glass-border); color: var(--flux-gray-700);
-      cursor: pointer; font-size: 1rem; transition: color 0.15s;
+      cursor: pointer; font-size: 0.9rem; transition: color 0.15s;
     }
 
     .base-url-copy:hover { color: var(--flux-primary); }
@@ -377,82 +464,85 @@
 
     .key-card-header {
       padding: 12px 18px; border-bottom: 1px solid var(--glass-border);
-      font-size: 0.8rem; font-weight: 700; color: var(--flux-gray-300);
+      font-size: 0.74rem; font-weight: 700; color: var(--flux-gray-300);
       text-transform: uppercase; letter-spacing: 0.08em;
     }
 
     .key-row { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(0,0,0,0.3); }
 
     .live-badge {
-      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
-      padding: 3px 10px; border-radius: 4px;
-      background: rgba(34,197,94,0.1); color: var(--flux-success); border: 1px solid rgba(34,197,94,0.25);
+      font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
+      background: rgba(34,197,94,0.08); color: var(--flux-success); border: 1px solid rgba(34,197,94,0.2);
     }
 
-    #api-key-value { font-family: var(--font-mono); font-size: 0.875rem; color: var(--flux-gray-300); flex: 1; }
+    #api-key-value { font-family: var(--font-mono); font-size: 0.85rem; color: var(--flux-gray-300); flex: 1; }
 
     .btn-icon {
       background: var(--glass-bg); border: 1px solid var(--glass-border);
       color: var(--flux-gray-300); width: 30px; height: 30px;
       border-radius: 6px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 0.85rem; transition: all 0.15s; flex-shrink: 0;
+      cursor: pointer; font-size: 0.8rem; transition: all 0.15s; flex-shrink: 0;
     }
 
-    .btn-icon:hover { background: rgba(255,255,255,0.1); color: var(--flux-white); }
+    .btn-icon:hover { background: rgba(255,255,255,0.08); color: var(--flux-white); }
 
     .key-footer {
-      padding: 10px 18px; font-size: 0.78rem; color: var(--flux-warning);
-      background: rgba(251,191,36,0.05); border-top: 1px solid rgba(251,191,36,0.1);
+      padding: 10px 18px; font-size: 0.74rem; color: var(--flux-warning);
+      background: rgba(251,191,36,0.03); border-top: 1px solid rgba(251,191,36,0.08);
       display: flex; align-items: center; gap: 6px;
     }
 
     /* ── CODE BLOCKS ── */
-    .code-card { background: #050505; border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+    .code-card { background: #050505; border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
 
     .code-tabs {
       display: flex; align-items: center;
       padding: 0 4px; border-bottom: 1px solid var(--glass-border); gap: 2px;
+      background: rgba(0, 0, 0, 0.4);
     }
 
     .code-tab {
-      font-family: var(--font-mono); font-size: 0.76rem;
+      font-family: var(--font-mono); font-size: 0.74rem;
       padding: 10px 14px; color: var(--flux-gray-700);
       background: none; border: none; cursor: pointer;
       border-bottom: 2px solid transparent; transition: all 0.15s;
     }
 
     .code-tab.active { color: var(--flux-primary); border-bottom-color: var(--flux-primary); }
+    body[data-active-country="co"] .code-tab.active { color: var(--flux-secondary); border-bottom-color: var(--flux-secondary); }
     .code-tab:hover:not(.active) { color: var(--flux-gray-300); }
 
     .copy-btn {
       margin-left: auto; margin-right: 8px;
-      font-size: 0.73rem; font-family: var(--font-sans);
-      padding: 4px 12px; border-radius: 4px;
+      font-size: 0.7rem; font-family: var(--font-family);
+      padding: 4px 10px; border-radius: 4px;
       background: var(--glass-bg); border: 1px solid var(--glass-border);
-      color: var(--flux-gray-700); cursor: pointer; transition: all 0.15s;
+      color: var(--flux-gray-300); cursor: pointer; transition: all 0.15s;
     }
 
     .copy-btn:hover { background: rgba(255,255,255,0.08); color: var(--flux-white); }
     .copy-btn.copied { color: var(--flux-success); border-color: rgba(34,197,94,0.3); }
 
-    .code-panel { display: none; padding: 20px 24px; overflow-x: auto; }
+    .code-panel { display: none; padding: 18px 22px; overflow-x: auto; }
     .code-panel.active { display: block; }
 
     .code-panel pre {
-      font-family: var(--font-mono); font-size: 0.84rem;
-      line-height: 1.72; color: #CBD5E1; margin: 0; white-space: pre;
+      font-family: var(--font-mono); font-size: 0.8rem;
+      line-height: 1.65; color: #CBD5E1; margin: 0; white-space: pre;
     }
 
-    /* Syntax — fluX palette */
+    /* Syntax Highlighting */
     .s  { color: #F5B5D2; }   /* string  → pink */
     .k  { color: #3CB8EB; }   /* keyword → cyan */
+    body[data-active-country="co"] .k { color: #cc6cb3; }
     .c  { color: #ab4b96; }   /* command → violet */
     .p  { color: #93C5FD; }   /* property */
     .n  { color: #fbbf24; }   /* number  */
     .cm { color: #4A5568; font-style: italic; } /* comment */
 
     /* ── FEATURE GRID ── */
-    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 48px; }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
 
     .feature-card {
       background: var(--glass-bg);
@@ -462,10 +552,10 @@
       transition: border-color 0.2s;
     }
 
-    .feature-card:hover { border-color: rgba(60,184,235,0.25); }
+    .feature-card:hover { border-color: rgba(255,255,255,0.12); }
 
     .feature-icon {
-      width: 36px; height: 36px;
+      width: 32px; height: 32px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
@@ -473,66 +563,138 @@
     .feature-icon.cyan   { color: var(--flux-primary); }
     .feature-icon.violet { color: var(--flux-secondary); }
     .feature-icon svg {
-      width: 20px; height: 20px;
+      width: 18px; height: 18px;
     }
 
-    .feature-name { font-size: 0.85rem; font-weight: 700; color: var(--flux-white); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .feature-desc { font-size: 0.78rem; color: var(--flux-gray-700); line-height: 1.4; text-transform: none; }
+    .feature-name { font-size: 0.8rem; font-weight: 700; color: var(--flux-white); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .feature-desc { font-size: 0.76rem; color: var(--flux-gray-300); line-height: 1.4; text-transform: none; }
+
+    /* ── FLOW DIAGRAM (PURE CSS) ── */
+    .flow-container {
+      background: #050505;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .flow-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .flow-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+    body[data-active-country="mx"] .flow-num {
+      background: rgba(60,184,235,0.1);
+      color: var(--flux-primary);
+      border: 1px solid rgba(60,184,235,0.25);
+    }
+    body[data-active-country="co"] .flow-num {
+      background: rgba(171,75,150,0.1);
+      color: var(--flux-secondary);
+      border: 1px solid rgba(171,75,150,0.25);
+    }
+    .flow-text {
+      flex: 1;
+    }
+    .flow-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .flow-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--flux-white);
+      letter-spacing: 0.04em;
+    }
+    .flow-method {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .flow-desc {
+      font-size: 0.78rem;
+      color: var(--flux-gray-300);
+      line-height: 1.5;
+    }
 
     /* ── ENDPOINT TABLE ── */
-    .endpoint-table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+    .endpoint-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
 
-    .endpoint-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .endpoint-table thead tr { border-bottom: 1px solid rgba(255,255,255,0.08); }
 
     .endpoint-table th {
-      text-align: left; padding: 10px 14px;
-      font-size: 0.68rem; font-weight: 700;
+      text-align: left; padding: 10px 12px;
+      font-size: 0.64rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.1em; color: var(--flux-gray-700);
     }
 
     .endpoint-table tbody tr { border-bottom: 1px solid var(--glass-border); transition: background 0.15s; }
     .endpoint-table tbody tr:hover { background: var(--glass-bg); }
-    .endpoint-table td { padding: 13px 14px; font-size: 0.845rem; color: var(--flux-gray-300); vertical-align: top; }
+    .endpoint-table td { padding: 12px; font-size: 0.8rem; color: var(--flux-gray-300); vertical-align: middle; }
 
     .method-badge {
-      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700;
+      font-family: var(--font-mono); font-size: 0.65rem; font-weight: 700;
       padding: 3px 8px; border-radius: 4px; display: inline-block;
     }
 
-    .m-get    { background: rgba(34,197,94,0.1);   color: #4ade80;  border: 1px solid rgba(34,197,94,0.2); }
-    .m-post   { background: rgba(60,184,235,0.1);  color: #3CB8EB;  border: 1px solid rgba(60,184,235,0.2); }
-    .m-patch  { background: rgba(251,191,36,0.1);  color: #fbbf24;  border: 1px solid rgba(251,191,36,0.2); }
-    .m-delete { background: rgba(248,113,113,0.1); color: #f87171;  border: 1px solid rgba(248,113,113,0.2); }
+    .m-get    { background: rgba(34,197,94,0.08);   color: #4ade80;  border: 1px solid rgba(34,197,94,0.15); }
+    .m-post   { background: rgba(60,184,235,0.08);  color: #3CB8EB;  border: 1px solid rgba(60,184,235,0.15); }
+    .m-put    { background: rgba(251,191,36,0.08);  color: #fbbf24;  border: 1px solid rgba(251,191,36,0.15); }
+    .m-patch  { background: rgba(171,75,150,0.08);  color: #ab4b96;  border: 1px solid rgba(171,75,150,0.15); }
+    .m-delete { background: rgba(248,113,113,0.08); color: #f87171;  border: 1px solid rgba(248,113,113,0.15); }
 
-    .ep-path  { font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-white); }
+    .ep-path  { font-family: var(--font-mono); font-size: 0.78rem; color: var(--flux-white); }
     .ep-param { color: var(--flux-secondary); }
-    .ep-desc  { font-size: 0.82rem; line-height: 1.5; }
+    .ep-desc  { font-size: 0.78rem; line-height: 1.45; }
 
     /* ── PARAM TABLE ── */
-    .param-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    .param-table th { text-align: left; padding: 8px 12px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--flux-gray-700); border-bottom: 1px solid var(--glass-border); }
-    .param-table td { padding: 10px 12px; font-size: 0.82rem; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
-    .param-name { font-family: var(--font-mono); color: var(--flux-primary); }
-    .param-type { font-family: var(--font-mono); font-size: 0.74rem; color: var(--flux-secondary); }
-    .param-req  { font-size: 0.68rem; padding: 2px 6px; border-radius: 3px; background: rgba(248,113,113,0.1); color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
-    .param-opt  { font-size: 0.68rem; padding: 2px 6px; border-radius: 3px; background: var(--glass-bg); color: var(--flux-gray-700); border: 1px solid var(--glass-border); }
-    .param-desc { color: var(--flux-gray-300); line-height: 1.5; }
+    .param-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    .param-table th { text-align: left; padding: 8px 12px; font-size: 0.64rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--flux-gray-700); border-bottom: 1px solid var(--glass-border); }
+    .param-table td { padding: 10px 12px; font-size: 0.78rem; border-bottom: 1px solid rgba(255,255,255,0.02); vertical-align: top; }
+    .param-name { font-family: var(--font-mono); color: var(--flux-primary); font-weight: 500; }
+    body[data-active-country="co"] .param-name { color: #d175bc; }
+    .param-type { font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-gray-300); }
+    .param-req  { font-size: 0.62rem; padding: 2px 5px; border-radius: 3px; background: rgba(248,113,113,0.06); color: #f87171; border: 1px solid rgba(248,113,113,0.15); }
+    .param-opt  { font-size: 0.62rem; padding: 2px 5px; border-radius: 3px; background: var(--glass-bg); color: var(--flux-gray-700); border: 1px solid var(--glass-border); }
+    .param-desc { color: var(--flux-gray-300); line-height: 1.45; }
 
     /* ── ERRORS ── */
-    .error-grid { display: flex; flex-direction: column; gap: 8px; }
-    .error-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; font-size: 0.85rem; }
-    .error-code { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; padding: 2px 10px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
-    .e-4xx { background: rgba(251,191,36,0.1); color: #fbbf24; }
-    .e-5xx { background: rgba(248,113,113,0.1); color: #f87171; }
-    .error-msg  { color: var(--flux-white); font-weight: 600; font-size: 0.85rem; }
-    .error-desc { color: var(--flux-gray-700); font-size: 0.79rem; margin-top: 2px; }
+    .error-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .error-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; font-size: 0.8rem; }
+    .error-code { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+    .e-4xx { background: rgba(251,191,36,0.08); color: #fbbf24; border: 1px solid rgba(251,191,36,0.15); }
+    .e-5xx { background: rgba(248,113,113,0.08); color: #f87171; border: 1px solid rgba(248,113,113,0.15); }
+    .error-msg  { color: var(--flux-white); font-weight: 600; font-size: 0.82rem; }
+    .error-desc { color: var(--flux-gray-300); font-size: 0.76rem; margin-top: 2px; line-height: 1.4; }
 
     /* ── SECURITY ── */
-    .security-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; }
-    .security-header { padding: 14px 20px; border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.85rem; color: var(--flux-warning); background: rgba(251,191,36,0.03); text-transform: uppercase; letter-spacing: 0.06em; }
+    .security-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+    .security-header { padding: 14px 20px; border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.76rem; color: var(--flux-warning); background: rgba(251,191,36,0.02); text-transform: uppercase; letter-spacing: 0.06em; }
     .security-list { list-style: none; padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
-    .security-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.865rem; color: var(--flux-gray-300); line-height: 1.5; }
+    .security-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; color: var(--flux-gray-300); line-height: 1.5; }
     .security-list li::before { content: '—'; color: var(--flux-primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    body[data-active-country="co"] .security-list li::before { color: var(--flux-secondary); }
 
     /* ── DIVIDER ── */
     .section-divider { height: 1px; background: var(--glass-border); margin: 48px 0; }
@@ -540,7 +702,7 @@
     /* ── RESPONSIVE ── */
     .mobile-header { display: none; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
       .mobile-header {
         display: flex;
         align-items: center;
@@ -604,7 +766,7 @@
         padding-top: 56px;
       }
       .dev-hero {
-        padding: 40px 20px;
+        padding: 40px 20px 0;
       }
       .content {
         padding: 40px 20px;
@@ -615,6 +777,13 @@
       .stat-item {
         min-width: 50%;
         padding: 20px;
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .stat-item:nth-child(even) {
+        border-right: none;
+      }
+      .stat-item:nth-child(3), .stat-item:nth-child(4) {
+        border-bottom: none;
       }
       .feature-grid {
         grid-template-columns: 1fr;
@@ -633,7 +802,7 @@
     }
   </script>
 </head>
-<body class="preloader-active">
+<body class="preloader-active" data-active-country="mx">
   <!-- fluX Preloader -->
   <div id="flux-preloader">
     <div class="preloader-content">
@@ -645,9 +814,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Mobile Header -->
   <header class="mobile-header">
     <div class="mobile-header-logo">
-      <a href="co/" style="display: flex; align-items: center;"><img src="./assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX" decoding="async"></a>
+      <a href="./" style="display: flex; align-items: center;" id="mobile-home-link"><img src="./assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX" decoding="async"></a>
       <span class="dev-badge">API v1.0</span>
     </div>
     <button class="mobile-menu-toggle" id="mobile-menu-toggle">
@@ -660,35 +831,59 @@
   <!-- ── SIDEBAR ── -->
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <a href="co/" style="display: flex; align-items: center;"><img src="./assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX" decoding="async"></a>
+      <a href="./" style="display: flex; align-items: center;" id="sidebar-home-link"><img src="./assets/images/logos/flux%20one%20en%20blanco_1.svg" alt="fluX" decoding="async"></a>
       <span class="dev-badge">API v1.0</span>
     </div>
 
+    <!-- Country Selector Tabs -->
+    <div class="country-selector">
+      <button class="country-tab active" data-country="mx" onclick="switchCountry('mx')">
+        <img src="https://flagcdn.com/w40/mx.png" alt="MX" class="country-flag"> México
+      </button>
+      <button class="country-tab" data-country="co" onclick="switchCountry('co')">
+        <img src="https://flagcdn.com/w40/co.png" alt="CO" class="country-flag"> Colombia
+      </button>
+    </div>
+
     <nav class="sidebar-nav">
+      <!-- Getting Started (Common) -->
       <div class="nav-group">
         <div class="nav-group-label">Getting Started</div>
         <ul>
           <li><a href="#intro" class="active"><span class="nav-dot"></span>Introducción</a></li>
           <li><a href="#auth"><span class="nav-dot"></span>Autenticación</a></li>
-          <li><a href="#quickstart"><span class="nav-dot"></span>Quick Start</a></li>
-          <li><a href="#errors"><span class="nav-dot"></span>Errores</a></li>
+          <li><a href="#quickstart" data-country-nav="co"><span class="nav-dot"></span>Quick Start</a></li>
+          <li><a href="#errors-common"><span class="nav-dot"></span>Errores</a></li>
         </ul>
       </div>
-      <div class="nav-group">
-        <div class="nav-group-label">Endpoints</div>
+
+      <!-- México SPEI Endpoints -->
+      <div class="nav-group" data-country-nav="mx">
+        <div class="nav-group-label">México — SPEI</div>
         <ul>
-          <li><a href="#banks"><span class="nav-dot"></span>Bancos</a></li>
-          <li><a href="#accounts"><span class="nav-dot"></span>Cuentas</a></li>
-          <li><a href="#instruments"><span class="nav-dot"></span>Instrumentos</a></li>
-          <li><a href="#transactions"><span class="nav-dot"></span>Transacciones</a></li>
-          <li><a href="#webhooks"><span class="nav-dot"></span>Webhooks</a></li>
+          <li><a href="#payouts-mx"><span class="nav-dot"></span>Dispersión (Payouts)</a></li>
+          <li><a href="#collections-mx"><span class="nav-dot"></span>Recaudo (Pay-ins)</a></li>
+          <li><a href="#penny-validation-mx"><span class="nav-dot"></span>Penny Validation</a></li>
+          <li><a href="#webhooks-mx"><span class="nav-dot"></span>Webhooks</a></li>
         </ul>
       </div>
+
+      <!-- Colombia Bre-B Endpoints -->
+      <div class="nav-group" data-country-nav="co">
+        <div class="nav-group-label">Colombia — Bre-B</div>
+        <ul>
+          <li><a href="#payouts-co"><span class="nav-dot"></span>Dispersión (Payouts)</a></li>
+          <li><a href="#collections-co"><span class="nav-dot"></span>Recaudo (Pay-ins)</a></li>
+          <li><a href="#webhooks-co"><span class="nav-dot"></span>Webhooks</a></li>
+        </ul>
+      </div>
+
+      <!-- Referencias y Buenas Prácticas -->
       <div class="nav-group">
         <div class="nav-group-label">Referencia</div>
         <ul>
-          <li><a href="#security"><span class="nav-dot"></span>Seguridad</a></li>
-          <li><a href="#all-endpoints"><span class="nav-dot"></span>Todos los endpoints</a></li>
+          <li><a href="#security-practices"><span class="nav-dot"></span>Seguridad</a></li>
+          <li><a href="#all-endpoints-table"><span class="nav-dot"></span>Lista de endpoints</a></li>
         </ul>
       </div>
     </nav>
@@ -699,13 +894,12 @@
         <span>API operativa</span>
         <span class="status-latency" id="latency-display">24ms</span>
       </div>
-      <a href="/co/" class="sidebar-back">← Volver al sitio</a>
+      <a href="./" class="sidebar-back" id="back-link">← Volver al sitio</a>
     </div>
   </aside>
 
-  <!-- ── MAIN ── -->
+  <!-- ── MAIN CONTENT ── -->
   <main class="main">
-
     <!-- HERO -->
     <section class="dev-hero" id="intro">
       <div class="hero-bg"></div>
@@ -713,16 +907,16 @@
       <div class="hero-content">
         <div class="hero-eyebrow">fluX Partners API</div>
         <h1 class="hero-title">
-          Integra pagos<br>en tu plataforma<br><span class="text-grad">sin fricciones</span>
+          Integra pagos<br>en tu plataforma<br><span class="text-grad" id="hero-grad-text">sin fricciones</span>
         </h1>
-        <p class="hero-subtitle">
-          API REST diseñada para integradores. Recaudo, dispersión, cuentas virtuales y webhooks en tiempo real — todo desde un solo endpoint.
+        <p class="hero-subtitle" id="hero-desc-text">
+          API REST diseñada para integradores. Recaudo, dispersión, validación de cuentas y webhooks en tiempo real — todo desde un solo endpoint.
         </p>
         <div class="hero-ctas">
-          <a href="#quickstart" class="btn-primary">
-            <span>⚡ Quick Start</span>
+          <a href="#auth" class="btn-primary">
+            <span>⚡ Comenzar integración</span>
           </a>
-          <a href="#all-endpoints" class="btn-ghost">
+          <a href="#all-endpoints-table" class="btn-ghost">
             Ver todos los endpoints →
           </a>
         </div>
@@ -730,16 +924,16 @@
 
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-value">99.9%</div>
+          <div class="stat-value">99.99%</div>
           <div class="stat-label">Uptime garantizado</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">&lt;30ms</div>
+          <div class="stat-value">&lt;24ms</div>
           <div class="stat-label">Latencia promedio</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">13</div>
-          <div class="stat-label">Endpoints</div>
+          <div class="stat-value" id="stats-endpoints-count">13</div>
+          <div class="stat-label">Endpoints activos</div>
         </div>
         <div class="stat-item">
           <div class="stat-value">REST</div>
@@ -748,407 +942,1040 @@
       </div>
     </section>
 
-    <!-- CONTENT -->
+    <!-- CONTENT PORTAL -->
     <div class="content">
-
-      <!-- Feature cards -->
-      <div class="feature-grid" style="margin-bottom:56px;">
-        <div class="feature-card">
-          <div class="feature-icon cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      
+      <!-- INTRODUCCIÓN GENERAL -->
+      <div class="section-block">
+        <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:28px;font-size:0.95rem;text-transform:none;">
+          Bienvenido a la documentación de desarrollo de **fluX**. Ofrecemos una API unificada y robusta que permite a las plataformas automatizar flujos de dinero inmediatos conectándose directamente con las redes de pagos en tiempo real locales.
+        </p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+            <div>
+              <div class="feature-name">Dispersión (Payouts)</div>
+              <div class="feature-desc">Envía fondos a cuentas bancarias en tiempo real con confirmación en segundos.</div>
+            </div>
           </div>
-          <div>
-            <div class="feature-name">Dispersión</div>
-            <div class="feature-desc">Envía fondos a cuentas bancarias en tiempo real.</div>
+          <div class="feature-card">
+            <div class="feature-icon violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+            <div>
+              <div class="feature-name">Recaudo (Pay-ins)</div>
+              <div class="feature-desc">Recibe pagos inmediatos por transferencias, llaves alias o códigos QR.</div>
+            </div>
           </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon violet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          <div class="feature-card">
+            <div class="feature-icon cyan">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6" y2="6"/><line x1="6" y1="18" x2="6" y2="18"/></svg>
+            </div>
+            <div>
+              <div class="feature-name" id="feature-card-title-3">Cuentas y Validación</div>
+              <div class="feature-desc" id="feature-card-desc-3">Verifica la identidad del titular de la cuenta antes de enviar fondos para mitigar fraudes.</div>
+            </div>
           </div>
-          <div>
-            <div class="feature-name">Recaudo</div>
-            <div class="feature-desc">Recibe pagos y notifícalos vía webhook al instante.</div>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon cyan">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6" y2="6"/><line x1="6" y1="18" x2="6" y2="18"/></svg>
-          </div>
-          <div>
-            <div class="feature-name">Cuentas virtuales</div>
-            <div class="feature-desc">Crea y administra cuentas e instrumentos por cliente.</div>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon violet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          </div>
-          <div>
-            <div class="feature-name">Webhooks</div>
-            <div class="feature-desc">Eventos push para money-in, money-out y estados.</div>
+          <div class="feature-card">
+            <div class="feature-icon violet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <div>
+              <div class="feature-name">Webhooks Push</div>
+              <div class="feature-desc">Recibe notificaciones inmediatas en tu servidor tan pronto como ocurra un evento.</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- AUTENTICACIÓN -->
+      <!-- AUTENTICACIÓN (COMÚN) -->
       <div class="section-block" id="auth">
         <div class="section-header">
           <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
           <h2 class="section-title">Autenticación</h2>
         </div>
         <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
-          Todas las peticiones requieren el header <code>X-API-Key</code>. Las claves tienen prefijo <code>sk_live_</code> para producción y <code>sk_test_</code> para sandbox.
+          Cada petición a las APIs de **fluX** requiere el header de autorización con tu Bearer token obtenido de forma segura. El token de sesión tiene una vigencia limitada y debe renovarse periódicamente.
         </p>
+
+        <!-- Base URL Configurable -->
         <div class="base-url">
           <span class="base-url-label">Base URL</span>
-          <span class="base-url-value">https://api.fluxone.co/api/v1</span>
-          <button class="base-url-copy" onclick="copyText('https://api.fluxone.co/api/v1', this)" title="Copiar">⎘</button>
+          <span class="base-url-value" id="base-url-text">https://flux.praxisglobe.com/api/v1/partners</span>
+          <button class="base-url-copy" onclick="copyText(document.getElementById('base-url-text').textContent, this)" title="Copiar URL">⎘</button>
         </div>
+
         <div class="key-card">
-          <div class="key-card-header">🔐 &nbsp;Tu API Key</div>
+          <div class="key-card-header">🔐 &nbsp;Credenciales del Socio</div>
           <div class="key-row">
-            <span class="live-badge">LIVE</span>
-            <span id="api-key-value">sk_live_••••••••••••••••••••</span>
+            <span class="live-badge">JWT Token</span>
+            <span id="api-key-value">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ey••••••••••••••••••••</span>
             <button class="btn-icon" onclick="revealKey()" title="Mostrar/ocultar">👁</button>
             <button class="btn-icon" onclick="copyKey()" title="Copiar">⎘</button>
           </div>
-          <div class="key-footer">⚠️ Nunca compartas tu API Key en repositorios públicos ni código cliente.</div>
+          <div class="key-footer">⚠️ Almacena tu secreto y token de acceso de forma segura. Nunca lo expongas en código del lado cliente.</div>
         </div>
-        <div class="callout info"><strong>Header requerido:</strong> <code>X-API-Key: &lt;FLUX_API_KEY&gt;</code> en cada request.</div>
+
+        <div class="callout info"><strong>Requisito de Header:</strong> <code>Authorization: Bearer &lt;YOUR_JWT_ACCESS_TOKEN&gt;</code> en cada request.</div>
 
         <div style="margin-top: 32px;">
-          <h3 style="font-size: 0.95rem; font-weight: 600; color: #ffffff; margin-bottom: 12px; text-transform: none; display: flex; align-items: center; gap: 8px;">
-            🔑 Autenticación por Usuario (Login)
+          <h3 style="font-size: 0.92rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+            🔑 Autenticación (Obtención de Token)
           </h3>
           <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:16px;font-size:0.9rem;text-transform:none;">
-            Si necesitas autenticarte utilizando credenciales de usuario (email y contraseña) para obtener un token de sesión en la red de fluX.
+            Envía tus credenciales de socio (cliente/correo corporativo y contraseña) a través del endpoint de Login para recibir el token JWT de acceso.
           </p>
+
           <div class="code-card">
-            <div class="code-tabs">
-              <button class="code-tab active" data-group="login" data-tab="login-curl">cURL</button>
-              <button class="code-tab" data-group="login" data-tab="login-node">Node.js</button>
-              <button class="code-tab" data-group="login" data-tab="login-python">Python</button>
+            <div class="code-tabs" data-code-group="login">
+              <button class="code-tab active" data-lang="curl">cURL</button>
+              <button class="code-tab" data-lang="node">Node.js</button>
+              <button class="code-tab" data-lang="python">Python</button>
+              <button class="code-tab" data-lang="spring">Spring Boot</button>
               <button class="copy-btn">Copiar</button>
             </div>
-            <div class="code-panel active" id="panel-login-curl">
-<pre><span class="c">curl</span> -X <span class="k">POST</span> https://api.fluxone.co/api/v1/partners/login \
+            <!-- cURL -->
+            <div class="code-panel active" data-panel-lang="curl">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> <span class="s">"https://flux.praxisglobe.com/api/v1/partners/login"</span> \
   -H <span class="s">"Accept: application/json"</span> \
   -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{
-    "email": "user@example.com",
-    "password": "password123"
+    "email": "socio@empresa.com",
+    "password": "mi_password_seguro_123"
   }'</span></pre>
             </div>
-            <div class="code-panel" id="panel-login-node">
+            <!-- Node -->
+            <div class="code-panel" data-panel-lang="node">
 <pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
 
-<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">post</span>(<span class="s">'https://api.fluxone.co/api/v1/partners/login'</span>, {
-  email: <span class="s">'user@example.com'</span>,
-  password: <span class="s">'password123'</span>
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">post</span>(<span class="s">'https://flux.praxisglobe.com/api/v1/partners/login'</span>, {
+  email: <span class="s">'socio@empresa.com'</span>,
+  password: <span class="s">'mi_password_seguro_123'</span>
 }, {
   headers: {
     <span class="s">'Accept'</span>: <span class="s">'application/json'</span>,
     <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
   }
 });
-console.<span class="c">log</span>(response.data);</pre>
+console.<span class="c">log</span>(response.data.access_token);</pre>
             </div>
-            <div class="code-panel" id="panel-login-python">
+            <!-- Python -->
+            <div class="code-panel" data-panel-lang="python">
 <pre><span class="k">import</span> requests
 
 response = requests.<span class="c">post</span>(
-  <span class="s">'https://api.fluxone.co/api/v1/partners/login'</span>,
-  headers={
-    <span class="s">'Accept'</span>: <span class="s">'application/json'</span>,
-    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
-  },
-  json={
-    <span class="s">'email'</span>: <span class="s">'user@example.com'</span>,
-    <span class="s">'password'</span>: <span class="s">'password123'</span>
-  }
+    <span class="s">'https://flux.praxisglobe.com/api/v1/partners/login'</span>,
+    headers={
+        <span class="s">'Accept'</span>: <span class="s">'application/json'</span>,
+        <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+    },
+    json={
+        <span class="s">'email'</span>: <span class="s">'socio@empresa.com'</span>,
+        <span class="s">'password'</span>: <span class="s">'mi_password_seguro_123'</span>
+    }
 )
-print(response.json())</pre>
+print(response.json()[<span class="s">'access_token'</span>])</pre>
+            </div>
+            <!-- Spring Boot -->
+            <div class="code-panel" data-panel-lang="spring">
+<pre><span class="cm">// Usando RestTemplate de Spring</span>
+HttpHeaders headers = <span class="k">new</span> HttpHeaders();
+headers.setContentType(MediaType.APPLICATION_JSON);
+
+Map&lt;String, String&gt; body = <span class="k">new</span> HashMap&lt;&gt;();
+body.put(<span class="s">"email"</span>, <span class="s">"socio@empresa.com"</span>);
+body.put(<span class="s">"password"</span>, <span class="s">"mi_password_seguro_123"</span>);
+
+HttpEntity&lt;Map&lt;String, String&gt;&gt; entity = <span class="k">new</span> HttpEntity&lt;&gt;(body, headers);
+ResponseEntity&lt;Map&gt; response = restTemplate.postForEntity(
+    <span class="s">"https://flux.praxisglobe.com/api/v1/partners/login"</span>, entity, Map.class
+);
+String token = (String) response.getBody().get(<span class="s">"access_token"</span>);</pre>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- QUICK START -->
-      <div class="section-block" id="quickstart">
+      <!-- QUICK START (COLOMBIA ONLY) -->
+      <div class="section-block" id="quickstart" data-country-content="co">
         <div class="section-header">
           <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <h2 class="section-title">Quick Start</h2>
         </div>
-        <p style="color:var(--flux-gray-300);font-size:0.9rem;margin-bottom:20px;line-height:1.65;text-transform:none;">Tu primera petición — lista el catálogo de bancos disponibles.</p>
+        <p style="color:var(--flux-gray-300);font-size:0.9rem;margin-bottom:20px;line-height:1.65;text-transform:none;">
+          Tu primera petición en la red de fluX Colombia: consulta el catálogo oficial de bancos disponibles en la red Bre-B.
+        </p>
 
         <div class="code-card">
-          <div class="code-tabs">
+          <div class="code-tabs" data-code-group="quick">
             <button class="code-tab active" data-lang="curl">cURL</button>
             <button class="code-tab" data-lang="node">Node.js</button>
             <button class="code-tab" data-lang="python">Python</button>
+            <button class="code-tab" data-lang="spring">Spring Boot</button>
             <button class="copy-btn">Copiar</button>
           </div>
-          <div class="code-panel active" id="panel-curl">
-<pre><span class="c">curl</span> -X <span class="k">GET</span> https://api.fluxone.co/api/v1/partners/banks \
-  -H <span class="s">"X-API-Key: &lt;FLUX_API_KEY&gt;"</span> \
-  -H <span class="s">"Content-Type: application/json"</span></pre>
+          <div class="code-panel active" data-panel-lang="curl">
+<pre><span class="c">curl</span> -i -X <span class="k">GET</span> <span class="s">"https://flux.praxisglobe.com/api/v1/banks"</span> \
+  -H <span class="s">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
+  -H <span class="s">"Accept: application/json"</span></pre>
           </div>
-          <div class="code-panel" id="panel-node">
+          <div class="code-panel" data-panel-lang="node">
 <pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
 
-<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">get</span>(<span class="s">'https://api.fluxone.co/api/v1/partners/banks'</span>, {
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">get</span>(<span class="s">'https://flux.praxisglobe.com/api/v1/banks'</span>, {
   headers: {
-    <span class="s">'X-API-Key'</span>: <span class="s">'&lt;FLUX_API_KEY&gt;'</span>,
-    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+    <span class="s">'Authorization'</span>: <span class="s">'Bearer &lt;ACCESS_TOKEN&gt;'</span>,
+    <span class="s">'Accept'</span>: <span class="s">'application/json'</span>
   }
 });
 console.<span class="c">log</span>(response.data);</pre>
           </div>
-          <div class="code-panel" id="panel-python">
+          <div class="code-panel" data-panel-lang="python">
 <pre><span class="k">import</span> requests
 
 response = requests.<span class="c">get</span>(
-  <span class="s">'https://api.fluxone.co/api/v1/partners/banks'</span>,
-  headers={
-    <span class="s">'X-API-Key'</span>: <span class="s">'&lt;FLUX_API_KEY&gt;'</span>,
-    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
-  }
+    <span class="s">'https://flux.praxisglobe.com/api/v1/banks'</span>,
+    headers={
+        <span class="s">'Authorization'</span>: <span class="s">'Bearer &lt;ACCESS_TOKEN&gt;'</span>,
+        <span class="s">'Accept'</span>: <span class="s">'application/json'</span>
+    }
 )
-<span class="c">print</span>(response.json())</pre>
+print(response.json())</pre>
+          </div>
+          <div class="code-panel" data-panel-lang="spring">
+<pre>HttpHeaders headers = <span class="k">new</span> HttpHeaders();
+headers.setBearerAuth(<span class="s">"&lt;ACCESS_TOKEN&gt;"</span>);
+headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+
+HttpEntity&lt;String&gt; entity = <span class="k">new</span> HttpEntity&lt;&gt;(headers);
+ResponseEntity&lt;List&gt; response = restTemplate.exchange(
+    <span class="s">"https://flux.praxisglobe.com/api/v1/banks"</span>,
+    HttpMethod.GET, entity, List.class
+);</pre>
           </div>
         </div>
 
-        <p style="color:var(--flux-gray-300);font-size:0.88rem;margin-bottom:14px;text-transform:none;">Respuesta esperada:</p>
+        <p style="color:var(--flux-gray-300);font-size:0.85rem;margin-bottom:12px;text-transform:none;">Respuesta esperada (200 OK):</p>
         <div class="code-card">
           <div class="code-tabs">
             <button class="code-tab active">200 OK</button>
             <button class="copy-btn">Copiar</button>
           </div>
           <div class="code-panel active">
-<pre>{
-  <span class="p">"data"</span>: [
-    {
-      <span class="p">"id"</span>:      <span class="s">"bancolombia"</span>,
-      <span class="p">"name"</span>:    <span class="s">"Bancolombia"</span>,
-      <span class="p">"code"</span>:    <span class="s">"007"</span>,
-      <span class="p">"country"</span>: <span class="s">"CO"</span>,
-      <span class="p">"active"</span>:  <span class="k">true</span>
-    }
-  ],
-  <span class="p">"page"</span>:      <span class="n">1</span>,
-  <span class="p">"page_size"</span>: <span class="n">20</span>,
-  <span class="p">"total"</span>:     <span class="n">48</span>
-}</pre>
+<pre>[
+  {
+    <span class="p">"bank_code"</span>: <span class="s">"001"</span>,
+    <span class="p">"bank_name"</span>: <span class="s">"Bancolombia"</span>,
+    <span class="p">"status"</span>:    <span class="s">"ACTIVE"</span>
+  },
+  {
+    <span class="p">"bank_code"</span>: <span class="s">"002"</span>,
+    <span class="p">"bank_name"</span>: <span class="s">"Banco de Bogotá"</span>,
+    <span class="p">"status"</span>:    <span class="s">"ACTIVE"</span>
+  }
+]</pre>
           </div>
         </div>
       </div>
 
-      <!-- ERRORES -->
-      <div class="section-block" id="errors">
+      <!-- ERRORES COMUNES -->
+      <div class="section-block" id="errors-common">
         <div class="section-header">
           <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
           <h2 class="section-title">Errores</h2>
         </div>
         <p style="color:var(--flux-gray-300);font-size:0.9rem;margin-bottom:20px;line-height:1.65;text-transform:none;">
-          La API usa códigos HTTP estándar. Los errores retornan <code>error.code</code> y <code>error.message</code>.
+          La API utiliza códigos de estado HTTP estándar para indicar el éxito o fracaso de las peticiones. Cada error retorna una estructura con códigos legibles.
         </p>
         <div class="error-grid">
-          <div class="error-row"><span class="error-code e-4xx">401</span><div><div class="error-msg">Unauthorized</div><div class="error-desc">API Key ausente o inválida.</div></div></div>
-          <div class="error-row"><span class="error-code e-4xx">400</span><div><div class="error-msg">Bad Request</div><div class="error-desc">Parámetros faltantes o con formato incorrecto.</div></div></div>
-          <div class="error-row"><span class="error-code e-4xx">404</span><div><div class="error-msg">Not Found</div><div class="error-desc">El recurso solicitado no existe.</div></div></div>
-          <div class="error-row"><span class="error-code e-4xx">409</span><div><div class="error-msg">Conflict</div><div class="error-desc">Request duplicado — usa <code>Idempotency-Key</code>.</div></div></div>
-          <div class="error-row"><span class="error-code e-5xx">500</span><div><div class="error-msg">Internal Server Error</div><div class="error-desc">Reintenta con backoff exponencial.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">400</span><div><div class="error-msg">Bad Request</div><div class="error-desc">Petición malformada o parámetros con sintaxis inválida.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">401</span><div><div class="error-msg">Unauthorized</div><div class="error-desc">Token de acceso ausente, vencido o con firma inválida.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">404</span><div><div class="error-msg">Not Found</div><div class="error-desc">El recurso solicitado (cuenta, transacción, etc.) no existe.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">409</span><div><div class="error-msg">Conflict</div><div class="error-desc">Conflicto transaccional. Por ejemplo, uso repetido de una llave de idempotencia.</div></div></div>
+          <div class="error-row"><span class="error-code e-4xx">422</span><div><div class="error-msg">Unprocessable Entity</div><div class="error-desc">Petición bien formateada pero con errores de negocio (fondos insuficientes, banco rechazó).</div></div></div>
+          <div class="error-row"><span class="error-code e-5xx">500</span><div><div class="error-msg">Internal Server Error</div><div class="error-desc">Error del servidor de fluX. Implementar reintento con backoff exponencial.</div></div></div>
         </div>
       </div>
 
       <div class="section-divider"></div>
 
-      <!-- BANCOS -->
-      <div class="section-block" id="banks">
-        <div class="section-header">
-          <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M3 11h18L12 3z"/></svg></div>
-          <h2 class="section-title">Bancos</h2>
+      <!-- ========================================= -->
+      <!-- 🇲🇽 CONTENIDO MÉXICO (SPEI) -->
+      <!-- ========================================= -->
+      
+      <div data-country-content="mx">
+        <!-- Payouts MX -->
+        <div class="section-block" id="payouts-mx">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+            <h2 class="section-title">Dispersión (Payouts)</h2>
+          </div>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            Envía dispersiones a cualquier cuenta bancaria en México a través de la red **SPEI** de forma inmediata. Las transacciones se procesan al instante en horario operativo de SPEI, liquidando en segundos. fluX abstrae la complejidad de la conexión directa y conciliación con BANXICO.
+          </p>
+
+          <div class="callout info"><strong>Postman Collection:</strong> <a href="#" style="color: inherit; font-weight: 600;">Download Collection — Payouts v1</a></div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Casos de Uso</h3>
+          <ul style="color: var(--flux-gray-300); margin-left: 20px; margin-bottom: 24px; line-height: 1.6; font-size: 0.86rem;">
+            <li><strong>Dispersión de Nómina:</strong> Automatiza el pago de salarios a miles de empleados masivamente.</li>
+            <li><strong>Pagos a Proveedores:</strong> Paga facturas de insumos al instante sin procesos bancarios manuales.</li>
+            <li><strong>Liquidación de Escrow:</strong> Entrega fondos recaudados a conductores, repartidores o comercios.</li>
+            <li><strong>Reembolsos Inmediatos:</strong> Retorna saldos por devoluciones directamente a la tarjeta de débito del cliente.</li>
+          </ul>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Flujo de la Transacción</h3>
+          <div class="flow-container">
+            <div class="flow-steps">
+              <div class="flow-step-item">
+                <div class="flow-num">1</div>
+                <div class="flow-text">
+                  <div class="flow-header"><span class="flow-title">Petición POST</span><span class="flow-method m-post">POST</span></div>
+                  <div class="flow-desc">Tu plataforma envía la petición con la CLABE destino, monto y una referencia única a <code>/v1/transactions/payouts</code>.</div>
+                </div>
+              </div>
+              <div class="flow-step-item">
+                <div class="flow-num">2</div>
+                <div class="flow-text">
+                  <div class="flow-header"><span class="flow-title">Procesamiento y SPEI</span><span class="flow-method m-get" style="color: #4ade80; background: rgba(34,197,94,0.08);">SPEI</span></div>
+                  <div class="flow-desc">fluX valida la petición, debita tu cuenta concentradora y enruta los fondos por SPEI. Retorna estado <code>INITIALIZED</code>. Los fondos se liquidan en segundos.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Crear una Dispersión</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/partners/transactions/payouts</span>
+          </div>
+
+          <table class="param-table">
+            <thead><tr><th>Campo</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
+            <tbody>
+              <tr><td class="param-name">client_id</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">ID único del cliente asignado durante el onboarding.</td></tr>
+              <tr><td class="param-name">source_instrument_id</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">ID de tu instrumento de fondeo (cuenta concentradora).</td></tr>
+              <tr><td class="param-name">destination_clabe</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">CLABE interbancaria de 18 dígitos del beneficiario.</td></tr>
+              <tr><td class="param-name">transaction_request.external_reference</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Referencia numérica (máx. 7 dígitos).</td></tr>
+              <tr><td class="param-name">transaction_request.description</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Concepto de pago (máx. 40 caracteres, sin caracteres especiales).</td></tr>
+              <tr><td class="param-name">transaction_request.amount</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Monto en pesos MXN con hasta 2 decimales (ej: "1.95").</td></tr>
+              <tr><td class="param-name">transaction_request.currency</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Moneda. Debe ser "MXN".</td></tr>
+            </tbody>
+          </table>
+
+          <div class="code-card">
+            <div class="code-tabs" data-code-group="payout-mx">
+              <button class="code-tab active" data-lang="curl">cURL</button>
+              <button class="code-tab" data-lang="node">Node.js</button>
+              <button class="code-tab" data-lang="python">Python</button>
+              <button class="code-tab" data-lang="spring">Spring Boot</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active" data-panel-lang="curl">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> <span class="s">"https://flux.praxisglobe.com/api/v1/partners/transactions/payouts"</span> \
+  -H <span class="s">"Authorization: Bearer &lt;YOUR_JWT_HERE&gt;"</span> \
+  -H <span class="s">"Accept: application/json"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -H <span class="s">"Idempotency-Key: 550e8400-e29b-41d4-a716-446655440000"</span> \
+  -d <span class="s">'{
+    "client_id": "c2d1d1e3-3340-4170-980e-e9269bbbc551",
+    "source_instrument_id": "709448c3-7cbf-454d-a87e-feb23801269a",
+    "destination_clabe": "734180000069183455",
+    "transaction_request": {
+      "external_reference": "1234567",
+      "description": "Pago nomina semana 21",
+      "amount": "1500.00",
+      "currency": "MXN"
+    }
+  }'</span></pre>
+            </div>
+            <div class="code-panel" data-panel-lang="node">
+<pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
+
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">post</span>(<span class="s">'https://flux.praxisglobe.com/api/v1/partners/transactions/payouts'</span>, {
+  client_id: <span class="s">'c2d1d1e3-3340-4170-980e-e9269bbbc551'</span>,
+  source_instrument_id: <span class="s">'709448c3-7cbf-454d-a87e-feb23801269a'</span>,
+  destination_clabe: <span class="s">'734180000069183455'</span>,
+  transaction_request: {
+    external_reference: <span class="s">'1234567'</span>,
+    description: <span class="s">'Pago nomina semana 21'</span>,
+    amount: <span class="s">'1500.00'</span>,
+    currency: <span class="s">'MXN'</span>
+  }
+}, {
+  headers: {
+    <span class="s">'Authorization'</span>: <span class="s">'Bearer &lt;YOUR_JWT_HERE&gt;'</span>,
+    <span class="s">'Idempotency-Key'</span>: <span class="s">'550e8400-e29b-41d4-a716-446655440000'</span>,
+    <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+  }
+});</pre>
+            </div>
+            <div class="code-panel" data-panel-lang="python">
+<pre><span class="k">import</span> requests
+
+payload = {
+    <span class="s">"client_id"</span>: <span class="s">"c2d1d1e3-3340-4170-980e-e9269bbbc551"</span>,
+    <span class="s">"source_instrument_id"</span>: <span class="s">"709448c3-7cbf-454d-a87e-feb23801269a"</span>,
+    <span class="s">"destination_clabe"</span>: <span class="s">"734180000069183455"</span>,
+    <span class="s">"transaction_request"</span>: {
+        <span class="s">"external_reference"</span>: <span class="s">"1234567"</span>,
+        <span class="s">"description"</span>: <span class="s">"Pago nomina semana 21"</span>,
+        <span class="s">"amount"</span>: <span class="s">"1500.00"</span>,
+        <span class="s">"currency"</span>: <span class="s">"MXN"</span>
+    }
+}
+response = requests.<span class="c">post</span>(
+    <span class="s">'https://flux.praxisglobe.com/api/v1/partners/transactions/payouts'</span>,
+    headers={
+        <span class="s">'Authorization'</span>: <span class="s">'Bearer &lt;YOUR_JWT_HERE&gt;'</span>,
+        <span class="s">'Idempotency-Key'</span>: <span class="s">'550e8400-e29b-41d4-a716-446655440000'</span>
+    },
+    json=payload
+)</pre>
+            </div>
+            <div class="code-panel" data-panel-lang="spring">
+<pre>HttpHeaders headers = <span class="k">new</span> HttpHeaders();
+headers.setBearerAuth(<span class="s">"&lt;YOUR_JWT_HERE&gt;"</span>);
+headers.set(<span class="s">"Idempotency-Key"</span>, <span class="s">"550e8400-e29b-41d4-a716-446655440000"</span>);
+headers.setContentType(MediaType.APPLICATION_JSON);
+
+<span class="cm">// Construir Mapas para el payload...</span>
+HttpEntity&lt;Map&gt; entity = <span class="k">new</span> HttpEntity&lt;&gt;(payload, headers);
+ResponseEntity&lt;Map&gt; response = restTemplate.postForEntity(
+    <span class="s">"https://flux.praxisglobe.com/api/v1/partners/transactions/payouts"</span>, entity, Map.class
+);</pre>
+            </div>
+          </div>
+
+          <p style="color:var(--flux-gray-300);font-size:0.85rem;margin-bottom:12px;text-transform:none;">Respuesta (200 OK):</p>
+          <div class="code-card">
+            <div class="code-tabs">
+              <button class="code-tab active">200 OK</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active">
+<pre>{
+  <span class="p">"id"</span>:                 <span class="s">"16811ee8-1ef9-4dd4-8d84-9c2df89cf302"</span>,
+  <span class="p">"bankId"</span>:             <span class="s">"9d84b03a-28d1-4898-a69c-38824239e2b1"</span>,
+  <span class="p">"clientId"</span>:           <span class="s">"c2d1d1e3-3340-4170-980e-e9269bbbc551"</span>,
+  <span class="p">"externalReference"</span>:  <span class="s">"1234567"</span>,
+  <span class="p">"trackingId"</span>:         <span class="s">"20250306FINCHVLIKQ5SKUM"</span>,
+  <span class="p">"description"</span>:        <span class="s">"Pago nomina semana 21"</span>,
+  <span class="p">"amount"</span>:             <span class="s">"1500.00"</span>,
+  <span class="p">"currency"</span>:           <span class="s">"MXN"</span>,
+  <span class="p">"category"</span>:           <span class="s">"DEBIT_TRANS"</span>,
+  <span class="p">"subCategory"</span>:        <span class="s">"SPEI_DEBIT"</span>,
+  <span class="p">"transactionStatus"</span>:  <span class="s">"INITIALIZED"</span>,
+  <span class="p">"audit"</span>: {
+    <span class="p">"createdAt"</span>:        <span class="s">"2025-03-06 11:57:55.408000-06:00"</span>,
+    <span class="p">"updatedAt"</span>:        <span class="s">"2025-03-06 11:57:55.408000-06:00"</span>
+  }
+}</pre>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Ciclo de Vida del Payout</h3>
+          <p style="color: var(--flux-gray-300); font-size: 0.84rem; line-height: 1.5; margin-bottom: 16px;">
+            Una transferencia SPEI pasa por las siguientes etapas: <code>INITIALIZED</code> (registrada) → <code>PENDING</code> (en cola de envío) → <code>PROCESSING</code> (enviada a SPEI) → <code>LIQUIDATED</code> (acreditada con éxito en el banco destino) ó <code>FAILED</code> (rechazada por el banco receptor).
+          </p>
         </div>
-        <div class="code-card" style="margin-bottom:16px;">
-          <div class="code-tabs"><button class="code-tab active">GET</button></div>
-          <div class="code-panel active"><pre><span class="k">GET</span> /partners/banks?<span class="p">page</span>=<span class="n">1</span>&amp;<span class="p">page_size</span>=<span class="n">20</span></pre></div>
+
+        <div class="section-divider"></div>
+
+        <!-- Collections MX -->
+        <div class="section-block" id="collections-mx">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+            <h2 class="section-title">Recaudo (Pay-ins)</h2>
+          </div>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            Inicia recaudos programados o en tiempo real cobrando a cualquier cuenta CLABE en México. fluX se conecta a la red de cobros SPEI para mover dinero desde la cuenta del ordenante hacia tu cuenta concentradora.
+          </p>
+
+          <div class="callout info"><strong>Postman Collection:</strong> <a href="#" style="color: inherit; font-weight: 600;">Download Collection — Collections v1</a></div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Crear una Petición de Recaudo</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/partners/transactions/collections</span>
+          </div>
+
+          <table class="param-table">
+            <thead><tr><th>Campo</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
+            <tbody>
+              <tr><td class="param-name">client_id</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">ID único de cliente.</td></tr>
+              <tr><td class="param-name">source_instrument_id</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">ID de la cuenta concentradora destino del recaudo.</td></tr>
+              <tr><td class="param-name">payer_clabe</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">CLABE del cliente a quien se cobrará.</td></tr>
+              <tr><td class="param-name">transaction_request.amount</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Monto en pesos (ej: "150.00").</td></tr>
+              <tr><td class="param-name">transaction_request.description</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Concepto del cobro (máx. 40 caracteres).</td></tr>
+            </tbody>
+          </table>
+
+          <div class="code-card">
+            <div class="code-tabs" data-code-group="collect-mx">
+              <button class="code-tab active" data-lang="curl">cURL</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> <span class="s">"https://flux.praxisglobe.com/api/v1/partners/transactions/collections"</span> \
+  -H <span class="s">"Authorization: Bearer &lt;YOUR_JWT_HERE&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -H <span class="s">"Idempotency-Key: 660e8400-e29b-41d4-a716-446655440001"</span> \
+  -d <span class="s">'{
+    "client_id": "c2d1d1e3-3340-4170-980e-e9269bbbc551",
+    "source_instrument_id": "709448c3-7cbf-454d-a87e-feb23801269a",
+    "payer_clabe": "012180015000000012",
+    "transaction_request": {
+      "external_reference": "7654321",
+      "description": "Cobro servicio mensual",
+      "amount": "150.00",
+      "currency": "MXN"
+    }
+  }'</span></pre>
+            </div>
+          </div>
         </div>
-        <table class="param-table">
-          <thead><tr><th>Parámetro</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr><td class="param-name">page</td><td class="param-type">integer</td><td><span class="param-opt">opcional</span></td><td class="param-desc">Número de página. Default: 1</td></tr>
-            <tr><td class="param-name">page_size</td><td class="param-type">integer</td><td><span class="param-opt">opcional</span></td><td class="param-desc">Items por página. Máx: 100</td></tr>
-          </tbody>
-        </table>
+
+        <div class="section-divider"></div>
+
+        <!-- Penny Validation MX -->
+        <div class="section-block" id="penny-validation-mx">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6" y2="6"/><line x1="6" y1="18" x2="6" y2="18"/></svg></div>
+            <h2 class="section-title">Penny Validation</h2>
+          </div>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            La API de **Penny Validation** permite verificar la pertenencia de una cuenta bancaria mandando un monto mínimo de centavos ($0.01 MXN) al destinatario. Este proceso genera de forma asíncrona un **CEP (Comprobante Electrónico de Pago)** oficial validado por Banco de México (BANXICO), el cual nos devuelve el RFC, CURP y nombre legal real del dueño de la cuenta bancaria.
+          </p>
+
+          <div class="callout warn">
+            <strong>Consideración Importante:</strong> El tiempo de procesamiento para recuperar el CEP depende de la velocidad del banco beneficiario al procesar el centavo y de la plataforma del CEP de BANXICO (promedio de 90 segundos).
+          </div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Crear Validación de Centavo</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/partners/transactions/penny_validation</span>
+          </div>
+
+          <div class="code-card">
+            <div class="code-tabs" data-code-group="pv-mx">
+              <button class="code-tab active" data-lang="curl">cURL</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active">
+<pre><span class="c">curl</span> -X <span class="k">POST</span> https://flux.praxisglobe.com/api/v1/partners/transactions/penny_validation \
+  -H <span class="s">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -H <span class="s">"X-Idempotency-Key: unique-pv-key-12345"</span> \
+  -d <span class="s">'{
+    "client_id": "09b1c156-73c7-62e1-9a3e-bf705f8f3cbe",
+    "source_instrument_id": "709448c3-7cbf-454d-a87e-feb23801269a",
+    "destination_clabe": "734180000069183455",
+    "description": "Validacion de cuenta",
+    "external_reference": "1234567"
+  }'</span></pre>
+            </div>
+          </div>
+
+          <p style="color:var(--flux-gray-300);font-size:0.85rem;margin-bottom:12px;text-transform:none;">Respuesta inmediata (retorna transacción inicializada):</p>
+          <div class="code-card">
+            <div class="code-tabs">
+              <button class="code-tab active">200 OK</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active">
+<pre>{
+  <span class="p">"id"</span>: <span class="s">"1eb4b5ac-71f6-4203-aded-4fcb7fd21637"</span>,
+  <span class="p">"bankId"</span>: <span class="s">"14b402f6-5dd1-4cd8-ac54-d12c5647d137"</span>,
+  <span class="p">"clientId"</span>: <span class="s">"09b1c156-73c7-62e1-9a3e-bf705f8f3cbe"</span>,
+  <span class="p">"amount"</span>: <span class="s">"0.01"</span>,
+  <span class="p">"currency"</span>: <span class="s">"MXN"</span>,
+  <span class="p">"transactionStatus"</span>: <span class="s">"INITIALIZED"</span>,
+  <span class="p">"metadata"</span>: {
+    <span class="p">"dataCep"</span>: {
+      <span class="p">"cepUrl"</span>: <span class="s">"https://www.banxico.org.mx/cep/go?i=90734&s=20250401&d=..."</span>,
+      <span class="p">"status"</span>: <span class="s">"PENDING"</span>
+    }
+  }
+}</pre>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Webhook CEP de Confirmación</h3>
+          <p style="color: var(--flux-gray-300); font-size: 0.82rem; margin-bottom: 12px;">
+            Una vez que fluX recupera el comprobante oficial desde BANXICO, gatilla un webhook tipo <code>CEP</code> con la identidad verificada del beneficiario:
+          </p>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre>{
+  <span class="p">"client_id"</span>: <span class="s">"09b1c156-73c7-62e1-9a3e-bf705f8f3cbe"</span>,
+  <span class="p">"payload"</span>: {
+    <span class="p">"msg_name"</span>: <span class="s">"CEP"</span>,
+    <span class="p">"body"</span>: {
+      <span class="p">"id"</span>: <span class="s">"1eb4b5ac-71f6-4203-aded-4fcb7fd21637"</span>,
+      <span class="p">"beneficiary_account"</span>: <span class="s">"734180000069183455"</span>,
+      <span class="p">"beneficiary_name"</span>: <span class="s">"Daniela Paola Santelices Chavez"</span>,
+      <span class="p">"beneficiary_rfc"</span>: <span class="s">"SACD900815XXX"</span>,
+      <span class="p">"status"</span>: <span class="s">"COMPLETED"</span>
+    }
+  },
+  <span class="p">"webhook_type"</span>: <span class="s">"CEP"</span>
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Webhooks MX -->
+        <div class="section-block" id="webhooks-mx">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+            <h2 class="section-title">Webhooks</h2>
+          </div>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            Los webhooks te permiten reaccionar a eventos en tiempo real. fluX envía un request POST a tu servidor tan pronto como ocurre un movimiento (depósito SPEI entrante).
+          </p>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Registrar Webhook</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/partners/webhooks/register</span>
+          </div>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> https://flux.praxisglobe.com/api/v1/partners/webhooks/register \
+  -H <span class="s">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "client_id": "834f8a44-245f-460d-83ed-f731c38e967a",
+    "url": "https://midominio.com/webhooks/receptor",
+    "event": "PAYIN",
+    "secret": "clave_secreta_firma"
+  }'</span></pre>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Validación con X-Secret-key</h3>
+          <p style="color:var(--flux-gray-300);font-size:0.85rem;margin-bottom:12px;line-height:1.5;text-transform:none;">
+            Cada webhook incluye el header <code>X-Secret-key</code> con el valor de tu secreto. Valídalo en tu middleware de Express u otro servidor antes de procesar el JSON para mitigar peticiones spoofing.
+          </p>
+        </div>
       </div>
 
-      <!-- CUENTAS -->
-      <div class="section-block" id="accounts">
-        <div class="section-header">
-          <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-          <h2 class="section-title">Cuentas</h2>
-        </div>
-        <div class="code-card" style="margin-bottom:16px;">
-          <div class="code-tabs">
-            <button class="code-tab active" data-group="acct" data-tab="list-acct">Listar</button>
-            <button class="code-tab" data-group="acct" data-tab="create-acct">Crear</button>
+      <!-- ========================================= -->
+      <!-- 🇨🇴 CONTENIDO COLOMBIA (BRE-B) -->
+      <!-- ========================================= -->
+      
+      <div data-country-content="co">
+        <!-- Payouts CO -->
+        <div class="section-block" id="payouts-co">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+            <h2 class="section-title">Dispersión (Payouts)</h2>
           </div>
-          <div class="code-panel active" id="panel-list-acct"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/accounts</pre></div>
-          <div class="code-panel" id="panel-create-acct">
-<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/private-accounts
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            Envía transferencias inmediatas a cualquier cuenta de ahorros o corriente en Colombia a través del riel nacional **Bre-B** del Banco de la República. El dinero se procesa en tiempo real y cada transacción queda asentada de forma inmutable en el **Transaction Journal** criptográfico de fluX.
+          </p>
 
-{
-  <span class="p">"alias"</span>:    <span class="s">"cuenta-principal"</span>,
-  <span class="p">"currency"</span>: <span class="s">"COP"</span>
+          <div class="callout info"><strong>Postman Collection:</strong> <a href="#" style="color: inherit; font-weight: 600;">Download Collection — CO Payouts v1</a></div>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Casos de Uso</h3>
+          <ul style="color: var(--flux-gray-300); margin-left: 20px; margin-bottom: 24px; line-height: 1.6; font-size: 0.86rem;">
+            <li><strong>Desembolso de Créditos:</strong> Entrega préstamos aprobados en segundos a la cuenta del usuario.</li>
+            <li><strong>Pago de Nóminas y Proveedores:</strong> Automatiza giros masivos a cuentas bancarias tradicionales vía Bre-B.</li>
+            <li><strong>Reembolsos en E-commerce:</strong> Devuelve saldos de forma inmediata mejorando la lealtad de marca.</li>
+          </ul>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Crear un Pago Inmediato</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/payments</span>
+          </div>
+
+          <table class="param-table">
+            <thead><tr><th>Campo</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
+            <tbody>
+              <tr><td class="param-name">amount.value</td><td class="param-type">number</td><td><span class="param-req">Sí</span></td><td class="param-desc">Monto en centavos/COP sin decimales (ej. 50000 para $50,000 COP).</td></tr>
+              <tr><td class="param-name">amount.currency</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">ISO de moneda. Debe ser "COP".</td></tr>
+              <tr><td class="param-name">destination_account.account_number</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Número de cuenta de destino en Colombia.</td></tr>
+              <tr><td class="param-name">destination_account.account_type</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Tipo de cuenta: "SAVINGS" (Ahorros) ó "CHECKING" (Corriente).</td></tr>
+              <tr><td class="param-name">destination_account.holder_name</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Nombre completo del titular de la cuenta.</td></tr>
+              <tr><td class="param-name">destination_account.holder_document.type</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Tipo de documento: "CC", "CE", "NIT", "PP".</td></tr>
+              <tr><td class="param-name">destination_account.holder_document.number</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Número de identificación del titular.</td></tr>
+              <tr><td class="param-name">destination_account.bank_code</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Código del banco destino (ej. "007" para Bancolombia).</td></tr>
+              <tr><td class="param-name">description</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Descripción corta del pago.</td></tr>
+              <tr><td class="param-name">external_reference</td><td class="param-type">string</td><td><span class="param-req">Sí</span></td><td class="param-desc">Tu referencia única alfanumérica de control.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="code-card">
+            <div class="code-tabs" data-code-group="payout-co">
+              <button class="code-tab active" data-lang="curl">cURL</button>
+              <button class="code-tab" data-lang="node">Node.js</button>
+              <button class="code-tab" data-lang="python">Python</button>
+              <button class="code-tab" data-lang="spring">Spring Boot</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active" data-panel-lang="curl">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> <span class="s">"https://flux.praxisglobe.com/api/v1/payments"</span> \
+  -H <span class="s">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -H <span class="s">"Idempotency-Key: unique-request-id-12345"</span> \
+  -d <span class="s">'{
+    "amount": { "value": 50000, "currency": "COP" },
+    "destination_account": {
+      "account_number": "12345678901",
+      "account_type": "SAVINGS",
+      "holder_name": "Nombre del Beneficiario",
+      "holder_document": { "type": "CC", "number": "1020304050" },
+      "bank_code": "001"
+    },
+    "description": "Pago de credito #A-54321",
+    "external_reference": "ref_cliente_xyz_001"
+  }'</span></pre>
+            </div>
+            <div class="code-panel" data-panel-lang="node">
+<pre><span class="k">const</span> axios = require(<span class="s">'axios'</span>);
+
+<span class="k">const</span> response = <span class="k">await</span> axios.<span class="c">post</span>(<span class="s">'https://flux.praxisglobe.com/api/v1/payments'</span>, {
+  amount: { value: 50000, currency: <span class="s">'COP'</span> },
+  destination_account: {
+    account_number: <span class="s">'12345678901'</span>,
+    account_type: <span class="s">'SAVINGS'</span>,
+    holder_name: <span class="s">'Nombre del Beneficiario'</span>,
+    holder_document: { type: <span class="s">'CC'</span>, number: <span class="s">'1020304050'</span> },
+    bank_code: <span class="s">'001'</span>
+  },
+  description: <span class="s">'Pago de credito #A-54321'</span>,
+  external_reference: <span class="s">'ref_cliente_xyz_001'</span>
+}, {
+  headers: {
+    <span class="s">'Authorization'</span>: <span class="s">'Bearer &lt;ACCESS_TOKEN&gt;'</span>,
+    <span class="s">'Idempotency-Key'</span>: <span class="s">'unique-request-id-12345'</span>
+  }
+});</pre>
+            </div>
+            <div class="code-panel" data-panel-lang="python">
+<pre><span class="k">import</span> requests
+
+payload = {
+    <span class="s">"amount"</span>: { <span class="s">"value"</span>: 50000, <span class="s">"currency"</span>: <span class="s">"COP"</span> },
+    <span class="s">"destination_account"</span>: {
+        <span class="s">"account_number"</span>: <span class="s">"12345678901"</span>,
+        <span class="s">"account_type"</span>: <span class="s">"SAVINGS"</span>,
+        <span class="s">"holder_name"</span>: <span class="s">"Nombre del Beneficiario"</span>,
+        <span class="s">"holder_document"</span>: { <span class="s">"type"</span>: <span class="s">"CC"</span>, <span class="s">"number"</span>: <span class="s">"1020304050"</span> },
+        <span class="s">"bank_code"</span>: <span class="s">"001"</span>
+    },
+    <span class="s">"description"</span>: <span class="s">"Pago de credito #A-54321"</span>,
+    <span class="s">"external_reference"</span>: <span class="s">"ref_cliente_xyz_001"</span>
+}
+response = requests.<span class="c">post</span>(
+    <span class="s">'https://flux.praxisglobe.com/api/v1/payments'</span>,
+    headers={
+        <span class="s">'Authorization'</span>: <span class="s">'Bearer &lt;ACCESS_TOKEN&gt;'</span>,
+        <span class="s">'Idempotency-Key'</span>: <span class="s">'unique-request-id-12345'</span>
+    },
+    json=payload
+)</pre>
+            </div>
+            <div class="code-panel" data-panel-lang="spring">
+<pre>HttpHeaders headers = <span class="k">new</span> HttpHeaders();
+headers.setBearerAuth(<span class="s">"&lt;ACCESS_TOKEN&gt;"</span>);
+headers.set(<span class="s">"Idempotency-Key"</span>, <span class="s">"unique-request-id-12345"</span>);
+
+HttpEntity&lt;Map&gt; entity = <span class="k">new</span> HttpEntity&lt;&gt;(payload, headers);
+ResponseEntity&lt;Map&gt; response = restTemplate.postForEntity(
+    <span class="s">"https://flux.praxisglobe.com/api/v1/payments"</span>, entity, Map.class
+);</pre>
+            </div>
+          </div>
+
+          <p style="color:var(--flux-gray-300);font-size:0.85rem;margin-bottom:12px;text-transform:none;">Respuesta exitosa (202 Accepted):</p>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre>{
+  <span class="p">"id"</span>:                       <span class="s">"pay_1a2b3c4d5e6f"</span>,
+  <span class="p">"status"</span>:                   <span class="s">"PROCESSING"</span>,
+  <span class="p">"created_at"</span>:               <span class="s">"2025-10-08T14:30:00Z"</span>,
+  <span class="p">"transaction_journal_hash"</span>: <span class="s">"0xabcde12345..."</span>
 }</pre>
+            </div>
           </div>
-        </div>
-        <table class="param-table">
-          <thead><tr><th>Parámetro</th><th>Tipo</th><th>Req.</th><th>Descripción</th></tr></thead>
-          <tbody><tr><td class="param-name">clientId</td><td class="param-type">UUID</td><td><span class="param-req">requerido</span></td><td class="param-desc">ID único del cliente.</td></tr></tbody>
-        </table>
-      </div>
 
-      <!-- INSTRUMENTOS -->
-      <div class="section-block" id="instruments">
-        <div class="section-header">
-          <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-          <h2 class="section-title">Instrumentos</h2>
-        </div>
-        <div class="code-card" style="margin-bottom:16px;">
-          <div class="code-tabs">
-            <button class="code-tab active" data-group="inst" data-tab="list-inst">Listar</button>
-            <button class="code-tab" data-group="inst" data-tab="get-inst">Detalle</button>
-            <button class="code-tab" data-group="inst" data-tab="create-inst">Crear</button>
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Consultar Estado del Pago</h3>
+          <div class="base-url">
+            <span class="base-url-label">GET</span>
+            <span class="base-url-value">/v1/payments/{payment_id}</span>
           </div>
-          <div class="code-panel active" id="panel-list-inst"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/instruments</pre></div>
-          <div class="code-panel" id="panel-get-inst"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/instruments/<span class="p">{instrumentId}</span></pre></div>
-          <div class="code-panel" id="panel-create-inst">
-<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/instruments
-
-{
-  <span class="p">"type"</span>:           <span class="s">"bank_account"</span>,
-  <span class="p">"bank_id"</span>:        <span class="s">"bancolombia"</span>,
-  <span class="p">"account_number"</span>: <span class="s">"1234567890"</span>,
-  <span class="p">"account_type"</span>:   <span class="s">"savings"</span>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre>{
+  <span class="p">"id"</span>:                       <span class="s">"pay_1a2b3c4d5e6f"</span>,
+  <span class="p">"status"</span>:                   <span class="s">"COMPLETED"</span>,
+  <span class="p">"created_at"</span>:               <span class="s">"2025-10-08T14:30:00Z"</span>,
+  <span class="p">"completed_at"</span>:             <span class="s">"2025-10-08T14:30:03Z"</span>,
+  <span class="p">"amount"</span>: {
+    <span class="p">"value"</span>:                  <span class="n">50000</span>,
+    <span class="p">"currency"</span>:               <span class="s">"COP"</span>
+  },
+  <span class="p">"description"</span>:              <span class="s">"Pago de credito #A-54321"</span>,
+  <span class="p">"external_reference"</span>:       <span class="s">"ref_cliente_xyz_001"</span>,
+  <span class="p">"transaction_journal_hash"</span>: <span class="s">"0xabcde12345..."</span>
 }</pre>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- TRANSACCIONES -->
-      <div class="section-block" id="transactions">
-        <div class="section-header">
-          <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 10H3M21 10l-4-4M21 10l-4 4M7 14h14M3 14l4-4M3 14l4 4"/></svg></div>
-          <h2 class="section-title">Transacciones</h2>
-        </div>
-        <div class="callout warn" style="margin-bottom:20px;">
-          <strong>Idempotencia:</strong> Envía un UUID único en <code>Idempotency-Key</code>. Reintentos con el mismo key no generan cobros dobles.
-        </div>
-        <div class="code-card" style="margin-bottom:16px;">
-          <div class="code-tabs">
-            <button class="code-tab active" data-group="tx" data-tab="money-out">Money Out</button>
-            <button class="code-tab" data-group="tx" data-tab="refund">Reembolso</button>
+        <div class="section-divider"></div>
+
+        <!-- Collections CO -->
+        <div class="section-block" id="collections-co">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+            <h2 class="section-title">Recaudo (Pay-ins)</h2>
           </div>
-          <div class="code-panel active" id="panel-money-out">
-<pre><span class="k">POST</span> /partners/transactions/money-out
-Idempotency-Key: <span class="s">550e8400-e29b-41d4-a716-446655440000</span>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            Para recibir recaudos en Colombia por medio de **Bre-B**, fluX ofrece dos flujos simplificados: **Llaves Referenciadas** y generación de **Códigos QR** estandarizados bajo EMVCo.
+          </p>
 
-{
-  <span class="p">"client_id"</span>:     <span class="s">"uuid-del-cliente"</span>,
-  <span class="p">"instrument_id"</span>: <span class="s">"uuid-del-instrumento"</span>,
-  <span class="p">"amount"</span>:        <span class="n">150000</span>,
-  <span class="p">"currency"</span>:      <span class="s">"COP"</span>,
-  <span class="p">"description"</span>:   <span class="s">"Pago nómina semana 21"</span>
+          <h3 style="font-size: 0.9rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.04em;">1. Llaves Referenciadas</h3>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:16px;font-size:0.86rem;text-transform:none;">
+            Las Llaves Referenciadas son alias registrados ante el Banco de la República vinculados a tu cuenta de fluX. Los pagadores solo digitan tu alias en su banca móvil para transferirte dinero, gatillando automáticamente un webhook en tu servidor al completarse.
+          </p>
+
+          <div class="feature-grid" style="margin-bottom: 24px;">
+            <div class="feature-card">
+              <div>
+                <div class="feature-name">Prefijo Obligatorio</div>
+                <div class="feature-desc">Todas las llaves alfanuméricas deben iniciar estrictamente con <code>@FLX</code>.</div>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div>
+                <div class="feature-name">Formato del Alias</div>
+                <div class="feature-desc">Solo se permiten caracteres alfanuméricos después del prefijo (ej: <code>@FLXPAYMENTS2025</code>).</div>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.8rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; text-transform: uppercase;">Crear una Llave Aliases</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/accounts/{account_id}/keys</span>
+          </div>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> https://flux.praxisglobe.com/api/v1/accounts/acc_12345/keys \
+  -H <span class="s">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "alias": "Mi primera llave fluX",
+    "key_config": "open_input",
+    "open_input": "@FLXMyBusiness123"
+  }'</span></pre>
+            </div>
+          </div>
+
+          <h3 style="font-size: 0.9rem; font-weight: 700; color: #ffffff; margin: 32px 0 12px; text-transform: uppercase; letter-spacing: 0.04em;">2. Códigos QR Estándar EMVCo</h3>
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:16px;font-size:0.86rem;text-transform:none;">
+            Genera de forma programática códigos QR (estáticos o dinámicos de un solo uso) listos para desplegar en tu flujo de checkout online o físico.
+          </p>
+
+          <h3 style="font-size: 0.8rem; font-weight: 700; color: #ffffff; margin-bottom: 12px; text-transform: uppercase;">Generar QR Dinámico (Un solo uso)</h3>
+          <div class="base-url">
+            <span class="base-url-label">POST</span>
+            <span class="base-url-value">/v1/qr/dynamic</span>
+          </div>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre><span class="c">curl</span> -i -X <span class="k">POST</span> https://flux.praxisglobe.com/api/v1/qr/dynamic \
+  -H <span class="s">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{
+    "correlationId": "unique-dynamic-id-654321",
+    "payment": {
+      "currency": "COP",
+      "amount": 5000.00
+    },
+    "qrCodeData": { "imgWidth": 250 }
+  }'</span></pre>
+            </div>
+          </div>
+
+          <p style="color:var(--flux-gray-300);font-size:0.85rem;margin-bottom:12px;text-transform:none;">Respuesta del QR (retorna base64 listo para renderizar):</p>
+          <div class="code-card">
+            <div class="code-panel active">
+<pre>{
+  <span class="p">"correlationId"</span>: <span class="s">"unique-dynamic-id-654321"</span>,
+  <span class="p">"payment"</span>: { <span class="p">"status"</span>: <span class="s">"ACTIVE"</span> },
+  <span class="p">"qrCode"</span>: {
+    <span class="p">"emv"</span>:        <span class="s">"000201010212..."</span>,
+    <span class="p">"imgContent"</span>: <span class="s">"iVBORw0KGgoAAAANSUhEUgAAA..."</span> <span class="cm">// String Base64</span>
+  }
 }</pre>
+            </div>
           </div>
-          <div class="code-panel" id="panel-refund">
-<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/transactions/<span class="p">{transactionId}</span>/refund
-
-{
-  <span class="p">"amount"</span>: <span class="n">150000</span>,
-  <span class="p">"reason"</span>: <span class="s">"customer_request"</span>
-}</pre>
+          
+          <div class="callout info">
+            <strong>Renderizado en Frontend:</strong> Puedes renderizar directamente el QR usando la etiqueta HTML <code>&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUg..." /&gt;</code>.
           </div>
         </div>
-      </div>
 
-      <!-- WEBHOOKS -->
-      <div class="section-block" id="webhooks">
-        <div class="section-header">
-          <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-          <h2 class="section-title">Webhooks</h2>
-        </div>
-        <div class="callout ok" style="margin-bottom:20px;">
-          <code>POST /partners/webhooks/money-in</code> es llamado <em>por fluX hacia tu servidor</em>. Valida <code>X-Webhook-Token</code>.
-        </div>
-        <div class="code-card">
-          <div class="code-tabs">
-            <button class="code-tab active" data-group="wh" data-tab="list-wh">Listar</button>
-            <button class="code-tab" data-group="wh" data-tab="create-wh">Crear</button>
-            <button class="code-tab" data-group="wh" data-tab="update-wh">Actualizar</button>
-            <button class="code-tab" data-group="wh" data-tab="delete-wh">Eliminar</button>
+        <div class="section-divider"></div>
+
+        <!-- Webhooks CO -->
+        <div class="section-block" id="webhooks-co">
+          <div class="section-header">
+            <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+            <h2 class="section-title">Webhooks</h2>
           </div>
-          <div class="code-panel active" id="panel-list-wh"><pre><span class="k">GET</span> /partners/clients/<span class="p">{clientId}</span>/webhooks</pre></div>
-          <div class="code-panel" id="panel-create-wh">
-<pre><span class="k">POST</span> /partners/clients/<span class="p">{clientId}</span>/webhooks
+          <p style="color:var(--flux-gray-300);line-height:1.65;margin-bottom:20px;font-size:0.9rem;text-transform:none;">
+            fluX Colombia empuja eventos inmediatos a tu webhook cuando una transferencia de Bre-B se completa o falla, permitiéndote liberar órdenes, acreditar saldos o disparar alertas al instante.
+          </p>
 
-{
-  <span class="p">"url"</span>:    <span class="s">"https://tuapp.com/webhooks/flux"</span>,
-  <span class="p">"events"</span>: [<span class="s">"money_in"</span>, <span class="s">"money_out"</span>],
-  <span class="p">"active"</span>: <span class="k">true</span>
-}</pre>
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Middleware / Receptor en Node.js</h3>
+          <p style="color: var(--flux-gray-300); font-size: 0.86rem; line-height: 1.5; margin-bottom: 16px;">
+            Este es un ejemplo de webhook handler en Express con validación robusta del token secreto (enviado en el header <code>X-Secret-key</code>) y control de estados:
+          </p>
+
+          <div class="code-card">
+            <div class="code-tabs">
+              <button class="code-tab active">webhook-handler.js</button>
+              <button class="copy-btn">Copiar</button>
+            </div>
+            <div class="code-panel active">
+<pre><span class="k">const</span> express = require(<span class="s">'express'</span>);
+<span class="k">const</span> app = express();
+app.use(express.json());
+
+<span class="k">const</span> WEBHOOK_SECRET = process.env.FLUX_WEBHOOK_SECRET;
+
+app.post(<span class="s">'/webhooks/receptor'</span>, (req, res) => {
+  <span class="cm">// 1. Validar header X-Secret-key</span>
+  <span class="k">const</span> secretKey = req.headers[<span class="s">'x-secret-key'</span>];
+  if (secretKey !== WEBHOOK_SECRET) {
+    console.error(<span class="s">'Invalid secret key'</span>);
+    return res.status(401).json({ error: <span class="s">'Unauthorized'</span> });
+  }
+
+  <span class="cm">// 2. Procesar el payload del evento</span>
+  <span class="k">const</span> { event, id, status, external_reference } = req.body;
+
+  switch (event) {
+    case <span class="s">'payment.completed'</span>:
+      console.<span class="c">log</span>(<span class="s">`✅ Payment ${id} completed - ref: ${external_reference}`</span>);
+      <span class="cm">// Acredita la orden en tu base de datos</span>
+      break;
+
+    case <span class="s">'payment.failed'</span>:
+      <span class="k">const</span> { failure_reason } = req.body;
+      console.<span class="c">log</span>(<span class="s">`❌ Payment ${id} failed: ${failure_reason}`</span>);
+      <span class="cm">// Registra la falla o notifica a soporte</span>
+      break;
+
+    default:
+      console.<span class="c">log</span>(<span class="s">`Unknown event: ${event}`</span>);
+  }
+
+  <span class="cm">// 3. Confirmar la recepción devolviendo 200 OK</span>
+  res.status(200).json({ received: true });
+});
+
+app.listen(3000, () => {
+  console.<span class="c">log</span>(<span class="s">'CO Webhook handler listening on port 3000'</span>);
+});</pre>
+            </div>
           </div>
-          <div class="code-panel" id="panel-update-wh"><pre><span class="k">PATCH</span> /partners/clients/<span class="p">{clientId}</span>/webhooks/<span class="p">{id}</span>
 
-{ <span class="p">"active"</span>: <span class="k">false</span> }</pre></div>
-          <div class="code-panel" id="panel-delete-wh"><pre><span class="k">DELETE</span> /partners/clients/<span class="p">{clientId}</span>/webhooks/<span class="p">{id}</span></pre></div>
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Política de Reintentos</h3>
+          <p style="color:var(--flux-gray-300);font-size:0.82rem;margin-bottom:16px;line-height:1.5;text-transform:none;">
+            Si tu servidor no responde con un estado HTTP exitoso (2xx), fluX reintentará de forma automática según el siguiente cronograma:
+          </p>
+
+          <table class="param-table" style="margin-bottom: 24px;">
+            <thead><tr><th>Intento</th><th>Demora</th><th>Descripción</th></tr></thead>
+            <tbody>
+              <tr><td class="param-name">1ro</td><td class="param-type">Inmediato</td><td class="param-desc">Intento de entrega inicial.</td></tr>
+              <tr><td class="param-name">2do</td><td class="param-type">5 segundos</td><td class="param-desc">Primer reintento automático tras falla.</td></tr>
+              <tr><td class="param-name">3ro</td><td class="param-type">5 segundos</td><td class="param-desc">Último reintento. Si falla, el evento se marca como FAILED.</td></tr>
+            </tbody>
+          </table>
+
+          <h3 style="font-size: 0.85rem; font-weight: 700; color: #ffffff; margin: 24px 0 12px; text-transform: uppercase; letter-spacing: 0.05em;">Buenas Prácticas de Integración</h3>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div>
+                <div class="feature-name">Responder con 200</div>
+                <div class="feature-desc">Asegura responder de forma inmediata con estado 200 OK. Evita ejecutar procesos pesados de forma síncrona en el request.</div>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div>
+                <div class="feature-name">Deduplicación</div>
+                <div class="feature-desc">Valida el ID único del pago recibido para evitar cobros u operaciones duplicadas en caso de reintentos de red.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="section-divider"></div>
 
-      <!-- SEGURIDAD -->
-      <div class="section-block" id="security">
+      <!-- SEGURIDAD (COMÚN) -->
+      <div class="section-block" id="security-practices">
         <div class="section-header">
           <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <h2 class="section-title">Seguridad</h2>
         </div>
         <div class="security-card">
-          <div class="security-header">⚠️ Buenas prácticas</div>
+          <div class="security-header">🛡️ Directrices de Seguridad obligatorias</div>
           <ul class="security-list">
-            <li>No loguear tokens ni API Keys en texto plano — usa gestores de secretos (Vault, AWS SSM).</li>
-            <li>Aplicar rate-limit por API Key en tu gateway.</li>
-            <li>Validación estricta de UUIDs y montos en el borde antes de llamar a fluX.</li>
-            <li>Idempotencia obligatoria en money-out: guarda el <code>Idempotency-Key</code> antes de enviar.</li>
-            <li>Valida el header <code>X-Webhook-Token</code> en cada evento de money-in.</li>
+            <li><strong>Gestión de Secretos:</strong> Nunca guardes contraseñas ni tokens JWT en tu código fuente. Utiliza variables de entorno o almacenes seguros como AWS Parameter Store o HashiCorp Vault.</li>
+            <li><strong>Validación de Webhooks:</strong> Verifica siempre el header <code>X-Secret-key</code> antes de procesar cualquier payload entrante en tus rutas públicas.</li>
+            <li><strong>Idempotencia:</strong> Envía siempre el header <code>Idempotency-Key</code> (UUID v4 o v5) en operaciones de dispersión (Payouts) para evitar cobros dobles por problemas de timeout.</li>
+            <li><strong>Canal Seguro (HTTPS):</strong> Todas las comunicaciones con fluX deben realizarse exclusivamente sobre canales cifrados con TLS 1.3. Los endpoints HTTP no seguros serán rechazados.</li>
           </ul>
         </div>
       </div>
 
-      <!-- TODOS LOS ENDPOINTS -->
-      <div class="section-block" id="all-endpoints">
+      <!-- TODOS LOS ENDPOINTS (DINÁMICO) -->
+      <div class="section-block" id="all-endpoints-table">
         <div class="section-header">
           <div class="section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/><line x1="9" y1="8" x2="10" y2="8"/></svg></div>
-          <h2 class="section-title">Todos los endpoints</h2>
+          <h2 class="section-title">Lista completa de endpoints</h2>
         </div>
-        <table class="endpoint-table">
+        
+        <!-- Tabla México -->
+        <table class="endpoint-table" data-country-content="mx">
           <thead><tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr></thead>
           <tbody>
-            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/banks</td><td class="ep-desc">Catálogo bancario</td></tr>
-            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/accounts</td><td class="ep-desc">Listar cuentas</td></tr>
-            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/private-accounts</td><td class="ep-desc">Crear cuenta privada</td></tr>
-            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/instruments</td><td class="ep-desc">Listar instrumentos</td></tr>
-            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/instruments/<span class="ep-param">{instrumentId}</span></td><td class="ep-desc">Detalle de instrumento</td></tr>
-            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/instruments</td><td class="ep-desc">Crear instrumento</td></tr>
-            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/transactions/money-out</td><td class="ep-desc">Money out — requiere <code>Idempotency-Key</code></td></tr>
-            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/transactions/<span class="ep-param">{transactionId}</span>/refund</td><td class="ep-desc">Reembolso</td></tr>
-            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks</td><td class="ep-desc">Listar webhooks</td></tr>
-            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks</td><td class="ep-desc">Crear webhook</td></tr>
-            <tr><td><span class="method-badge m-patch">PATCH</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks/<span class="ep-param">{id}</span></td><td class="ep-desc">Actualizar webhook</td></tr>
-            <tr><td><span class="method-badge m-delete">DELETE</span></td><td class="ep-path">/partners/clients/<span class="ep-param">{clientId}</span>/webhooks/<span class="ep-param">{id}</span></td><td class="ep-desc">Eliminar webhook</td></tr>
-            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/partners/webhooks/money-in</td><td class="ep-desc">Evento entrante — valida <code>X-Webhook-Token</code></td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/partners/login</td><td class="ep-desc">Obtener JWT token de acceso</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/partners/transactions/payouts</td><td class="ep-desc">Dispersar fondos vía SPEI interbancario</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/partners/transactions/collections</td><td class="ep-desc">Iniciar cobro o recaudo vía SPEI</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/partners/transactions/penny_validation</td><td class="ep-desc">Iniciar validación de cuenta ($0.01 MXN)</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/partners/webhooks/register</td><td class="ep-desc">Registrar webhook de eventos PAYIN</td></tr>
+            <tr><td><span class="method-badge m-put">PUT</span></td><td class="ep-path">/v1/partners/webhooks/{id}</td><td class="ep-desc">Actualizar endpoint o secreto del webhook</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Tabla Colombia -->
+        <table class="endpoint-table" data-country-content="co">
+          <thead><tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/partners/login</td><td class="ep-desc">Obtener JWT token de acceso</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/v1/banks</td><td class="ep-desc">Consultar catálogo de bancos de Bre-B</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/payments</td><td class="ep-desc">Enviar pago en tiempo real por Bre-B</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/v1/payments/{id}</td><td class="ep-desc">Consultar estado detallado del pago</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/accounts/{id}/keys</td><td class="ep-desc">Registrar una Llave Referenciada (@FLX)</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/qr/static</td><td class="ep-desc">Generar código QR EMVCo estático</td></tr>
+            <tr><td><span class="method-badge m-post">POST</span></td><td class="ep-path">/v1/qr/dynamic</td><td class="ep-desc">Generar código QR EMVCo dinámico</td></tr>
+            <tr><td><span class="method-badge m-get">GET</span></td><td class="ep-path">/v1/qr/{correlationId}</td><td class="ep-desc">Consultar estado del pago por QR</td></tr>
           </tbody>
         </table>
       </div>
@@ -1157,90 +1984,222 @@ Idempotency-Key: <span class="s">550e8400-e29b-41d4-a716-446655440000</span>
   </main>
 
   <script>
-    /* ── TABS ── */
+    /* ── ROUTING Y SELECTOR DE PAÍSES ── */
+    const HERO_TITLES = {
+      mx: 'Integra SPEI<br>en tu plataforma<br><span class="text-grad">sin fricciones</span>',
+      co: 'Integra Bre-B<br>en tu plataforma<br><span class="text-grad">sin fricciones</span>'
+    };
+    
+    const HERO_DESCS = {
+      mx: 'API REST diseñada para integradores en México. Recaudo, dispersión, validación de cuentas interbancarias y webhooks en tiempo real — todo desde un solo endpoint.',
+      co: 'API REST diseñada para integradores en Colombia. Recaudo inmediato por llaves y QR, dispersión, Transaction Journal con blockchain y webhooks en tiempo real.'
+    };
+
+    const BASE_URLS = {
+      mx: 'https://flux.praxisglobe.com/api/v1/partners',
+      co: 'https://flux.praxisglobe.com/api/v1'
+    };
+
+    const ENDPOINTS_COUNTS = {
+      mx: '6',
+      co: '8'
+    };
+
+    function switchCountry(country, updateHash = true) {
+      document.body.setAttribute('data-active-country', country);
+      localStorage.setItem('flux_preferred_country', country);
+      
+      // Actualizar clases de los botones selector
+      document.querySelectorAll('.country-tab').forEach(tab => {
+        if (tab.dataset.country === country) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      // Actualizar textos dinámicos del hero
+      document.getElementById('hero-grad-text').parentNode.innerHTML = HERO_TITLES[country];
+      document.getElementById('hero-desc-text').textContent = HERO_DESCS[country];
+      document.getElementById('base-url-text').textContent = BASE_URLS[country];
+      document.getElementById('stats-endpoints-count').textContent = ENDPOINTS_COUNTS[country];
+
+      // Cambiar clase de color de badge de API en móviles
+      const badge = document.querySelector('.dev-badge');
+      if (badge) {
+        badge.style.color = country === 'co' ? 'var(--flux-secondary)' : 'var(--flux-primary)';
+      }
+
+      // Ajustar links de navegación lateral al cambiar de país
+      if (updateHash) {
+        // Redirigir suavemente al inicio si la sección activa ya no existe para el nuevo país
+        const activeLink = document.querySelector('.nav-group ul li a.active');
+        if (activeLink && activeLink.closest('[data-country-nav]') && activeLink.closest('[data-country-nav]').dataset.countryNav !== country) {
+          window.location.hash = '#intro';
+        }
+      }
+    }
+
+    // Inicialización del país basada en URL, localStorage u origen
+    function initCountry() {
+      // 1. Verificar si hay un hash que pertenezca a un país
+      const hash = window.location.hash;
+      if (hash) {
+        if (hash.endsWith('-mx')) {
+          switchCountry('mx', false);
+          return;
+        } else if (hash.endsWith('-co')) {
+          switchCountry('co', false);
+          return;
+        }
+      }
+
+      // 2. Verificar localStorage
+      const preferred = localStorage.getItem('flux_preferred_country');
+      if (preferred === 'mx' || preferred === 'co') {
+        switchCountry(preferred, false);
+        return;
+      }
+
+      // 3. Detectar según la procedencia o URL (por defecto colombia si viene de co/ o tiene /co/ en la URL)
+      if (window.location.pathname.includes('/co/') || document.referrer.includes('/co/')) {
+        switchCountry('co', false);
+      } else {
+        switchCountry('mx', false);
+      }
+    }
+
+    /* ── TABS DE CÓDIGO (SINCRONIZADAS) ── */
     document.querySelectorAll('.code-tab[data-lang]').forEach(tab => {
       tab.addEventListener('click', function() {
-        const card = this.closest('.code-card');
-        card.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
-        card.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
-        this.classList.add('active');
-        const panel = document.getElementById('panel-' + this.dataset.lang);
-        if (panel) panel.classList.add('active');
+        const lang = this.dataset.lang;
+        // Sincronizar todas las pestañas de código de la página al mismo lenguaje
+        document.querySelectorAll('.code-card').forEach(card => {
+          const matchingTab = card.querySelector(`.code-tab[data-lang="${lang}"]`);
+          if (matchingTab) {
+            card.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+            card.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
+            matchingTab.classList.add('active');
+            
+            // Buscar panel correspondiente
+            const group = matchingTab.closest('.code-tabs').dataset.codeGroup;
+            let panel;
+            if (group) {
+              panel = card.querySelector(`.code-panel[data-panel-lang="${lang}"]`) || card.querySelector(`#panel-${group}-${lang}`);
+            } else {
+              panel = card.querySelector(`.code-panel[data-panel-lang="${lang}"]`) || card.querySelector(`#panel-${lang}`);
+            }
+            if (panel) panel.classList.add('active');
+          }
+        });
       });
     });
 
-    document.querySelectorAll('.code-tab[data-group]').forEach(tab => {
-      tab.addEventListener('click', function() {
-        const card = this.closest('.code-card');
-        card.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
-        card.querySelectorAll('.code-panel').forEach(p => p.classList.remove('active'));
-        this.classList.add('active');
-        const panel = document.getElementById('panel-' + this.dataset.tab);
-        if (panel) panel.classList.add('active');
-      });
-    });
-
-    /* ── COPY BUTTONS ── */
+    /* ── COPIADO DE TEXTO ── */
     function copyText(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
-        if (btn) { const o = btn.textContent; btn.textContent = '✓'; setTimeout(() => btn.textContent = o, 1400); }
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓';
+          setTimeout(() => btn.textContent = original, 1200);
+        }
       });
     }
 
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', function() {
-        const active = this.closest('.code-card').querySelector('.code-panel.active pre');
-        if (!active) return;
-        navigator.clipboard.writeText(active.textContent).then(() => {
+        const activePre = this.closest('.code-card').querySelector('.code-panel.active pre');
+        if (!activePre) return;
+        navigator.clipboard.writeText(activePre.textContent).then(() => {
           this.textContent = '✓ Copiado';
           this.classList.add('copied');
-          setTimeout(() => { this.textContent = 'Copiar'; this.classList.remove('copied'); }, 1600);
+          setTimeout(() => {
+            this.textContent = 'Copiar';
+            this.classList.remove('copied');
+          }, 1400);
         });
       });
     });
 
-    /* ── API KEY ── */
-    const KEY_REAL = 'sk_live_x8F2k9Mz2nQ8pL3wY5vR1';
-    const KEY_MASK = 'sk_live_••••••••••••••••••••';
+    /* ── REVELACIÓN DE API KEY ── */
+    const TOKEN_REAL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmbHV4X29uZSIsImNsaWVudElkIjoiYzJkMWQxZTMtMzM0MC00MTcwLTk4MGUtZTkyNjliYmJjNTUxIn0.abcdef1234567890';
+    const TOKEN_MASK = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ey••••••••••••••••••••';
     let keyVisible = false;
+    
     function revealKey() {
       keyVisible = !keyVisible;
-      document.getElementById('api-key-value').textContent = keyVisible ? KEY_REAL : KEY_MASK;
+      document.getElementById('api-key-value').textContent = keyVisible ? TOKEN_REAL : TOKEN_MASK;
+      document.querySelector('.key-row .btn-icon:first-of-type').textContent = keyVisible ? '🙈' : '👁';
     }
+    
     function copyKey() {
-      navigator.clipboard.writeText(KEY_REAL).then(() => {
-        const btn = document.querySelector('.key-row .btn-icon:last-child');
-        btn.textContent = '✓'; setTimeout(() => btn.textContent = '⎘', 1400);
+      navigator.clipboard.writeText(TOKEN_REAL).then(() => {
+        const btn = document.querySelector('.key-row .btn-icon:last-of-type');
+        btn.textContent = '✓';
+        setTimeout(() => btn.textContent = '⎘', 1200);
       });
     }
 
-    /* ── ACTIVE NAV ── */
-    const navLinks = document.querySelectorAll('.nav-group a');
-    new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          const match = document.querySelector(`.nav-group a[href="#${e.target.id}"]`);
-          if (match) match.classList.add('active');
-        }
+    /* ── MENÚ MÓVIL RESPONSIVE ── */
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', () => {
+        toggleBtn.classList.toggle('active');
+        sidebar.classList.toggle('active');
       });
-    }, { rootMargin: '-20% 0px -70% 0px' }).observe
-    ;
-    document.querySelectorAll('[id]').forEach(s => {
-      new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            navLinks.forEach(l => l.classList.remove('active'));
-            const match = document.querySelector(`.nav-group a[href="#${e.target.id}"]`);
-            if (match) match.classList.add('active');
-          }
+
+      // Cerrar menú al hacer clic en un enlace de navegación en móviles
+      document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggleBtn.classList.remove('active');
+          sidebar.classList.remove('active');
         });
-      }, { rootMargin: '-20% 0px -70% 0px' }).observe(s);
+      });
+    }
+
+    /* ── NAVEGACIÓN ACTIVA BASADA EN EL SCROLL ── */
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    const sections = [];
+    
+    // Recopilar todas las secciones que tengan un ID y estén visibles en el DOM
+    document.querySelectorAll('[id]').forEach(sec => {
+      sections.push(sec);
     });
 
-    /* ── LATENCY ── */
-    const el = document.getElementById('latency-display');
-    setInterval(() => { el.textContent = (18 + Math.floor(Math.random() * 16)) + 'ms'; }, 3000);
+    window.addEventListener('scroll', () => {
+      let currentSectionId = 'intro';
+      const scrollPos = window.scrollY + 120;
+
+      sections.forEach(sec => {
+        // Verificar si la sección está visible (no oculta por el selector de país)
+        if (sec.offsetWidth > 0 && sec.offsetHeight > 0) {
+          if (scrollPos >= sec.offsetTop) {
+            currentSectionId = sec.id;
+          }
+        }
+      });
+
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+
+    /* ── LATENCIA EN TIEMPO REAL ── */
+    const latencyEl = document.getElementById('latency-display');
+    if (latencyEl) {
+      setInterval(() => {
+        latencyEl.textContent = (14 + Math.floor(Math.random() * 12)) + 'ms';
+      }, 4000);
+    }
+
+    // Inicializar al cargar
+    initCountry();
   </script>
 </body>
 </html>
