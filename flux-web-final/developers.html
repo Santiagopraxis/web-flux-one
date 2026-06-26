@@ -1799,7 +1799,412 @@
       }
     }
   
-  </style>
+  
+    /* ── TRANSFER LIFECYCLE FLOW ── */
+    .lifecycle-flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    body.light-theme .lifecycle-flow-container {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .lifecycle-step {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+    .lifecycle-sub-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .lifecycle-icon-wrapper {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--flux-white);
+      transition: all 0.3s ease;
+    }
+    body.light-theme .lifecycle-icon-wrapper {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #0F172A;
+    }
+    .lifecycle-icon-wrapper i {
+      width: 18px;
+      height: 18px;
+    }
+    .lifecycle-icon-wrapper.initialized {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+    .lifecycle-icon-wrapper.pending-state {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+    }
+    .lifecycle-icon-wrapper.processing-state {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+    .lifecycle-icon-wrapper.liquidated-state {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+    }
+    .lifecycle-icon-wrapper.failed-state {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    .lifecycle-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--flux-white);
+    }
+    body.light-theme .lifecycle-label {
+      color: #0F172A;
+    }
+    .lifecycle-desc {
+      font-size: 0.68rem;
+      color: var(--flux-gray-300);
+      line-height: 1.4;
+      max-width: 160px;
+    }
+    body.light-theme .lifecycle-desc {
+      color: #475569;
+    }
+    .lifecycle-connector {
+      color: var(--flux-gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+    }
+    body.light-theme .lifecycle-connector {
+      color: #94A3B8;
+    }
+    .lifecycle-connector i {
+      width: 16px;
+      height: 16px;
+    }
+    .animate-spin-slow {
+      animation: spin 8s linear infinite;
+    }
+    .animate-pulse-soft {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+    @media (max-width: 768px) {
+      .lifecycle-connector {
+        display: none;
+      }
+      .lifecycle-flow-container {
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+    
+    /* ── TRANSFER LIFECYCLE FLOW ── */
+    .lifecycle-flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    body.light-theme .lifecycle-flow-container {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .lifecycle-step {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+    .lifecycle-sub-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .lifecycle-icon-wrapper {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--flux-white);
+      transition: all 0.3s ease;
+    }
+    body.light-theme .lifecycle-icon-wrapper {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #0F172A;
+    }
+    .lifecycle-icon-wrapper i {
+      width: 18px;
+      height: 18px;
+    }
+    .lifecycle-icon-wrapper.initialized {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+    .lifecycle-icon-wrapper.pending-state {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+    }
+    .lifecycle-icon-wrapper.processing-state {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+    .lifecycle-icon-wrapper.liquidated-state {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+    }
+    .lifecycle-icon-wrapper.failed-state {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    .lifecycle-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--flux-white);
+    }
+    body.light-theme .lifecycle-label {
+      color: #0F172A;
+    }
+    .lifecycle-desc {
+      font-size: 0.68rem;
+      color: var(--flux-gray-300);
+      line-height: 1.4;
+      max-width: 160px;
+    }
+    body.light-theme .lifecycle-desc {
+      color: #475569;
+    }
+    .lifecycle-connector {
+      color: var(--flux-gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+    }
+    body.light-theme .lifecycle-connector {
+      color: #94A3B8;
+    }
+    .lifecycle-connector i {
+      width: 16px;
+      height: 16px;
+    }
+    .animate-spin-slow {
+      animation: spin 8s linear infinite;
+    }
+    .animate-pulse-soft {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+    @media (max-width: 768px) {
+      .lifecycle-connector {
+        display: none;
+      }
+      .lifecycle-flow-container {
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+    
+    /* ── TRANSFER LIFECYCLE FLOW ── */
+    .lifecycle-flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    body.light-theme .lifecycle-flow-container {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .lifecycle-step {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+    .lifecycle-sub-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .lifecycle-icon-wrapper {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--flux-white);
+      transition: all 0.3s ease;
+    }
+    body.light-theme .lifecycle-icon-wrapper {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #0F172A;
+    }
+    .lifecycle-icon-wrapper i {
+      width: 18px;
+      height: 18px;
+    }
+    .lifecycle-icon-wrapper.initialized {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+    .lifecycle-icon-wrapper.pending-state {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.2);
+      color: #f59e0b;
+    }
+    .lifecycle-icon-wrapper.processing-state {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+    .lifecycle-icon-wrapper.liquidated-state {
+      background: rgba(34, 197, 94, 0.1);
+      border-color: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+    }
+    .lifecycle-icon-wrapper.failed-state {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    .lifecycle-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--flux-white);
+    }
+    body.light-theme .lifecycle-label {
+      color: #0F172A;
+    }
+    .lifecycle-desc {
+      font-size: 0.68rem;
+      color: var(--flux-gray-300);
+      line-height: 1.4;
+      max-width: 160px;
+    }
+    body.light-theme .lifecycle-desc {
+      color: #475569;
+    }
+    .lifecycle-connector {
+      color: var(--flux-gray-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+    }
+    body.light-theme .lifecycle-connector {
+      color: #94A3B8;
+    }
+    .lifecycle-connector i {
+      width: 16px;
+      height: 16px;
+    }
+    .animate-spin-slow {
+      animation: spin 8s linear infinite;
+    }
+    .animate-pulse-soft {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+    @media (max-width: 768px) {
+      .lifecycle-connector {
+        display: none;
+      }
+      .lifecycle-flow-container {
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+    </style>
 </head>
 <body data-active-country="mx" data-lang="es">
 
@@ -2085,11 +2490,11 @@
       <section class="page-section active-page" id="introduction">
       <div class="breadcrumbs">
         <span>Developers</span> <i data-lucide="chevron-right"></i>
-        <span id="intro-country-breadcrumb">🇲🇽 Getting Started</span> <i data-lucide="chevron-right"></i>
+        <span id="intro-country-breadcrumb">Getting Started</span> <i data-lucide="chevron-right"></i>
         <span style="color: var(--flux-white)">Introduction</span>
       </div>
 
-      <h1 class="page-title"><span id="intro-flag" class="flag">🇲🇽</span> Getting Started</h1>
+      <h1 class="page-title"><span id="intro-flag" class="flag"></span> Getting Started</h1>
       
       <!-- Intro description (Dynamic based on country) -->
       <p class="page-subtitle" id="intro-text">
@@ -2101,7 +2506,7 @@
         <div class="specs-grid">
           <div class="spec-item">
             <label>Base URL</label>
-            <span id="intro-base-url">https://api.fluxone.co/api/v1/partners</span>
+            <span id="intro-base-url">https://flux.praxisglobe.com/api/v1/partners</span>
           </div>
           <div class="spec-item">
             <label>Protocol</label>
@@ -2198,7 +2603,7 @@
                   <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> Copiar</button>
                 </div>
                 <div class="code-panel active">
-                  <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/partners/login \
+                  <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/partners/login \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
   -d '{
@@ -2289,7 +2694,7 @@
               <span class="env-badge-tag sandbox">TESTING</span>
             </div>
             <p class="env-desc" id="sandbox-desc">Use the sandbox environment for development and testing. No real funds are moved. Simulated SPEI responses and CEPs.</p>
-            <code style="display: block; font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-primary); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--glass-border);" id="sandbox-url">https://sandbox.api.fluxone.co/api/v1/partners</code>
+            <code style="display: block; font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-primary); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--glass-border);" id="sandbox-url">https://sandbox.flux.praxisglobe.com/api/v1/partners</code>
           </div>
           
           <!-- Production -->
@@ -2299,7 +2704,7 @@
               <span class="env-badge-tag production">LIVE</span>
             </div>
             <p class="env-desc" id="production-desc">Production environment for live operations. Real SPEI transactions and CEP retrieval via BANXICO. Requires approved onboarding.</p>
-            <code style="display: block; font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-success); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--glass-border);" id="production-url">https://api.fluxone.co/api/v1/partners</code>
+            <code style="display: block; font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-success); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--glass-border);" id="production-url">https://flux.praxisglobe.com/api/v1/partners</code>
           </div>
         </div>
       </div>
@@ -2445,7 +2850,7 @@
             <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> Copiar</button>
           </div>
           <div class="code-panel active" data-lang-panel="curl">
-            <pre><span class="c-keyword">curl</span> -i -X <span class="c-method">POST</span> "https://api.fluxone.co/api/v1/partners/login" \
+            <pre><span class="c-keyword">curl</span> -i -X <span class="c-method">POST</span> "https://flux.praxisglobe.com/api/v1/partners/login" \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
   -d '{
@@ -2456,7 +2861,7 @@
           <div class="code-panel" data-lang-panel="node">
             <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/login'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/login'</span>, {
   email: <span class="c-string">'socio@empresa.com'</span>,
   password: <span class="c-string">'mi_password_seguro_123'</span>
 }, {
@@ -2473,7 +2878,7 @@ payload = {
     <span class="c-string">"email"</span>: <span class="c-string">"socio@empresa.com"</span>,
     <span class="c-string">"password"</span>: <span class="c-string">"mi_password_seguro_123"</span>
 }
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/login'</span>, json=payload)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/login'</span>, json=payload)
 print(res.json().get(<span class="c-string">'access_token'</span>))</pre>
           </div>
         </div>
@@ -2528,7 +2933,7 @@ print(res.json().get(<span class="c-string">'access_token'</span>))</pre>
       <span style="color: var(--flux-white)">Authentication</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇨🇴</span> Authentication</h1>
+    <h1 class="page-title"><span class="flag"></span> Authentication</h1>
     
     <div style="display: flex; gap: 16px; margin-bottom: 24px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--flux-gray-300);">
       <span><strong>Version:</strong> 1.0</span>
@@ -2665,7 +3070,7 @@ print(res.json().get(<span class="c-string">'access_token'</span>))</pre>
                   <button class="code-copy-btn" onclick="copyCodeBlock(this)"><i data-lucide="clipboard"></i> Copy</button>
                 </div>
                 <div class="code-panel active" data-lang="curl">
-                  <pre><span class="c-keyword">curl</span> -X POST https://api.fluxone.co/api/v1/partners/login \
+                  <pre><span class="c-keyword">curl</span> -X POST https://flux.praxisglobe.com/api/v1/partners/login \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
   -d <span class="c-string">'{
@@ -2676,7 +3081,7 @@ print(res.json().get(<span class="c-string">'access_token'</span>))</pre>
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/login'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/login'</span>, {
   email: <span class="c-string">'user@example.com'</span>,
   password: <span class="c-string">'password123'</span>
 }, {
@@ -2700,7 +3105,7 @@ headers = {
   <span class="c-string">'Content-Type'</span>: <span class="c-string">'application/json'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/login'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/login'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
               </div>
@@ -2881,7 +3286,7 @@ print(res.json())</pre>
       <span style="color: var(--flux-white)">Payments (Payouts)</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇲🇽</span> Dispersión (Payouts) — México</h1>
+    <h1 class="page-title"><span class="flag"></span> Dispersión (Payouts) — México</h1>
     <p class="page-subtitle">
       Send payouts to any Mexican bank account via SPEI in real time. Transfers are processed instantly during SPEI operating hours and settle within seconds. fluX handles all the complexity of SPEI connectivity, tracking, and reconciliation through a single API call.
     </p>
@@ -3078,7 +3483,7 @@ print(res.json())</pre>
                 </div>
                 <div class="code-panel active" data-lang="curl">
                   <pre><span class="c-keyword">curl</span> -i -X POST \
-  https://api.fluxone.co/api/v1/partners/transactions/payouts \
+  https://flux.praxisglobe.com/api/v1/partners/transactions/payouts \
   -H <span class="c-string">'Authorization: Bearer &lt;YOUR_JWT_HERE&gt;'</span> \
   -H <span class="c-string">'Accept: application/json'</span> \
   -H <span class="c-string">'Content-Type: application/json'</span> \
@@ -3098,7 +3503,7 @@ print(res.json())</pre>
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/transactions/payouts'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/transactions/payouts'</span>, {
   client_id: <span class="c-string">'c2d1d1e3-3340-4170-980e-e9269bbbc551'</span>,
   source_instrument_id: <span class="c-string">'709448c3-7cbf-454d-a87e-feb23801269a'</span>,
   destination_clabe: <span class="c-string">'734180000069183455'</span>,
@@ -3136,38 +3541,49 @@ headers = {
   <span class="c-string">'Idempotency-Key'</span>: <span class="c-string">'550e8400-e29b-41d4-a716-446655440000'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/transactions/payouts'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/transactions/payouts'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
                 <div class="code-panel" data-lang="springboot">
-                  <pre><span class="c-keyword">import</span> org.springframework.http.*;
-<span class="c-keyword">import</span> org.springframework.web.client.RestTemplate;
-<span class="c-keyword">import</span> java.util.HashMap;
-<span class="c-keyword">import</span> java.util.Map;
+                  <pre><span class="c-keyword">@Service</span>
+<span class="c-keyword">public class</span> PayoutService {
 
-RestTemplate restTemplate = <span class="c-keyword">new</span> RestTemplate();
-String url = <span class="c-string">"https://api.fluxone.co/api/v1/partners/transactions/payouts"</span>;
+    <span class="c-keyword">private final</span> RestTemplate restTemplate;
 
-HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
-headers.setContentType(MediaType.APPLICATION_JSON);
-headers.set(<span class="c-string">"Authorization"</span>, <span class="c-string">"Bearer &lt;YOUR_JWT_HERE&gt;"</span>);
-headers.set(<span class="c-string">"Idempotency-Key"</span>, <span class="c-string">"550e8400-e29b-41d4-a716-446655440000"</span>);
+    <span class="c-keyword">public</span> PayoutService(RestTemplate restTemplate) {
+        <span class="c-keyword">this</span>.restTemplate = restTemplate;
+    }
 
-Map&lt;String, Object&gt; txReq = <span class="c-keyword">new</span> HashMap&lt;&gt;();
-txReq.put(<span class="c-string">"external_reference"</span>, <span class="c-string">"1234567"</span>);
-txReq.put(<span class="c-string">"description"</span>, <span class="c-string">"Pago de prueba"</span>);
-txReq.put(<span class="c-string">"amount"</span>, <span class="c-string">"1.95"</span>);
-txReq.put(<span class="c-string">"currency"</span>, <span class="c-string">"MXN"</span>);
+    <span class="c-keyword">public</span> PayoutResponse createPayout(PayoutRequest request) {
+        HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set(<span class="c-string">"Accept"</span>, <span class="c-string">"application/json"</span>);
+        headers.setBearerAuth(<span class="c-string">"&lt;YOUR_JWT_HERE&gt;"</span>);
+        headers.set(<span class="c-string">"Idempotency-Key"</span>, UUID.randomUUID().toString());
 
-Map&lt;String, Object&gt; body = <span class="c-keyword">new</span> HashMap&lt;&gt;();
-body.put(<span class="c-string">"client_id"</span>, <span class="c-string">"c2d1d1e3-3340-4170-980e-e9269bbbc551"</span>);
-body.put(<span class="c-string">"source_instrument_id"</span>, <span class="c-string">"709448c3-7cbf-454d-a87e-feb23801269a"</span>);
-body.put(<span class="c-string">"destination_clabe"</span>, <span class="c-string">"734180000069183455"</span>);
-body.put(<span class="c-string">"transaction_request"</span>, txReq);
+        Map&lt;String, Object&gt; txRequest = Map.of(
+            <span class="c-string">"external_reference"</span>, request.getExternalReference(),
+            <span class="c-string">"description"</span>, request.getDescription(),
+            <span class="c-string">"amount"</span>, request.getAmount(),
+            <span class="c-string">"currency"</span>, <span class="c-string">"MXN"</span>
+        );
 
-HttpEntity&lt;Map&gt; entity = <span class="c-keyword">new</span> HttpEntity&lt;&gt;(body, headers);
-ResponseEntity&lt;String&gt; res = restTemplate.postForEntity(url, entity, String.class);
-System.out.println(res.getBody());</pre>
+        Map&lt;String, Object&gt; body = Map.of(
+            <span class="c-string">"client_id"</span>, request.getClientId(),
+            <span class="c-string">"source_instrument_id"</span>, request.getSourceInstrumentId(),
+            <span class="c-string">"destination_clabe"</span>, request.getDestinationClabe(),
+            <span class="c-string">"transaction_request"</span>, txRequest
+        );
+
+        HttpEntity&lt;Map&lt;String, Object&gt;&gt; entity = <span class="c-keyword">new</span> HttpEntity&lt;&gt;(body, headers);
+
+        <span class="c-keyword">return</span> restTemplate.postForObject(
+            <span class="c-string">"https://flux.praxisglobe.com/api/v1/partners/transactions/payouts"</span>,
+            entity,
+            PayoutResponse.class
+        );
+    }
+}</pre>
                 </div>
               </div>
 
@@ -3450,7 +3866,7 @@ System.out.println(res.getBody());</pre>
       <span style="color: var(--flux-white)">Collections (Pay-ins)</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇲🇽</span> Recaudo (Pay-ins) — México</h1>
+    <h1 class="page-title"><span class="flag"></span> Recaudo (Pay-ins) — México</h1>
     <p class="page-subtitle">
       Collect payments from any Mexican bank account via SPEI. Pay-in requests are processed in real time during SPEI operating hours. fluX handles the end-to-end flow — from request initiation to fund settlement in your concentrator account.
     </p>
@@ -3647,7 +4063,7 @@ System.out.println(res.getBody());</pre>
                 </div>
                 <div class="code-panel active" data-lang="curl">
                   <pre><span class="c-keyword">curl</span> -i -X POST \
-  https://api.fluxone.co/api/v1/partners/transactions/collections \
+  https://flux.praxisglobe.com/api/v1/partners/transactions/collections \
   -H <span class="c-string">'Authorization: Bearer &lt;YOUR_JWT_HERE&gt;'</span> \
   -H <span class="c-string">'Accept: application/json'</span> \
   -H <span class="c-string">'Content-Type: application/json'</span> \
@@ -3667,7 +4083,7 @@ System.out.println(res.getBody());</pre>
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/transactions/collections'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/transactions/collections'</span>, {
   client_id: <span class="c-string">'c2d1d1e3-3340-4170-980e-e9269bbbc551'</span>,
   source_instrument_id: <span class="c-string">'709448c3-7cbf-454d-a87e-feb23801269a'</span>,
   payer_clabe: <span class="c-string">'012180015000000012'</span>,
@@ -3705,7 +4121,7 @@ headers = {
   <span class="c-string">'Idempotency-Key'</span>: <span class="c-string">'660e8400-e29b-41d4-a716-446655440001'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/transactions/collections'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/transactions/collections'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
                 <div class="code-panel" data-lang="springboot">
@@ -3715,7 +4131,7 @@ print(res.json())</pre>
 <span class="c-keyword">import</span> java.util.Map;
 
 RestTemplate restTemplate = <span class="c-keyword">new</span> RestTemplate();
-String url = <span class="c-string">"https://api.fluxone.co/api/v1/partners/transactions/collections"</span>;
+String url = <span class="c-string">"https://flux.praxisglobe.com/api/v1/partners/transactions/collections"</span>;
 
 HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -4011,7 +4427,7 @@ System.out.println(res.getBody());</pre>
       <span style="color: var(--flux-white)">Penny Validation</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇲🇽</span> Penny Validation — México</h1>
+    <h1 class="page-title"><span class="flag"></span> Penny Validation — México</h1>
     <p class="page-subtitle">
       The Penny Validation API enables account ownership verification by sending a minimal payment ($0.01 MXN) to a beneficiary account. This process generates a CEP (Comprobante Electrónico de Pago) that provides verified account holder information and creates an official payment receipt through BANXICO.
     </p>
@@ -4181,7 +4597,7 @@ System.out.println(res.getBody());</pre>
                   <button class="code-copy-btn" onclick="copyCodeBlock(this)"><i data-lucide="clipboard"></i> Copy</button>
                 </div>
                 <div class="code-panel active" data-lang="curl">
-                  <pre><span class="c-keyword">curl</span> -X POST https://api.fluxone.co/api/v1/partners/transactions/penny_validation \
+                  <pre><span class="c-keyword">curl</span> -X POST https://flux.praxisglobe.com/api/v1/partners/transactions/penny_validation \
   -H <span class="c-string">"Authorization: Bearer &lt;ACCESS_TOKEN&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
@@ -4197,7 +4613,7 @@ System.out.println(res.getBody());</pre>
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/transactions/penny_validation'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/transactions/penny_validation'</span>, {
   client_id: <span class="c-string">'09b1c156-73c7-62e1-9a3e-bf705f8f3cbe'</span>,
   source_instrument_id: <span class="c-string">'709448c3-7cbf-454d-a87e-feb23801269a'</span>,
   destination_clabe: <span class="c-string">'734180000069183455'</span>,
@@ -4231,7 +4647,7 @@ headers = {
   <span class="c-string">'X-Idempotency-Key'</span>: <span class="c-string">'unique-pv-key-12345'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/transactions/penny_validation'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/transactions/penny_validation'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
                 <div class="code-panel" data-lang="springboot">
@@ -4241,7 +4657,7 @@ print(res.json())</pre>
 <span class="c-keyword">import</span> java.util.Map;
 
 RestTemplate restTemplate = <span class="c-keyword">new</span> RestTemplate();
-String url = <span class="c-string">"https://api.fluxone.co/api/v1/partners/transactions/penny_validation"</span>;
+String url = <span class="c-string">"https://flux.praxisglobe.com/api/v1/partners/transactions/penny_validation"</span>;
 
 HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -4683,7 +5099,7 @@ System.out.println(res.getBody());</pre>
       <span style="color: var(--flux-white)">Webhooks</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇲🇽</span> Webhooks — México</h1>
+    <h1 class="page-title"><span class="flag"></span> Webhooks — México</h1>
     <p class="page-subtitle">
       Webhooks allow your application to receive real-time notifications when events occur in your fluX account. Instead of polling the API, fluX pushes event data to your server as it happens — keeping your system in sync with minimal latency.
     </p>
@@ -4866,7 +5282,7 @@ System.out.println(res.getBody());</pre>
                 </div>
                 <div class="code-panel active" data-lang="curl">
                   <pre><span class="c-keyword">curl</span> -i -X POST \
-  https://api.fluxone.co/api/v1/partners/webhooks/register \
+  https://flux.praxisglobe.com/api/v1/partners/webhooks/register \
   -H <span class="c-string">'Content-Type: application/json'</span> \
   -H <span class="c-string">'Accept: application/json'</span> \
   -H <span class="c-string">'Authorization: Bearer &lt;ACCESS_TOKEN&gt;'</span> \
@@ -4880,7 +5296,7 @@ System.out.println(res.getBody());</pre>
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/webhooks/register'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/webhooks/register'</span>, {
   client_id: <span class="c-string">'834f8a44-245f-460d-83ed-f731c38e967a'</span>,
   url: <span class="c-string">'https://your-domain.com/webhooks/receptor'</span>,
   event: <span class="c-string">'PAYIN'</span>,
@@ -4910,7 +5326,7 @@ headers = {
   <span class="c-string">'Authorization'</span>: <span class="c-string">'Bearer &lt;ACCESS_TOKEN&gt;'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/partners/webhooks/register'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/partners/webhooks/register'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
                 <div class="code-panel" data-lang="springboot">
@@ -4920,7 +5336,7 @@ print(res.json())</pre>
 <span class="c-keyword">import</span> java.util.Map;
 
 RestTemplate restTemplate = <span class="c-keyword">new</span> RestTemplate();
-String url = <span class="c-string">"https://api.fluxone.co/api/v1/partners/webhooks/register"</span>;
+String url = <span class="c-string">"https://flux.praxisglobe.com/api/v1/partners/webhooks/register"</span>;
 
 HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5001,7 +5417,7 @@ System.out.println(res.getBody());</pre>
                 </div>
                 <div class="code-panel active">
                   <pre><span class="c-keyword">curl</span> -i -X PUT \
-  https://api.fluxone.co/api/v1/partners/webhooks/&lt;WEBHOOK_UUID&gt; \
+  https://flux.praxisglobe.com/api/v1/partners/webhooks/&lt;WEBHOOK_UUID&gt; \
   -H <span class="c-string">'Content-Type: application/json'</span> \
   -H <span class="c-string">'Authorization: Bearer &lt;ACCESS_TOKEN&gt;'</span> \
   -d <span class="c-string">'{
@@ -5266,7 +5682,7 @@ app.listen(<span class="c-number">3000</span>, () => {
       <span style="color: var(--flux-white)">Payouts</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇨🇴</span> Payouts</h1>
+    <h1 class="page-title"><span class="flag"></span> Payouts</h1>
     <p class="page-subtitle">
       Send payments to any Colombian bank account via Bre-B (Banco de la República's instant payment system). Payments are processed in real time and each transaction is recorded on fluX's immutable Transaction Journal (blockchain).
     </p>
@@ -5469,7 +5885,7 @@ app.listen(<span class="c-number">3000</span>, () => {
                 </div>
                 <div class="code-panel active" data-lang="curl">
                   <pre><span class="c-keyword">curl</span> -i -X POST \
-  https://api.fluxone.co/api/v1/payments \
+  https://flux.praxisglobe.com/api/v1/payments \
   -H <span class="c-string">'Authorization: Bearer &lt;ACCESS_TOKEN&gt;'</span> \
   -H <span class="c-string">'Content-Type: application/json'</span> \
   -H <span class="c-string">'Idempotency-Key: unique-request-id-12345'</span> \
@@ -5489,7 +5905,7 @@ app.listen(<span class="c-number">3000</span>, () => {
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/payments'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/payments'</span>, {
   amount: { value: <span class="c-number">50000</span>, currency: <span class="c-string">'COP'</span> },
   destination_account: {
     account_number: <span class="c-string">'12345678901'</span>,
@@ -5529,7 +5945,7 @@ headers = {
   <span class="c-string">'Idempotency-Key'</span>: <span class="c-string">'unique-request-id-12345'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/payments'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/payments'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
                 <div class="code-panel" data-lang="springboot">
@@ -5540,7 +5956,7 @@ print(res.json())</pre>
 
 <span class="c-comment">// RestTemplate call to /v1/payments</span>
 RestTemplate restTemplate = <span class="c-keyword">new</span> RestTemplate();
-String url = <span class="c-string">"https://api.fluxone.co/api/v1/payments"</span>;
+String url = <span class="c-string">"https://flux.praxisglobe.com/api/v1/payments"</span>;
 
 HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5754,7 +6170,7 @@ System.out.println(res.getBody());</pre>
       <span style="color: var(--flux-white)">Collections (Pay-ins)</span>
     </div>
 
-    <h1 class="page-title"><span class="flag">🇨🇴</span> Collections (Pay-ins) — Colombia</h1>
+    <h1 class="page-title"><span class="flag"></span> Collections (Pay-ins) — Colombia</h1>
     <p class="page-subtitle">
       Accept instant payments in Colombia via Bre-B (Pay-ins). You have two mechanisms to collect money effortlessly from your customers: sharing your Referenced Keys (Llaves Referenciadas) or generating EMVCo standard QR Codes.
     </p>
@@ -5844,7 +6260,7 @@ System.out.println(res.getBody());</pre>
                 </div>
                 <div class="code-panel active" data-lang="curl">
                   <pre><span class="c-keyword">curl</span> -i -X POST \
-  https://api.fluxone.co/api/v1/accounts/acc_12345/keys \
+  https://flux.praxisglobe.com/api/v1/accounts/acc_12345/keys \
   -H <span class="c-string">'Authorization: Bearer &lt;ACCESS_TOKEN&gt;'</span> \
   -H <span class="c-string">'Content-Type: application/json'</span> \
   -d <span class="c-string">'{
@@ -5856,7 +6272,7 @@ System.out.println(res.getBody());</pre>
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/accounts/acc_12345/keys'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/accounts/acc_12345/keys'</span>, {
   alias: <span class="c-string">'My first fluX Key'</span>,
   key_config: <span class="c-string">'open_input'</span>,
   open_input: <span class="c-string">'@FLXMyBusiness123'</span>
@@ -6030,7 +6446,7 @@ axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/accounts/acc_12
                 </div>
                 <div class="code-panel active" data-lang="curl">
                   <pre><span class="c-keyword">curl</span> -i -X POST \
-  https://api.fluxone.co/api/v1/qr/static \
+  https://flux.praxisglobe.com/api/v1/qr/static \
   -H <span class="c-string">'Authorization: Bearer &lt;ACCESS_TOKEN&gt;'</span> \
   -H <span class="c-string">'Content-Type: application/json'</span> \
   -d <span class="c-string">'{
@@ -6048,7 +6464,7 @@ axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/accounts/acc_12
                 <div class="code-panel" data-lang="node">
                   <pre><span class="c-keyword">const</span> axios = require(<span class="c-string">'axios'</span>);
 
-axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/qr/static'</span>, {
+axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/qr/static'</span>, {
   correlationId: <span class="c-string">'123e4567-e89b-12d3-a456-426614174000'</span>,
   keyString: <span class="c-string">'3001234567'</span>,
   keyType: <span class="c-string">'PHONE_NUMBER'</span>,
@@ -6086,7 +6502,7 @@ headers = {
   <span class="c-string">'Content-Type'</span>: <span class="c-string">'application/json'</span>
 }
 
-res = requests.post(<span class="c-string">'https://api.fluxone.co/api/v1/qr/static'</span>, json=payload, headers=headers)
+res = requests.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/qr/static'</span>, json=payload, headers=headers)
 print(res.json())</pre>
                 </div>
                 <div class="code-panel" data-lang="springboot">
@@ -6096,7 +6512,7 @@ print(res.json())</pre>
 <span class="c-keyword">import</span> java.util.Map;
 
 RestTemplate restTemplate = <span class="c-keyword">new</span> RestTemplate();
-String url = <span class="c-string">"https://api.fluxone.co/api/v1/qr/static"</span>;
+String url = <span class="c-string">"https://flux.praxisglobe.com/api/v1/qr/static"</span>;
 
 HttpHeaders headers = <span class="c-keyword">new</span> HttpHeaders();
 headers.setContentType(MediaType.APPLICATION_JSON);
@@ -6484,7 +6900,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/partners/login \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/partners/login \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
   -d '{
@@ -6590,7 +7006,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/partners/transactions/payouts \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/partners/transactions/payouts \
   -H <span class="c-string">"Authorization: Bearer &lt;YOUR_JWT&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
@@ -6674,7 +7090,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/partners/transactions/penny-validations \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/partners/transactions/penny-validations \
   -H <span class="c-string">"Authorization: Bearer &lt;YOUR_JWT&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
@@ -6749,7 +7165,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/partners/webhooks \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/partners/webhooks \
   -H <span class="c-string">"Authorization: Bearer &lt;YOUR_JWT&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
@@ -6846,7 +7262,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/payments \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/payments \
   -H <span class="c-string">"Authorization: Bearer &lt;YOUR_JWT&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
@@ -6928,7 +7344,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 </div>
                 <div class="param-desc" data-translate="es">El valor específico para la llave alias.</div>
                 <div class="param-desc" data-translate="en">The specific value for the alias key.</div>
-                <div class="param-example">Example: <code>"pagos@fluxone.co"</code></div>
+                <div class="param-example">Example: <code>"pagos@flux.praxisglobe.com"</code></div>
               </div>
             </div>
           </div>
@@ -6942,13 +7358,13 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/keys \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/keys \
   -H <span class="c-string">"Authorization: Bearer &lt;YOUR_JWT&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
   -d '{
     "key_type": "EMAIL",
-    "key_value": "pagos@fluxone.co",
+    "key_value": "pagos@flux.praxisglobe.com",
     "account_id": "acc_co_0991223"
   }'</pre>
               </div>
@@ -6964,7 +7380,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <pre>{
   <span class="p">"key_id"</span>: <span class="s">"key_abc123"</span>,
   <span class="p">"status"</span>: <span class="s">"REGISTERED"</span>,
-  <span class="p">"key_value"</span>: <span class="s">"pagos@fluxone.co"</span>
+  <span class="p">"key_value"</span>: <span class="s">"pagos@flux.praxisglobe.com"</span>
 }</pre>
               </div>
             </div>
@@ -7018,7 +7434,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <button class="code-copy-btn" onclick="copyCode(this)"><i data-lucide="copy"></i> <span data-translate="es">Copiar</span><span data-translate="en">Copy</span></button>
               </div>
               <div class="code-panel active">
-                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://api.fluxone.co/api/v1/qr-codes \
+                <pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> https://flux.praxisglobe.com/api/v1/qr-codes \
   -H <span class="c-string">"Authorization: Bearer &lt;YOUR_JWT&gt;"</span> \
   -H <span class="c-string">"Accept: application/json"</span> \
   -H <span class="c-string">"Content-Type: application/json"</span> \
@@ -7040,7 +7456,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
                 <pre>{
   <span class="p">"qr_id"</span>: <span class="s">"qr_0991ab"</span>,
   <span class="p">"emvco_payload"</span>: <span class="s">"00020101021226500010a..."</span>,
-  <span class="p">"qr_image_url"</span>: <span class="s">"https://api.fluxone.co/v1/qr/qr_0991ab.png"</span>
+  <span class="p">"qr_image_url"</span>: <span class="s">"https://flux.praxisglobe.com/v1/qr/qr_0991ab.png"</span>
 }</pre>
               </div>
             </div>
@@ -7066,10 +7482,10 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     /* ── DYNAMIC MX/CO CONTENT DICTIONARIES ── */
     const DYNAMIC_CONTENT = {
       mx: {
-        introBreadcrumb: '🇲🇽 Getting Started',
-        introFlag: '🇲🇽',
+        introBreadcrumb: 'Getting Started',
+        introFlag: '',
         introText: "The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications — all through a single integration point connected to Mexico's interbank payment network via BANXICO.",
-        introBaseUrl: 'https://api.fluxone.co/api/v1/partners',
+        introBaseUrl: 'https://flux.praxisglobe.com/api/v1/partners',
         capabilitiesSubtitle: "Everything you need to move money in Mexico — built on SPEI, powered by BANXICO.",
         capabilities: [
           { title: 'Payouts (SPEI)', desc: 'Send instant payouts to any Mexican bank account via SPEI. Real-time settlement during operating hours.' },
@@ -7080,7 +7496,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         realtimeText: 'All transactions are processed via SPEI in real time. No batch processing, no delays.',
         step3Desc: "Use your JWT token in the Authorization header to call any endpoint. Here's an example creating a payout:",
         step3Code: `<pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> \\
-  https://api.fluxone.co/api/v1/partners/transactions/payouts \\
+  https://flux.praxisglobe.com/api/v1/partners/transactions/payouts \\
   -H <span class="c-string">"Authorization: Bearer &amp;lt;YOUR_JWT&amp;gt;"</span> \\
   -H <span class="c-string">"Accept: application/json"</span> \\
   -H <span class="c-string">"Content-Type: application/json"</span> \\
@@ -7106,7 +7522,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
   ...
 }</pre>`,
         conventions: [
-          { item: 'Base URL', details: 'https://api.fluxone.co/api/v1/partners' },
+          { item: 'Base URL', details: 'https://flux.praxisglobe.com/api/v1/partners' },
           { item: 'Authentication', details: 'Bearer JWT token in the Authorization header' },
           { item: 'Content-Type', details: 'application/json for all request and response bodies' },
           { item: 'Idempotency', details: 'UUID v5 via the Idempotency-Key header. Keys are valid for 24 hours.' },
@@ -7118,15 +7534,15 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
           { item: 'Rate Limits', details: 'Enforced per client. Contact support for your tier limits.' }
         ],
         sandboxDesc: 'Use the sandbox environment for development and testing. No real funds are moved. Simulated SPEI responses and CEPs.',
-        sandboxUrl: 'https://sandbox.api.fluxone.co/api/v1/partners',
+        sandboxUrl: 'https://sandbox.flux.praxisglobe.com/api/v1/partners',
         productionDesc: 'Production environment for live operations. Real SPEI transactions and CEP retrieval via BANXICO. Requires approved onboarding.',
-        productionUrl: 'https://api.fluxone.co/api/v1/partners'
+        productionUrl: 'https://flux.praxisglobe.com/api/v1/partners'
       },
       co: {
-        introBreadcrumb: '🇨🇴 Getting Started',
-        introFlag: '🇨🇴',
+        introBreadcrumb: 'Getting Started',
+        introFlag: '',
         introText: "The fluX API is a RESTful JSON interface that enables you to send Bre-B immediate payouts, receive real-time notifications, and generate EMVCo QR codes — all through a single integration point connected to Colombia's interbank payment network.",
-        introBaseUrl: 'https://api.fluxone.co/api/v1',
+        introBaseUrl: 'https://flux.praxisglobe.com/api/v1',
         capabilitiesSubtitle: "Everything you need to move money in Colombia — built on Bre-B, powered by Banco de la República.",
         capabilities: [
           { title: 'Payouts (Bre-B)', desc: 'Send instant payouts to any Colombian bank account via Bre-B. Real-time settlement 24/7.' },
@@ -7137,7 +7553,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         realtimeText: 'All transactions are processed via Bre-B in real time. Settlement completes in seconds.',
         step3Desc: "Use your JWT token in the Authorization header to call Colombia endpoints. Here's an example creating a Bre-B payout:",
         step3Code: `<pre><span class="c-keyword">curl</span> -X <span class="c-method">POST</span> \\
-  https://api.fluxone.co/api/v1/payments \\
+  https://flux.praxisglobe.com/api/v1/payments \\
   -H <span class="c-string">"Authorization: Bearer &amp;lt;YOUR_JWT&amp;gt;"</span> \\
   -H <span class="c-string">"Accept: application/json"</span> \\
   -H <span class="c-string">"Content-Type: application/json"</span> \\
@@ -7162,7 +7578,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
   <span class="p">"transaction_journal_hash"</span>: <span class="s">"0xabcde12345..."</span>
 }</pre>`,
         conventions: [
-          { item: 'Base URL', details: 'https://api.fluxone.co/api/v1' },
+          { item: 'Base URL', details: 'https://flux.praxisglobe.com/api/v1' },
           { item: 'Authentication', details: 'Bearer JWT token in the Authorization header' },
           { item: 'Content-Type', details: 'application/json for all request and response bodies' },
           { item: 'Idempotency', details: 'UUID v4 via the Idempotency-Key header.' },
@@ -7174,9 +7590,9 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
           { item: 'Rate Limits', details: 'Enforced per client. Contact support for your tier limits.' }
         ],
         sandboxDesc: 'Use the sandbox environment for development and testing. Simulated Bre-B payments and QR generation. No real funds moved.',
-        sandboxUrl: 'https://sandbox.api.fluxone.co/api/v1',
+        sandboxUrl: 'https://sandbox.flux.praxisglobe.com/api/v1',
         productionDesc: 'Production environment for live operations. Real Bre-B transactions via Banco de la República. Requires approved onboarding.',
-        productionUrl: 'https://api.fluxone.co/api/v1'
+        productionUrl: 'https://flux.praxisglobe.com/api/v1'
       }
     };
 
@@ -7781,6 +8197,143 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         setTimeout(typeNextStep, 500);
       }
     })();
-  </script>
+  
+    // Global functions for code tabs switching and copying
+    function switchCodeTab(btn, lang) {
+      const tabsContainer = btn.closest('.code-tabs');
+      if (!tabsContainer) return;
+      
+      tabsContainer.querySelectorAll('.code-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      btn.classList.add('active');
+      
+      const card = btn.closest('.code-card');
+      if (!card) return;
+      
+      card.querySelectorAll('.code-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      
+      // Target lang or data-lang attribute
+      const targetPanel = card.querySelector('.code-panel[data-lang="' + lang + '"]');
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    }
+
+    function copyCodeBlock(btn) {
+      const card = btn.closest('.code-card');
+      if (!card) return;
+      
+      const activePanel = card.querySelector('.code-panel.active pre') || card.querySelector('.code-panel pre');
+      if (activePanel) {
+        const text = activePanel.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const originalHtml = btn.innerHTML;
+          btn.innerHTML = '<i data-lucide="check"></i> Copied!';
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+          setTimeout(() => {
+            btn.innerHTML = originalHtml;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+          }, 2000);
+        });
+      }
+    }
+
+    // Hook event listeners for tabs without inline onclick (e.g. Authentication section)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.code-tab').forEach(btn => {
+        if (!btn.getAttribute('onclick')) {
+          btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang') || (btn.textContent.trim().toLowerCase().includes('spring') ? 'springboot' : btn.textContent.trim().toLowerCase());
+            switchCodeTab(btn, lang);
+          });
+        }
+      });
+      
+      // Auto-bind copy buttons that do not have onclick
+      document.querySelectorAll('.code-copy-btn').forEach(btn => {
+        if (!btn.getAttribute('onclick')) {
+          btn.addEventListener('click', () => {
+            copyCodeBlock(btn);
+          });
+        }
+      });
+    });
+    
+    // Expose to window so inline onclick can always resolve them
+    window.switchCodeTab = switchCodeTab;
+    window.copyCodeBlock = copyCodeBlock;
+    
+
+    // Global functions for code tabs switching and copying
+    function switchCodeTab(btn, lang) {
+      const tabsContainer = btn.closest('.code-tabs');
+      if (!tabsContainer) return;
+      
+      tabsContainer.querySelectorAll('.code-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      btn.classList.add('active');
+      
+      const card = btn.closest('.code-card');
+      if (!card) return;
+      
+      card.querySelectorAll('.code-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      
+      // Target lang or data-lang attribute
+      const targetPanel = card.querySelector('.code-panel[data-lang="' + lang + '"]');
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    }
+
+    function copyCodeBlock(btn) {
+      const card = btn.closest('.code-card');
+      if (!card) return;
+      
+      const activePanel = card.querySelector('.code-panel.active pre') || card.querySelector('.code-panel pre');
+      if (activePanel) {
+        const text = activePanel.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const originalHtml = btn.innerHTML;
+          btn.innerHTML = '<i data-lucide="check"></i> Copied!';
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+          setTimeout(() => {
+            btn.innerHTML = originalHtml;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+          }, 2000);
+        });
+      }
+    }
+
+    // Hook event listeners for tabs without inline onclick (e.g. Authentication section)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.code-tab').forEach(btn => {
+        if (!btn.getAttribute('onclick')) {
+          btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang') || (btn.textContent.trim().toLowerCase().includes('spring') ? 'springboot' : btn.textContent.trim().toLowerCase());
+            switchCodeTab(btn, lang);
+          });
+        }
+      });
+      
+      // Auto-bind copy buttons that do not have onclick
+      document.querySelectorAll('.code-copy-btn').forEach(btn => {
+        if (!btn.getAttribute('onclick')) {
+          btn.addEventListener('click', () => {
+            copyCodeBlock(btn);
+          });
+        }
+      });
+    });
+    
+    // Expose to window so inline onclick can always resolve them
+    window.switchCodeTab = switchCodeTab;
+    window.copyCodeBlock = copyCodeBlock;
+    </script>
 </body>
 </html>
