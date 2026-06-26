@@ -323,37 +323,115 @@
       opacity: 0.7;
     }
 
-    /* Language and Theme Switchers */
-    .lang-selector-container {
+    /* ── CUSTOM LANGUAGE SELECTOR ── */
+    .custom-lang-selector {
+      position: relative;
+      display: inline-block;
+    }
+    .lang-trigger-btn {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--glass-border);
       border-radius: 8px;
-      padding: 4px 10px;
-    }
-    body.light-theme .lang-selector-container {
-      background: #FFFFFF;
-    }
-    .lang-select {
-      background: none;
-      border: none;
+      padding: 6px 12px;
       color: var(--flux-white);
       font-size: 0.78rem;
       font-weight: 600;
-      outline: none;
       cursor: pointer;
+      outline: none;
+      transition: all 0.2s ease;
     }
-    body.light-theme .lang-select {
+    .lang-trigger-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+    body.light-theme .lang-trigger-btn {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
       color: #0F172A;
     }
-    .lang-icon {
+    body.light-theme .lang-trigger-btn:hover {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
+    .lang-trigger-btn .lang-icon {
       width: 14px;
       height: 14px;
       color: var(--flux-gray-300);
     }
-
+    .lang-trigger-btn .chevron-icon {
+      width: 12px;
+      height: 12px;
+      color: var(--flux-gray-300);
+      transition: transform 0.2s ease;
+    }
+    .custom-lang-selector.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+    .lang-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      width: 120px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 4px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      display: none;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 1000;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .lang-dropdown-menu.show {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    body.light-theme .lang-dropdown-menu {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+    .lang-dropdown-item {
+      background: none;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--flux-gray-300);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+    .lang-dropdown-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--flux-white);
+    }
+    .lang-dropdown-item.active {
+      background: rgba(60, 184, 235, 0.1);
+      color: var(--flux-primary);
+    }
+    body.light-theme .lang-dropdown-item {
+      color: #475569;
+    }
+    body.light-theme .lang-dropdown-item:hover {
+      background: #F1F5F9;
+      color: #0F172A;
+    }
+    body.light-theme .lang-dropdown-item.active {
+      background: rgba(2, 132, 199, 0.08);
+      color: #0284c7;
+    }
     .theme-toggle-btn {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--glass-border);
@@ -2677,10 +2755,19 @@
         <div class="search-results-panel" id="search-results"></div>
       </div>
 
-      <!-- Language Selector -->
-      <div class="lang-selector-container">
-        <i data-lucide="globe" class="lang-icon"></i>
-        <select class="lang-select" id="lang-select" onchange="switchLanguage(this.value)">
+      <!-- Custom Language Selector -->
+      <div class="custom-lang-selector" id="custom-lang-selector">
+        <button class="lang-trigger-btn" onclick="toggleLangDropdown(event)">
+          <i data-lucide="globe" class="lang-icon"></i>
+          <span id="active-lang-label">Español</span>
+          <i data-lucide="chevron-down" class="chevron-icon"></i>
+        </button>
+        <div class="lang-dropdown-menu" id="lang-dropdown-menu">
+          <button class="lang-dropdown-item active" data-lang-val="es" onclick="selectLanguageOption('es')">Español</button>
+          <button class="lang-dropdown-item" data-lang-val="en" onclick="selectLanguageOption('en')">English</button>
+        </div>
+        <!-- Hidden native select for backwards compatibility -->
+        <select id="lang-select" onchange="switchLanguage(this.value)" style="display: none;">
           <option value="es">Español</option>
           <option value="en">English</option>
         </select>
@@ -8063,16 +8150,66 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
 
     /* ── TRANSLATION CONTROLLER (data-lang) ── */
     let currentLang = 'es';
+    // Custom language dropdown functions
+    function toggleLangDropdown(event) {
+      event.stopPropagation();
+      const container = document.getElementById('custom-lang-selector');
+      const menu = document.getElementById('lang-dropdown-menu');
+      if (!menu) return;
+      
+      const isShowing = menu.classList.contains('show');
+      if (isShowing) {
+        menu.classList.remove('show');
+        container.classList.remove('active');
+      } else {
+        menu.classList.add('show');
+        container.classList.add('active');
+      }
+    }
+
+    function selectLanguageOption(lang) {
+      switchLanguage(lang);
+      closeLangDropdown();
+    }
+
+    function closeLangDropdown() {
+      const container = document.getElementById('custom-lang-selector');
+      const menu = document.getElementById('lang-dropdown-menu');
+      if (menu) menu.classList.remove('show');
+      if (container) container.classList.remove('active');
+    }
+
+    document.addEventListener('click', () => {
+      closeLangDropdown();
+    });
+
     function switchLanguage(lang) {
       currentLang = lang;
       document.body.setAttribute('data-lang', lang);
-      document.getElementById('lang-select').value = lang;
+      const nativeSelect = document.getElementById('lang-select');
+      if (nativeSelect) nativeSelect.value = lang;
       localStorage.setItem('flux_dev_lang', lang);
+      
+      // Update custom selector UI
+      const activeLabel = document.getElementById('active-lang-label');
+      if (activeLabel) {
+        activeLabel.textContent = lang === 'es' ? 'Español' : 'English';
+      }
+      
+      // Update active class in menu items
+      document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+        if (item.getAttribute('data-lang-val') === lang) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
       
       // Relocalize any dynamic texts in introductory sections
       const activeCountry = document.body.getAttribute('data-active-country') || 'mx';
       switchCountry(activeCountry, false);
     }
+
 
     /* ── THEME CONTROLLER (Light/Dark Mode) ── */
     function toggleTheme() {
