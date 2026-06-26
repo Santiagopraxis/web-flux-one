@@ -1059,6 +1059,10 @@
       overflow: hidden;
       box-shadow: 0 8px 30px rgba(0,0,0,0.5);
       margin-top: 16px;
+      flex: 1;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
     }
     .terminal-header {
       background: #09090f;
@@ -1072,10 +1076,13 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background 0.3s ease, transform 0.2s ease;
     }
-    .terminal-dot.t-red { background: #ef4444; }
-    .terminal-dot.t-yellow { background: #f59e0b; }
-    .terminal-dot.t-green { background: #10b981; }
+    .terminal-header:hover .terminal-dot.t-red { background: #ef4444 !important; }
+    .terminal-header:hover .terminal-dot.t-yellow { background: #f59e0b !important; }
+    .terminal-header:hover .terminal-dot.t-green { background: #10b981 !important; }
     .terminal-title {
       font-family: var(--font-mono);
       font-size: 0.62rem;
@@ -3377,7 +3384,7 @@ print(res.json().get(<span class="c-string">'access_token'</span>))</pre>
               </table>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <!-- Request/Response Terminals -->
               <div class="code-card">
                 <div class="terminal-header">
@@ -3826,7 +3833,7 @@ print(res.json())</pre>
               </table>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -4443,7 +4450,7 @@ print(res.json())</pre>
               </table>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -5030,7 +5037,7 @@ System.out.println(res.getBody());</pre>
               </table>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -5777,7 +5784,7 @@ System.out.println(res.getBody());</pre>
               </table>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -6417,7 +6424,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               </table>
             </div>
 
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -6794,7 +6801,7 @@ System.out.println(res.getBody());</pre>
                 </tbody>
               </table>
             </div>
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -6982,7 +6989,7 @@ axios.post(<span class="c-string">'https://flux.praxisglobe.com/api/v1/accounts/
                 </tbody>
               </table>
             </div>
-            <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+            <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
               <div class="code-card">
                 <div class="terminal-header">
                   <span class="terminal-dot t-red"></span>
@@ -7167,7 +7174,7 @@ System.out.println(res.getBody());</pre>
               </tbody>
             </table>
           </div>
-          <div style="width: 100%; display: flex; flex-direction: column; gap: 16px;">
+          <div style="width: 100%; display: flex; gap: 16px; flex-wrap: wrap;">
             <div class="code-card">
               <div class="terminal-header">
                 <span class="terminal-dot t-red"></span>
