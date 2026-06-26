@@ -8039,6 +8039,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
 
   <!-- ── SCRIPTS ── -->
   <script>
+
     /* ── DYNAMIC MX/CO CONTENT DICTIONARIES ── */
     const DYNAMIC_CONTENT = {
       mx: {
@@ -8159,37 +8160,44 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     /* ── TAB SWITCHER (Documentación vs API Reference) ── */
     let currentTab = 'docs';
     function switchTab(tabId) {
-      document.body.setAttribute('data-active-tab', tabId);
-      currentTab = tabId;
-      
-      // Update header buttons
-      document.querySelectorAll('.header-tab').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById('tab-btn-' + tabId).classList.add('active');
-      
-      // Update sidebar nav contents
-      document.querySelectorAll('.sidebar-nav-content').forEach(nav => {
-        nav.classList.remove('active');
-      });
-      document.getElementById('sidebar-nav-' + tabId).classList.add('active');
-      
-      // Update tab contents
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      document.getElementById('content-' + tabId).classList.add('active');
-      
-      // Select first section inside the newly active tab
-      let firstSection = null;
-      if (tabId === 'docs') {
-        firstSection = '#introduction';
-      } else {
-        firstSection = '#api-login';
+      try {
+        document.body.setAttribute('data-active-tab', tabId);
+        currentTab = tabId;
+        
+        // Update header buttons
+        document.querySelectorAll('.header-tab').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        const tabBtn = document.getElementById('tab-btn-' + tabId);
+        if (tabBtn) tabBtn.classList.add('active');
+        
+        // Update sidebar nav contents
+        document.querySelectorAll('.sidebar-nav-content').forEach(nav => {
+          nav.classList.remove('active');
+        });
+        const sidebarNav = document.getElementById('sidebar-nav-' + tabId);
+        if (sidebarNav) sidebarNav.classList.add('active');
+        
+        // Update tab contents
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        const tabContent = document.getElementById('content-' + tabId);
+        if (tabContent) tabContent.classList.add('active');
+        
+        // Select first section inside the newly active tab
+        let firstSection = null;
+        if (tabId === 'docs') {
+          firstSection = '#introduction';
+        } else {
+          firstSection = '#api-login';
+        }
+        
+        showPage(firstSection);
+        window.location.hash = firstSection;
+      } catch (err) {
+        console.error('Error switching tab:', err);
       }
-      
-      showPage(firstSection);
-      window.location.hash = firstSection;
     }
 
     /* ── TRANSLATION CONTROLLER (data-lang) ── */
@@ -8362,22 +8370,30 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     }
 
     function switchTabOnly(tabId) {
-      document.body.setAttribute('data-active-tab', tabId);
-      currentTab = tabId;
-      document.querySelectorAll('.header-tab').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById('tab-btn-' + tabId).classList.add('active');
-      
-      document.querySelectorAll('.sidebar-nav-content').forEach(nav => {
-        nav.classList.remove('active');
-      });
-      document.getElementById('sidebar-nav-' + tabId).classList.add('active');
-      
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      document.getElementById('content-' + tabId).classList.add('active');
+      try {
+        document.body.setAttribute('data-active-tab', tabId);
+        currentTab = tabId;
+        
+        document.querySelectorAll('.header-tab').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        const tabBtn = document.getElementById('tab-btn-' + tabId);
+        if (tabBtn) tabBtn.classList.add('active');
+        
+        document.querySelectorAll('.sidebar-nav-content').forEach(nav => {
+          nav.classList.remove('active');
+        });
+        const sidebarNav = document.getElementById('sidebar-nav-' + tabId);
+        if (sidebarNav) sidebarNav.classList.add('active');
+        
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+        });
+        const tabContent = document.getElementById('content-' + tabId);
+        if (tabContent) tabContent.classList.add('active');
+      } catch (err) {
+        console.error('Error in switchTabOnly:', err);
+      }
     }
 
     // Keyboard shortcut Ctrl K
@@ -8579,38 +8595,49 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
 
     // Initialize layout settings from localStorage
     (function initSettings() {
-      // 1. Language
-      const savedLang = localStorage.getItem('flux_dev_lang') || 'es';
-      switchLanguage(savedLang);
-      
-      // 2. Country
-      const savedCountry = localStorage.getItem('flux_preferred_country') || 'mx';
-      switchCountry(savedCountry, false);
+      try {
+        // 1. Language
+        const savedLang = localStorage.getItem('flux_dev_lang') || 'es';
+        switchLanguage(savedLang);
+        
+        // 2. Country
+        const savedCountry = localStorage.getItem('flux_preferred_country') || 'mx';
+        switchCountry(savedCountry, false);
 
-      // 3. Theme
-      const savedTheme = localStorage.getItem('flux_dev_theme') || 'dark';
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-        document.getElementById('theme-icon-dark').style.display = 'none';
-        document.getElementById('theme-icon-light').style.display = 'block';
-        const logoImg = document.getElementById('sidebar-logo-img');
-        const mobileLogo = document.getElementById('mobile-logo-img');
-        if (logoImg) logoImg.src = './assets/images/logos/flux%20one%20en%20negro_1.svg';
-        if (mobileLogo) mobileLogo.src = './assets/images/logos/flux%20one%20en%20negro_1.svg';
-      }
-
-      // 4. Router starting point
-      if (window.location.hash) {
-        const startingHash = window.location.hash;
-        if (startingHash.startsWith('#api-')) {
-          switchTabOnly('api');
+        // 3. Theme
+        const savedTheme = localStorage.getItem('flux_dev_theme') || 'dark';
+        if (savedTheme === 'light') {
+          document.body.classList.add('light-theme');
+          const themeDark = document.getElementById('theme-icon-dark');
+          const themeLight = document.getElementById('theme-icon-light');
+          if (themeDark) themeDark.style.display = 'none';
+          if (themeLight) themeLight.style.display = 'block';
+          const logoImg = document.getElementById('sidebar-logo-img');
+          const mobileLogo = document.getElementById('mobile-logo-img');
+          if (logoImg) logoImg.src = './assets/images/logos/flux%20one%20en%20negro_1.svg';
+          if (mobileLogo) mobileLogo.src = './assets/images/logos/flux%20one%20en%20negro_1.svg';
         }
-        showPage(startingHash);
-      } else {
-        showPage('#introduction');
+
+        // 4. Router starting point
+        if (window.location.hash) {
+          const startingHash = window.location.hash;
+          if (startingHash.startsWith('#api-')) {
+            switchTabOnly('api');
+          }
+          showPage(startingHash);
+        } else {
+          showPage('#introduction');
+        }
+      } catch (err) {
+        console.error('Error during settings initialization:', err);
+      } finally {
+        try {
+          buildSearchIndex();
+        } catch (err) {
+          console.error('Error building search index:', err);
+        }
       }
-      
-      buildSearchIndex();
+    //})(); -- Note: The closing brace/parenthesis are handled at the end of the IIFE block
 
     // Dynamic Table of Contents (TOC)
     function updateTOC() {
@@ -8708,7 +8735,13 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       const progressBar = document.getElementById('dev-loader-progress');
       const terminalBody = document.getElementById('terminal-body-content');
       
-      if (!loader) return;
+      // Force removal of js-active and show page if loader elements are missing
+      if (!loader || !progressBar || !terminalBody) {
+        document.body.classList.remove('js-active');
+        document.body.classList.add('portal-loaded');
+        if (loader) loader.style.display = 'none';
+        return;
+      }
 
       const alreadyLoaded = sessionStorage.getItem('flux_dev_portal_loaded');
       if (alreadyLoaded === 'true') {
@@ -8731,72 +8764,84 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       let currentLineEl = null;
 
       function typeNextStep() {
-        if (stepIndex >= terminalSteps.length) {
-          setTimeout(completeLoading, 400);
-          return;
-        }
-
-        const step = terminalSteps[stepIndex];
-        
-        if (charIndex === 0) {
-          currentLineEl = document.createElement('div');
-          currentLineEl.className = 'terminal-line';
-          
-          if (step.type === 'command') {
-            currentLineEl.innerHTML = '<span class="terminal-prompt">$</span> <span class="typing-text"></span><span class="terminal-cursor">█</span>';
-          } else {
-            currentLineEl.innerHTML = '<span class="typing-text"></span>';
-          }
-          
-          terminalBody.appendChild(currentLineEl);
-          terminalBody.scrollTop = terminalBody.scrollHeight;
-        }
-
-        const textContainer = currentLineEl.querySelector('.typing-text');
-        
-        if (charIndex < step.text.length) {
-          textContainer.textContent += step.text.charAt(charIndex);
-          charIndex++;
-          
-          const typingSpeed = step.type === 'command' ? 35 : 15;
-          setTimeout(typeNextStep, typingSpeed);
-        } else {
-          if (step.status) {
-            const statusSpan = document.createElement('span');
-            statusSpan.className = 'terminal-success';
-            statusSpan.textContent = step.status;
-            
-            const cursor = currentLineEl.querySelector('.terminal-cursor');
-            if (cursor) cursor.remove();
-            
-            textContainer.appendChild(document.createTextNode(' '));
-            textContainer.appendChild(statusSpan);
-          } else {
-            const cursor = currentLineEl.querySelector('.terminal-cursor');
-            if (cursor) cursor.remove();
+        try {
+          if (stepIndex >= terminalSteps.length) {
+            setTimeout(completeLoading, 400);
+            return;
           }
 
-          const progressPercent = ((stepIndex + 1) / terminalSteps.length) * 100;
-          progressBar.style.width = progressPercent + '%';
+          const step = terminalSteps[stepIndex];
+          
+          if (charIndex === 0) {
+            currentLineEl = document.createElement('div');
+            currentLineEl.className = 'terminal-line';
+            
+            if (step.type === 'command') {
+              currentLineEl.innerHTML = '<span class="terminal-prompt">$</span> <span class="typing-text"></span><span class="terminal-cursor">█</span>';
+            } else {
+              currentLineEl.innerHTML = '<span class="typing-text"></span>';
+            }
+            
+            terminalBody.appendChild(currentLineEl);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+          }
 
-          stepIndex++;
-          charIndex = 0;
-          setTimeout(typeNextStep, step.status === 'SUCCESS' ? 250 : 350);
+          const textContainer = currentLineEl.querySelector('.typing-text');
+          
+          if (charIndex < step.text.length) {
+            textContainer.textContent += step.text.charAt(charIndex);
+            charIndex++;
+            
+            const typingSpeed = step.type === 'command' ? 35 : 15;
+            setTimeout(typeNextStep, typingSpeed);
+          } else {
+            if (step.status) {
+              const statusSpan = document.createElement('span');
+              statusSpan.className = 'terminal-success';
+              statusSpan.textContent = step.status;
+              
+              const cursor = currentLineEl.querySelector('.terminal-cursor');
+              if (cursor) cursor.remove();
+              
+              textContainer.appendChild(document.createTextNode(' '));
+              textContainer.appendChild(statusSpan);
+            } else {
+              const cursor = currentLineEl.querySelector('.terminal-cursor');
+              if (cursor) cursor.remove();
+            }
+
+            const progressPercent = ((stepIndex + 1) / terminalSteps.length) * 100;
+            progressBar.style.width = progressPercent + '%';
+
+            stepIndex++;
+            charIndex = 0;
+            setTimeout(typeNextStep, step.status === 'SUCCESS' ? 250 : 350);
+          }
+        } catch (err) {
+          console.error('Error during typing animation:', err);
+          completeLoading();
         }
       }
 
       function completeLoading() {
-        sessionStorage.setItem('flux_dev_portal_loaded', 'true');
-        loader.classList.add('fade-out');
+        try {
+          sessionStorage.setItem('flux_dev_portal_loaded', 'true');
+          loader.classList.add('fade-out');
 
-        setTimeout(() => {
+          setTimeout(() => {
+            document.body.classList.remove('js-active');
+            document.body.classList.add('portal-loaded');
+          }, 150);
+
+          setTimeout(() => {
+            loader.remove();
+          }, 800);
+        } catch (err) {
+          console.error('Error completing loader:', err);
           document.body.classList.remove('js-active');
           document.body.classList.add('portal-loaded');
-        }, 150);
-
-        setTimeout(() => {
-          loader.remove();
-        }, 800);
+          try { loader.remove(); } catch(_) {}
+        }
       }
 
       if (document.readyState === 'loading') {
@@ -8807,75 +8852,6 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         setTimeout(typeNextStep, 500);
       }
     })();
-  
-    // Global functions for code tabs switching and copying
-    function switchCodeTab(btn, lang) {
-      const tabsContainer = btn.closest('.code-tabs');
-      if (!tabsContainer) return;
-      
-      tabsContainer.querySelectorAll('.code-tab').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      btn.classList.add('active');
-      
-      const card = btn.closest('.code-card');
-      if (!card) return;
-      
-      card.querySelectorAll('.code-panel').forEach(panel => {
-        panel.classList.remove('active');
-      });
-      
-      // Target lang or data-lang attribute
-      const targetPanel = card.querySelector('.code-panel[data-lang="' + lang + '"]');
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
-    }
-
-    function copyCodeBlock(btn) {
-      const card = btn.closest('.code-card');
-      if (!card) return;
-      
-      const activePanel = card.querySelector('.code-panel.active pre') || card.querySelector('.code-panel pre');
-      if (activePanel) {
-        const text = activePanel.textContent;
-        navigator.clipboard.writeText(text).then(() => {
-          const originalHtml = btn.innerHTML;
-          btn.innerHTML = '<i data-lucide="check"></i> Copied!';
-          if (typeof lucide !== 'undefined') lucide.createIcons();
-          setTimeout(() => {
-            btn.innerHTML = originalHtml;
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-          }, 2000);
-        });
-      }
-    }
-
-    // Hook event listeners for tabs without inline onclick (e.g. Authentication section)
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.code-tab').forEach(btn => {
-        if (!btn.getAttribute('onclick')) {
-          btn.addEventListener('click', () => {
-            const lang = btn.getAttribute('data-lang') || (btn.textContent.trim().toLowerCase().includes('spring') ? 'springboot' : btn.textContent.trim().toLowerCase());
-            switchCodeTab(btn, lang);
-          });
-        }
-      });
-      
-      // Auto-bind copy buttons that do not have onclick
-      document.querySelectorAll('.code-copy-btn').forEach(btn => {
-        if (!btn.getAttribute('onclick')) {
-          btn.addEventListener('click', () => {
-            copyCodeBlock(btn);
-          });
-        }
-      });
-    });
-    
-    // Expose to window so inline onclick can always resolve them
-    window.switchCodeTab = switchCodeTab;
-    window.copyCodeBlock = copyCodeBlock;
-    
 
     // Global functions for code tabs switching and copying
     function switchCodeTab(btn, lang) {
@@ -8944,6 +8920,76 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     // Expose to window so inline onclick can always resolve them
     window.switchCodeTab = switchCodeTab;
     window.copyCodeBlock = copyCodeBlock;
-    </script>
+    
+
+    // Global functions for code tabs switching and copying
+    function switchCodeTab(btn, lang) {
+      const tabsContainer = btn.closest('.code-tabs');
+      if (!tabsContainer) return;
+      
+      tabsContainer.querySelectorAll('.code-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      btn.classList.add('active');
+      
+      const card = btn.closest('.code-card');
+      if (!card) return;
+      
+      card.querySelectorAll('.code-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      
+      // Target lang or data-lang attribute
+      const targetPanel = card.querySelector('.code-panel[data-lang="' + lang + '"]');
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    }
+
+    function copyCodeBlock(btn) {
+      const card = btn.closest('.code-card');
+      if (!card) return;
+      
+      const activePanel = card.querySelector('.code-panel.active pre') || card.querySelector('.code-panel pre');
+      if (activePanel) {
+        const text = activePanel.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const originalHtml = btn.innerHTML;
+          btn.innerHTML = '<i data-lucide="check"></i> Copied!';
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+          setTimeout(() => {
+            btn.innerHTML = originalHtml;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+          }, 2000);
+        });
+      }
+    }
+
+    // Hook event listeners for tabs without inline onclick (e.g. Authentication section)
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.code-tab').forEach(btn => {
+        if (!btn.getAttribute('onclick')) {
+          btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang') || (btn.textContent.trim().toLowerCase().includes('spring') ? 'springboot' : btn.textContent.trim().toLowerCase());
+            switchCodeTab(btn, lang);
+          });
+        }
+      });
+      
+      // Auto-bind copy buttons that do not have onclick
+      document.querySelectorAll('.code-copy-btn').forEach(btn => {
+        if (!btn.getAttribute('onclick')) {
+          btn.addEventListener('click', () => {
+            copyCodeBlock(btn);
+          });
+        }
+      });
+    });
+    
+    // Expose to window so inline onclick can always resolve them
+    window.switchCodeTab = switchCodeTab;
+    window.copyCodeBlock = copyCodeBlock;
+    
+</script>
 </body>
 </html>
