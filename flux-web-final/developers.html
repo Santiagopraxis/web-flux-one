@@ -2204,7 +2204,230 @@
         gap: 24px;
       }
     }
-    </style>
+    
+    /* ── SEQUENCE FLOW DIAGRAM (PREMIUM MOCKUP) ── */
+    .sequence-flow-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    body.light-theme .sequence-flow-container {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+    .flow-actors {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 16px;
+      margin-bottom: 12px;
+    }
+    body.light-theme .flow-actors {
+      border-color: #E2E8F0;
+    }
+    .flow-actor {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .flow-actor .actor-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--flux-white);
+    }
+    body.light-theme .flow-actor .actor-icon {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #0F172A;
+    }
+    .flow-actor.client .actor-icon {
+      color: var(--flux-primary);
+      background: rgba(60, 184, 235, 0.08);
+      border-color: rgba(60, 184, 235, 0.15);
+    }
+    .flow-actor.server .actor-icon {
+      color: var(--flux-secondary);
+      background: rgba(171, 75, 150, 0.08);
+      border-color: rgba(171, 75, 150, 0.15);
+    }
+    .actor-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .actor-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--flux-white);
+    }
+    body.light-theme .actor-label {
+      color: #0F172A;
+    }
+    .actor-sublabel {
+      font-size: 0.72rem;
+      color: var(--flux-gray-300);
+    }
+    body.light-theme .actor-sublabel {
+      color: #64748B;
+    }
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .flow-step-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+    .step-number-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .request-row .step-number-circle {
+      background: rgba(60, 184, 235, 0.08);
+      border: 1px solid rgba(60, 184, 235, 0.2);
+      color: var(--flux-primary);
+    }
+    .response-row .step-number-circle {
+      background: rgba(171, 75, 150, 0.08);
+      border: 1px solid rgba(171, 75, 150, 0.2);
+      color: var(--flux-secondary);
+    }
+    .flow-step-card {
+      flex: 1;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+    }
+    .request-row .flow-step-card {
+      background: rgba(60, 184, 235, 0.02);
+      border-color: rgba(60, 184, 235, 0.12);
+      margin-right: 40px;
+    }
+    .request-row .flow-step-card:hover {
+      border-color: var(--flux-primary);
+      background: rgba(60, 184, 235, 0.04);
+    }
+    .response-row .flow-step-card {
+      background: rgba(171, 75, 150, 0.02);
+      border-color: rgba(171, 75, 150, 0.12);
+      margin-left: 40px;
+    }
+    .response-row .flow-step-card:hover {
+      border-color: var(--flux-secondary);
+      background: rgba(171, 75, 150, 0.04);
+    }
+    body.light-theme .request-row .flow-step-card {
+      background: #F8FAFC;
+      border-color: #E2E8F0;
+    }
+    body.light-theme .request-row .flow-step-card:hover {
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.02);
+    }
+    body.light-theme .response-row .flow-step-card {
+      background: #FDF4FF;
+      border-color: #F5D0FE;
+    }
+    body.light-theme .response-row .flow-step-card:hover {
+      border-color: #86198f;
+      background: rgba(134, 25, 143, 0.02);
+    }
+    .card-header-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .method-or-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .flow-card-path {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--flux-white);
+    }
+    body.light-theme .flow-card-path {
+      color: #0F172A;
+    }
+    .flow-card-arrow {
+      color: var(--flux-primary);
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+    }
+    .response-row .flow-card-arrow {
+      color: var(--flux-secondary);
+    }
+    .step-card-desc {
+      font-size: 0.78rem;
+      color: var(--flux-gray-300);
+      line-height: 1.5;
+      margin: 0;
+    }
+    body.light-theme .step-card-desc {
+      color: #475569;
+    }
+    .step-card-desc code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    body.light-theme .step-card-desc code {
+      background: rgba(0, 0, 0, 0.04) !important;
+      border: none !important;
+    }
+    @media (max-width: 640px) {
+      .request-row .flow-step-card {
+        margin-right: 0;
+      }
+      .response-row .flow-step-card {
+        margin-left: 0;
+      }
+      .flow-step-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .response-row {
+        flex-direction: column-reverse;
+      }
+      .step-number-circle {
+        align-self: flex-start;
+      }
+    }
+</style>
 </head>
 <body data-active-country="mx" data-lang="es">
 
@@ -3347,29 +3570,62 @@ print(res.json())</pre>
       </div>
     </div>
 
-    <!-- Transaction Flow -->
-    <div class="section-block">
-      <h2 class="section-block-title"><i data-lucide="git-commit"></i> Transaction Flow</h2>
-      <div style="display: flex; gap: 24px; align-items: center; justify-content: space-around; margin: 16px 0; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 250px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center;">
-          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(60, 184, 235, 0.1); border: 1px solid rgba(60, 184, 235, 0.25); color: var(--flux-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">1</div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-primary); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">POST /v1/transactions/payouts</div>
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Your Application</div>
-          <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Client sends payout request with destination_clabe, amount, and source_instrument_id.</p>
+        <!-- Transaction Flow -->
+    <div class="sequence-flow-container">
+      <div class="flow-actors">
+        <div class="flow-actor client">
+          <div class="actor-icon"><i data-lucide="user"></i></div>
+          <div class="actor-info">
+            <span class="actor-label" data-translate="es">Cliente</span>
+            <span class="actor-label" data-translate="en">Client</span>
+            <span class="actor-sublabel" data-translate="es">Tu Aplicación</span>
+            <span class="actor-sublabel" data-translate="en">Your Application</span>
+          </div>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center; color: var(--flux-gray-700); flex-shrink: 0;">
-          <i data-lucide="arrow-right" style="width: 24px; height: 24px;"></i>
+        <div class="flow-actor server">
+          <div class="actor-info" style="text-align: right;">
+            <span class="actor-label">fluX</span>
+            <span class="actor-sublabel">API → SPEI</span>
+          </div>
+          <div class="actor-icon"><i data-lucide="server"></i></div>
         </div>
-        <div style="flex: 1; min-width: 250px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center;">
-          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.25); color: var(--flux-success); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">2</div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-success); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">200 OK</div>
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">fluX API → SPEI</div>
-          <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">fluX validates the request, debits your concentrator account, and submits the payout via SPEI. Returns status: INITIALIZED.</p>
+      </div>
+      <div class="flow-steps">
+        <!-- Step 1: Request -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">1</div>
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-primary); color: white; border-color: rgba(60, 184, 235, 0.3);">POST</span>
+                <span class="flow-card-path">/api/v1/partners/transactions/payouts</span>
+              </div>
+              <span class="flow-card-arrow"><i data-lucide="arrow-right"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">El cliente envía una solicitud de dispersión con <code>destination_clabe</code>, <code>amount</code> y <code>source_instrument_id</code>.</p>
+            <p class="step-card-desc" data-translate="en">Client sends payout request with <code>destination_clabe</code>, <code>amount</code>, and <code>source_instrument_id</code>.</p>
+          </div>
+        </div>
+        <!-- Step 2: Response -->
+        <div class="flow-step-row response-row">
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <span class="flow-card-arrow"><i data-lucide="arrow-left"></i></span>
+              <div class="method-or-status">
+                <span class="flow-card-path" data-translate="es">Transacción Creada</span>
+                <span class="flow-card-path" data-translate="en">Transaction Created</span>
+                <span class="method-badge badge-success" style="background: var(--flux-success); color: white; border-color: rgba(34, 197, 94, 0.3);">200 OK</span>
+              </div>
+            </div>
+            <p class="step-card-desc" data-translate="es">fluX valida la solicitud, debita tu cuenta concentradora y procesa el pago vía SPEI en tiempo real. Retorna la transacción con <code>status: INITIALIZED</code>.</p>
+            <p class="step-card-desc" data-translate="en">fluX validates the request, debits your concentrator account, and submits the payout via SPEI. Returns the transaction with <code>status: INITIALIZED</code>. Funds typically arrive within seconds.</p>
+          </div>
+          <div class="step-number-circle">2</div>
         </div>
       </div>
     </div>
 
-    <!-- Create a Payout Endpoint -->
+  
     <div class="section-block">
       <h2 class="section-block-title"><i data-lucide="plus-circle"></i> Create a Payout</h2>
       <div class="endpoint-card expanded" style="border-color: rgba(60, 184, 235, 0.25);">
@@ -3927,29 +4183,62 @@ print(res.json())</pre>
       </div>
     </div>
 
-    <!-- Transaction Flow -->
-    <div class="section-block">
-      <h2 class="section-block-title"><i data-lucide="git-commit"></i> Transaction Flow</h2>
-      <div style="display: flex; gap: 24px; align-items: center; justify-content: space-around; margin: 16px 0; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 250px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center;">
-          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(60, 184, 235, 0.1); border: 1px solid rgba(60, 184, 235, 0.25); color: var(--flux-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">1</div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-primary); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">POST /v1/transactions/collections</div>
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Your Platform</div>
-          <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Client sends a collection request with payer_clabe, amount, and source_instrument_id.</p>
+        <!-- Transaction Flow -->
+    <div class="sequence-flow-container">
+      <div class="flow-actors">
+        <div class="flow-actor client">
+          <div class="actor-icon"><i data-lucide="user"></i></div>
+          <div class="actor-info">
+            <span class="actor-label" data-translate="es">Cliente</span>
+            <span class="actor-label" data-translate="en">Client</span>
+            <span class="actor-sublabel" data-translate="es">Tu Plataforma</span>
+            <span class="actor-sublabel" data-translate="en">Your Platform</span>
+          </div>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center; color: var(--flux-gray-700); flex-shrink: 0;">
-          <i data-lucide="arrow-right" style="width: 24px; height: 24px;"></i>
+        <div class="flow-actor server">
+          <div class="actor-info" style="text-align: right;">
+            <span class="actor-label">fluX</span>
+            <span class="actor-sublabel">API → SPEI</span>
+          </div>
+          <div class="actor-icon"><i data-lucide="server"></i></div>
         </div>
-        <div style="flex: 1; min-width: 250px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center;">
-          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.25); color: var(--flux-success); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">2</div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-success); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">200 OK</div>
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">fluX API → SPEI</div>
-          <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">fluX validates the request and initiates the SPEI collection. Returns status: INITIALIZED. Funds settle once payer's bank confirms.</p>
+      </div>
+      <div class="flow-steps">
+        <!-- Step 1: Request -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">1</div>
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-primary); color: white; border-color: rgba(60, 184, 235, 0.3);">POST</span>
+                <span class="flow-card-path">/api/v1/partners/transactions/collections</span>
+              </div>
+              <span class="flow-card-arrow"><i data-lucide="arrow-right"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">El cliente envía una solicitud de recaudo con <code>payer_clabe</code>, <code>amount</code> y <code>source_instrument_id</code>.</p>
+            <p class="step-card-desc" data-translate="en">Client sends a collection request with <code>payer_clabe</code>, <code>amount</code>, and <code>source_instrument_id</code>.</p>
+          </div>
+        </div>
+        <!-- Step 2: Response -->
+        <div class="flow-step-row response-row">
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <span class="flow-card-arrow"><i data-lucide="arrow-left"></i></span>
+              <div class="method-or-status">
+                <span class="flow-card-path" data-translate="es">Recaudo Iniciado</span>
+                <span class="flow-card-path" data-translate="en">Collection Initiated</span>
+                <span class="method-badge badge-success" style="background: var(--flux-success); color: white; border-color: rgba(34, 197, 94, 0.3);">200 OK</span>
+              </div>
+            </div>
+            <p class="step-card-desc" data-translate="es">fluX valida la solicitud e inicia el recaudo SPEI. Retorna la transacción con <code>status: INITIALIZED</code>. Los fondos se liquidan al confirmar el banco del pagador.</p>
+            <p class="step-card-desc" data-translate="en">fluX validates the request and initiates the SPEI collection. Returns the transaction with <code>status: INITIALIZED</code>. Funds settle once payer's bank confirms.</p>
+          </div>
+          <div class="step-number-circle">2</div>
         </div>
       </div>
     </div>
 
-    <!-- Create a Collection Endpoint -->
+  
     <div class="section-block">
       <h2 class="section-block-title"><i data-lucide="plus-circle"></i> Create a Collection</h2>
       <div class="endpoint-card expanded" style="border-color: rgba(60, 184, 235, 0.25);">
@@ -4502,29 +4791,77 @@ System.out.println(res.getBody());</pre>
       </ul>
     </div>
 
-    <!-- Process Flow -->
-    <div class="section-block">
-      <h2 class="section-block-title"><i data-lucide="git-commit"></i> Process Flow</h2>
-      <div class="specs-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 12px;">
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">1. Initiation</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">POST request</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Client sends penny validation request with destination_clabe and client_id.</p>
+        <!-- Process Flow -->
+    <div class="sequence-flow-container">
+      <div class="flow-actors">
+        <div class="flow-actor client">
+          <div class="actor-icon"><i data-lucide="user"></i></div>
+          <div class="actor-info">
+            <span class="actor-label" data-translate="es">Cliente</span>
+            <span class="actor-label" data-translate="en">Client</span>
+            <span class="actor-sublabel" data-translate="es">Tu Aplicación</span>
+            <span class="actor-sublabel" data-translate="en">Your Application</span>
+          </div>
         </div>
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">2. Created</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">200 OK Response</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">fluX processes the $0.01 MXN penny via SPEI and returns status: INITIALIZED. CEP retrieval begins in the background.</p>
+        <div class="flow-actor server">
+          <div class="actor-info" style="text-align: right;">
+            <span class="actor-label">fluX</span>
+            <span class="actor-sublabel">API → SPEI → CEP</span>
+          </div>
+          <div class="actor-icon"><i data-lucide="server"></i></div>
         </div>
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">3. Delivery</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">CEP Webhook</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">fluX delivers the CEP result via webhook with verified beneficiary_name, beneficiary_rfc, and cepUrl. Average delivery: ~90 seconds.</p>
+      </div>
+      <div class="flow-steps">
+        <!-- Step 1: Request -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">1</div>
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-primary); color: white; border-color: rgba(60, 184, 235, 0.3);">POST</span>
+                <span class="flow-card-path">/api/v1/partners/transactions/penny-validations</span>
+              </div>
+              <span class="flow-card-arrow"><i data-lucide="arrow-right"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">El cliente envía una solicitud de validación de centavo con <code>destination_clabe</code> y <code>client_id</code>.</p>
+            <p class="step-card-desc" data-translate="en">Client sends penny validation request with <code>destination_clabe</code> and <code>client_id</code>.</p>
+          </div>
+        </div>
+        <!-- Step 2: Response -->
+        <div class="flow-step-row response-row">
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <span class="flow-card-arrow"><i data-lucide="arrow-left"></i></span>
+              <div class="method-or-status">
+                <span class="flow-card-path" data-translate="es">Validación Iniciada</span>
+                <span class="flow-card-path" data-translate="en">Validation Initiated</span>
+                <span class="method-badge badge-success" style="background: var(--flux-success); color: white; border-color: rgba(34, 197, 94, 0.3);">200 OK</span>
+              </div>
+            </div>
+            <p class="step-card-desc" data-translate="es">fluX procesa el centavo ($0.01 MXN) vía SPEI y retorna <code>status: INITIALIZED</code>. Comienza la recuperación del CEP en segundo plano.</p>
+            <p class="step-card-desc" data-translate="en">fluX processes the $0.01 MXN penny via SPEI and returns <code>status: INITIALIZED</code>. CEP retrieval begins in the background.</p>
+          </div>
+          <div class="step-number-circle">2</div>
+        </div>
+        <!-- Step 3: Webhook callback -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">3</div>
+          <div class="flow-step-card" style="background: rgba(171, 75, 150, 0.02); border-color: rgba(171, 75, 150, 0.12);">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-secondary); color: white; border-color: rgba(171, 75, 150, 0.3);">POST</span>
+                <span class="flow-card-path">/your-webhook-url <span style="font-size: 0.7rem; opacity: 0.7;">(Webhook)</span></span>
+              </div>
+              <span class="flow-card-arrow" style="color: var(--flux-secondary);"><i data-lucide="arrow-left"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">fluX entrega el resultado de la validación CEP en tu webhook con el nombre y RFC del beneficiario verificado y el <code>cepUrl</code> (promedio: ~90 segundos).</p>
+            <p class="step-card-desc" data-translate="en">fluX delivers the CEP result via webhook with verified beneficiary_name, beneficiary_rfc, and <code>cepUrl</code> (average delivery: ~90 seconds).</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Create Penny Validation Endpoint -->
+  
     <div class="section-block">
       <h2 class="section-block-title"><i data-lucide="plus-circle"></i> Create Penny Validation</h2>
       <div class="endpoint-card expanded" style="border-color: rgba(60, 184, 235, 0.25);">
@@ -5144,34 +5481,93 @@ System.out.println(res.getBody());</pre>
       </div>
     </div>
 
-    <!-- Process Flow -->
-    <div class="section-block">
-      <h2 class="section-block-title"><i data-lucide="git-commit"></i> Process Flow</h2>
-      <div class="specs-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 12px;">
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">1. Register</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">Webhook Setup</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Register your HTTPS endpoint with the event type (PAYIN) and a secret key via the API.</p>
+        <!-- Process Flow -->
+    <div class="sequence-flow-container">
+      <div class="flow-actors">
+        <div class="flow-actor client">
+          <div class="actor-icon"><i data-lucide="user"></i></div>
+          <div class="actor-info">
+            <span class="actor-label" data-translate="es">Cliente</span>
+            <span class="actor-label" data-translate="en">Client</span>
+            <span class="actor-sublabel" data-translate="es">Tu Servidor</span>
+            <span class="actor-sublabel" data-translate="en">Your Server</span>
+          </div>
         </div>
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">2. Trigger</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">Event Occurs</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">An incoming SPEI payment is received into a beneficiary account linked to your client.</p>
+        <div class="flow-actor server">
+          <div class="actor-info" style="text-align: right;">
+            <span class="actor-label">fluX</span>
+            <span class="actor-sublabel">Event Engine</span>
+          </div>
+          <div class="actor-icon"><i data-lucide="server"></i></div>
         </div>
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">3. Delivery</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">fluX Sends POST</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">fluX sends an HTTP POST with the transaction payload and X-Secret-key header to your URL.</p>
+      </div>
+      <div class="flow-steps">
+        <!-- Step 1: Register -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">1</div>
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-primary); color: white; border-color: rgba(60, 184, 235, 0.3);">POST</span>
+                <span class="flow-card-path">/api/v1/partners/webhooks</span>
+              </div>
+              <span class="flow-card-arrow"><i data-lucide="arrow-right"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">Registras tu URL HTTPS de webhook especificando los tipos de eventos (ej. PAYIN) y una clave secreta a través de la API.</p>
+            <p class="step-card-desc" data-translate="en">Register your HTTPS endpoint with the event type (PAYIN) and a secret key via the API.</p>
+          </div>
         </div>
-        <div class="cap-card">
-          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--flux-primary); font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">4. Response</div>
-          <h3 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">Accept or Reject</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Return 201 Created to accept. Return 400 to reject — this triggers an automatic reversal (refund) of the transaction.</p>
+        <!-- Step 2: Trigger -->
+        <div class="flow-step-row response-row">
+          <div class="flow-step-card" style="background: rgba(245, 158, 11, 0.02); border-color: rgba(245, 158, 11, 0.12);">
+            <div class="card-header-line">
+              <span class="flow-card-arrow" style="color: #f59e0b;"><i data-lucide="alert-circle"></i></span>
+              <div class="method-or-status">
+                <span class="flow-card-path" data-translate="es">Evento de Pago Recibido (SPEI)</span>
+                <span class="flow-card-path" data-translate="en">Payment Event Triggered (SPEI)</span>
+                <span class="method-badge" style="background: #f59e0b; color: white; border-color: rgba(245, 158, 11, 0.3);">EVENT</span>
+              </div>
+            </div>
+            <p class="step-card-desc" data-translate="es">Se recibe un pago SPEI entrante en una de las cuentas CLABE vinculadas a tus clientes en la plataforma de fluX.</p>
+            <p class="step-card-desc" data-translate="en">An incoming SPEI payment is received into a beneficiary account linked to your client.</p>
+          </div>
+          <div class="step-number-circle">2</div>
+        </div>
+        <!-- Step 3: Delivery -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">3</div>
+          <div class="flow-step-card" style="background: rgba(171, 75, 150, 0.02); border-color: rgba(171, 75, 150, 0.12);">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-secondary); color: white; border-color: rgba(171, 75, 150, 0.3);">POST</span>
+                <span class="flow-card-path">/your-webhook-url</span>
+              </div>
+              <span class="flow-card-arrow" style="color: var(--flux-secondary);"><i data-lucide="arrow-left"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">fluX envía una petición HTTP POST a tu servidor con el payload del evento y la cabecera de autenticación <code>X-Secret-Key</code>.</p>
+            <p class="step-card-desc" data-translate="en">fluX sends an HTTP POST with the transaction payload and <code>X-Secret-Key</code> header to your URL.</p>
+          </div>
+        </div>
+        <!-- Step 4: Response -->
+        <div class="flow-step-row response-row">
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <span class="flow-card-arrow"><i data-lucide="arrow-right"></i></span>
+              <div class="method-or-status">
+                <span class="flow-card-path" data-translate="es">Aceptar o Rechazar</span>
+                <span class="flow-card-path" data-translate="en">Accept or Reject</span>
+                <span class="method-badge badge-success" style="background: var(--flux-success); color: white; border-color: rgba(34, 197, 94, 0.3);">201 / 400</span>
+              </div>
+            </div>
+            <p class="step-card-desc" data-translate="es">Tu servidor responde <code>201 Created</code> para aceptar el pago. Si respondes <code>400</code>, fluX reversa (reembolsa) el SPEI automáticamente.</p>
+            <p class="step-card-desc" data-translate="en">Return <code>201 Created</code> to accept. Return <code>400</code> to reject — this triggers an automatic reversal (refund) of the transaction.</p>
+          </div>
+          <div class="step-number-circle">4</div>
         </div>
       </div>
     </div>
 
-    <!-- Available Events -->
+  
     <div class="section-block">
       <h2 class="section-block-title"><i data-lucide="list"></i> Available Events</h2>
       <table class="convention-table" style="width: 100%; border-collapse: collapse;">
@@ -5735,29 +6131,62 @@ app.listen(<span class="c-number">3000</span>, () => {
       </div>
     </div>
 
-    <!-- Transaction Flow -->
-    <div class="section-block">
-      <h2 class="section-block-title"><i data-lucide="git-commit"></i> Transaction Flow</h2>
-      <div style="display: flex; gap: 24px; align-items: center; justify-content: space-around; margin: 16px 0; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 250px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center;">
-          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(171, 75, 150, 0.1); border: 1px solid rgba(171, 75, 150, 0.25); color: var(--flux-secondary); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">1</div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-secondary); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">POST /v1/payments</div>
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Your Platform</div>
-          <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Client sends payment with destination_account, amount, and external_reference.</p>
+        <!-- Transaction Flow -->
+    <div class="sequence-flow-container">
+      <div class="flow-actors">
+        <div class="flow-actor client">
+          <div class="actor-icon"><i data-lucide="user"></i></div>
+          <div class="actor-info">
+            <span class="actor-label" data-translate="es">Cliente</span>
+            <span class="actor-label" data-translate="en">Client</span>
+            <span class="actor-sublabel" data-translate="es">Tu Plataforma</span>
+            <span class="actor-sublabel" data-translate="en">Your Platform</span>
+          </div>
         </div>
-        <div style="display: flex; align-items: center; justify-content: center; color: var(--flux-gray-700); flex-shrink: 0;">
-          <i data-lucide="arrow-right" style="width: 24px; height: 24px;"></i>
+        <div class="flow-actor server">
+          <div class="actor-info" style="text-align: right;">
+            <span class="actor-label">fluX</span>
+            <span class="actor-sublabel">API → Bre-B</span>
+          </div>
+          <div class="actor-icon"><i data-lucide="server"></i></div>
         </div>
-        <div style="flex: 1; min-width: 250px; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; text-align: center;">
-          <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.25); color: var(--flux-success); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: 700;">2</div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--flux-success); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">202 Accepted</div>
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">fluX → Bre-B</div>
-          <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">fluX validates the request and routes through Bre-B. Returns status: PROCESSING with a transaction_journal_hash for blockchain auditability.</p>
+      </div>
+      <div class="flow-steps">
+        <!-- Step 1: Request -->
+        <div class="flow-step-row request-row">
+          <div class="step-number-circle">1</div>
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <div class="method-or-status">
+                <span class="method-badge badge-post" style="background: var(--flux-secondary); color: white; border-color: rgba(171, 75, 150, 0.3);">POST</span>
+                <span class="flow-card-path">/api/v1/payments</span>
+              </div>
+              <span class="flow-card-arrow" style="color: var(--flux-secondary);"><i data-lucide="arrow-right"></i></span>
+            </div>
+            <p class="step-card-desc" data-translate="es">El cliente envía la solicitud de pago con <code>destination_account</code>, <code>amount</code> y <code>external_reference</code>.</p>
+            <p class="step-card-desc" data-translate="en">Client sends payment with <code>destination_account</code>, <code>amount</code>, and <code>external_reference</code>.</p>
+          </div>
+        </div>
+        <!-- Step 2: Response -->
+        <div class="flow-step-row response-row">
+          <div class="flow-step-card">
+            <div class="card-header-line">
+              <span class="flow-card-arrow" style="color: var(--flux-secondary);"><i data-lucide="arrow-left"></i></span>
+              <div class="method-or-status">
+                <span class="flow-card-path" data-translate="es">Pago Aceptado</span>
+                <span class="flow-card-path" data-translate="en">Payment Accepted</span>
+                <span class="method-badge badge-success" style="background: var(--flux-success); color: white; border-color: rgba(34, 197, 94, 0.3);">202 Accepted</span>
+              </div>
+            </div>
+            <p class="step-card-desc" data-translate="es">fluX valida la solicitud y la procesa en tiempo real vía Bre-B. Retorna <code>status: PROCESSING</code> y el hash de auditoría blockchain.</p>
+            <p class="step-card-desc" data-translate="en">fluX validates the request and routes through Bre-B. Returns <code>status: PROCESSING</code> with a <code>transaction_journal_hash</code> for blockchain auditability.</p>
+          </div>
+          <div class="step-number-circle">2</div>
         </div>
       </div>
     </div>
 
-    <!-- Create a Payment Endpoint -->
+  
     <div class="section-block">
       <h2 class="section-block-title"><i data-lucide="plus-circle"></i> Create a Payment</h2>
       <div class="endpoint-card expanded" style="border-color: rgba(171, 75, 150, 0.25);">
