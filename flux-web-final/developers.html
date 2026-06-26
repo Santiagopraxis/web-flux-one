@@ -165,6 +165,13 @@
       background-image: radial-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px);
       background-size: 24px 24px;
       transition: margin-left 0.3s;
+      display: flex;
+      gap: 32px;
+      align-items: start;
+    }
+    .main-body-container {
+      flex: 1;
+      min-width: 0;
     }
     body.light-theme .main {
       background-image: radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
@@ -1723,18 +1730,19 @@
   
     /* ── RIGHT TABLE OF CONTENTS (TOC) ── */
     .right-toc {
-      position: fixed;
+      position: sticky;
       top: 100px;
-      right: 32px;
       width: 190px;
+      flex-shrink: 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      align-self: start;
       z-index: 80;
       border-left: 1px solid var(--glass-border);
       padding-left: 16px;
       font-family: var(--font-family);
-      transition: right 0.3s ease, opacity 0.3s ease;
+      transition: opacity 0.3s ease;
       opacity: 0;
       pointer-events: none;
     }
@@ -1783,10 +1791,7 @@
       border-left-color: var(--flux-secondary);
     }
     
-    /* When API tab is active, shift TOC left of the code panel */
-    body[data-active-tab="api"] .right-toc {
-      right: 468px; /* 420px code panel + 32px padding + 16px gap */
-    }
+
     
     @media (max-width: 1350px) {
       .right-toc {
@@ -2062,19 +2067,14 @@
   </header>
 
   
-  <!-- Right-side Table of Contents (TOC) -->
-  <aside class="right-toc" id="right-toc">
-    <div class="right-toc-title">
-      <span data-translate="es">En esta página</span>
-      <span data-translate="en">On this page</span>
-    </div>
-    <div class="right-toc-links" id="right-toc-links"></div>
-  </aside>
+
 
   <!-- ── MAIN CONTENT ── -->
   <main class="main">
     <div class="ambient-light-1"></div>
     <div class="ambient-light-2"></div>
+
+    <div class="main-body-container">
 
     <!-- ──────────────────────────────────────────────────────── -->
     <!-- TAB 1: CONTENT - DOCUMENTACIÓN (GUIDES) -->
@@ -7049,7 +7049,16 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       </section>
 
     </div>
+    </div>
 
+    <!-- Right-side Table of Contents (TOC) -->
+    <aside class="right-toc" id="right-toc">
+      <div class="right-toc-title">
+        <span data-translate="es">En esta página</span>
+        <span data-translate="en">On this page</span>
+      </div>
+      <div class="right-toc-links" id="right-toc-links"></div>
+    </aside>
   </main>
 
   <!-- ── SCRIPTS ── -->
