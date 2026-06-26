@@ -1483,6 +1483,79 @@
       }
     }
 
+    /* ── DEDICATED POSTMAN BRANDED CARDS (VIBRANT ORANGE) ── */
+    .postman-card {
+      background: linear-gradient(135deg, rgba(255, 108, 55, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+      border-color: rgba(255, 108, 55, 0.2) !important;
+      transition: all 0.3s ease;
+    }
+    
+    .postman-card:hover {
+      border-color: rgba(255, 108, 55, 0.45) !important;
+      box-shadow: 0 0 15px rgba(255, 108, 55, 0.04);
+    }
+
+    .postman-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 108, 55, 0.1);
+      border: 1px solid rgba(255, 108, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .postman-card:hover .postman-icon-box {
+      background: rgba(255, 108, 55, 0.15);
+      border-color: rgba(255, 108, 55, 0.35);
+      box-shadow: 0 0 10px rgba(255, 108, 55, 0.1);
+    }
+
+    .postman-icon {
+      color: #FF6C37 !important;
+      width: 24px;
+      height: 24px;
+    }
+
+    .postman-badge {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(255, 108, 55, 0.15);
+      color: #FF6C37;
+      border: 1px solid rgba(255, 108, 55, 0.25);
+    }
+
+    .postman-btn {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255, 108, 55, 0.12) !important;
+      color: #FF6C37 !important;
+      border: 1px solid rgba(255, 108, 55, 0.25) !important;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .postman-btn:hover {
+      background: #FF6C37 !important;
+      color: var(--flux-white) !important;
+      border-color: #FF6C37 !important;
+      box-shadow: 0 0 15px rgba(255, 108, 55, 0.3);
+      transform: translateY(-1px);
+    }
+
     /* ── IMPREVISTOS Y ESTRATEGIA FALLBACK SIN JAVASCRIPT ── */
     .js-active .sidebar,
     .js-active .main,
@@ -2315,21 +2388,21 @@ print(res.json().get(<span class="c-string">'access_token'</span>))</pre>
     </p>
 
     <!-- Postman Collection Box -->
-    <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(171, 75, 150, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(171, 75, 150, 0.2);">
+    <div class="section-block grid-textured postman-card">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(171, 75, 150, 0.1); border: 1px solid rgba(171, 75, 150, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i data-lucide="file-text" style="color: var(--flux-secondary); width: 24px; height: 24px;"></i>
+          <div class="postman-icon-box">
+            <i data-lucide="file-text" class="postman-icon"></i>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — Authentication</h3>
-              <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(171, 75, 150, 0.15); color: var(--flux-secondary); border: 1px solid rgba(171, 75, 150, 0.25);">v1</span>
+              <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the official collection to test the login flow and token retrieval.</p>
           </div>
         </div>
-        <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(171, 75, 150, 0.12); color: var(--flux-secondary); border: 1px solid rgba(171, 75, 150, 0.25); text-decoration: none; border-radius: 8px;" data-country="co">
+        <a href="#" class="postman-btn">
           <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
         </a>
       </div>
@@ -2626,21 +2699,21 @@ print(res.json())</pre>
     </p>
 
     <!-- Postman Card -->
-    <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(60, 184, 235, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(60, 184, 235, 0.2);">
+    <div class="section-block grid-textured postman-card">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(60, 184, 235, 0.1); border: 1px solid rgba(60, 184, 235, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i data-lucide="file-text" style="color: var(--flux-primary); width: 24px; height: 24px;"></i>
+          <div class="postman-icon-box">
+            <i data-lucide="file-text" class="postman-icon"></i>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — Payouts</h3>
-              <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(60, 184, 235, 0.15); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25);">v1</span>
+              <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the ready-to-use Postman collection with the Payouts endpoint, test scripts, and example responses.</p>
           </div>
         </div>
-        <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(60, 184, 235, 0.12); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25); text-decoration: none; border-radius: 8px;" data-country="mx">
+        <a href="#" class="postman-btn">
           <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
         </a>
       </div>
@@ -3201,21 +3274,21 @@ System.out.println(res.getBody());</pre>
     </p>
 
     <!-- Postman Card -->
-    <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(60, 184, 235, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(60, 184, 235, 0.2);">
+    <div class="section-block grid-textured postman-card">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(60, 184, 235, 0.1); border: 1px solid rgba(60, 184, 235, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i data-lucide="file-text" style="color: var(--flux-primary); width: 24px; height: 24px;"></i>
+          <div class="postman-icon-box">
+            <i data-lucide="file-text" class="postman-icon"></i>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — Collections (Pay-ins)</h3>
-              <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(60, 184, 235, 0.15); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25);">v1</span>
+              <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the ready-to-use Postman collection with the Collections endpoint, test scripts, and example responses.</p>
           </div>
         </div>
-        <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(60, 184, 235, 0.12); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25); text-decoration: none; border-radius: 8px;" data-country="mx">
+        <a href="#" class="postman-btn">
           <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
         </a>
       </div>
@@ -3768,21 +3841,21 @@ System.out.println(res.getBody());</pre>
     </p>
 
     <!-- Postman Card -->
-    <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(60, 184, 235, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(60, 184, 235, 0.2);">
+    <div class="section-block grid-textured postman-card">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(60, 184, 235, 0.1); border: 1px solid rgba(60, 184, 235, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i data-lucide="file-text" style="color: var(--flux-primary); width: 24px; height: 24px;"></i>
+          <div class="postman-icon-box">
+            <i data-lucide="file-text" class="postman-icon"></i>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection</h3>
-              <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(60, 184, 235, 0.15); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25);">v1</span>
+              <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the ready-to-use Postman collection with all Penny Validation endpoints, test scripts, and example responses.</p>
           </div>
         </div>
-        <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(60, 184, 235, 0.12); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25); text-decoration: none; border-radius: 8px;" data-country="mx">
+        <a href="#" class="postman-btn">
           <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
         </a>
       </div>
@@ -4446,21 +4519,21 @@ System.out.println(res.getBody());</pre>
     </p>
 
     <!-- Postman Card -->
-    <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(60, 184, 235, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(60, 184, 235, 0.2);">
+    <div class="section-block grid-textured postman-card">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(60, 184, 235, 0.1); border: 1px solid rgba(60, 184, 235, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i data-lucide="file-text" style="color: var(--flux-primary); width: 24px; height: 24px;"></i>
+          <div class="postman-icon-box">
+            <i data-lucide="file-text" class="postman-icon"></i>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — Webhooks</h3>
-              <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(60, 184, 235, 0.15); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25);">v1</span>
+              <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the Postman collection with webhook event simulations for testing your handler.</p>
           </div>
         </div>
-        <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(60, 184, 235, 0.12); color: var(--flux-primary); border: 1px solid rgba(60, 184, 235, 0.25); text-decoration: none; border-radius: 8px;" data-country="mx">
+        <a href="#" class="postman-btn">
           <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
         </a>
       </div>
@@ -5035,21 +5108,21 @@ app.listen(<span class="c-number">3000</span>, () => {
     </p>
 
     <!-- Postman Card -->
-    <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(171, 75, 150, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(171, 75, 150, 0.2);">
+    <div class="section-block grid-textured postman-card">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
         <div style="display: flex; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(171, 75, 150, 0.1); border: 1px solid rgba(171, 75, 150, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <i data-lucide="file-text" style="color: var(--flux-secondary); width: 24px; height: 24px;"></i>
+          <div class="postman-icon-box">
+            <i data-lucide="file-text" class="postman-icon"></i>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — CO Payouts</h3>
-              <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(171, 75, 150, 0.15); color: var(--flux-secondary); border: 1px solid rgba(171, 75, 150, 0.25);">v1</span>
+              <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the Postman collection with Payouts endpoints for Colombia.</p>
           </div>
         </div>
-        <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(171, 75, 150, 0.12); color: var(--flux-secondary); border: 1px solid rgba(171, 75, 150, 0.25); text-decoration: none; border-radius: 8px;" data-country="co">
+        <a href="#" class="postman-btn">
           <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
         </a>
       </div>
@@ -5681,21 +5754,21 @@ axios.post(<span class="c-string">'https://api.fluxone.co/api/v1/accounts/acc_12
       </p>
 
       <!-- Postman Card -->
-      <div class="section-block grid-textured" style="background: linear-gradient(135deg, rgba(171, 75, 150, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%); border-color: rgba(171, 75, 150, 0.2); margin-bottom: 24px;">
+      <div class="section-block grid-textured postman-card" style="margin-bottom: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(171, 75, 150, 0.1); border: 1px solid rgba(171, 75, 150, 0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i data-lucide="file-text" style="color: var(--flux-secondary); width: 24px; height: 24px;"></i>
+            <div class="postman-icon-box">
+              <i data-lucide="file-text" class="postman-icon"></i>
             </div>
             <div>
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
                 <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — CO QR Codes</h3>
-                <span style="font-size: 0.65rem; font-family: var(--font-mono); font-weight: 700; padding: 1px 5px; border-radius: 4px; background: rgba(171, 75, 150, 0.15); color: var(--flux-secondary); border: 1px solid rgba(171, 75, 150, 0.25);">v1</span>
+                <span class="postman-badge">v1</span>
               </div>
               <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the Postman collection with QR Code generation endpoints.</p>
             </div>
           </div>
-          <a href="#" class="country-tab active" style="flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; font-size: 0.8rem; background: rgba(171, 75, 150, 0.12); color: var(--flux-secondary); border: 1px solid rgba(171, 75, 150, 0.25); text-decoration: none; border-radius: 8px;" data-country="co">
+          <a href="#" class="postman-btn">
             <i data-lucide="download" style="width: 14px; height: 14px;"></i> Descargar Colección
           </a>
         </div>
