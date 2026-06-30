@@ -8978,11 +8978,10 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       if (headings.length === 0 || links.length === 0) return;
       
       let activeIdx = 0;
-      const scrollPosition = window.scrollY + 100;
       
       for (let i = 0; i < headings.length; i++) {
-        const top = headings[i].offsetTop;
-        if (scrollPosition >= top) {
+        const top = headings[i].getBoundingClientRect().top;
+        if (top <= 150) {
           activeIdx = i;
         } else {
           break;
