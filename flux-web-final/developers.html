@@ -2866,6 +2866,22 @@
       background: rgba(248, 250, 252, 0.75) !important;
       border-color: rgba(0, 0, 0, 0.08) !important;
     }
+
+    /* ── CARD GRID HOMOGENEITY FIX ── */
+    .card-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+      gap: 16px !important;
+      align-items: stretch !important;
+    }
+    .cap-card {
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .cap-card p {
+      flex-grow: 1 !important;
+    }
 </style>
 </head>
 <body data-active-country="mx" data-lang="es">
