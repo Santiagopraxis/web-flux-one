@@ -2020,6 +2020,13 @@
     body.light-theme .view-toggle-btn.active {
       color: #FFFFFF;
     }
+    
+    body.light-theme .param-name {
+      color: #0284c7;
+    }
+    body.light-theme .param-type {
+      color: #475569;
+    }
 
     /* ── BUSINESS CONTEXT CARDS ── */
     .business-context-card {
@@ -2723,6 +2730,7 @@
     body.light-theme .step-card-desc code {
       background: rgba(0, 0, 0, 0.04) !important;
       border: none !important;
+      color: #0284c7 !important;
     }
     @media (max-width: 640px) {
       .request-row .flow-step-card {
@@ -9548,6 +9556,14 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       setTimeout(injectPrevNext, 200);
     })();
 
+
+    /* ── MOBILE MENU TOGGLE ── */
+    function toggleMobileMenu() {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) {
+        sidebar.classList.toggle('active');
+      }
+    }
 </script>
 </body>
 </html>
