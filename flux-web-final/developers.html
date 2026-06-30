@@ -2870,24 +2870,48 @@
     /* ── CARD GRID HOMOGENEITY FIX ── */
     .card-grid {
       display: grid !important;
-      grid-template-columns: repeat(1, 1fr) !important;
       gap: 16px !important;
       align-items: stretch !important;
+      /* Mobile default: 1 column */
+      grid-template-columns: repeat(1, 1fr) !important;
     }
+    
     @media (min-width: 768px) {
+      /* Tablet default: 2 columns */
       .card-grid {
         grid-template-columns: repeat(2, 1fr) !important;
       }
     }
+    
     @media (min-width: 1024px) {
-      .card-grid {
+      /* Desktop smart layouts based on item count */
+      
+      /* 1 Item */
+      .card-grid:has(> :nth-child(1):last-child) {
+        grid-template-columns: repeat(1, 1fr) !important;
+      }
+      
+      /* 2 Items -> 2 columns */
+      .card-grid:has(> :nth-child(2):last-child) {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      /* 3 Items -> 3 columns */
+      .card-grid:has(> :nth-child(3):last-child) {
         grid-template-columns: repeat(3, 1fr) !important;
       }
-      /* Specific override for Platform Capabilities (4 cards -> 2x2) */
-      #capabilities-grid {
+      
+      /* 4 Items -> 2x2 layout */
+      .card-grid:has(> :nth-child(4):last-child) {
         grid-template-columns: repeat(2, 1fr) !important;
       }
+      
+      /* 5+ Items (like 6) -> 3xN layout */
+      .card-grid:has(> :nth-child(5)) {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
     }
+    
     .cap-card {
       height: 100% !important;
       display: flex !important;
