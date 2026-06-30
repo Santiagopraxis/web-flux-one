@@ -2870,9 +2870,19 @@
     /* ── CARD GRID HOMOGENEITY FIX ── */
     .card-grid {
       display: grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+      grid-template-columns: repeat(1, 1fr) !important;
       gap: 16px !important;
       align-items: stretch !important;
+    }
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
     }
     .cap-card {
       height: 100% !important;
