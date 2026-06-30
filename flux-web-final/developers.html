@@ -4209,7 +4209,513 @@ System.out.println(res.getBody());</pre>
       </table>
     </div>
   </section>
-      <section class="page-section" id="penny-validation-mx">
+      
+      <!-- MEXICO PAYOUTS -->
+      <section class="page-section" id="payouts-mx">
+        <div class="breadcrumbs">
+          <span>Developers</span> <i data-lucide="chevron-right"></i>
+          <span>México — SPEI</span> <i data-lucide="chevron-right"></i>
+          <span style="color: var(--flux-white)">Payments (Payouts)</span>
+        </div>
+
+        <h1 class="page-title"><span class="flag" style="background-image: url('https://flagcdn.com/w40/mx.png');"></span> Payments (Payouts)</h1>
+        <p class="page-subtitle">
+          Send payouts to any Mexican bank account via SPEI in real time. Transfers are processed instantly during SPEI operating hours and settle within seconds. FluX handles all the complexity of SPEI connectivity, tracking, and reconciliation through a single API call.
+        </p>
+
+        <div class="section-block grid-textured postman-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div class="postman-icon-box">
+                <svg class="postman-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; flex-shrink: 0;">
+                  <path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z" fill="#FF6C37"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.784 6.002a2.3 2.3 0 011.638 3.928L9.89 14.462c-.443.443-1.162.443-1.605 0l-.803-.803a1.135 1.135 0 010-1.605l4.532-4.532a2.288 2.288 0 01.77-.52z" fill="#FFF"/>
+                  <path d="M7.4 12.8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm5-5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" fill="#FFF"/>
+                </svg>
+              </div>
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — Payouts</h3>
+                  <span class="postman-badge">v1</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
+                  Download the ready-to-use Postman collection with the Payouts endpoint, test scripts, and example responses.
+                </p>
+              </div>
+            </div>
+            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Payouts SPEI</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            SPEI (Sistema de Pagos Electrónicos Interbancarios) is Mexico's real-time interbank transfer system operated by Banco de México (BANXICO). FluX leverages SPEI to deliver instant payouts to any valid CLABE account in the Mexican banking system.
+          </p>
+
+          <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Use Cases</h3>
+          <div class="card-grid">
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Payroll Disbursements</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Automate salary payments to thousands of employees in real time via SPEI.</p>
+            </div>
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Supplier Payments</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Pay suppliers and vendors instantly without manual bank transfers.</p>
+            </div>
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Marketplace Settlements</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Settle funds to sellers, drivers, or freelancers from your platform balance.</p>
+            </div>
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Refunds & Returns</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Issue instant refunds directly to the customer's bank account.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title"><i data-lucide="plus-circle"></i> Create a Payout</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            Initiate a SPEI payout from your concentrator account to any valid CLABE in Mexico.
+          </p>
+          <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="url">https://flux.praxisglobe.com/api/v1/partners/transactions/payouts</span>
+          </div>
+
+          <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>client_id</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Your unique client identifier. Provided during onboarding.</td>
+                </tr>
+                <tr>
+                  <td><code>source_instrument_id</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Instrument ID linked to your concentrator account (funding source). Provided during onboarding.</td>
+                </tr>
+                <tr>
+                  <td><code>destination_clabe</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>The 18-digit CLABE of the beneficiary account. Must be a valid SPEI-reachable CLABE.</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.external_reference</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Numeric reference (max 7 digits).</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.description</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Brief description to identify the transaction (max 40 chars). Only letters, numbers, spaces, and ñ/Ñ.</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.amount</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Amount in MXN with up to 2 decimal places (e.g. "1.95"). Must be greater than 0.</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.currency</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>ISO 4217 currency code. Currently only "MXN" is supported.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-card" style="margin-top: 24px;">
+            <div class="terminal-header">
+              <span class="terminal-dot t-red"></span>
+              <span class="terminal-dot t-yellow"></span>
+              <span class="terminal-dot t-green"></span>
+              <span class="terminal-title">cURL Example</span>
+            </div>
+            <div class="code-panel active">
+              <pre><span class="c-keyword">curl</span> -i -X <span class="c-method">POST</span> \
+  https://flux.praxisglobe.com/api/v1/partners/transactions/payouts \
+  -H <span class="c-string">'Authorization: Bearer &lt;YOUR_JWT_HERE&gt;'</span> \
+  -H <span class="c-string">'Accept: application/json'</span> \
+  -H <span class="c-string">'Content-Type: application/json'</span> \
+  -H <span class="c-string">'Idempotency-Key: 550e8400-e29b-41d4-a716-446655440000'</span> \
+  -d '{
+    "client_id": "c2d1d1e3-3340-4170-980e-e9269bbbc551",
+    "source_instrument_id": "709448c3-7cbf-454d-a87e-feb23801269a",
+    "destination_clabe": "734180000069183455",
+    "transaction_request": {
+      "external_reference": "1234567",
+      "description": "lorem ipsum dolor sit amet",
+      "amount": "1.95",
+      "currency": "MXN"
+    }
+  }'</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Response</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            Status code: 200 OK. Returns the created transaction with status INITIALIZED.
+          </p>
+          <div class="code-card">
+            <div class="terminal-header">
+              <span class="terminal-dot t-red"></span>
+              <span class="terminal-dot t-yellow"></span>
+              <span class="terminal-dot t-green"></span>
+              <span class="terminal-title">200 OK — application/json</span>
+            </div>
+            <div class="code-panel active">
+              <pre>{
+  <span class="c-string">"id"</span>: <span class="c-string">"16811ee8-1ef9-4dd4-8d84-9c2df89cf302"</span>,
+  <span class="c-string">"bankId"</span>: <span class="c-string">"9d84b03a-28d1-4898-a69c-38824239e2b1"</span>,
+  <span class="c-string">"clientId"</span>: <span class="c-string">"c2d1d1e3-3340-4170-980e-e9269bbbc551"</span>,
+  <span class="c-string">"externalReference"</span>: <span class="c-string">"1234567"</span>,
+  <span class="c-string">"trackingId"</span>: <span class="c-string">"20250306FINCHVLIKQ5SKUM"</span>,
+  <span class="c-string">"description"</span>: <span class="c-string">"lorem ipsum dolor sit amet"</span>,
+  <span class="c-string">"amount"</span>: <span class="c-string">"1.95"</span>,
+  <span class="c-string">"currency"</span>: <span class="c-string">"MXN"</span>,
+  <span class="c-string">"category"</span>: <span class="c-string">"DEBIT_TRANS"</span>,
+  <span class="c-string">"subCategory"</span>: <span class="c-string">"SPEI_DEBIT"</span>,
+  <span class="c-string">"transactionStatus"</span>: <span class="c-string">"INITIALIZED"</span>,
+  <span class="c-string">"audit"</span>: {
+    <span class="c-string">"createdAt"</span>: <span class="c-string">"2025-03-06 11:57:55.408000-06:00"</span>,
+    <span class="c-string">"updatedAt"</span>: <span class="c-string">"2025-03-06 11:57:55.408000-06:00"</span>,
+    <span class="c-string">"deletedAt"</span>: <span class="c-keyword">"None"</span>,
+    <span class="c-string">"blockedAt"</span>: <span class="c-keyword">"None"</span>
+  }
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Transfer Lifecycle</h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="status-badge" style="color: #cbd5e1; border-color: #334155;">INITIALIZED</span></td>
+                  <td>Transfer created and registered. Transitions to PENDING within seconds.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #facc15; border-color: #ca8a04;">PENDING</span></td>
+                  <td>Transfer queued for submission to the SPEI network.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #60a5fa; border-color: #2563eb;">PROCESSING</span></td>
+                  <td>Transfer submitted and being processed by SPEI.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #4ade80; border-color: #16a34a;">LIQUIDATED</span></td>
+                  <td>Funds successfully delivered to the beneficiary account via SPEI.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #f87171; border-color: #dc2626;">FAILED</span></td>
+                  <td>Transfer could not be completed. Check the error details for more information.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Idempotency & Errors</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            Always include a unique <code>Idempotency-Key</code> (UUID v5) for every payout request. If a network failure occurs and you retry with the same key and body within 24 hours, you'll receive the original 200 OK response from cache.
+          </p>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>HTTP</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>invalid_clabe</code></td><td>400</td><td>The destination CLABE is invalid or unreachable via SPEI.</td></tr>
+                <tr><td><code>insufficient_funds</code></td><td>400</td><td>Your concentrator account balance is insufficient for this transfer.</td></tr>
+                <tr><td><code>invalid_amount</code></td><td>400</td><td>The amount is invalid (zero, negative, or exceeds decimals limit).</td></tr>
+                <tr><td><code>invalid_description</code></td><td>400</td><td>Description contains invalid characters or exceeds 40 characters.</td></tr>
+                <tr><td><code>amount_exceeds_limit</code></td><td>400</td><td>The transfer amount exceeds the configured daily or per-transaction limit.</td></tr>
+                <tr><td><code>client_not_found</code></td><td>404</td><td>The provided client_id does not exist or is inactive.</td></tr>
+                <tr><td><code>beneficiary_bank_rejected</code></td><td>502</td><td>The beneficiary bank rejected the incoming transfer.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- MEXICO COLLECTIONS -->
+      <section class="page-section" id="collections-mx">
+        <div class="breadcrumbs">
+          <span>Developers</span> <i data-lucide="chevron-right"></i>
+          <span>México — SPEI</span> <i data-lucide="chevron-right"></i>
+          <span style="color: var(--flux-white)">Collections (Pay-ins)</span>
+        </div>
+
+        <h1 class="page-title"><span class="flag" style="background-image: url('https://flagcdn.com/w40/mx.png');"></span> Collections (Pay-ins)</h1>
+        <p class="page-subtitle">
+          Collect payments from any Mexican bank account via SPEI. Pay-in requests are processed in real time during SPEI operating hours. FluX handles the end-to-end flow — from request initiation to fund settlement in your concentrator account.
+        </p>
+
+        <div class="section-block grid-textured postman-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div class="postman-icon-box">
+                <svg class="postman-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; flex-shrink: 0;">
+                  <path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z" fill="#FF6C37"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12.784 6.002a2.3 2.3 0 011.638 3.928L9.89 14.462c-.443.443-1.162.443-1.605 0l-.803-.803a1.135 1.135 0 010-1.605l4.532-4.532a2.288 2.288 0 01.77-.52z" fill="#FFF"/>
+                  <path d="M7.4 12.8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm5-5a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" fill="#FFF"/>
+                </svg>
+              </div>
+              <div>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection — Collections (Pay-ins)</h3>
+                  <span class="postman-badge">v1</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
+                  Download the ready-to-use Postman collection with the Collections endpoint, test scripts, and example responses.
+                </p>
+              </div>
+            </div>
+            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Collections SPEI (Pay-ins)</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            SPEI (Sistema de Pagos Electrónicos Interbancarios) is Mexico's real-time interbank transfer system operated by Banco de México (BANXICO). FluX leverages SPEI to collect payments from any valid CLABE account into your concentrator account.
+          </p>
+
+          <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Use Cases</h3>
+          <div class="card-grid">
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Subscription Billing</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Automatically collect recurring payments from subscribers via SPEI.</p>
+            </div>
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">E-Commerce Payments</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Accept payments from customers directly into your concentrator account.</p>
+            </div>
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Invoice Collection</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Generate collection requests tied to invoices for B2B payment flows.</p>
+            </div>
+            <div class="cap-card">
+              <h4 style="font-size: 0.85rem; color: var(--flux-white); margin-bottom: 4px;">Marketplace Deposits</h4>
+              <p style="font-size: 0.8rem; color: var(--flux-gray-300);">Collect funds from buyers into your platform's escrow or settlement account.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title"><i data-lucide="plus-circle"></i> Create a Collection</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            Initiate a SPEI collection from any valid CLABE to your concentrator account in Mexico.
+          </p>
+          <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="url">https://flux.praxisglobe.com/api/v1/partners/transactions/collections</span>
+          </div>
+          
+          <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>client_id</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Your unique client identifier. Provided during onboarding.</td>
+                </tr>
+                <tr>
+                  <td><code>source_instrument_id</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Instrument ID linked to your concentrator account (collection destination). Provided during onboarding.</td>
+                </tr>
+                <tr>
+                  <td><code>payer_clabe</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>The 18-digit CLABE of the payer's account. Must be a valid SPEI-reachable CLABE.</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.external_reference</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Numeric reference (max 7 digits).</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.description</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Brief description to identify the collection (max 40 chars). Only letters, numbers, spaces, and ñ/Ñ.</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.amount</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>Amount in MXN with up to 2 decimal places (e.g. "150.00"). Must be greater than 0.</td>
+                </tr>
+                <tr>
+                  <td><code>transaction_request.currency</code> <span class="required-badge">Req.</span></td>
+                  <td>string</td>
+                  <td>ISO 4217 currency code. Currently only "MXN" is supported.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-card" style="margin-top: 24px;">
+            <div class="terminal-header">
+              <span class="terminal-dot t-red"></span>
+              <span class="terminal-dot t-yellow"></span>
+              <span class="terminal-dot t-green"></span>
+              <span class="terminal-title">cURL Example</span>
+            </div>
+            <div class="code-panel active">
+              <pre><span class="c-keyword">curl</span> -i -X <span class="c-method">POST</span> \
+  https://flux.praxisglobe.com/api/v1/partners/transactions/collections \
+  -H <span class="c-string">'Authorization: Bearer &lt;YOUR_JWT_HERE&gt;'</span> \
+  -H <span class="c-string">'Accept: application/json'</span> \
+  -H <span class="c-string">'Content-Type: application/json'</span> \
+  -H <span class="c-string">'Idempotency-Key: 660e8400-e29b-41d4-a716-446655440001'</span> \
+  -d '{
+    "client_id": "c2d1d1e3-3340-4170-980e-e9269bbbc551",
+    "source_instrument_id": "709448c3-7cbf-454d-a87e-feb23801269a",
+    "payer_clabe": "012180015000000012",
+    "transaction_request": {
+      "external_reference": "7654321",
+      "description": "Cobro servicio mensual",
+      "amount": "150.00",
+      "currency": "MXN"
+    }
+  }'</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Response</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            Status code: 200 OK. Returns the created transaction with status INITIALIZED.
+          </p>
+          <div class="code-card">
+            <div class="terminal-header">
+              <span class="terminal-dot t-red"></span>
+              <span class="terminal-dot t-yellow"></span>
+              <span class="terminal-dot t-green"></span>
+              <span class="terminal-title">200 OK — application/json</span>
+            </div>
+            <div class="code-panel active">
+              <pre>{
+  <span class="c-string">"id"</span>: <span class="c-string">"a3b8d1b6-0b3b-4b1a-9c1a-1a2b3c4d5e6f"</span>,
+  <span class="c-string">"bankId"</span>: <span class="c-string">"9d84b03a-28d1-4898-a69c-38824239e2b1"</span>,
+  <span class="c-string">"clientId"</span>: <span class="c-string">"c2d1d1e3-3340-4170-980e-e9269bbbc551"</span>,
+  <span class="c-string">"externalReference"</span>: <span class="c-string">"7654321"</span>,
+  <span class="c-string">"trackingId"</span>: <span class="c-string">"20250317FINCHCOLL8K3PQRS"</span>,
+  <span class="c-string">"description"</span>: <span class="c-string">"Cobro servicio mensual"</span>,
+  <span class="c-string">"amount"</span>: <span class="c-string">"150.00"</span>,
+  <span class="c-string">"currency"</span>: <span class="c-string">"MXN"</span>,
+  <span class="c-string">"category"</span>: <span class="c-string">"CREDIT_TRANS"</span>,
+  <span class="c-string">"subCategory"</span>: <span class="c-string">"SPEI_CREDIT"</span>,
+  <span class="c-string">"transactionStatus"</span>: <span class="c-string">"INITIALIZED"</span>,
+  <span class="c-string">"audit"</span>: {
+    <span class="c-string">"createdAt"</span>: <span class="c-string">"2025-03-17 09:30:00.000000-06:00"</span>,
+    <span class="c-string">"updatedAt"</span>: <span class="c-string">"2025-03-17 09:30:00.000000-06:00"</span>,
+    <span class="c-string">"deletedAt"</span>: <span class="c-keyword">"None"</span>,
+    <span class="c-string">"blockedAt"</span>: <span class="c-keyword">"None"</span>
+  }
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Transaction Status Lifecycle</h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="status-badge" style="color: #cbd5e1; border-color: #334155;">INITIALIZED</span></td>
+                  <td>Collection request created and registered. Awaiting payer confirmation.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #facc15; border-color: #ca8a04;">PENDING</span></td>
+                  <td>Collection authorized, awaiting SPEI credit from the payer's bank.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #60a5fa; border-color: #2563eb;">PROCESSING</span></td>
+                  <td>SPEI credit received, funds being settled to your concentrator account.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #4ade80; border-color: #16a34a;">LIQUIDATED</span></td>
+                  <td>Funds successfully received and settled in your concentrator account.</td>
+                </tr>
+                <tr>
+                  <td><span class="status-badge" style="color: #f87171; border-color: #dc2626;">FAILED</span></td>
+                  <td>Collection could not be completed. Check the error details for more information.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h2 class="section-block-title">Idempotency & Errors</h2>
+          <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
+            Include a <code>Idempotency-Key</code> (UUID v5) header with every request. If you retry the same request with the same key and body within 24 hours, FluX will return the cached result instead of creating a duplicate.
+          </p>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>HTTP</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>invalid_clabe</code></td><td>400</td><td>The payer CLABE is invalid or unreachable via SPEI.</td></tr>
+                <tr><td><code>invalid_amount</code></td><td>400</td><td>The amount is invalid (zero, negative, or exceeds decimals limit).</td></tr>
+                <tr><td><code>invalid_description</code></td><td>400</td><td>Description contains invalid characters or exceeds 40 characters.</td></tr>
+                <tr><td><code>amount_exceeds_limit</code></td><td>400</td><td>The collection amount exceeds the configured daily or per-transaction limit.</td></tr>
+                <tr><td><code>client_not_found</code></td><td>404</td><td>The provided client_id does not exist or is inactive.</td></tr>
+                <tr><td><code>payer_bank_rejected</code></td><td>502</td><td>The payer's bank rejected the collection request.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+<section class="page-section" id="penny-validation-mx">
     <div class="breadcrumbs">
       <span>Developers</span> <i data-lucide="chevron-right"></i>
       <span>México — SPEI</span> <i data-lucide="chevron-right"></i>
