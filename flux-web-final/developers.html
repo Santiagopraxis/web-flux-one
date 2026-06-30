@@ -2017,6 +2017,9 @@
     body.light-theme .view-toggle-btn {
       color: #64748B;
     }
+    body.light-theme .view-toggle-btn.active {
+      color: #FFFFFF;
+    }
 
     /* ── BUSINESS CONTEXT CARDS ── */
     .business-context-card {
@@ -8978,15 +8981,23 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       if (headings.length === 0 || links.length === 0) return;
       
       let activeIdx = 0;
+      let anyVisible = false;
       
       for (let i = 0; i < headings.length; i++) {
-        const top = headings[i].getBoundingClientRect().top;
-        if (top <= 150) {
+        const rect = headings[i].getBoundingClientRect();
+        
+        // Skip hidden elements (e.g. during page load / loader active)
+        if (rect.width === 0 && rect.height === 0) continue;
+        
+        anyVisible = true;
+        if (rect.top <= 150) {
           activeIdx = i;
         } else {
           break;
         }
       }
+      
+      if (!anyVisible) activeIdx = 0;
       
       links.forEach((link, idx) => {
         if (idx === activeIdx) {
