@@ -2826,6 +2826,46 @@
       background: #F1F5F9;
       border-color: #CBD5E1;
     }
+
+    /* ── GLASSMORPHISM OVERRIDES ── */
+    /* Dark Theme (Default) */
+    .api-card, .flow-step-card, .credentials-card, .business-context-card {
+      background: rgba(11, 17, 32, 0.6) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .top-nav {
+      background: rgba(5, 5, 8, 0.75) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .sidebar {
+      background: rgba(5, 5, 8, 0.75) !important;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+
+    /* Light Theme */
+    body.light-theme .api-card, 
+    body.light-theme .flow-step-card, 
+    body.light-theme .credentials-card, 
+    body.light-theme .business-context-card {
+      background: rgba(255, 255, 255, 0.6) !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07) !important;
+    }
+
+    body.light-theme .top-nav, 
+    body.light-theme .sidebar {
+      background: rgba(248, 250, 252, 0.75) !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+    }
 </style>
 </head>
 <body data-active-country="mx" data-lang="es">
