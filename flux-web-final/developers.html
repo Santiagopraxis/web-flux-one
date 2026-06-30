@@ -521,7 +521,7 @@
     /* ── COUNTRY TABS SELECTOR ── */
     .country-selector {
       display: flex;
-      padding: 6px 12px 14px;
+      padding: 10px 14px 16px;
       gap: 8px;
       border-bottom: 1px solid var(--glass-border);
     }
@@ -530,9 +530,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 8px 6px;
-      font-size: 0.72rem;
+      gap: 8px;
+      padding: 10px 8px;
+      font-size: 0.78rem;
       font-weight: 700;
       border-radius: 8px;
       background: none;
@@ -541,7 +541,7 @@
       cursor: pointer;
       text-transform: none;
       letter-spacing: 0.05em;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
     .country-tab:hover {
       color: var(--flux-white);
@@ -561,9 +561,9 @@
       border-color: rgba(171, 75, 150, 0.2);
     }
     .country-flag {
-      width: 14px;
+      width: 18px;
       height: auto;
-      border-radius: 2px;
+      border-radius: 3px;
       object-fit: cover;
     }
 
@@ -844,6 +844,11 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      border-left: 3px solid var(--flux-primary);
+      padding-left: 12px;
+    }
+    body[data-active-country="co"] .section-block-title {
+      border-left-color: var(--flux-secondary);
     }
     .section-block-title i { width: 18px; height: 18px; color: var(--flux-primary); }
     body[data-active-country="co"] .section-block-title i { color: var(--flux-secondary); }
@@ -891,8 +896,12 @@
     }
     .cap-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      border-color: rgba(60, 184, 235, 0.25);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.25), 0 0 12px rgba(60,184,235,0.08);
+    }
+    body[data-active-country="co"] .cap-card:hover {
+      border-color: rgba(171, 75, 150, 0.25);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.25), 0 0 12px rgba(171,75,150,0.08);
     }
     body.light-theme .cap-card:hover {
       border-color: rgba(0, 0, 0, 0.12);
@@ -1837,8 +1846,6 @@
       padding-left: 16px;
       font-family: var(--font-family);
       transition: opacity 0.3s ease;
-      opacity: 0;
-      pointer-events: none;
     }
     body.light-theme .right-toc {
       border-left-color: #E2E8F0;
@@ -1892,7 +1899,219 @@
         display: none !important;
       }
     }
-  
+
+    /* ── SECTION PROGRESS BAR ── */
+    .section-progress-bar {
+      position: fixed;
+      top: var(--header-h);
+      left: var(--sidebar-w);
+      right: 0;
+      height: 2px;
+      z-index: 89;
+      background: rgba(255,255,255,0.04);
+      transition: left 0.3s;
+    }
+    body.light-theme .section-progress-bar {
+      background: #E2E8F0;
+    }
+    .section-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--flux-primary), var(--flux-secondary));
+      transition: width 0.1s linear;
+      border-radius: 0 1px 1px 0;
+    }
+    @media (max-width: 850px) {
+      .section-progress-bar { left: 0; }
+    }
+
+    /* ── PREV/NEXT SECTION NAV ── */
+    .section-nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--glass-border);
+      gap: 16px;
+    }
+    body.light-theme .section-nav-footer {
+      border-top-color: #E2E8F0;
+    }
+    .section-nav-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      color: var(--flux-white);
+      cursor: pointer;
+      font-family: var(--font-family);
+      transition: all 0.25s ease;
+      max-width: 45%;
+      text-decoration: none;
+    }
+    body.light-theme .section-nav-btn {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      color: #0F172A;
+    }
+    .section-nav-btn:hover {
+      border-color: var(--flux-primary);
+      background: rgba(60,184,235,0.04);
+      transform: translateY(-1px);
+    }
+    body[data-active-country="co"] .section-nav-btn:hover {
+      border-color: var(--flux-secondary);
+      background: rgba(171,75,150,0.04);
+    }
+    .section-nav-btn.next { align-items: flex-end; margin-left: auto; }
+    .section-nav-btn.prev { align-items: flex-start; }
+    .section-nav-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--flux-gray-300);
+    }
+    .section-nav-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ── VIEW TOGGLE (Executive / Technical) ── */
+    .view-toggle {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-right: 4px;
+    }
+    body.light-theme .view-toggle {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+    }
+    .view-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--flux-gray-300);
+      font-family: var(--font-family);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .view-toggle-btn.active {
+      background: var(--flux-primary);
+      color: #FFFFFF;
+    }
+    body[data-active-country="co"] .view-toggle-btn.active {
+      background: var(--flux-secondary);
+    }
+    body.light-theme .view-toggle-btn {
+      color: #64748B;
+    }
+
+    /* ── BUSINESS CONTEXT CARDS ── */
+    .business-context-card {
+      display: none;
+      background: linear-gradient(135deg, rgba(60,184,235,0.06) 0%, rgba(171,75,150,0.06) 100%);
+      border: 1px solid rgba(60,184,235,0.15);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--flux-gray-300);
+      position: relative;
+      padding-left: 44px;
+    }
+    body.light-theme .business-context-card {
+      background: linear-gradient(135deg, rgba(60,184,235,0.04) 0%, rgba(171,75,150,0.04) 100%);
+      border-color: rgba(60,184,235,0.12);
+      color: #475569;
+    }
+    .business-context-card::before {
+      content: '▸';
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      font-size: 0.9rem;
+      color: var(--flux-primary);
+      font-weight: 700;
+    }
+    body[data-active-country="co"] .business-context-card::before {
+      color: var(--flux-secondary);
+    }
+    body.executive-view .business-context-card {
+      display: block;
+    }
+    .business-context-card strong {
+      color: var(--flux-white);
+      font-weight: 600;
+    }
+    body.light-theme .business-context-card strong {
+      color: #0F172A;
+    }
+
+    /* ── TIME BADGES ── */
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: rgba(60,184,235,0.1);
+      color: var(--flux-primary);
+      border: 1px solid rgba(60,184,235,0.2);
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    body[data-active-country="co"] .time-badge {
+      background: rgba(171,75,150,0.1);
+      color: var(--flux-secondary);
+      border-color: rgba(171,75,150,0.2);
+    }
+    body.light-theme .time-badge {
+      background: rgba(2,132,199,0.08);
+      color: #0284c7;
+      border-color: rgba(2,132,199,0.15);
+    }
+
+    /* ── MOBILE SIDEBAR OVERLAY ── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 99;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      transition: opacity 0.3s ease;
+    }
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    /* ── SCROLL FADE-IN ANIMATIONS ── */
+    .fade-in-section {
+      opacity: 0.15;
+      transform: translateY(10px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   
     /* ── TRANSFER LIFECYCLE FLOW ── */
     .lifecycle-flow-container {
@@ -2588,6 +2807,7 @@
   </header>
 
   <!-- ── SIDEBAR (Evertec Style Dual Sidebar) ── -->
+  <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
       <a href="./" style="display: flex; align-items: center;">
@@ -2789,6 +3009,16 @@
         </select>
       </div>
 
+      <!-- View Toggle (Executive / Technical) -->
+      <div class="view-toggle" id="view-toggle">
+        <button class="view-toggle-btn active" data-view="tech" onclick="switchView('tech')">
+          <span data-translate="es">Técnica</span><span data-translate="en">Technical</span>
+        </button>
+        <button class="view-toggle-btn" data-view="exec" onclick="switchView('exec')">
+          <span data-translate="es">Ejecutiva</span><span data-translate="en">Executive</span>
+        </button>
+      </div>
+
       <!-- Light/Dark Mode Button -->
       <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-toggle">
         <i data-lucide="moon" class="theme-icon-dark" id="theme-icon-dark"></i>
@@ -2799,6 +3029,9 @@
 
   
 
+
+  <!-- Section Progress Bar -->
+  <div class="section-progress-bar"><div class="section-progress-fill" id="section-progress-fill"></div></div>
 
   <!-- ── MAIN CONTENT ── -->
   <main class="main">
@@ -2905,7 +3138,7 @@
           <div class="step-block">
             <div class="step-num">1</div>
             <div class="step-content">
-              <div class="step-title">Get Your Credentials</div>
+              <div class="step-title">Get Your Credentials <span class="time-badge">~2 min</span></div>
               <div class="step-desc">During onboarding, fluX provides your access credentials. These are unique to your account.</div>
             </div>
           </div>
@@ -2914,7 +3147,7 @@
           <div class="step-block">
             <div class="step-num">2</div>
             <div class="step-content">
-              <div class="step-title">Authenticate</div>
+              <div class="step-title">Authenticate <span class="time-badge">~3 min</span></div>
               <div class="step-desc">Obtain a JWT token by sending your credentials to the login endpoint. Include this token in all subsequent requests.</div>
               
               <div class="code-card">
@@ -2945,7 +3178,7 @@
           <div class="step-block">
             <div class="step-num">3</div>
             <div class="step-content">
-              <div class="step-title">Make Your First API Call</div>
+              <div class="step-title">Make Your First API Call <span class="time-badge">~5 min</span></div>
               <div class="step-desc" id="step3-desc">Use your JWT token in the Authorization header to call any endpoint. Here's an example creating a payout:</div>
               
               <div class="code-card">
@@ -2970,7 +3203,7 @@
           <div class="step-block">
             <div class="step-num">4</div>
             <div class="step-content">
-              <div class="step-title">Handle the Response</div>
+              <div class="step-title">Handle the Response <span class="time-badge">~5 min</span></div>
               <div class="step-desc" id="step4-desc">All successful responses return JSON with the transaction details. Monitor the transactionStatus field as it transitions through the lifecycle (INITIALIZED → PENDING → LIQUIDATED).</div>
               
               <div class="code-card">
@@ -8404,6 +8637,43 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       }
     });
 
+    // Arrow key navigation in search results
+    (function() {
+      var searchSelectedIdx = -1;
+      var searchInput = document.getElementById('search-input');
+      if (!searchInput) return;
+      searchInput.addEventListener('keydown', function(e) {
+        var panel = document.getElementById('search-results');
+        if (!panel || !panel.classList.contains('active')) return;
+        var items = panel.querySelectorAll('.search-result-item');
+        if (items.length === 0) return;
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          searchSelectedIdx = Math.min(searchSelectedIdx + 1, items.length - 1);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          searchSelectedIdx = Math.max(searchSelectedIdx - 1, 0);
+        } else if (e.key === 'Enter' && searchSelectedIdx >= 0 && searchSelectedIdx < items.length) {
+          e.preventDefault();
+          items[searchSelectedIdx].click();
+          searchSelectedIdx = -1;
+          return;
+        } else if (e.key === 'Escape') {
+          panel.classList.remove('active');
+          searchInput.blur();
+          searchSelectedIdx = -1;
+          return;
+        } else {
+          searchSelectedIdx = -1;
+          return;
+        }
+        items.forEach(function(item, i) {
+          item.style.background = i === searchSelectedIdx ? 'rgba(255,255,255,0.06)' : '';
+        });
+        items[searchSelectedIdx].scrollIntoView({ block: 'nearest' });
+      });
+    })();
+
     /* ── COUNTRY SWITCHING LOGIC ── */
     function switchCountry(country, updateHash = true) {
       document.body.setAttribute('data-active-country', country);
@@ -8541,7 +8811,8 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         const linkHref = link.getAttribute('href');
         if (linkHref === '#' + pageId || (pageId === 'introduction' && linkHref === '#introduction')) {
           link.classList.add('active');
-          
+          link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+
           // Expand parent nav-group if collapsed
           const group = link.closest('.nav-group');
           if (group && group.classList.contains('collapsed')) {
@@ -8553,7 +8824,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
       });
 
       // Trigger scroll to top
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       if (typeof updateTOC === 'function') updateTOC();
     }
 
@@ -8568,7 +8839,9 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     // Toggle mobile sidebar
     function toggleMobileSidebar() {
       const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
       sidebar.classList.toggle('active');
+      if (overlay) overlay.classList.toggle('active', sidebar.classList.contains('active'));
     }
 
     // Copy to Clipboard
@@ -8578,6 +8851,8 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         const text = codePanel.textContent;
         navigator.clipboard.writeText(text).then(() => {
           const originalText = btn.innerHTML;
+          btn.style.transform = 'scale(0.92)';
+          setTimeout(() => { btn.style.transform = ''; }, 150);
           btn.innerHTML = '<i data-lucide="check"></i> Copied!';
           if (typeof lucide !== 'undefined') lucide.createIcons();
           setTimeout(() => {
@@ -8637,7 +8912,7 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
           console.error('Error building search index:', err);
         }
       }
-    //})(); -- Note: The closing brace/parenthesis are handled at the end of the IIFE block
+    })();
 
     // Dynamic Table of Contents (TOC)
     function updateTOC() {
@@ -8668,8 +8943,10 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
         link.href = '#' + heading.id;
         link.className = 'right-toc-link';
         
-        // Extract text cleanly, removing any icon sub-elements
-        let text = heading.textContent.trim();
+        // Extract text for current language only
+        const lang = document.body.getAttribute('data-lang') || 'es';
+        const langSpan = heading.querySelector('[data-translate="' + lang + '"]');
+        let text = langSpan ? langSpan.textContent.trim() : heading.textContent.trim();
         link.textContent = text;
         
         link.addEventListener('click', (e) => {
@@ -8724,7 +9001,6 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     window.addEventListener('scroll', highlightActiveTOC);
     window.updateTOC = updateTOC;
     window.highlightActiveTOC = highlightActiveTOC;
-    })();
 
     /* ── PORTAL LOADER CONTROLLER ── */
     (function() {
@@ -8989,7 +9265,204 @@ app.listen(3000, () => console.log(<span class="c-string">'Webhook receiver acti
     // Expose to window so inline onclick can always resolve them
     window.switchCodeTab = switchCodeTab;
     window.copyCodeBlock = copyCodeBlock;
-    
+
+    /* ── VIEW TOGGLE (Executive / Technical) ── */
+    function switchView(view) {
+      const btns = document.querySelectorAll('.view-toggle-btn');
+      btns.forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === view));
+      if (view === 'exec') {
+        document.body.classList.add('executive-view');
+      } else {
+        document.body.classList.remove('executive-view');
+      }
+      localStorage.setItem('flux_dev_view', view);
+    }
+    (function() {
+      var saved = localStorage.getItem('flux_dev_view');
+      if (saved === 'exec') switchView('exec');
+    })();
+
+    /* ── BUSINESS CONTEXT CARDS (injected dynamically) ── */
+    (function() {
+      var cards = {
+        'introduction': {
+          es: '<strong>Contexto de negocio:</strong> Un solo punto de integración para pagos en tiempo real en México y Colombia. Reducción de complejidad operativa al consolidar múltiples rieles de pago.',
+          en: '<strong>Business context:</strong> A single integration point for real-time payments in Mexico and Colombia. Reduces operational complexity by consolidating multiple payment rails.'
+        },
+        'transaction-flow': {
+          es: '<strong>Contexto de negocio:</strong> Entiende cómo se mueve un pago desde su inicio hasta la liquidación. Útil para estimar tiempos operativos y planificar flujos de caja.',
+          en: '<strong>Business context:</strong> Understand how a payment moves from initiation to settlement. Useful for estimating operational timelines and cash flow planning.'
+        },
+        'authentication': {
+          es: '<strong>Contexto de negocio:</strong> Cómo se autentica la integración de tu equipo. Sección relevante para revisión de seguridad y cumplimiento.',
+          en: '<strong>Business context:</strong> How your team\'s integration authenticates. Relevant for security review and compliance.'
+        },
+        'payouts-mx': {
+          es: '<strong>Contexto de negocio:</strong> Dispersión de pagos a cualquier cuenta bancaria mexicana vía SPEI en segundos. Ideal para nómina, proveedores y reembolsos.',
+          en: '<strong>Business context:</strong> Send payouts to any Mexican bank account via SPEI in seconds. Ideal for payroll, suppliers, and refunds.'
+        },
+        'collections-mx': {
+          es: '<strong>Contexto de negocio:</strong> Recaudo de pagos de clientes a través de múltiples canales en México. Simplifica la cobranza y acelera el flujo de caja.',
+          en: '<strong>Business context:</strong> Collect payments from customers through multiple channels in Mexico. Simplifies collections and accelerates cash flow.'
+        },
+        'webhooks-mx': {
+          es: '<strong>Contexto de negocio:</strong> Notificaciones automáticas del estado de cada transacción. Tu sistema se entera en tiempo real sin necesidad de consultar manualmente.',
+          en: '<strong>Business context:</strong> Automatic notifications of each transaction\'s status. Your system gets real-time updates without manual polling.'
+        },
+        'payouts-co': {
+          es: '<strong>Contexto de negocio:</strong> Dispersión de pagos a cuentas bancarias colombianas vía Bre-B. Liquidación rápida para operaciones en Colombia.',
+          en: '<strong>Business context:</strong> Send payouts to Colombian bank accounts via Bre-B. Fast settlement for operations in Colombia.'
+        },
+        'collections-co': {
+          es: '<strong>Contexto de negocio:</strong> Recaudo de pagos en Colombia a través de Bre-B. Un canal unificado para cobrar a tus clientes colombianos.',
+          en: '<strong>Business context:</strong> Collect payments in Colombia through Bre-B. A unified channel to charge your Colombian customers.'
+        },
+        'webhooks-co': {
+          es: '<strong>Contexto de negocio:</strong> Notificaciones automáticas para transacciones en Colombia. Mantén tu sistema sincronizado sin intervención manual.',
+          en: '<strong>Business context:</strong> Automatic notifications for Colombian transactions. Keep your system synced without manual intervention.'
+        }
+      };
+      Object.keys(cards).forEach(function(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (!section) return;
+        var card = document.createElement('div');
+        card.className = 'business-context-card';
+        card.innerHTML = '<span data-translate="es">' + cards[sectionId].es + '</span><span data-translate="en">' + cards[sectionId].en + '</span>';
+        var subtitle = section.querySelector('.page-subtitle');
+        if (subtitle) {
+          subtitle.parentNode.insertBefore(card, subtitle.nextSibling);
+        } else {
+          var title = section.querySelector('.page-title');
+          if (title) title.parentNode.insertBefore(card, title.nextSibling);
+        }
+      });
+      var lang = document.body.getAttribute('data-lang') || 'es';
+      if (lang === 'en') {
+        document.querySelectorAll('.business-context-card [data-translate="es"]').forEach(function(el) { el.style.display = 'none'; });
+      } else {
+        document.querySelectorAll('.business-context-card [data-translate="en"]').forEach(function(el) { el.style.display = 'none'; });
+      }
+    })();
+
+    /* ── SCROLL FADE-IN OBSERVER ── */
+    (function() {
+      var fadeObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.05 });
+
+      function setupFadeIn() {
+        var active = document.querySelector('.page-section.active-page');
+        if (!active) return;
+        var blocks = active.querySelectorAll('.section-block');
+        blocks.forEach(function(b) {
+          if (!b.classList.contains('fade-in-section')) {
+            b.classList.add('fade-in-section');
+          }
+          b.classList.remove('visible');
+          fadeObs.unobserve(b);
+          // Immediately show blocks already in viewport
+          var rect = b.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            b.classList.add('visible');
+          } else {
+            fadeObs.observe(b);
+          }
+        });
+      }
+
+      var origShow = window.showPage;
+      window.showPage = function(hash) {
+        origShow(hash);
+        setTimeout(setupFadeIn, 60);
+      };
+      setTimeout(setupFadeIn, 300);
+    })();
+
+    /* ── SECTION PROGRESS BAR ── */
+    (function() {
+      const fill = document.getElementById('section-progress-fill');
+      if (!fill) return;
+      window.addEventListener('scroll', function() {
+        const sec = document.querySelector('.page-section.active-page');
+        if (!sec) { fill.style.width = '0%'; return; }
+        const rect = sec.getBoundingClientRect();
+        const total = sec.scrollHeight - window.innerHeight;
+        if (total <= 0) { fill.style.width = '100%'; return; }
+        const pct = Math.min(100, Math.max(0, (-rect.top / total) * 100));
+        fill.style.width = pct + '%';
+      });
+    })();
+
+    /* ── PREV/NEXT SECTION NAVIGATION ── */
+    (function() {
+      function getSectionOrder() {
+        const activeNavId = document.querySelector('.sidebar-nav-content.active')?.id;
+        if (!activeNavId) return [];
+        const nav = document.getElementById(activeNavId);
+        if (!nav) return [];
+        const links = nav.querySelectorAll('a[href^="#"]');
+        const order = [];
+        const country = document.body.getAttribute('data-active-country') || 'mx';
+        links.forEach(link => {
+          const group = link.closest('.nav-group');
+          if (group && group.hasAttribute('data-country-nav') && group.getAttribute('data-country-nav') !== country) return;
+          if (link.closest('.sidebar-nav-content')?.id !== activeNavId) return;
+          const href = link.getAttribute('href').slice(1);
+          const lang = document.body.getAttribute('data-lang') || 'es';
+          const labelEl = link.querySelector('[data-translate="' + lang + '"]') || link;
+          order.push({ id: href, label: labelEl.textContent.trim() });
+        });
+        return order;
+      }
+
+      function injectPrevNext() {
+        document.querySelectorAll('.section-nav-footer').forEach(el => el.remove());
+        const sections = getSectionOrder();
+        const active = document.querySelector('.page-section.active-page');
+        if (!active || sections.length === 0) return;
+        const currentId = active.id;
+        const idx = sections.findIndex(s => s.id === currentId);
+        if (idx === -1) return;
+
+        const footer = document.createElement('div');
+        footer.className = 'section-nav-footer';
+        const lang = document.body.getAttribute('data-lang') || 'es';
+
+        if (idx > 0) {
+          const prev = sections[idx - 1];
+          const btn = document.createElement('a');
+          btn.className = 'section-nav-btn prev';
+          btn.href = '#' + prev.id;
+          btn.innerHTML = '<span class="section-nav-label">← ' + (lang === 'es' ? 'Anterior' : 'Previous') + '</span><span class="section-nav-title">' + prev.label + '</span>';
+          btn.addEventListener('click', function(e) { e.preventDefault(); showPage('#' + prev.id); history.pushState(null, '', '#' + prev.id); });
+          footer.appendChild(btn);
+        }
+
+        if (idx < sections.length - 1) {
+          const next = sections[idx + 1];
+          const btn = document.createElement('a');
+          btn.className = 'section-nav-btn next';
+          btn.href = '#' + next.id;
+          btn.innerHTML = '<span class="section-nav-label">' + (lang === 'es' ? 'Siguiente' : 'Next') + ' →</span><span class="section-nav-title">' + next.label + '</span>';
+          btn.addEventListener('click', function(e) { e.preventDefault(); showPage('#' + next.id); history.pushState(null, '', '#' + next.id); });
+          footer.appendChild(btn);
+        }
+
+        active.appendChild(footer);
+      }
+
+      const origShowPage = window.showPage;
+      window.showPage = function(hash) {
+        origShowPage(hash);
+        setTimeout(injectPrevNext, 50);
+      };
+      setTimeout(injectPrevNext, 200);
+    })();
+
 </script>
 </body>
 </html>
