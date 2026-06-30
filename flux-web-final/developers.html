@@ -8655,6 +8655,11 @@ app.listen(3000, () =&gt; {
       
       if (!anyVisible) activeIdx = 0;
       
+      // FIX: Force last element active if scrolled to absolute bottom
+      if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10) {
+        activeIdx = headings.length - 1;
+      }
+      
       links.forEach((link, idx) => {
         if (idx === activeIdx) {
           link.classList.add('active');
