@@ -2743,6 +2743,81 @@
         align-self: flex-start;
       }
     }
+
+    /* ── CREDENTIALS CARD FIX ── */
+    .credentials-card {
+      background: #0F172A;
+      border: 1px solid #1E293B;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .credentials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .credentials-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .credentials-label {
+      color: #94A3B8;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .credentials-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .credentials-action-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #F8FAFC;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: var(--font-family);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .credentials-action-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .credentials-action-btn i {
+      width: 14px;
+      height: 14px;
+    }
+    
+    body.light-theme .credentials-card {
+      background: #F8FAFC;
+      border-color: #E2E8F0;
+    }
+    body.light-theme .credentials-label {
+      color: #64748B;
+    }
+    body.light-theme .credentials-action-btn {
+      background: #FFFFFF;
+      border-color: #E2E8F0;
+      color: #0F172A;
+    }
+    body.light-theme .credentials-action-btn:hover {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+    }
 </style>
 </head>
 <body data-active-country="mx" data-lang="es">
