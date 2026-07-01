@@ -1,4 +1,4 @@
-﻿�<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="./assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/svg+xml" href="./assets/images/logos/xo%20banco.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fluX Developers � API & Docs</title>
+  <title>fluX Developers  API & Docs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <!-- Lucide Icons -->
@@ -18,7 +18,7 @@
       font-family: var(--font-family, 'Plus Jakarta Sans', system-ui, sans-serif);
     }
     
-    /* ���� FLUX DESIGN SYSTEM TOKENS ���� */
+    /*  FLUX DESIGN SYSTEM TOKENS  */
     :root {
       --flux-primary:      #3CB8EB; /* Cyan (México Theme) */
       --flux-secondary:    #ab4b96; /* Purple (Colombia Theme) */
@@ -40,7 +40,7 @@
       --header-h:          64px;
     }
 
-    /* ���� LIGHT THEME OVERRIDES (BLANCO Y NEGRO) ���� */
+    /*  LIGHT THEME OVERRIDES (BLANCO Y NEGRO)  */
     body.light-theme {
       --flux-dark:         #F8FAFC; /* Light background */
       --flux-white:        #0F172A; /* Dark text */
@@ -122,11 +122,11 @@
 
     h1, h2, h3, h4, h5, h6 { font-weight: 600; letter-spacing: -0.02em; }
 
-    /* ���� BILINGUAL VISIBILITY ���� */
+    /*  BILINGUAL VISIBILITY  */
     body[data-lang="es"] [data-translate="en"] { display: none !important; }
     body[data-lang="en"] [data-translate="es"] { display: none !important; }
 
-    /* ���� LAYOUT ���� */
+    /*  LAYOUT  */
     .sidebar {
       width: var(--sidebar-w);
       background: #050505;
@@ -186,7 +186,7 @@
       background-image: radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
     }
 
-    /* ���� HEADER TABS & CONTROLS ���� */
+    /*  HEADER TABS & CONTROLS  */
     .header-tabs {
       display: flex;
       gap: 12px;
@@ -332,7 +332,7 @@
       opacity: 0.7;
     }
 
-    /* ���� CUSTOM LANGUAGE SELECTOR ���� */
+    /*  CUSTOM LANGUAGE SELECTOR  */
     .custom-lang-selector {
       position: relative;
       display: inline-block;
@@ -465,7 +465,7 @@
       background: #F1F5F9;
     }
 
-    /* ���� DUAL SIDEBAR NAV CONTENT ���� */
+    /*  DUAL SIDEBAR NAV CONTENT  */
     .sidebar-nav-content {
       display: none;
     }
@@ -473,7 +473,7 @@
       display: block;
     }
 
-    /* ���� ILUMINACI�N AMBIENTAL DINÁMICA MEJORADA ���� */
+    /*  ILUMINACIN AMBIENTAL DINÁMICA MEJORADA  */
     .ambient-light-1 {
       position: fixed;
       top: -250px; left: calc(var(--sidebar-w) - 250px);
@@ -499,7 +499,7 @@
     body[data-active-country="co"] .ambient-light-1 { opacity: 0.2; transform: scale(0.9); }
     body[data-active-country="co"] .ambient-light-2 { opacity: 1; transform: scale(1.05); }
 
-    /* ���� CLASE DE UTILIDAD: TEXTURA BLUEPRINT EN TARJETAS ���� */
+    /*  CLASE DE UTILIDAD: TEXTURA BLUEPRINT EN TARJETAS  */
     .grid-textured {
       position: relative;
       overflow: hidden;
@@ -518,7 +518,7 @@
       background-image: radial-gradient(rgba(15, 23, 42, 0.01) 1px, transparent 1px);
     }
 
-    /* ���� COUNTRY TABS SELECTOR ���� */
+    /*  COUNTRY TABS SELECTOR  */
     .country-selector {
       display: flex;
       padding: 10px 14px 16px;
@@ -567,7 +567,7 @@
       object-fit: cover;
     }
 
-    /* ���� SIDEBAR NAV ���� */
+    /*  SIDEBAR NAV  */
     .sidebar-logo {
       padding: 24px 20px 16px;
       display: flex;
@@ -773,7 +773,7 @@
       box-shadow: 0 0 8px var(--flux-success);
     }
 
-    /* ���� MAIN PAGES & BLOCKS ���� */
+    /*  MAIN PAGES & BLOCKS  */
     .page-section {
       display: none;
       animation: fadeInPage 0.4s ease forwards;
@@ -1165,7 +1165,7 @@
     .p { color: #93c5fd; }
     .s { color: #fca5a5; }
 
-    /* ���� THREE-COLUMN API REFERENCE LAYOUT ���� */
+    /*  THREE-COLUMN API REFERENCE LAYOUT  */
     .api-three-columns {
       display: grid;
       grid-template-columns: 1fr 420px;
@@ -1304,7 +1304,7 @@
       color: var(--flux-secondary);
     }
 
-    /* ���� GLOBAL API STATUS PILL & TOOLTIP ���� */
+    /*  GLOBAL API STATUS PILL & TOOLTIP  */
     .global-status-container {
       position: fixed;
       top: 18px;
@@ -1414,7 +1414,7 @@
       color: var(--flux-success);
     }
 
-    /* ���� DEDICATED POSTMAN BRANDED CARDS (VIBRANT ORANGE) ���� */
+    /*  DEDICATED POSTMAN BRANDED CARDS (VIBRANT ORANGE)  */
     .postman-card {
       background: linear-gradient(135deg, rgba(255, 108, 55, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
       border-color: rgba(255, 108, 55, 0.2) !important;
@@ -1487,7 +1487,7 @@
       transform: translateY(-1px);
     }
 
-    /* ���� IMPREVISTOS Y ESTRATEGIA FALLBACK SIN JAVASCRIPT ���� */
+    /*  IMPREVISTOS Y ESTRATEGIA FALLBACK SIN JAVASCRIPT  */
     .js-active .sidebar,
     .js-active .main,
     .js-active .mobile-header,
@@ -1505,7 +1505,7 @@
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ���� ESTILOS DE LA PANTALLA DE CARGA PORTAL LOADER ���� */
+    /*  ESTILOS DE LA PANTALLA DE CARGA PORTAL LOADER  */
     .dev-loader-overlay {
       position: fixed;
       top: 0;
@@ -1800,7 +1800,7 @@
       }
     }
 
-    /* ���� ANIMACIONES CLAVE (KEYFRAMES) ���� */
+    /*  ANIMACIONES CLAVE (KEYFRAMES)  */
     @keyframes pulse-ambient {
       0% { transform: scale(1) translate(0, 0); opacity: 0.8; }
       100% { transform: scale(1.15) translate(5%, 5%); opacity: 1; }
@@ -1831,7 +1831,7 @@
       50% { opacity: 1; }
     }
   
-    /* ���� RIGHT TABLE OF CONTENTS (TOC) ���� */
+    /*  RIGHT TABLE OF CONTENTS (TOC)  */
     .right-toc {
       position: sticky;
       top: 100px;
@@ -1900,7 +1900,7 @@
       }
     }
 
-    /* ���� SECTION PROGRESS BAR ���� */
+    /*  SECTION PROGRESS BAR  */
     .section-progress-bar {
       position: fixed;
       top: var(--header-h);
@@ -1925,7 +1925,7 @@
       .section-progress-bar { left: 0; }
     }
 
-    /* ���� PREV/NEXT SECTION NAV ���� */
+    /*  PREV/NEXT SECTION NAV  */
     .section-nav-footer {
       display: flex;
       justify-content: space-between;
@@ -1981,7 +1981,7 @@
       font-weight: 600;
     }
 
-    /* ���� VIEW TOGGLE (Executive / Technical) ���� */
+    /*  VIEW TOGGLE (Executive / Technical)  */
     .view-toggle {
       display: flex;
       align-items: center;
@@ -2028,7 +2028,7 @@
       color: #475569;
     }
 
-    /* ���� BUSINESS CONTEXT CARDS ���� */
+    /*  BUSINESS CONTEXT CARDS  */
     .business-context-card {
       display: none;
       background: linear-gradient(135deg, rgba(60,184,235,0.06) 0%, rgba(171,75,150,0.06) 100%);
@@ -2077,7 +2077,7 @@
       color: #0F172A;
     }
 
-    /* ���� TIME BADGES ���� */
+    /*  TIME BADGES  */
     .time-badge {
       display: inline-flex;
       align-items: center;
@@ -2103,7 +2103,7 @@
       border-color: rgba(2,132,199,0.15);
     }
 
-    /* ���� MOBILE SIDEBAR OVERLAY ���� */
+    /*  MOBILE SIDEBAR OVERLAY  */
     .sidebar-overlay {
       display: none;
       position: fixed;
@@ -2118,7 +2118,7 @@
       display: block;
     }
 
-    /* ���� SCROLL FADE-IN ANIMATIONS ���� */
+    /*  SCROLL FADE-IN ANIMATIONS  */
     .fade-in-section {
       opacity: 0.15;
       transform: translateY(10px);
@@ -2130,7 +2130,7 @@
     }
 
   
-    /* ���� TRANSFER LIFECYCLE FLOW ���� */
+    /*  TRANSFER LIFECYCLE FLOW  */
     .lifecycle-flow-container {
       display: flex;
       align-items: center;
@@ -2265,7 +2265,7 @@
       }
     }
     
-    /* ���� TRANSFER LIFECYCLE FLOW ���� */
+    /*  TRANSFER LIFECYCLE FLOW  */
     .lifecycle-flow-container {
       display: flex;
       align-items: center;
@@ -2400,7 +2400,7 @@
       }
     }
     
-    /* ���� TRANSFER LIFECYCLE FLOW ���� */
+    /*  TRANSFER LIFECYCLE FLOW  */
     .lifecycle-flow-container {
       display: flex;
       align-items: center;
@@ -2535,7 +2535,7 @@
       }
     }
     
-    /* ���� SEQUENCE FLOW DIAGRAM (PREMIUM MOCKUP) ���� */
+    /*  SEQUENCE FLOW DIAGRAM (PREMIUM MOCKUP)  */
     .sequence-flow-container {
       display: flex;
       flex-direction: column;
@@ -2759,7 +2759,7 @@
       }
     }
 
-    /* ���� CREDENTIALS CARD FIX ���� */
+    /*  CREDENTIALS CARD FIX  */
     .credentials-card {
       background: #0F172A;
       border: 1px solid #1E293B;
@@ -2834,7 +2834,7 @@
       border-color: #CBD5E1;
     }
 
-    /* ���� GLASSMORPHISM OVERRIDES ���� */
+    /*  GLASSMORPHISM OVERRIDES  */
     /* Dark Theme (Default) */
     .api-card, .flow-step-card, .credentials-card, .business-context-card {
       background: rgba(11, 17, 32, 0.6) !important;
@@ -2874,7 +2874,7 @@
       border-color: rgba(0, 0, 0, 0.08) !important;
     }
 
-    /* ���� CARD GRID HOMOGENEITY FIX ���� */
+    /*  CARD GRID HOMOGENEITY FIX  */
     .card-grid {
       display: grid !important;
       gap: 16px !important;
@@ -2930,7 +2930,7 @@
 </style>
 <style>
 
-    /* ���� fluX One Design System v1.0 OVERRIDES ���� */
+    /*  fluX One Design System v1.0 OVERRIDES  */
     body:not(.light-theme) {
       --flux-primary: #41bcd2; /* Cyan */
       --flux-secondary: #ab4b96; /* Orchid */
@@ -3324,7 +3324,7 @@
     </div>
   </header>
 
-  <!-- ���� SIDEBAR (Evertec Style Dual Sidebar) ���� -->
+  <!--  SIDEBAR (Evertec Style Dual Sidebar)  -->
   <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
@@ -3345,7 +3345,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <!-- A. NAVIGATION FOR DOCUMENTACI�N TAB -->
+      <!-- A. NAVIGATION FOR DOCUMENTACIN TAB -->
       <div id="sidebar-nav-docs" class="sidebar-nav-content active">
         <!-- Gateway (Conceptual) -->
         <div class="nav-group">
@@ -3368,7 +3368,7 @@
         <div class="nav-group" data-country-nav="mx">
           <button class="nav-group-btn" onclick="toggleNavGroup(this)">
             <i data-lucide="globe" stroke-width="1.75" class="group-icon"></i>
-            <span>México � SPEI</span>
+            <span>México  SPEI</span>
             <span class="nav-group-chevron"><i data-lucide="chevron-down" stroke-width="1.75"></i></span>
           </button>
           <ul>
@@ -3383,7 +3383,7 @@
         <div class="nav-group" data-country-nav="co">
           <button class="nav-group-btn" onclick="toggleNavGroup(this)">
             <i data-lucide="globe" stroke-width="1.75" class="group-icon"></i>
-            <span>Colombia � Bre-B</span>
+            <span>Colombia  Bre-B</span>
             <span class="nav-group-chevron"><i data-lucide="chevron-down" stroke-width="1.75"></i></span>
           </button>
           <ul>
@@ -3489,7 +3489,7 @@
     </div>
   </aside>
 
-  <!-- ���� FIXED TOP HEADER (Evertec Style) ���� -->
+  <!--  FIXED TOP HEADER (Evertec Style)  -->
   <header class="header" id="fixed-header">
     <div class="header-tabs">
       <button class="header-tab active" id="tab-btn-docs" onclick="switchTab('docs')">
@@ -3552,16 +3552,16 @@
   <!-- Section Progress Bar -->
   <div class="section-progress-bar"><div class="section-progress-fill" id="section-progress-fill"></div></div>
 
-  <!-- ���� MAIN CONTENT ���� -->
+  <!--  MAIN CONTENT  -->
   <main class="main">
     <div class="ambient-light-1"></div>
     <div class="ambient-light-2"></div>
 
     <div class="main-body-container">
 
-    <!-- ���������������������������������������������������������������������������������������������������������������� -->
-    <!-- TAB 1: CONTENT - DOCUMENTACI�N (GUIDES) -->
-    <!-- ���������������������������������������������������������������������������������������������������������������� -->
+    <!--  -->
+    <!-- TAB 1: CONTENT - DOCUMENTACIN (GUIDES) -->
+    <!--  -->
     <div id="content-docs" class="tab-content active">
 
       <!-- PAGE: INTRODUCTION -->
@@ -3576,7 +3576,7 @@
       
       <!-- Intro description (Dynamic based on country) -->
       <p class="page-subtitle" id="intro-text">
-        The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications � all through a single integration point connected to Mexico's interbank payment network via BANXICO.
+        The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications  all through a single integration point connected to Mexico's interbank payment network via BANXICO.
       </p>
 
       <!-- Key Specs Grid -->
@@ -3601,7 +3601,7 @@
       <div class="section-block grid-textured">
         <h2 class="section-block-title"><i data-lucide="layers" stroke-width="1.75"></i> Platform Capabilities</h2>
         <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 20px;" id="intro-capabilities-subtitle">
-          Everything you need to move money in Mexico � built on SPEI, powered by BANXICO.
+          Everything you need to move money in Mexico  built on SPEI, powered by BANXICO.
         </p>
         <div class="card-grid" id="capabilities-grid">
           <!-- MX/CO Dynamic Cards injected via JS -->
@@ -3723,7 +3723,7 @@
             <div class="step-num">4</div>
             <div class="step-content">
               <div class="step-title">Handle the Response <span class="time-badge">~5 min</span></div>
-              <div class="step-desc" id="step4-desc">All successful responses return JSON with the transaction details. Monitor the transactionStatus field as it transitions through the lifecycle (INITIALIZED �  PENDING �  LIQUIDATED).</div>
+              <div class="step-desc" id="step4-desc">All successful responses return JSON with the transaction details. Monitor the transactionStatus field as it transitions through the lifecycle (INITIALIZED   PENDING   LIQUIDATED).</div>
               
               <div class="code-card">
                 <div class="terminal-header">
@@ -4194,7 +4194,7 @@
         <div class="flow-actor server">
           <div class="actor-info" style="text-align: right;">
             <span class="actor-label">fluX</span>
-            <span class="actor-sublabel">API �  SPEI</span>
+            <span class="actor-sublabel">API   SPEI</span>
           </div>
           <div class="actor-icon"><i data-lucide="server" stroke-width="1.75"></i></div>
         </div>
@@ -4269,7 +4269,7 @@
                   </tr>
                   <tr>
                     <td style="font-family: var(--font-mono); font-weight: 600; color: var(--flux-white);">Idempotency-Key</td>
-                    <td style="font-family: var(--font-mono); color: var(--flux-gray-300);">UUID v5 � unique per request</td>
+                    <td style="font-family: var(--font-mono); color: var(--flux-gray-300);">UUID v5  unique per request</td>
                   </tr>
                 </tbody>
               </table>
@@ -4313,7 +4313,7 @@
                     <td style="font-family: var(--font-mono); font-weight: 600; color: var(--flux-white);"><span style="display: inline-flex; align-items: center; gap: 6px;"><i data-lucide="align-left" stroke-width="1.75" style="width: 12px; height: 12px; opacity: 0.75; flex-shrink: 0;"></i> transaction_request.description</span></td>
                     <td style="font-family: var(--font-mono); color: var(--flux-primary);">string</td>
                     <td style="color: var(--flux-error);">Yes</td>
-                    <td style="color: var(--flux-gray-300);">Brief description (max 40 chars). Only letters, numbers, spaces, and ñ/�.</td>
+                    <td style="color: var(--flux-gray-300);">Brief description (max 40 chars). Only letters, numbers, spaces, and ñ/.</td>
                   </tr>
                   <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
                     <td style="font-family: var(--font-mono); font-weight: 600; color: var(--flux-white);"><span style="display: inline-flex; align-items: center; gap: 6px;"><i data-lucide="dollar-sign" stroke-width="1.75" style="width: 12px; height: 12px; opacity: 0.75; flex-shrink: 0;"></i> transaction_request.amount</span></td>
@@ -4636,7 +4636,7 @@ System.out.println(res.getBody());</pre>
 
     <!-- Idempotency -->
     <div class="section-block" style="background: rgba(60, 184, 235, 0.02); border-color: rgba(60, 184, 235, 0.15);">
-      <h3 class="section-block-title" style="margin-bottom: 12px;"><i data-lucide="shuffle" stroke-width="1.75"></i> Idempotency � Safe Retries</h3>
+      <h3 class="section-block-title" style="margin-bottom: 12px;"><i data-lucide="shuffle" stroke-width="1.75"></i> Idempotency  Safe Retries</h3>
       <p style="font-size: 0.82rem; color: var(--flux-gray-300); line-height: 1.6; margin-bottom: 16px;">
         Include a <code>Idempotency-Key</code> (UUID v5) header with every request. If you retry the same request with the same key and body within 24 hours, fluX will return the cached result instead of creating a duplicate.
       </p>
@@ -4652,22 +4652,22 @@ System.out.println(res.getBody());</pre>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
             <td style="font-weight: 600; color: var(--flux-white);">Invalid key format (not UUID v5)</td>
             <td style="font-family: var(--font-mono); color: var(--flux-error);">400</td>
-            <td style="color: var(--flux-gray-300);">Bad Request � the key must be a valid UUID v5.</td>
+            <td style="color: var(--flux-gray-300);">Bad Request  the key must be a valid UUID v5.</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
             <td style="font-weight: 600; color: var(--flux-white);">Key-body mismatch (same key, different body)</td>
             <td style="font-family: var(--font-mono); color: var(--flux-error);">409</td>
-            <td style="color: var(--flux-gray-300);">Conflict � the idempotency key was used with a different payload.</td>
+            <td style="color: var(--flux-gray-300);">Conflict  the idempotency key was used with a different payload.</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
             <td style="font-weight: 600; color: var(--flux-white);">Duplicate while original is in-flight</td>
             <td style="font-family: var(--font-mono); color: var(--flux-error);">409</td>
-            <td style="color: var(--flux-gray-300);">Conflict � "operation in progress". Retry once the first resolves.</td>
+            <td style="color: var(--flux-gray-300);">Conflict  "operation in progress". Retry once the first resolves.</td>
           </tr>
           <tr>
             <td style="font-weight: 600; color: var(--flux-white);">Identical retry (same key + body within 24 h)</td>
             <td style="font-family: var(--font-mono); color: var(--flux-success);">200</td>
-            <td style="color: var(--flux-gray-300);">OK � returns the same payload from cache. No duplicate created.</td>
+            <td style="color: var(--flux-gray-300);">OK  returns the same payload from cache. No duplicate created.</td>
           </tr>
         </tbody>
       </table>
@@ -4740,7 +4740,7 @@ System.out.println(res.getBody());</pre>
       <section class="page-section" id="payouts-mx">
         <div class="breadcrumbs">
           <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-          <span>México � SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+          <span>México  SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
           <span style="color: var(--flux-white)">Payments (Payouts)</span>
         </div>
 
@@ -4761,7 +4761,7 @@ System.out.println(res.getBody());</pre>
               </div>
               <div>
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection � Payouts</h3>
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection  Payouts</h3>
                   <span class="postman-badge">v1</span>
                 </div>
                 <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
@@ -4844,7 +4844,7 @@ System.out.println(res.getBody());</pre>
                 <tr>
                   <td><code>transaction_request.description</code> <span class="required-badge">Req.</span></td>
                   <td>string</td>
-                  <td>Brief description to identify the transaction (max 40 chars). Only letters, numbers, spaces, and ñ/�.</td>
+                  <td>Brief description to identify the transaction (max 40 chars). Only letters, numbers, spaces, and ñ/.</td>
                 </tr>
                 <tr>
                   <td><code>transaction_request.amount</code> <span class="required-badge">Req.</span></td>
@@ -4899,7 +4899,7 @@ System.out.println(res.getBody());</pre>
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -5066,13 +5066,13 @@ System.out.println(res.getBody());</pre>
       <section class="page-section" id="collections-mx">
         <div class="breadcrumbs">
           <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-          <span>México � SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+          <span>México  SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
           <span style="color: var(--flux-white)">Collections (Pay-ins)</span>
         </div>
 
         <h1 class="page-title"><span class="flag" style="background-image: url('https://flagcdn.com/w40/mx.png');"></span> Collections (Pay-ins)</h1>
         <p class="page-subtitle">
-          Collect payments from any Mexican bank account via SPEI. Pay-in requests are processed in real time during SPEI operating hours. FluX handles the end-to-end flow � from request initiation to fund settlement in your concentrator account.
+          Collect payments from any Mexican bank account via SPEI. Pay-in requests are processed in real time during SPEI operating hours. FluX handles the end-to-end flow  from request initiation to fund settlement in your concentrator account.
         </p>
 
         <div class="section-block grid-textured postman-card">
@@ -5087,7 +5087,7 @@ System.out.println(res.getBody());</pre>
               </div>
               <div>
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection � Collections (Pay-ins)</h3>
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection  Collections (Pay-ins)</h3>
                   <span class="postman-badge">v1</span>
                 </div>
                 <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
@@ -5170,7 +5170,7 @@ System.out.println(res.getBody());</pre>
                 <tr>
                   <td><code>transaction_request.description</code> <span class="required-badge">Req.</span></td>
                   <td>string</td>
-                  <td>Brief description to identify the collection (max 40 chars). Only letters, numbers, spaces, and ñ/�.</td>
+                  <td>Brief description to identify the collection (max 40 chars). Only letters, numbers, spaces, and ñ/.</td>
                 </tr>
                 <tr>
                   <td><code>transaction_request.amount</code> <span class="required-badge">Req.</span></td>
@@ -5225,7 +5225,7 @@ System.out.println(res.getBody());</pre>
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -5364,11 +5364,11 @@ System.out.println(res.getBody());</pre>
 <section class="page-section" id="penny-validation-mx">
     <div class="breadcrumbs">
       <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-      <span>México � SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+      <span>México  SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
       <span style="color: var(--flux-white)">Penny Validation</span>
     </div>
 
-    <h1 class="page-title"><span class="flag"></span> Penny Validation � México</h1>
+    <h1 class="page-title"><span class="flag"></span> Penny Validation  México</h1>
     <p class="page-subtitle">
       The Penny Validation API enables account ownership verification by sending a minimal payment ($0.01 MXN) to a beneficiary account. This process generates a CEP (Comprobante Electrónico de Pago) that provides verified account holder information and creates an official payment receipt through BANXICO.
     </p>
@@ -5438,7 +5438,7 @@ System.out.println(res.getBody());</pre>
         </li>
         <li style="display: flex; gap: 8px; align-items: flex-start;">
           <span style="color: var(--flux-warning); font-weight: bold;">⬢</span>
-          <span><strong>Transient State:</strong> After creation, INITIALIZED may appear briefly � treat it as equivalent to PENDING.</span>
+          <span><strong>Transient State:</strong> After creation, INITIALIZED may appear briefly  treat it as equivalent to PENDING.</span>
         </li>
         <li style="display: flex; gap: 8px; align-items: flex-start;">
           <span style="color: var(--flux-warning); font-weight: bold;">⬢</span>
@@ -5462,7 +5462,7 @@ System.out.println(res.getBody());</pre>
         <div class="flow-actor server">
           <div class="actor-info" style="text-align: right;">
             <span class="actor-label">fluX</span>
-            <span class="actor-sublabel">API �  SPEI �  CEP</span>
+            <span class="actor-sublabel">API   SPEI   CEP</span>
           </div>
           <div class="actor-icon"><i data-lucide="server" stroke-width="1.75"></i></div>
         </div>
@@ -5562,7 +5562,7 @@ System.out.println(res.getBody());</pre>
                     <td style="font-family: var(--font-mono); font-weight: 600; color: var(--flux-white);"><span style="display: inline-flex; align-items: center; gap: 6px;"><i data-lucide="align-left" stroke-width="1.75" style="width: 12px; height: 12px; opacity: 0.75; flex-shrink: 0;"></i> description</span></td>
                     <td style="font-family: var(--font-mono); color: var(--flux-primary);">string</td>
                     <td style="color: var(--flux-error);">Yes</td>
-                    <td style="color: var(--flux-gray-300);">Payment concept (max 40 chars). Only letters, numbers, spaces and ñ/� allowed.</td>
+                    <td style="color: var(--flux-gray-300);">Payment concept (max 40 chars). Only letters, numbers, spaces and ñ/ allowed.</td>
                   </tr>
                   <tr>
                     <td style="font-family: var(--font-mono); font-weight: 600; color: var(--flux-white);"><span style="display: inline-flex; align-items: center; gap: 6px;"><i data-lucide="bookmark" stroke-width="1.75" style="width: 12px; height: 12px; opacity: 0.75; flex-shrink: 0;"></i> external_reference</span></td>
@@ -5727,7 +5727,7 @@ System.out.println(res.getBody());</pre>
             <span class="terminal-dot t-red"></span>
             <span class="terminal-dot t-yellow"></span>
             <span class="terminal-dot t-green"></span>
-            <span class="terminal-title">CEP Webhook Payload � Completed</span>
+            <span class="terminal-title">CEP Webhook Payload  Completed</span>
           </div>
           <div class="code-panel active">
             <pre>{
@@ -5759,7 +5759,7 @@ System.out.println(res.getBody());</pre>
             <span class="terminal-dot t-red"></span>
             <span class="terminal-dot t-yellow"></span>
             <span class="terminal-dot t-green"></span>
-            <span class="terminal-title">Transaction Response � Completed (200 OK)</span>
+            <span class="terminal-title">Transaction Response  Completed (200 OK)</span>
           </div>
           <div class="code-panel active">
             <pre>{
@@ -5925,15 +5925,15 @@ System.out.println(res.getBody());</pre>
       
       <div class="specs-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px;">
         <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 8px;">
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Phase 1 � Attempts 1�3</div>
+          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Phase 1  Attempts 13</div>
           <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Every 90 seconds. Status remains <strong>PENDING</strong>.</p>
         </div>
         <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 8px;">
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Phase 2 � Attempts 4�6</div>
+          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Phase 2  Attempts 46</div>
           <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Every 5 minutes. Status turns to <strong>DELAYED</strong>.</p>
         </div>
         <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 8px;">
-          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Phase 3 � Attempts 7�17</div>
+          <div style="font-weight: 600; font-size: 0.82rem; margin-bottom: 4px; color: var(--flux-white);">Phase 3  Attempts 717</div>
           <p style="font-size: 0.72rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Every 15 minutes. Transitions to <strong>FAILED</strong> at attempt 17.</p>
         </div>
       </div>
@@ -6118,13 +6118,13 @@ System.out.println(res.getBody());</pre>
       <section class="page-section" id="webhooks-mx">
     <div class="breadcrumbs">
       <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-      <span>México � SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+      <span>México  SPEI</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
       <span style="color: var(--flux-white)">Webhooks</span>
     </div>
 
-    <h1 class="page-title"><span class="flag"></span> Webhooks � México</h1>
+    <h1 class="page-title"><span class="flag"></span> Webhooks  México</h1>
     <p class="page-subtitle">
-      Webhooks allow your application to receive real-time notifications when events occur in your fluX account. Instead of polling the API, fluX pushes event data to your server as it happens � keeping your system in sync with minimal latency.
+      Webhooks allow your application to receive real-time notifications when events occur in your fluX account. Instead of polling the API, fluX pushes event data to your server as it happens  keeping your system in sync with minimal latency.
     </p>
 
     <!-- Postman Card -->
@@ -6140,7 +6140,7 @@ System.out.println(res.getBody());</pre>
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection � Webhooks</h3>
+              <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection  Webhooks</h3>
               <span class="postman-badge">v1</span>
             </div>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the Postman collection with webhook event simulations for testing your handler.</p>
@@ -6250,7 +6250,7 @@ System.out.println(res.getBody());</pre>
               </div>
             </div>
             <p class="step-card-desc" data-translate="es">Tu servidor responde <code>201 Created</code> para aceptar el pago. Si respondes <code>400</code>, fluX reversa (reembolsa) el SPEI automáticamente.</p>
-            <p class="step-card-desc" data-translate="en">Return <code>201 Created</code> to accept. Return <code>400</code> to reject � this triggers an automatic reversal (refund) of the transaction.</p>
+            <p class="step-card-desc" data-translate="en">Return <code>201 Created</code> to accept. Return <code>400</code> to reject  this triggers an automatic reversal (refund) of the transaction.</p>
           </div>
           <div class="step-number-circle">4</div>
         </div>
@@ -6599,11 +6599,11 @@ System.out.println(res.getBody());</pre>
       
       <div class="specs-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
         <div style="padding: 12px; background: rgba(34, 197, 94, 0.04); border: 1px solid rgba(34, 197, 94, 0.15); border-radius: 8px;">
-          <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; color: var(--flux-success);">201 � Transaction Accepted</div>
+          <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; color: var(--flux-success);">201  Transaction Accepted</div>
           <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Return <code>HTTP/1.1 201 Created</code> to confirm that the incoming transaction was received and accepted by your system.</p>
         </div>
         <div style="padding: 12px; background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.15); border-radius: 8px;">
-          <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; color: var(--flux-error);">400 � Transaction Rejected</div>
+          <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 4px; color: var(--flux-error);">400  Transaction Rejected</div>
           <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Return <code>HTTP/1.1 400 Bad Request</code> to reject the transaction. This triggers an automatic reversal (refund) of the funds back to the payer.</p>
         </div>
       </div>
@@ -6612,7 +6612,7 @@ System.out.println(res.getBody());</pre>
         <strong>Important:</strong> If you reject a transaction by returning 400, the funds will be automatically reversed (refunded) to the original payer. Make sure your rejection logic is intentional.
       </div>
 
-      <h3 class="section-block-title" style="font-size: 0.95rem; color: var(--flux-white); margin-bottom: 12px;"><i data-lucide="shield" stroke-width="1.75"></i> Security � X-Secret-key Validation</h3>
+      <h3 class="section-block-title" style="font-size: 0.95rem; color: var(--flux-white); margin-bottom: 12px;"><i data-lucide="shield" stroke-width="1.75"></i> Security  X-Secret-key Validation</h3>
       <p style="font-size: 0.82rem; color: var(--flux-gray-300); line-height: 1.5; margin-bottom: 14px;">
         Every webhook delivery includes an <code>X-Secret-key</code> header containing the secret you provided during registration. Always compare this header with your stored secret before processing the event.
       </p>
@@ -6801,13 +6801,13 @@ app.listen(<span class="c-number">3000</span>, () => {
       <section class="page-section" id="intro-co">
         <div class="breadcrumbs">
           <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-          <span>Colombia � Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+          <span>Colombia  Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
           <span style="color: var(--flux-white)">Getting Started</span>
         </div>
 
         <h1 class="page-title"><span class="flag" style="background-image: url('https://flagcdn.com/w40/co.png');"></span> Getting Started</h1>
         <p class="page-subtitle">
-          The FluX Colombia API unlocks seamless access to the Bre-B instant payment system. Use a single, modern RESTful interface to process real-time payouts in COP, deploy interoperable QR codes, and receive event notifications�all backed by an immutable blockchain journal layer.
+          The FluX Colombia API unlocks seamless access to the Bre-B instant payment system. Use a single, modern RESTful interface to process real-time payouts in COP, deploy interoperable QR codes, and receive event notificationsáll backed by an immutable blockchain journal layer.
         </p>
 
         <div class="section-block grid-textured">
@@ -7060,7 +7060,7 @@ app.listen(<span class="c-number">3000</span>, () => {
       <section class="page-section" id="payouts-co">
         <div class="breadcrumbs">
           <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-          <span>Colombia � Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+          <span>Colombia  Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
           <span style="color: var(--flux-white)">Payouts</span>
         </div>
 
@@ -7081,7 +7081,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               </div>
               <div>
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection � CO Payouts</h3>
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection  CO Payouts</h3>
                   <span class="postman-badge">v1</span>
                 </div>
                 <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
@@ -7184,7 +7184,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">202 Accepted � application/json</span>
+              <span class="terminal-title">202 Accepted  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -7212,7 +7212,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -7258,7 +7258,7 @@ app.listen(<span class="c-number">3000</span>, () => {
         </div>
 
         <div class="section-block">
-          <h2 class="section-block-title">Transaction Journal � Blockchain Auditability</h2>
+          <h2 class="section-block-title">Transaction Journal  Blockchain Auditability</h2>
           <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
             Every accepted transaction generates a cryptographic record on FluX's internal permissioned blockchain. The <code>transaction_journal_hash</code> in the response provides an immutable proof of the transaction, ensuring maximum integrity and auditability.
           </p>
@@ -7336,7 +7336,7 @@ app.listen(<span class="c-number">3000</span>, () => {
       <section class="page-section" id="collections-co">
         <div class="breadcrumbs">
           <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-          <span>Colombia � Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+          <span>Colombia  Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
           <span style="color: var(--flux-white)">Collections (Pay-ins)</span>
         </div>
 
@@ -7418,7 +7418,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -7460,7 +7460,7 @@ app.listen(<span class="c-number">3000</span>, () => {
                 </div>
                 <div>
                   <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                    <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection � CO QR Codes</h3>
+                    <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection  CO QR Codes</h3>
                     <span class="postman-badge">v1</span>
                   </div>
                   <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
@@ -7542,7 +7542,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -7604,7 +7604,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -7633,7 +7633,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               <span class="terminal-dot t-red"></span>
               <span class="terminal-dot t-yellow"></span>
               <span class="terminal-dot t-green"></span>
-              <span class="terminal-title">200 OK � application/json</span>
+              <span class="terminal-title">200 OK  application/json</span>
             </div>
             <div class="code-panel active">
               <pre>{
@@ -7717,13 +7717,13 @@ app.listen(<span class="c-number">3000</span>, () => {
       <section class="page-section" id="webhooks-co">
         <div class="breadcrumbs">
           <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
-          <span>Colombia � Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
+          <span>Colombia  Bre-B</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
           <span style="color: var(--flux-white)">Webhooks</span>
         </div>
 
         <h1 class="page-title"><span class="flag" style="background-image: url('https://flagcdn.com/w40/co.png');"></span> Webhooks</h1>
         <p class="page-subtitle">
-          Receive real-time notifications when payment events occur in your FluX Colombia account. FluX pushes event data to your server when payments complete or fail � keeping your system in sync.
+          Receive real-time notifications when payment events occur in your FluX Colombia account. FluX pushes event data to your server when payments complete or fail  keeping your system in sync.
         </p>
 
         <div class="section-block grid-textured postman-card">
@@ -7738,7 +7738,7 @@ app.listen(<span class="c-number">3000</span>, () => {
               </div>
               <div>
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection � CO Webhooks</h3>
+                  <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--flux-white); margin: 0;">Postman Collection  CO Webhooks</h3>
                   <span class="postman-badge">v1</span>
                 </div>
                 <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">
@@ -7915,7 +7915,7 @@ app.listen(<span class="c-number">3000</span>, () => {
         </div>
 
         <div class="section-block">
-          <h2 class="section-block-title">Security � X-Secret-key Validation</h2>
+          <h2 class="section-block-title">Security  X-Secret-key Validation</h2>
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Secret Key Verification</h3>
           <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 24px;">
             Every delivery includes an <code>X-Secret-key</code> header. Compare it with your registered secret before processing.
@@ -7948,13 +7948,13 @@ app.post('/webhooks/flux-co', (req, res) =&gt; {
 
   <span class="c-keyword">switch</span> (event) {
     <span class="c-keyword">case</span> 'payment.completed':
-      console.log(`�S& Payment ${id} completed - ref: ${external_reference}`);
+      console.log(`S& Payment ${id} completed - ref: ${external_reference}`);
       <span class="c-comment">// Update your database, notify customer, etc.</span>
       <span class="c-keyword">break</span>;
 
     <span class="c-keyword">case</span> 'payment.failed':
       <span class="c-keyword">const</span> { failure_reason } = req.body;
-      console.log(`�R Payment ${id} failed: ${failure_reason}`);
+      console.log(`R Payment ${id} failed: ${failure_reason}`);
       <span class="c-comment">// Handle retries or notify operations team</span>
       <span class="c-keyword">break</span>;
 
@@ -8070,9 +8070,9 @@ app.listen(3000, () =&gt; {
 
     </div>
 
-    <!-- ���������������������������������������������������������������������������������������������������������������� -->
+    <!--  -->
     <!-- TAB 2: CONTENT - API REFERENCE (3-COLUMN INTERACTIVE) -->
-    <!-- ���������������������������������������������������������������������������������������������������������������� -->
+    <!--  -->
     <div id="content-api" class="tab-content">
       
       <!-- API PAGE: LOGIN -->
@@ -8709,17 +8709,17 @@ app.listen(3000, () =&gt; {
     </aside>
   </main>
 
-  <!-- ���� SCRIPTS ���� -->
+  <!--  SCRIPTS  -->
   <script>
 
-    /* ���� DYNAMIC MX/CO CONTENT DICTIONARIES ���� */
+    /*  DYNAMIC MX/CO CONTENT DICTIONARIES  */
     const DYNAMIC_CONTENT = {
       mx: {
         introBreadcrumb: 'Getting Started',
         introFlag: '',
-        introText: "The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications � all through a single integration point connected to Mexico's interbank payment network via BANXICO.",
+        introText: "The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications  all through a single integration point connected to Mexico's interbank payment network via BANXICO.",
         introBaseUrl: 'https://flux.praxisglobe.com/api/v1/partners',
-        capabilitiesSubtitle: "Everything you need to move money in Mexico � built on SPEI, powered by BANXICO.",
+        capabilitiesSubtitle: "Everything you need to move money in Mexico  built on SPEI, powered by BANXICO.",
         capabilities: [
           { title: 'Payouts (SPEI)', desc: 'Send instant payouts to any Mexican bank account via SPEI. Real-time settlement during operating hours.' },
           { title: 'Penny Validation', desc: 'Verify account ownership by sending a $0.01 MXN penny. Retrieve a CEP to confirm beneficiary identity.' },
@@ -8745,7 +8745,7 @@ app.listen(3000, () =&gt; {
       "currency": "MXN"
     }
   }'</pre>`,
-        step4Desc: "All successful responses return JSON with the transaction details. Monitor the transactionStatus field as it transitions through the lifecycle (INITIALIZED �  PENDING �  LIQUIDATED).",
+        step4Desc: "All successful responses return JSON with the transaction details. Monitor the transactionStatus field as it transitions through the lifecycle (INITIALIZED   PENDING   LIQUIDATED).",
         step4Code: `<pre>{
   <span class="p">"id"</span>:                <span class="s">"16811ee8-1ef9-4dd4-8d84-9c2df89cf302"</span>,
   <span class="p">"trackingId"</span>:        <span class="s">"20250306FINCHVLIKQ5SKUM"</span>,
@@ -8774,9 +8774,9 @@ app.listen(3000, () =&gt; {
       co: {
         introBreadcrumb: 'Getting Started',
         introFlag: '',
-        introText: "The fluX API is a RESTful JSON interface that enables you to send Bre-B immediate payouts, receive real-time notifications, and generate EMVCo QR codes � all through a single integration point connected to Colombia's interbank payment network.",
+        introText: "The fluX API is a RESTful JSON interface that enables you to send Bre-B immediate payouts, receive real-time notifications, and generate EMVCo QR codes  all through a single integration point connected to Colombia's interbank payment network.",
         introBaseUrl: 'https://flux.praxisglobe.com/api/v1',
-        capabilitiesSubtitle: "Everything you need to move money in Colombia � built on Bre-B, powered by Banco de la República.",
+        capabilitiesSubtitle: "Everything you need to move money in Colombia  built on Bre-B, powered by Banco de la República.",
         capabilities: [
           { title: 'Payouts (Bre-B)', desc: 'Send instant payouts to any Colombian bank account via Bre-B. Real-time settlement 24/7.' },
           { title: 'QR Codes & Llaves', desc: 'Generate EMVCo QR codes and register alias keys starting with @FLX for seamless instant collections.' },
@@ -8803,7 +8803,7 @@ app.listen(3000, () =&gt; {
     "description": "Pago de prueba",
     "external_reference": "ref_co_001"
   }'</pre>`,
-        step4Desc: "All successful responses return JSON with payment status. Monitor the status field as it transitions (PROCESSING �  COMPLETED / FAILED).",
+        step4Desc: "All successful responses return JSON with payment status. Monitor the status field as it transitions (PROCESSING   COMPLETED / FAILED).",
         step4Code: `<pre>{
   <span class="p">"id"</span>:                       <span class="s">"pay_1a2b3c4d5e6f"</span>,
   <span class="p">"status"</span>:                   <span class="s">"PROCESSING"</span>,
@@ -8829,7 +8829,7 @@ app.listen(3000, () =&gt; {
       }
     };
 
-    /* ���� TAB SWITCHER (Documentación vs API Reference) ���� */
+    /*  TAB SWITCHER (Documentación vs API Reference)  */
     let currentTab = 'docs';
     function switchTab(tabId) {
       try {
@@ -8872,7 +8872,7 @@ app.listen(3000, () =&gt; {
       }
     }
 
-    /* ���� TRANSLATION CONTROLLER (data-lang) ���� */
+    /*  TRANSLATION CONTROLLER (data-lang)  */
     let currentLang = 'es';
     // Custom language dropdown functions
     function toggleLangDropdown(event) {
@@ -8935,7 +8935,7 @@ app.listen(3000, () =&gt; {
     }
 
 
-    /* ���� THEME CONTROLLER (Light/Dark Mode) ���� */
+    /*  THEME CONTROLLER (Light/Dark Mode)  */
     function toggleTheme() {
       const isLight = document.body.classList.toggle('light-theme');
       localStorage.setItem('flux_dev_theme', isLight ? 'light' : 'dark');
@@ -8956,7 +8956,7 @@ app.listen(3000, () =&gt; {
       }
     }
 
-    /* ���� SEARCH ENGINE (Buscador Ctrl K) ���� */
+    /*  SEARCH ENGINE (Buscador Ctrl K)  */
     let searchIndex = [];
     function buildSearchIndex() {
       searchIndex = [];
@@ -9113,7 +9113,7 @@ app.listen(3000, () =&gt; {
       });
     })();
 
-    /* ���� COUNTRY SWITCHING LOGIC ���� */
+    /*  COUNTRY SWITCHING LOGIC  */
     function switchCountry(country, updateHash = true) {
       document.body.setAttribute('data-active-country', country);
       localStorage.setItem('flux_preferred_country', country);
@@ -9219,7 +9219,7 @@ app.listen(3000, () =&gt; {
       }
     }
 
-    /* ���� PAGE-BY-PAGE ROUTER ���� */
+    /*  PAGE-BY-PAGE ROUTER  */
     function showPage(hash) {
       const pageId = (hash && hash.startsWith('#')) ? hash.slice(1) : 'introduction';
       
@@ -9302,7 +9302,7 @@ app.listen(3000, () =&gt; {
       }
     }
 
-    /* ���� INITIALIZATION ���� */
+    /*  INITIALIZATION  */
     window.addEventListener('hashchange', () => {
       showPage(window.location.hash);
     });
@@ -9453,7 +9453,7 @@ app.listen(3000, () =&gt; {
     window.updateTOC = updateTOC;
     window.highlightActiveTOC = highlightActiveTOC;
 
-    /* ���� PORTAL LOADER CONTROLLER ���� */
+    /*  PORTAL LOADER CONTROLLER  */
     (function() {
       // Activar clase JS activa inmediatamente para ocultar contenido durante la carga
       document.body.classList.add('js-active');
@@ -9504,7 +9504,7 @@ app.listen(3000, () =&gt; {
             currentLineEl.className = 'terminal-line';
             
             if (step.type === 'command') {
-              currentLineEl.innerHTML = '<span class="terminal-prompt">$</span> <span class="typing-text"></span><span class="terminal-cursor">��</span>';
+              currentLineEl.innerHTML = '<span class="terminal-prompt">$</span> <span class="typing-text"></span><span class="terminal-cursor"></span>';
             } else {
               currentLineEl.innerHTML = '<span class="typing-text"></span>';
             }
@@ -9717,7 +9717,7 @@ app.listen(3000, () =&gt; {
     window.switchCodeTab = switchCodeTab;
     window.copyCodeBlock = copyCodeBlock;
 
-    /* ���� VIEW TOGGLE (Executive / Technical) ���� */
+    /*  VIEW TOGGLE (Executive / Technical)  */
     function switchView(view) {
       const btns = document.querySelectorAll('.view-toggle-btn');
       btns.forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === view));
@@ -9733,7 +9733,7 @@ app.listen(3000, () =&gt; {
       if (saved === 'exec') switchView('exec');
     })();
 
-    /* ���� BUSINESS CONTEXT CARDS (injected dynamically) ���� */
+    /*  BUSINESS CONTEXT CARDS (injected dynamically)  */
     (function() {
       var cards = {
         'introduction': {
@@ -9741,10 +9741,10 @@ app.listen(3000, () =&gt; {
           en: '<strong>Business context:</strong> A single integration point for real-time payments in Mexico and Colombia. Reduces operational complexity by consolidating multiple payment rails.'
         },
         'transaction-flow': {
-          es: '<strong>Contexto de negocio:</strong> Entiende cómo se mueve un pago desde su inicio hasta la liquidación. �atil para estimar tiempos operativos y planificar flujos de caja.',
+          es: '<strong>Contexto de negocio:</strong> Entiende cómo se mueve un pago desde su inicio hasta la liquidación. atil para estimar tiempos operativos y planificar flujos de caja.',
           en: '<strong>Business context:</strong> Understand how a payment moves from initiation to settlement. Useful for estimating operational timelines and cash flow planning.'
         },
-        'authentication': { es: '<strong>Contexto de negocio:</strong> C�mo se autentica la integraci�n de tu equipo. Secci�n relevante para revisi�n de seguridad y cumplimiento.', en: '<strong>Business context:</strong> How your team integration authenticates. Relevant for security review and compliance.' },
+        'authentication': { es: '<strong>Contexto de negocio:</strong> Cómo se autentica la integración de tu equipo. Sección relevante para revisión de seguridad y cumplimiento.', en: '<strong>Business context:</strong> How your team integration authenticates. Relevant for security review and compliance.' },
         'payouts-mx': {
           es: '<strong>Contexto de negocio:</strong> Dispersión de pagos a cualquier cuenta bancaria mexicana vía SPEI en segundos. Ideal para nómina, proveedores y reembolsos.',
           en: '<strong>Business context:</strong> Send payouts to any Mexican bank account via SPEI in seconds. Ideal for payroll, suppliers, and refunds.'
@@ -9787,7 +9787,7 @@ app.listen(3000, () =&gt; {
       // CSS handles language visibility automatically via data-translate attributes
     })();
 
-    /* ���� SCROLL FADE-IN OBSERVER ���� */
+    /*  SCROLL FADE-IN OBSERVER  */
     (function() {
       var fadeObs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -9825,7 +9825,7 @@ app.listen(3000, () =&gt; {
       setTimeout(setupFadeIn, 300);
     })();
 
-    /* ���� SECTION PROGRESS BAR ���� */
+    /*  SECTION PROGRESS BAR  */
     (function() {
       const fill = document.getElementById('section-progress-fill');
       if (!fill) return;
@@ -9840,7 +9840,7 @@ app.listen(3000, () =&gt; {
       });
     })();
 
-    /* ���� PREV/NEXT SECTION NAVIGATION ���� */
+    /*  PREV/NEXT SECTION NAVIGATION  */
     (function() {
       function getSectionOrder() {
         const activeNavId = document.querySelector('.sidebar-nav-content.active')?.id;
@@ -9880,7 +9880,7 @@ app.listen(3000, () =&gt; {
           const btn = document.createElement('a');
           btn.className = 'section-nav-btn prev';
           btn.href = '#' + prev.id;
-          btn.innerHTML = '<span class="section-nav-label">� � ' + (lang === 'es' ? 'Anterior' : 'Previous') + '</span><span class="section-nav-title">' + prev.label + '</span>';
+          btn.innerHTML = '<span class="section-nav-label">  ' + (lang === 'es' ? 'Anterior' : 'Previous') + '</span><span class="section-nav-title">' + prev.label + '</span>';
           btn.addEventListener('click', function(e) { e.preventDefault(); showPage('#' + prev.id); history.pushState(null, '', '#' + prev.id); });
           footer.appendChild(btn);
         }
@@ -9890,7 +9890,7 @@ app.listen(3000, () =&gt; {
           const btn = document.createElement('a');
           btn.className = 'section-nav-btn next';
           btn.href = '#' + next.id;
-          btn.innerHTML = '<span class="section-nav-label">' + (lang === 'es' ? 'Siguiente' : 'Next') + ' � </span><span class="section-nav-title">' + next.label + '</span>';
+          btn.innerHTML = '<span class="section-nav-label">' + (lang === 'es' ? 'Siguiente' : 'Next') + '  </span><span class="section-nav-title">' + next.label + '</span>';
           btn.addEventListener('click', function(e) { e.preventDefault(); showPage('#' + next.id); history.pushState(null, '', '#' + next.id); });
           footer.appendChild(btn);
         }
@@ -9907,7 +9907,7 @@ app.listen(3000, () =&gt; {
     })();
 
 
-    /* ���� MOBILE MENU TOGGLE ���� */
+    /*  MOBILE MENU TOGGLE  */
     function toggleMobileMenu() {
       const sidebar = document.getElementById('sidebar');
       if (sidebar) {
