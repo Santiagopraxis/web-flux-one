@@ -1,4 +1,4 @@
-�<!DOCTYPE html>
+﻿�<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -2048,7 +2048,14 @@
       color: #475569;
     }
     .business-context-card::before {
-      content: '<i data-lucide="info" stroke-width="1.75" style="color: var(--flux-primary); width: 18px; height: 18px; margin-right: 6px; position: relative; top: 3px;"></i>';
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid var(--flux-primary);
+      margin-top: 5px;
       position: absolute;
       left: 18px;
       top: 16px;
@@ -9137,6 +9144,7 @@ app.listen(3000, () =&gt; {
 </script>
 </body>
 </html>
+
 
 
 
