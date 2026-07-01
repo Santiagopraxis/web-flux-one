@@ -3004,6 +3004,21 @@
 
 
     /* ▸▸▸ EXECUTIVE VIEW MODE ▸▸▸ */
+    /* Lucide icons inside exec cards */
+    .exec-usecase-icon i,
+    .exec-flow-step-icon i {
+      width: 28px !important;
+      height: 28px !important;
+    }
+    .exec-usecase-icon {
+      color: var(--flux-primary);
+      line-height: 1;
+    }
+    .exec-flow-step-icon {
+      color: var(--flux-primary);
+      line-height: 1;
+    }
+
     .exec-content {
       display: none;
     }
@@ -3816,22 +3831,22 @@
       <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Capacidades de Negocio</span><span data-translate="en">Business Capabilities</span></h3>
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">💸</div>
+          <div class="exec-usecase-icon"><i data-lucide="send" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Dispersión de Pagos</span><span data-translate="en">Payouts</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Envía pagos a cualquier cuenta bancaria en México o Colombia en segundos. Ideal para nómina, proveedores, préstamos y reembolsos.</span><span data-translate="en">Send payments to any bank account in Mexico or Colombia in seconds. Ideal for payroll, suppliers, loans, and refunds.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">💰</div>
+          <div class="exec-usecase-icon"><i data-lucide="wallet" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Cobros Instantáneos</span><span data-translate="en">Instant Collections</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Recibe pagos de tus clientes a través de transferencias bancarias, llaves referenciadas y códigos QR. Reconciliación automática.</span><span data-translate="en">Receive payments from your customers via bank transfers, referenced keys, and QR codes. Automatic reconciliation.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-icon"><i data-lucide="smartphone" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Códigos QR</span><span data-translate="en">QR Codes</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Genera QR estáticos o dinámicos para que tus clientes paguen desde su app bancaria. Estándar EMVCo interoperable.</span><span data-translate="en">Generate static or dynamic QR codes for customers to pay from their banking app. Interoperable EMVCo standard.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">✅</div>
+          <div class="exec-usecase-icon"><i data-lucide="check-circle" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Validación de Cuentas</span><span data-translate="en">Account Validation</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Verifica que las cuentas destino existen y son alcanzables antes de enviar dinero. Reduce rechazos hasta un 95%.</span><span data-translate="en">Verify destination accounts exist and are reachable before sending money. Reduce rejections by up to 95%.</span></div>
         </div>
@@ -3840,25 +3855,25 @@
       <h3 class="exec-section-title"><i data-lucide="rocket" stroke-width="1.75"></i> <span data-translate="es">Proceso de Onboarding</span><span data-translate="en">Onboarding Process</span></h3>
       <div class="exec-flow">
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🔑</div>
+          <div class="exec-flow-step-icon"><i data-lucide="key-round" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Credenciales</span><span data-translate="en">Credentials</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Día 1</span><span data-translate="en">Day 1</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🧪</div>
+          <div class="exec-flow-step-icon"><i data-lucide="flask-conical" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Sandbox</span><span data-translate="en">Sandbox</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Semana 1-2</span><span data-translate="en">Week 1-2</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">✅</div>
+          <div class="exec-flow-step-icon"><i data-lucide="check-circle" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Certificación</span><span data-translate="en">Certification</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Semana 2-3</span><span data-translate="en">Week 2-3</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🚀</div>
+          <div class="exec-flow-step-icon"><i data-lucide="rocket" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Producción</span><span data-translate="en">Production</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Semana 3-4</span><span data-translate="en">Week 3-4</span></div>
         </div>
@@ -3940,25 +3955,25 @@
 
       <div class="exec-flow">
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🏢</div>
+          <div class="exec-flow-step-icon"><i data-lucide="building-2" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Tu Plataforma</span><span data-translate="en">Your Platform</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Envía instrucción</span><span data-translate="en">Sends instruction</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">⚡</div>
+          <div class="exec-flow-step-icon"><i data-lucide="zap" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">fluX One</span><span data-translate="en">fluX One</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Procesa y enruta</span><span data-translate="en">Processes & routes</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🏦</div>
+          <div class="exec-flow-step-icon"><i data-lucide="landmark" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Banco</span><span data-translate="en">Bank</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Ejecuta pago</span><span data-translate="en">Executes payment</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">✅</div>
+          <div class="exec-flow-step-icon"><i data-lucide="check-circle" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Confirmación</span><span data-translate="en">Confirmation</span></div>
           <div class="exec-flow-step-time">< 10s</div>
         </div>
@@ -4026,22 +4041,22 @@
 
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🔒</div>
+          <div class="exec-usecase-icon"><i data-lucide="lock" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Cifrado de Extremo a Extremo</span><span data-translate="en">End-to-End Encryption</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Toda la comunicación utiliza HTTPS con TLS 1.2+ obligatorio. Conexiones antiguas son rechazadas automáticamente.</span><span data-translate="en">All communication uses HTTPS with mandatory TLS 1.2+. Legacy connections are automatically rejected.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🛡️</div>
+          <div class="exec-usecase-icon"><i data-lucide="shield-check" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Credenciales Seguras</span><span data-translate="en">Secure Credentials</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Llaves de acceso únicas por entorno. Nunca se exponen al usuario final ni al código del frontend.</span><span data-translate="en">Unique access keys per environment. Never exposed to end users or frontend code.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">📋</div>
+          <div class="exec-usecase-icon"><i data-lucide="clipboard-list" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Auditoría Completa</span><span data-translate="en">Full Audit Trail</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Registro inmutable de cada operación en blockchain. Trazabilidad total para cumplimiento regulatorio.</span><span data-translate="en">Immutable record of every operation on blockchain. Full traceability for regulatory compliance.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🏛️</div>
+          <div class="exec-usecase-icon"><i data-lucide="columns-3" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Regulación Local</span><span data-translate="en">Local Regulation</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Cumplimiento con CNBV (México) y SFC (Colombia). Operación dentro del marco regulatorio de cada país.</span><span data-translate="en">Compliance with CNBV (Mexico) and SFC (Colombia). Operation within each country's regulatory framework.</span></div>
         </div>
@@ -5013,22 +5028,22 @@ System.out.println(res.getBody());</pre>
       <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Casos de Uso</span><span data-translate="en">Use Cases</span></h3>
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">👥</div>
+          <div class="exec-usecase-icon"><i data-lucide="users" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Nómina</span><span data-translate="en">Payroll</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Dispersa pagos de nómina a todos tus empleados en segundos. Cuentas de ahorro o cheques.</span><span data-translate="en">Disburse payroll payments to all your employees in seconds. Savings or checking accounts.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🏭</div>
+          <div class="exec-usecase-icon"><i data-lucide="factory" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Proveedores</span><span data-translate="en">Suppliers</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Paga a proveedores con liquidación inmediata. Mejora tu relación comercial y negocia mejores términos.</span><span data-translate="en">Pay suppliers with immediate settlement. Improve your commercial relationship and negotiate better terms.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🏦</div>
+          <div class="exec-usecase-icon"><i data-lucide="landmark" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Desembolsos de Préstamos</span><span data-translate="en">Loan Disbursements</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Desembolsa préstamos aprobados directamente a la cuenta del solicitante en tiempo real.</span><span data-translate="en">Disburse approved loans directly to the applicant's account in real time.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">↩️</div>
+          <div class="exec-usecase-icon"><i data-lucide="undo-2" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Reembolsos</span><span data-translate="en">Refunds</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Devuelve dinero a tus clientes al instante. Mejora la experiencia de usuario y reduce tickets de soporte.</span><span data-translate="en">Return money to your customers instantly. Improve user experience and reduce support tickets.</span></div>
         </div>
@@ -5036,25 +5051,25 @@ System.out.println(res.getBody());</pre>
 
       <div class="exec-flow">
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">📋</div>
+          <div class="exec-flow-step-icon"><i data-lucide="clipboard-list" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Instrucción</span><span data-translate="en">Instruction</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Tu sistema</span><span data-translate="en">Your system</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">⚡</div>
+          <div class="exec-flow-step-icon"><i data-lucide="zap" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">fluX → SPEI</span><span data-translate="en">fluX → SPEI</span></div>
           <div class="exec-flow-step-time">< 3s</div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🏦</div>
+          <div class="exec-flow-step-icon"><i data-lucide="landmark" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Banco Destino</span><span data-translate="en">Target Bank</span></div>
           <div class="exec-flow-step-time">< 7s</div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">✅</div>
+          <div class="exec-flow-step-icon"><i data-lucide="check-circle" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Confirmado</span><span data-translate="en">Confirmed</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Notificación</span><span data-translate="en">Notification</span></div>
         </div>
@@ -5338,22 +5353,22 @@ System.out.println(res.getBody());</pre>
       <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Ideal Para</span><span data-translate="en">Ideal For</span></h3>
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🛒</div>
+          <div class="exec-usecase-icon"><i data-lucide="shopping-cart" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">E-commerce</span><span data-translate="en">E-commerce</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Recibe pagos de compras en línea con confirmación instantánea para despacho inmediato.</span><span data-translate="en">Receive online purchase payments with instant confirmation for immediate dispatch.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🔄</div>
+          <div class="exec-usecase-icon"><i data-lucide="refresh-cw" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Suscripciones</span><span data-translate="en">Subscriptions</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Cobra suscripciones mensuales y recibe el pago al instante con reconciliación automática.</span><span data-translate="en">Collect monthly subscriptions and receive payment instantly with automatic reconciliation.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🏪</div>
+          <div class="exec-usecase-icon"><i data-lucide="store" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Marketplace</span><span data-translate="en">Marketplace</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Gestiona cobros de compradores y dispersa a vendedores de forma programática.</span><span data-translate="en">Manage collections from buyers and disburse to sellers programmatically.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-icon"><i data-lucide="smartphone" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Recargas y Pagos de Servicios</span><span data-translate="en">Top-ups & Bill Payments</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Procesa recargas telefónicas y pagos de servicios con acreditación inmediata.</span><span data-translate="en">Process phone top-ups and service payments with immediate crediting.</span></div>
         </div>
@@ -6770,19 +6785,19 @@ app.listen(<span class="c-number">3000</span>, () => {
 
       <div class="exec-flow">
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">⚡</div>
+          <div class="exec-flow-step-icon"><i data-lucide="zap" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Evento</span><span data-translate="en">Event</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Pago completado</span><span data-translate="en">Payment completed</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">📨</div>
+          <div class="exec-flow-step-icon"><i data-lucide="mail" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Notificación</span><span data-translate="en">Notification</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Instantánea</span><span data-translate="en">Instant</span></div>
         </div>
         <div class="exec-flow-arrow">→</div>
         <div class="exec-flow-step">
-          <div class="exec-flow-step-icon">🏢</div>
+          <div class="exec-flow-step-icon"><i data-lucide="building-2" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-flow-step-label"><span data-translate="es">Tu Sistema</span><span data-translate="en">Your System</span></div>
           <div class="exec-flow-step-time"><span data-translate="es">Actúa</span><span data-translate="en">Takes action</span></div>
         </div>
@@ -7032,22 +7047,22 @@ app.listen(<span class="c-number">3000</span>, () => {
 
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">💸</div>
+          <div class="exec-usecase-icon"><i data-lucide="send" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Dispersiones Bre-B</span><span data-translate="en">Bre-B Payouts</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Envía pagos a cuentas de ahorro o corrientes en cualquier banco colombiano.</span><span data-translate="en">Send payments to savings or checking accounts at any Colombian bank.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-icon"><i data-lucide="smartphone" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">QR Interoperables</span><span data-translate="en">Interoperable QR</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Genera códigos QR estándar EMVCo para cobrar desde cualquier app bancaria colombiana.</span><span data-translate="en">Generate EMVCo standard QR codes to collect from any Colombian banking app.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🔑</div>
+          <div class="exec-usecase-icon"><i data-lucide="key-round" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Llaves Referenciadas</span><span data-translate="en">Referenced Keys</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Alias como @FLX_TUNEGOCIO para que tus clientes te paguen sin memorizar cuentas bancarias.</span><span data-translate="en">Aliases like @FLX_YOURBUSINESS so your customers pay you without memorizing bank accounts.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🔔</div>
+          <div class="exec-usecase-icon"><i data-lucide="bell" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Webhooks</span><span data-translate="en">Webhooks</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Notificaciones automáticas cuando un pago se completa o falla. Misma lógica que México.</span><span data-translate="en">Automatic notifications when a payment completes or fails. Same logic as Mexico.</span></div>
         </div>
@@ -7309,22 +7324,22 @@ app.listen(<span class="c-number">3000</span>, () => {
       <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Casos de Uso</span><span data-translate="en">Use Cases</span></h3>
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🏦</div>
+          <div class="exec-usecase-icon"><i data-lucide="landmark" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Desembolsos</span><span data-translate="en">Disbursements</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Desembolsa préstamos aprobados directamente a cuentas colombianas en tiempo real.</span><span data-translate="en">Disburse approved loans directly to Colombian accounts in real time.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">👥</div>
+          <div class="exec-usecase-icon"><i data-lucide="users" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Nómina Colombia</span><span data-translate="en">Colombia Payroll</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Paga a empleados y contratistas en Colombia con la misma integración que usas para México.</span><span data-translate="en">Pay employees and contractors in Colombia with the same integration you use for Mexico.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🏭</div>
+          <div class="exec-usecase-icon"><i data-lucide="factory" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Proveedores</span><span data-translate="en">Suppliers</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Paga a proveedores colombianos con liquidación inmediata vía Bre-B.</span><span data-translate="en">Pay Colombian suppliers with immediate settlement via Bre-B.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">↩️</div>
+          <div class="exec-usecase-icon"><i data-lucide="undo-2" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Reembolsos</span><span data-translate="en">Refunds</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Devuelve dinero a clientes colombianos al instante.</span><span data-translate="en">Return money to Colombian customers instantly.</span></div>
         </div>
@@ -7688,22 +7703,22 @@ app.listen(<span class="c-number">3000</span>, () => {
 
       <div class="exec-usecase-grid">
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🔑</div>
+          <div class="exec-usecase-icon"><i data-lucide="key-round" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Llaves Referenciadas</span><span data-translate="en">Referenced Keys</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Un alias fácil de recordar (ejemplo: @FLX_EMPRESA123) que tus clientes escriben en su app bancaria para transferirte. Sin CLABE, sin errores.</span><span data-translate="en">An easy-to-remember alias (e.g.: @FLX_COMPANY123) that your customers type in their banking app to transfer to you. No CLABE, no errors.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-icon"><i data-lucide="smartphone" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">QR Estáticos</span><span data-translate="en">Static QR</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Un código QR fijo para tu negocio. El cliente lo escanea, ingresa el monto y paga. Ideal para puntos de venta físicos.</span><span data-translate="en">A fixed QR code for your business. The customer scans it, enters the amount, and pays. Ideal for physical points of sale.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">⚡</div>
+          <div class="exec-usecase-icon"><i data-lucide="zap" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">QR Dinámicos</span><span data-translate="en">Dynamic QR</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Un QR único por transacción con monto y referencia pre-cargados. Perfecto para e-commerce y facturación.</span><span data-translate="en">A unique QR per transaction with pre-loaded amount and reference. Perfect for e-commerce and invoicing.</span></div>
         </div>
         <div class="exec-usecase-card">
-          <div class="exec-usecase-icon">🔔</div>
+          <div class="exec-usecase-icon"><i data-lucide="bell" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Notificación Automática</span><span data-translate="en">Automatic Notification</span></div>
           <div class="exec-usecase-desc"><span data-translate="es">Cuando tu cliente paga, fluX te notifica al instante con todos los detalles para reconciliación automática.</span><span data-translate="en">When your customer pays, fluX notifies you instantly with all details for automatic reconciliation.</span></div>
         </div>
