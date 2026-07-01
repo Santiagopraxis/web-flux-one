@@ -8966,7 +8966,7 @@ app.listen(3000, () =&gt; {
         },
         'authentication': {
           es: '<strong>Contexto de negocio:</strong> Cómo se autentica la integración de tu equipo. Sección relevante para revisión de seguridad y cumplimiento.',
-          en: '<strong>Business context:</strong> How your team\'s integration authenticates. Relevant for security review and compliance.'
+          en: '<strong>Business context:</strong> How your team integration authenticates. Relevant for security review and compliance.'
         },
         'payouts-mx': {
           es: '<strong>Contexto de negocio:</strong> Dispersión de pagos a cualquier cuenta bancaria mexicana vía SPEI en segundos. Ideal para nómina, proveedores y reembolsos.',
@@ -8998,7 +8998,7 @@ app.listen(3000, () =&gt; {
         if (!section) return;
         var card = document.createElement('div');
         card.className = 'business-context-card';
-        card.innerHTML = '<span data-translate="es">' + cards[sectionId].es + '</span><span data-translate="en">' + cards[sectionId].en + '</span>';
+        card.innerHTML = '<span class="ctx-es" data-translate="es" style="display:inline-block;">' + cards[sectionId].es + '</span><span class="ctx-en" data-translate="en" style="display:inline-block;">' + cards[sectionId].en + '</span>';
         var subtitle = section.querySelector('.page-subtitle');
         if (subtitle) {
           subtitle.parentNode.insertBefore(card, subtitle.nextSibling);
@@ -9145,3 +9145,5 @@ app.listen(3000, () =&gt; {
 </script>
 </body>
 </html>
+
+
