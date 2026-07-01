@@ -3002,7 +3002,263 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(65, 188, 210, 0.1) !important;
     }
 
-</style>
+
+    /* ▸▸▸ EXECUTIVE VIEW MODE ▸▸▸ */
+    .exec-content {
+      display: none;
+    }
+    body.executive-view .exec-content {
+      display: block;
+    }
+    body.executive-view .section-block,
+    body.executive-view .code-card,
+    body.executive-view .credentials-card {
+      display: none !important;
+    }
+    body.executive-view .exec-content .section-block,
+    body.executive-view .exec-content .code-card,
+    body.executive-view .exec-content .credentials-card {
+      display: block !important;
+    }
+
+    /* Hide API Reference tab in executive mode */
+    body.executive-view .tab-btn[data-tab="api-reference"] {
+      display: none !important;
+    }
+    body.executive-view #api-reference {
+      display: none !important;
+    }
+
+    /* Executive KPI Cards */
+    .exec-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .exec-kpi-card {
+      background: linear-gradient(135deg, rgba(65,188,210,0.08) 0%, rgba(171,75,150,0.06) 100%);
+      border: 1px solid rgba(65,188,210,0.15);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .exec-kpi-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(65,188,210,0.35);
+    }
+    .exec-kpi-number {
+      font-family: var(--font-display);
+      font-weight: 200;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--flux-primary), var(--flux-accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+    .exec-kpi-label {
+      font-size: 0.78rem;
+      color: var(--flux-gray-300);
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Executive Use Case Cards */
+    .exec-usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .exec-usecase-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .exec-usecase-card:hover {
+      border-color: rgba(65,188,210,0.25);
+      background: rgba(65,188,210,0.04);
+    }
+    .exec-usecase-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .exec-usecase-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--flux-white);
+      margin-bottom: 6px;
+    }
+    .exec-usecase-desc {
+      font-size: 0.8rem;
+      color: var(--flux-gray-300);
+      line-height: 1.5;
+    }
+
+    /* Executive Flow Steps */
+    .exec-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 24px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .exec-flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 20px;
+      background: rgba(65,188,210,0.05);
+      border: 1px solid rgba(65,188,210,0.12);
+      border-radius: 12px;
+      min-width: 130px;
+      text-align: center;
+    }
+    .exec-flow-step-icon {
+      font-size: 1.5rem;
+    }
+    .exec-flow-step-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--flux-white);
+    }
+    .exec-flow-step-time {
+      font-size: 0.72rem;
+      color: var(--flux-primary);
+      font-family: var(--font-mono);
+    }
+    .exec-flow-arrow {
+      font-size: 1.2rem;
+      color: var(--flux-primary);
+      padding: 0 8px;
+      opacity: 0.6;
+    }
+
+    /* Executive benefit list */
+    .exec-benefit-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+    .exec-benefit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-size: 0.85rem;
+      color: var(--flux-gray-300);
+      line-height: 1.5;
+    }
+    .exec-benefit-list li:last-child {
+      border-bottom: none;
+    }
+    .exec-benefit-check {
+      color: var(--flux-success);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Executive section heading */
+    .exec-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--flux-white);
+      margin: 28px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .exec-section-title i {
+      color: var(--flux-primary);
+    }
+    .exec-paragraph {
+      font-size: 0.85rem;
+      color: var(--flux-gray-300);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* Executive CTA */
+    .exec-cta-box {
+      background: linear-gradient(135deg, rgba(65,188,210,0.1) 0%, rgba(171,75,150,0.08) 100%);
+      border: 1px solid rgba(65,188,210,0.2);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 28px;
+      text-align: center;
+    }
+    .exec-cta-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--flux-white);
+      margin-bottom: 8px;
+    }
+    .exec-cta-box p {
+      font-size: 0.82rem;
+      color: var(--flux-gray-300);
+      margin-bottom: 16px;
+    }
+    .exec-cta-btn {
+      display: inline-block;
+      padding: 10px 28px;
+      background: linear-gradient(135deg, var(--flux-primary), var(--flux-accent-2));
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .exec-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(65,188,210,0.3);
+    }
+
+    /* Light theme overrides for exec cards */
+    body.light-theme .exec-kpi-card {
+      background: linear-gradient(135deg, rgba(65,188,210,0.06) 0%, rgba(171,75,150,0.04) 100%);
+      border-color: rgba(65,188,210,0.2);
+    }
+    body.light-theme .exec-usecase-card {
+      background: rgba(0,0,0,0.02);
+      border-color: rgba(0,0,0,0.08);
+    }
+    body.light-theme .exec-usecase-card:hover {
+      background: rgba(65,188,210,0.05);
+    }
+    body.light-theme .exec-usecase-title,
+    body.light-theme .exec-section-title,
+    body.light-theme .exec-flow-step-label {
+      color: #1e293b;
+    }
+    body.light-theme .exec-usecase-desc,
+    body.light-theme .exec-paragraph,
+    body.light-theme .exec-kpi-label,
+    body.light-theme .exec-benefit-list li {
+      color: #475569;
+    }
+    body.light-theme .exec-cta-box {
+      background: linear-gradient(135deg, rgba(65,188,210,0.06) 0%, rgba(171,75,150,0.04) 100%);
+    }
+    body.light-theme .exec-cta-box h3 {
+      color: #1e293b;
+    }
+    body.light-theme .exec-flow-step {
+      background: rgba(65,188,210,0.04);
+    }
+
+    </style>
 </head>
 <body data-active-country="mx" data-lang="es">
 
@@ -3530,7 +3786,91 @@
           </div>
         </div>
       </div>
-    </section>
+    
+
+    <div class="exec-content">
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">< 10s</div>
+          <div class="exec-kpi-label"><span data-translate="es">Liquidación</span><span data-translate="en">Settlement</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">99.9%</div>
+          <div class="exec-kpi-label"><span data-translate="es">Disponibilidad</span><span data-translate="en">Uptime</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">2</div>
+          <div class="exec-kpi-label"><span data-translate="es">Países Activos</span><span data-translate="en">Active Countries</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">1</div>
+          <div class="exec-kpi-label"><span data-translate="es">Integración Única</span><span data-translate="en">Single Integration</span></div>
+        </div>
+      </div>
+
+      <h3 class="exec-section-title"><i data-lucide="target" stroke-width="1.75"></i> <span data-translate="es">¿Qué es fluX One?</span><span data-translate="en">What is fluX One?</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">fluX One es una plataforma de middleware financiero que conecta tu negocio con los rieles de pago instantáneo de Latinoamérica a través de una sola integración. En México opera con SPEI (Banco de México) y en Colombia con Bre-B (Banco de la República). Tu equipo técnico integra una vez, y tu negocio puede mover dinero en ambos países de forma inmediata.</span><span data-translate="en">fluX One is a financial middleware platform that connects your business to Latin America's instant payment rails through a single integration. In Mexico it operates via SPEI (Banco de México) and in Colombia via Bre-B (Banco de la República). Your technical team integrates once, and your business can move money across both countries instantly.</span>
+      </p>
+
+      <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Capacidades de Negocio</span><span data-translate="en">Business Capabilities</span></h3>
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">💸</div>
+          <div class="exec-usecase-title"><span data-translate="es">Dispersión de Pagos</span><span data-translate="en">Payouts</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Envía pagos a cualquier cuenta bancaria en México o Colombia en segundos. Ideal para nómina, proveedores, préstamos y reembolsos.</span><span data-translate="en">Send payments to any bank account in Mexico or Colombia in seconds. Ideal for payroll, suppliers, loans, and refunds.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">💰</div>
+          <div class="exec-usecase-title"><span data-translate="es">Cobros Instantáneos</span><span data-translate="en">Instant Collections</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Recibe pagos de tus clientes a través de transferencias bancarias, llaves referenciadas y códigos QR. Reconciliación automática.</span><span data-translate="en">Receive payments from your customers via bank transfers, referenced keys, and QR codes. Automatic reconciliation.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-title"><span data-translate="es">Códigos QR</span><span data-translate="en">QR Codes</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Genera QR estáticos o dinámicos para que tus clientes paguen desde su app bancaria. Estándar EMVCo interoperable.</span><span data-translate="en">Generate static or dynamic QR codes for customers to pay from their banking app. Interoperable EMVCo standard.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">✅</div>
+          <div class="exec-usecase-title"><span data-translate="es">Validación de Cuentas</span><span data-translate="en">Account Validation</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Verifica que las cuentas destino existen y son alcanzables antes de enviar dinero. Reduce rechazos hasta un 95%.</span><span data-translate="en">Verify destination accounts exist and are reachable before sending money. Reduce rejections by up to 95%.</span></div>
+        </div>
+      </div>
+
+      <h3 class="exec-section-title"><i data-lucide="rocket" stroke-width="1.75"></i> <span data-translate="es">Proceso de Onboarding</span><span data-translate="en">Onboarding Process</span></h3>
+      <div class="exec-flow">
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🔑</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Credenciales</span><span data-translate="en">Credentials</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Día 1</span><span data-translate="en">Day 1</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🧪</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Sandbox</span><span data-translate="en">Sandbox</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Semana 1-2</span><span data-translate="en">Week 1-2</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">✅</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Certificación</span><span data-translate="en">Certification</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Semana 2-3</span><span data-translate="en">Week 2-3</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🚀</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Producción</span><span data-translate="en">Production</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Semana 3-4</span><span data-translate="en">Week 3-4</span></div>
+        </div>
+      </div>
+
+      <div class="exec-cta-box">
+        <h3><span data-translate="es">¿Listo para comenzar?</span><span data-translate="en">Ready to get started?</span></h3>
+        <p><span data-translate="es">Agenda una llamada con nuestro equipo de integración para recibir tus credenciales de sandbox.</span><span data-translate="en">Schedule a call with our integration team to receive your sandbox credentials.</span></p>
+        <a href="mailto:integrations@praxisglobe.com" class="exec-cta-btn"><span data-translate="es">Contactar Equipo</span><span data-translate="en">Contact Team</span></a>
+      </div>
+    </div>
+      </section>
 
       <!-- PAGE: TRANSACTION FLOW (NEW - Evertec Style) -->
       <section class="page-section" id="transaction-flow">
@@ -3590,6 +3930,48 @@
             </div>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="repeat" stroke-width="1.75"></i> <span data-translate="es">Ciclo de Vida de un Pago</span><span data-translate="en">Payment Lifecycle</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Cada pago que procesas a través de fluX One sigue un ciclo de vida predecible y transparente. Desde que tu plataforma envía la instrucción hasta la confirmación final, el proceso toma menos de 10 segundos.</span><span data-translate="en">Every payment processed through fluX One follows a predictable and transparent lifecycle. From the moment your platform sends the instruction to final confirmation, the process takes less than 10 seconds.</span>
+      </p>
+
+      <div class="exec-flow">
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🏢</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Tu Plataforma</span><span data-translate="en">Your Platform</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Envía instrucción</span><span data-translate="en">Sends instruction</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">⚡</div>
+          <div class="exec-flow-step-label"><span data-translate="es">fluX One</span><span data-translate="en">fluX One</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Procesa y enruta</span><span data-translate="en">Processes & routes</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🏦</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Banco</span><span data-translate="en">Bank</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Ejecuta pago</span><span data-translate="en">Executes payment</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">✅</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Confirmación</span><span data-translate="en">Confirmation</span></div>
+          <div class="exec-flow-step-time">< 10s</div>
+        </div>
+      </div>
+
+      <h3 class="exec-section-title"><i data-lucide="shield-check" stroke-width="1.75"></i> <span data-translate="es">¿Qué pasa si algo falla?</span><span data-translate="en">What happens if something fails?</span></h3>
+      <ul class="exec-benefit-list">
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">fluX One reintenta automáticamente si el banco no responde. Zero intervención manual.</span><span data-translate="en">fluX One automatically retries if the bank doesn't respond. Zero manual intervention.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Tu sistema recibe una notificación instantánea con el resultado final (éxito o fallo).</span><span data-translate="en">Your system receives an instant notification with the final result (success or failure).</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Protección contra duplicados: un pago nunca se procesa dos veces, incluso con fallas de red.</span><span data-translate="en">Duplicate protection: a payment is never processed twice, even with network failures.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Cada transacción queda registrada en el journal inmutable de blockchain para auditoría completa.</span><span data-translate="en">Every transaction is recorded on the immutable blockchain journal for complete auditability.</span></li>
+      </ul>
+    </div>
       </section>
 
       <!-- PAGE: OBLIGATIONS (NEW - Evertec Style) -->
@@ -3634,6 +4016,37 @@
             </p>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="shield" stroke-width="1.75"></i> <span data-translate="es">Seguridad y Cumplimiento</span><span data-translate="en">Security & Compliance</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">fluX One opera bajo los más altos estándares de seguridad financiera. Tu información y la de tus clientes están protegidas con tecnología de grado bancario.</span><span data-translate="en">fluX One operates under the highest financial security standards. Your information and your customers' data are protected with bank-grade technology.</span>
+      </p>
+
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🔒</div>
+          <div class="exec-usecase-title"><span data-translate="es">Cifrado de Extremo a Extremo</span><span data-translate="en">End-to-End Encryption</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Toda la comunicación utiliza HTTPS con TLS 1.2+ obligatorio. Conexiones antiguas son rechazadas automáticamente.</span><span data-translate="en">All communication uses HTTPS with mandatory TLS 1.2+. Legacy connections are automatically rejected.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🛡️</div>
+          <div class="exec-usecase-title"><span data-translate="es">Credenciales Seguras</span><span data-translate="en">Secure Credentials</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Llaves de acceso únicas por entorno. Nunca se exponen al usuario final ni al código del frontend.</span><span data-translate="en">Unique access keys per environment. Never exposed to end users or frontend code.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">📋</div>
+          <div class="exec-usecase-title"><span data-translate="es">Auditoría Completa</span><span data-translate="en">Full Audit Trail</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Registro inmutable de cada operación en blockchain. Trazabilidad total para cumplimiento regulatorio.</span><span data-translate="en">Immutable record of every operation on blockchain. Full traceability for regulatory compliance.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🏛️</div>
+          <div class="exec-usecase-title"><span data-translate="es">Regulación Local</span><span data-translate="en">Local Regulation</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Cumplimiento con CNBV (México) y SFC (Colombia). Operación dentro del marco regulatorio de cada país.</span><span data-translate="en">Compliance with CNBV (Mexico) and SFC (Colombia). Operation within each country's regulatory framework.</span></div>
+        </div>
+      </div>
+    </div>
       </section>
 
       <!-- PAGE: AUTHENTICATION -->
@@ -4291,7 +4704,37 @@ System.out.println(res.getBody());</pre>
         </tbody>
       </table>
     </div>
-  </section>
+  
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="lock" stroke-width="1.75"></i> <span data-translate="es">Seguridad de Acceso</span><span data-translate="en">Access Security</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Tu integración con fluX One está protegida con llaves criptográficas únicas (API Keys). Solo tu equipo técnico autorizado puede realizar operaciones. No utilizamos contraseñas — el acceso es 100% programático y seguro.</span><span data-translate="en">Your fluX One integration is protected with unique cryptographic keys (API Keys). Only your authorized technical team can perform operations. We don't use passwords — access is 100% programmatic and secure.</span>
+      </p>
+
+      <ul class="exec-benefit-list">
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Una llave para Sandbox (pruebas) y otra para Producción (dinero real).</span><span data-translate="en">One key for Sandbox (testing) and another for Production (real money).</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Las llaves se rotan cuando lo necesites sin interrumpir tu operación.</span><span data-translate="en">Keys can be rotated whenever you need without interrupting your operation.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Todas las llamadas quedan registradas para auditoría de seguridad.</span><span data-translate="en">All calls are logged for security audit purposes.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Protección contra duplicados: cada transacción incluye una clave de idempotencia que impide pagos dobles.</span><span data-translate="en">Duplicate protection: every transaction includes an idempotency key that prevents double payments.</span></li>
+      </ul>
+
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">TLS 1.2+</div>
+          <div class="exec-kpi-label"><span data-translate="es">Cifrado Mínimo</span><span data-translate="en">Minimum Encryption</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">24h</div>
+          <div class="exec-kpi-label"><span data-translate="es">Ventana de Idempotencia</span><span data-translate="en">Idempotency Window</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">JWT</div>
+          <div class="exec-kpi-label"><span data-translate="es">Estándar de Tokens</span><span data-translate="en">Token Standard</span></div>
+        </div>
+      </div>
+    </div>
+      </section>
       
       <!-- MEXICO PAYOUTS -->
       <section class="page-section" id="payouts-mx">
@@ -4544,6 +4987,79 @@ System.out.println(res.getBody());</pre>
             </table>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="send" stroke-width="1.75"></i> <span data-translate="es">Dispersión de Pagos en México</span><span data-translate="en">Payouts in Mexico</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Envía dinero a cualquier cuenta bancaria en México a través del sistema SPEI del Banco de México. Los pagos se liquidan en segundos, las 24 horas del día, los 365 días del año.</span><span data-translate="en">Send money to any bank account in Mexico through Banco de México's SPEI system. Payments settle in seconds, 24 hours a day, 365 days a year.</span>
+      </p>
+
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">< 10s</div>
+          <div class="exec-kpi-label"><span data-translate="es">Tiempo de Liquidación</span><span data-translate="en">Settlement Time</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">24/7</div>
+          <div class="exec-kpi-label"><span data-translate="es">Disponibilidad</span><span data-translate="en">Availability</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">MXN</div>
+          <div class="exec-kpi-label"><span data-translate="es">Moneda</span><span data-translate="en">Currency</span></div>
+        </div>
+      </div>
+
+      <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Casos de Uso</span><span data-translate="en">Use Cases</span></h3>
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">👥</div>
+          <div class="exec-usecase-title"><span data-translate="es">Nómina</span><span data-translate="en">Payroll</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Dispersa pagos de nómina a todos tus empleados en segundos. Cuentas de ahorro o cheques.</span><span data-translate="en">Disburse payroll payments to all your employees in seconds. Savings or checking accounts.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🏭</div>
+          <div class="exec-usecase-title"><span data-translate="es">Proveedores</span><span data-translate="en">Suppliers</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Paga a proveedores con liquidación inmediata. Mejora tu relación comercial y negocia mejores términos.</span><span data-translate="en">Pay suppliers with immediate settlement. Improve your commercial relationship and negotiate better terms.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🏦</div>
+          <div class="exec-usecase-title"><span data-translate="es">Desembolsos de Préstamos</span><span data-translate="en">Loan Disbursements</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Desembolsa préstamos aprobados directamente a la cuenta del solicitante en tiempo real.</span><span data-translate="en">Disburse approved loans directly to the applicant's account in real time.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">↩️</div>
+          <div class="exec-usecase-title"><span data-translate="es">Reembolsos</span><span data-translate="en">Refunds</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Devuelve dinero a tus clientes al instante. Mejora la experiencia de usuario y reduce tickets de soporte.</span><span data-translate="en">Return money to your customers instantly. Improve user experience and reduce support tickets.</span></div>
+        </div>
+      </div>
+
+      <div class="exec-flow">
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">📋</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Instrucción</span><span data-translate="en">Instruction</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Tu sistema</span><span data-translate="en">Your system</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">⚡</div>
+          <div class="exec-flow-step-label"><span data-translate="es">fluX → SPEI</span><span data-translate="en">fluX → SPEI</span></div>
+          <div class="exec-flow-step-time">< 3s</div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🏦</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Banco Destino</span><span data-translate="en">Target Bank</span></div>
+          <div class="exec-flow-step-time">< 7s</div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">✅</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Confirmado</span><span data-translate="en">Confirmed</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Notificación</span><span data-translate="en">Notification</span></div>
+        </div>
+      </div>
+    </div>
       </section>
 
       <!-- MEXICO COLLECTIONS -->
@@ -4796,6 +5312,53 @@ System.out.println(res.getBody());</pre>
             </table>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="wallet" stroke-width="1.75"></i> <span data-translate="es">Cobros en México</span><span data-translate="en">Collections in Mexico</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Recibe pagos de tus clientes a través de SPEI. Cada vez que alguien transfiere a tu cuenta concentradora, fluX One te notifica automáticamente con los detalles del pago para reconciliación instantánea.</span><span data-translate="en">Receive payments from your customers via SPEI. Every time someone transfers to your concentrator account, fluX One automatically notifies you with payment details for instant reconciliation.</span>
+      </p>
+
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number"><span data-translate="es">Automático</span><span data-translate="en">Automatic</span></div>
+          <div class="exec-kpi-label"><span data-translate="es">Reconciliación</span><span data-translate="en">Reconciliation</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">CEP</div>
+          <div class="exec-kpi-label"><span data-translate="es">Comprobante Oficial</span><span data-translate="en">Official Receipt</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number"><span data-translate="es">Instantáneo</span><span data-translate="en">Instant</span></div>
+          <div class="exec-kpi-label"><span data-translate="es">Notificación</span><span data-translate="en">Notification</span></div>
+        </div>
+      </div>
+
+      <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Ideal Para</span><span data-translate="en">Ideal For</span></h3>
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🛒</div>
+          <div class="exec-usecase-title"><span data-translate="es">E-commerce</span><span data-translate="en">E-commerce</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Recibe pagos de compras en línea con confirmación instantánea para despacho inmediato.</span><span data-translate="en">Receive online purchase payments with instant confirmation for immediate dispatch.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🔄</div>
+          <div class="exec-usecase-title"><span data-translate="es">Suscripciones</span><span data-translate="en">Subscriptions</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Cobra suscripciones mensuales y recibe el pago al instante con reconciliación automática.</span><span data-translate="en">Collect monthly subscriptions and receive payment instantly with automatic reconciliation.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🏪</div>
+          <div class="exec-usecase-title"><span data-translate="es">Marketplace</span><span data-translate="en">Marketplace</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Gestiona cobros de compradores y dispersa a vendedores de forma programática.</span><span data-translate="en">Manage collections from buyers and disburse to sellers programmatically.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-title"><span data-translate="es">Recargas y Pagos de Servicios</span><span data-translate="en">Top-ups & Bill Payments</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Procesa recargas telefónicas y pagos de servicios con acreditación inmediata.</span><span data-translate="en">Process phone top-ups and service payments with immediate crediting.</span></div>
+        </div>
+      </div>
+    </div>
       </section>
       
 <section class="page-section" id="penny-validation-mx">
@@ -5521,7 +6084,37 @@ System.out.println(res.getBody());</pre>
         </tbody>
       </table>
     </div>
-  </section>
+  
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="shield-check" stroke-width="1.75"></i> <span data-translate="es">Validación de Cuentas Bancarias</span><span data-translate="en">Bank Account Validation</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Antes de enviar un pago, verifica que la cuenta destino es real, activa y alcanzable. fluX One envía un micro-depósito (centavos) a la cuenta para confirmar su existencia. Esto reduce drásticamente los rechazos y errores.</span><span data-translate="en">Before sending a payment, verify that the destination account is real, active, and reachable. fluX One sends a micro-deposit (pennies) to the account to confirm its existence. This drastically reduces rejections and errors.</span>
+      </p>
+
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">95%</div>
+          <div class="exec-kpi-label"><span data-translate="es">Reducción de Rechazos</span><span data-translate="en">Rejection Reduction</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">< 15s</div>
+          <div class="exec-kpi-label"><span data-translate="es">Tiempo de Validación</span><span data-translate="en">Validation Time</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">$0.01</div>
+          <div class="exec-kpi-label"><span data-translate="es">Monto del Micro-depósito</span><span data-translate="en">Micro-deposit Amount</span></div>
+        </div>
+      </div>
+
+      <ul class="exec-benefit-list">
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Verifica la titularidad antes de dispersar grandes montos.</span><span data-translate="en">Verify ownership before disbursing large amounts.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Reduce costos operativos al eliminar transferencias fallidas.</span><span data-translate="en">Reduce operational costs by eliminating failed transfers.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Compatible con cuentas CLABE de cualquier banco mexicano.</span><span data-translate="en">Compatible with CLABE accounts from any Mexican bank.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Respuesta inmediata: sabes si la cuenta es válida antes de comprometer fondos.</span><span data-translate="en">Immediate response: know if the account is valid before committing funds.</span></li>
+      </ul>
+    </div>
+      </section>
       <section class="page-section" id="webhooks-mx">
     <div class="breadcrumbs">
       <span>Developers</span> <i data-lucide="chevron-right" stroke-width="1.75"></i>
@@ -6167,7 +6760,42 @@ app.listen(<span class="c-number">3000</span>, () => {
         </tbody>
       </table>
     </div>
-  </section>
+  
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="bell" stroke-width="1.75"></i> <span data-translate="es">Notificaciones en Tiempo Real</span><span data-translate="en">Real-Time Notifications</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Tu sistema recibe alertas automáticas cada vez que ocurre un evento importante: un pago se completa, una cobranza se acredita o una operación falla. Sin necesidad de consultar manualmente.</span><span data-translate="en">Your system receives automatic alerts every time an important event occurs: a payment completes, a collection is credited, or an operation fails. No need to check manually.</span>
+      </p>
+
+      <div class="exec-flow">
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">⚡</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Evento</span><span data-translate="en">Event</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Pago completado</span><span data-translate="en">Payment completed</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">📨</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Notificación</span><span data-translate="en">Notification</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Instantánea</span><span data-translate="en">Instant</span></div>
+        </div>
+        <div class="exec-flow-arrow">→</div>
+        <div class="exec-flow-step">
+          <div class="exec-flow-step-icon">🏢</div>
+          <div class="exec-flow-step-label"><span data-translate="es">Tu Sistema</span><span data-translate="en">Your System</span></div>
+          <div class="exec-flow-step-time"><span data-translate="es">Actúa</span><span data-translate="en">Takes action</span></div>
+        </div>
+      </div>
+
+      <ul class="exec-benefit-list">
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Reconciliación automática sin intervención humana.</span><span data-translate="en">Automatic reconciliation without human intervention.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Reintentos automáticos si tu servidor no responde (hasta 3 intentos).</span><span data-translate="en">Automatic retries if your server doesn't respond (up to 3 attempts).</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Seguridad: cada notificación incluye una firma criptográfica para validar su autenticidad.</span><span data-translate="en">Security: each notification includes a cryptographic signature to validate its authenticity.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Soporte para múltiples tipos de evento: pagos, cobros, validaciones, QR.</span><span data-translate="en">Support for multiple event types: payments, collections, validations, QR.</span></li>
+      </ul>
+    </div>
+      </section>
       
       <!-- COLOMBIA GETTING STARTED -->
       <section class="page-section" id="intro-co">
@@ -6379,6 +7007,52 @@ app.listen(<span class="c-number">3000</span>, () => {
             </div>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="globe" stroke-width="1.75"></i> <span data-translate="es">fluX One en Colombia</span><span data-translate="en">fluX One in Colombia</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">fluX One conecta tu negocio con Bre-B, el sistema de pagos instantáneos del Banco de la República de Colombia. Procesa pagos en pesos colombianos (COP) con liquidación en tiempo real, despliega QR interoperables y recibe notificaciones automáticas — todo con la misma integración que ya tienes para México.</span><span data-translate="en">fluX One connects your business with Bre-B, the instant payment system from Colombia's Banco de la República. Process payments in Colombian pesos (COP) with real-time settlement, deploy interoperable QR codes, and receive automatic notifications — all with the same integration you already have for Mexico.</span>
+      </p>
+
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">COP</div>
+          <div class="exec-kpi-label"><span data-translate="es">Moneda</span><span data-translate="en">Currency</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">Bre-B</div>
+          <div class="exec-kpi-label"><span data-translate="es">Riel de Pago</span><span data-translate="en">Payment Rail</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number"><span data-translate="es">Instantáneo</span><span data-translate="en">Instant</span></div>
+          <div class="exec-kpi-label"><span data-translate="es">Liquidación</span><span data-translate="en">Settlement</span></div>
+        </div>
+      </div>
+
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">💸</div>
+          <div class="exec-usecase-title"><span data-translate="es">Dispersiones Bre-B</span><span data-translate="en">Bre-B Payouts</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Envía pagos a cuentas de ahorro o corrientes en cualquier banco colombiano.</span><span data-translate="en">Send payments to savings or checking accounts at any Colombian bank.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-title"><span data-translate="es">QR Interoperables</span><span data-translate="en">Interoperable QR</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Genera códigos QR estándar EMVCo para cobrar desde cualquier app bancaria colombiana.</span><span data-translate="en">Generate EMVCo standard QR codes to collect from any Colombian banking app.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🔑</div>
+          <div class="exec-usecase-title"><span data-translate="es">Llaves Referenciadas</span><span data-translate="en">Referenced Keys</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Alias como @FLX_TUNEGOCIO para que tus clientes te paguen sin memorizar cuentas bancarias.</span><span data-translate="en">Aliases like @FLX_YOURBUSINESS so your customers pay you without memorizing bank accounts.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🔔</div>
+          <div class="exec-usecase-title"><span data-translate="es">Webhooks</span><span data-translate="en">Webhooks</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Notificaciones automáticas cuando un pago se completa o falla. Misma lógica que México.</span><span data-translate="en">Automatic notifications when a payment completes or fails. Same logic as Mexico.</span></div>
+        </div>
+      </div>
+    </div>
       </section>
 
 
@@ -6609,6 +7283,53 @@ app.listen(<span class="c-number">3000</span>, () => {
             </table>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="send" stroke-width="1.75"></i> <span data-translate="es">Dispersión de Pagos en Colombia</span><span data-translate="en">Payouts in Colombia</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Envía pagos a cuentas de ahorro o corrientes en cualquier entidad financiera colombiana a través del sistema Bre-B. Liquidación casi inmediata con confirmación automática.</span><span data-translate="en">Send payments to savings or checking accounts at any Colombian financial institution through the Bre-B system. Near-instant settlement with automatic confirmation.</span>
+      </p>
+
+      <div class="exec-kpi-row">
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number"><span data-translate="es">Instantáneo</span><span data-translate="en">Instant</span></div>
+          <div class="exec-kpi-label"><span data-translate="es">Liquidación</span><span data-translate="en">Settlement</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number">COP</div>
+          <div class="exec-kpi-label"><span data-translate="es">Moneda</span><span data-translate="en">Currency</span></div>
+        </div>
+        <div class="exec-kpi-card">
+          <div class="exec-kpi-number"><span data-translate="es">Todos</span><span data-translate="en">All</span></div>
+          <div class="exec-kpi-label"><span data-translate="es">Bancos Colombianos</span><span data-translate="en">Colombian Banks</span></div>
+        </div>
+      </div>
+
+      <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Casos de Uso</span><span data-translate="en">Use Cases</span></h3>
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🏦</div>
+          <div class="exec-usecase-title"><span data-translate="es">Desembolsos</span><span data-translate="en">Disbursements</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Desembolsa préstamos aprobados directamente a cuentas colombianas en tiempo real.</span><span data-translate="en">Disburse approved loans directly to Colombian accounts in real time.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">👥</div>
+          <div class="exec-usecase-title"><span data-translate="es">Nómina Colombia</span><span data-translate="en">Colombia Payroll</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Paga a empleados y contratistas en Colombia con la misma integración que usas para México.</span><span data-translate="en">Pay employees and contractors in Colombia with the same integration you use for Mexico.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🏭</div>
+          <div class="exec-usecase-title"><span data-translate="es">Proveedores</span><span data-translate="en">Suppliers</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Paga a proveedores colombianos con liquidación inmediata vía Bre-B.</span><span data-translate="en">Pay Colombian suppliers with immediate settlement via Bre-B.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">↩️</div>
+          <div class="exec-usecase-title"><span data-translate="es">Reembolsos</span><span data-translate="en">Refunds</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Devuelve dinero a clientes colombianos al instante.</span><span data-translate="en">Return money to Colombian customers instantly.</span></div>
+        </div>
+      </div>
+    </div>
       </section>
 
       <!-- COLOMBIA COLLECTIONS -->
@@ -6957,6 +7678,37 @@ app.listen(<span class="c-number">3000</span>, () => {
             </table>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="wallet" stroke-width="1.75"></i> <span data-translate="es">Cobros en Colombia</span><span data-translate="en">Collections in Colombia</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">Recibe pagos de clientes colombianos a través de dos mecanismos modernos y sin fricción: Llaves Referenciadas (alias como @FLX_TUNEGOCIO) y Códigos QR interoperables con estándar EMVCo.</span><span data-translate="en">Receive payments from Colombian customers through two modern, frictionless mechanisms: Referenced Keys (aliases like @FLX_YOURBUSINESS) and interoperable QR Codes with EMVCo standard.</span>
+      </p>
+
+      <div class="exec-usecase-grid">
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🔑</div>
+          <div class="exec-usecase-title"><span data-translate="es">Llaves Referenciadas</span><span data-translate="en">Referenced Keys</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Un alias fácil de recordar (ejemplo: @FLX_EMPRESA123) que tus clientes escriben en su app bancaria para transferirte. Sin CLABE, sin errores.</span><span data-translate="en">An easy-to-remember alias (e.g.: @FLX_COMPANY123) that your customers type in their banking app to transfer to you. No CLABE, no errors.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">📱</div>
+          <div class="exec-usecase-title"><span data-translate="es">QR Estáticos</span><span data-translate="en">Static QR</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Un código QR fijo para tu negocio. El cliente lo escanea, ingresa el monto y paga. Ideal para puntos de venta físicos.</span><span data-translate="en">A fixed QR code for your business. The customer scans it, enters the amount, and pays. Ideal for physical points of sale.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">⚡</div>
+          <div class="exec-usecase-title"><span data-translate="es">QR Dinámicos</span><span data-translate="en">Dynamic QR</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Un QR único por transacción con monto y referencia pre-cargados. Perfecto para e-commerce y facturación.</span><span data-translate="en">A unique QR per transaction with pre-loaded amount and reference. Perfect for e-commerce and invoicing.</span></div>
+        </div>
+        <div class="exec-usecase-card">
+          <div class="exec-usecase-icon">🔔</div>
+          <div class="exec-usecase-title"><span data-translate="es">Notificación Automática</span><span data-translate="en">Automatic Notification</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Cuando tu cliente paga, fluX te notifica al instante con todos los detalles para reconciliación automática.</span><span data-translate="en">When your customer pays, fluX notifies you instantly with all details for automatic reconciliation.</span></div>
+        </div>
+      </div>
+    </div>
       </section>
 
       <!-- END REPLACEMENT -->
@@ -7293,6 +8045,27 @@ app.listen(3000, () =&gt; {
             </table>
           </div>
         </div>
+      
+
+    <div class="exec-content">
+      <h3 class="exec-section-title"><i data-lucide="bell" stroke-width="1.75"></i> <span data-translate="es">Notificaciones Colombia</span><span data-translate="en">Colombia Notifications</span></h3>
+      <p class="exec-paragraph">
+        <span data-translate="es">El mismo sistema de notificaciones instantáneas de México, adaptado a los eventos de Bre-B en Colombia. Tu sistema se mantiene sincronizado con cada operación sin consultar manualmente.</span><span data-translate="en">The same instant notification system from Mexico, adapted to Bre-B events in Colombia. Your system stays synchronized with every operation without manual checking.</span>
+      </p>
+
+      <ul class="exec-benefit-list">
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Notificación instantánea cuando un pago Bre-B se completa o falla.</span><span data-translate="en">Instant notification when a Bre-B payment completes or fails.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Alertas cuando un cliente paga vía QR o Llave Referenciada.</span><span data-translate="en">Alerts when a customer pays via QR or Referenced Key.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Reintentos automáticos con firma de seguridad.</span><span data-translate="en">Automatic retries with security signature.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Mismo formato y estructura que México — un solo código para ambos países.</span><span data-translate="en">Same format and structure as Mexico — one codebase for both countries.</span></li>
+      </ul>
+
+      <div class="exec-cta-box">
+        <h3><span data-translate="es">¿Necesitas operar en ambos países?</span><span data-translate="en">Need to operate in both countries?</span></h3>
+        <p><span data-translate="es">Con una sola integración accedes a SPEI (México) y Bre-B (Colombia). Mismo código, misma lógica, dos mercados.</span><span data-translate="en">With a single integration you access SPEI (Mexico) and Bre-B (Colombia). Same code, same logic, two markets.</span></p>
+        <a href="mailto:integrations@praxisglobe.com" class="exec-cta-btn"><span data-translate="es">Hablar con Ventas</span><span data-translate="en">Talk to Sales</span></a>
+      </div>
+    </div>
       </section>
 
     </div>
