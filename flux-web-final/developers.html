@@ -4867,7 +4867,11 @@ System.out.println(res.getBody());</pre>
                 </p>
               </div>
             </div>
-            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+            
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
           </div>
         </div>
 
@@ -4910,7 +4914,7 @@ System.out.println(res.getBody());</pre>
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Field</th>
@@ -5026,7 +5030,7 @@ System.out.println(res.getBody());</pre>
         <div class="section-block">
           <h2 class="section-block-title">Transfer Lifecycle</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Status</th>
@@ -5060,12 +5064,12 @@ System.out.println(res.getBody());</pre>
         </div>
 
         <div class="section-block">
-          <h2 class="section-block-title">Idempotency & Errors</h2>
+          <h2 class="section-block-title"><i data-lucide="shuffle" stroke-width="1.75"></i> Idempotency & Errors</h2>
           <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
             Always include a unique <code>Idempotency-Key</code> (UUID v5) for every payout request. If a network failure occurs and you retry with the same key and body within 24 hours, you'll receive the original 200 OK response from cache.
           </p>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Code</th>
@@ -5193,7 +5197,11 @@ System.out.println(res.getBody());</pre>
                 </p>
               </div>
             </div>
-            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+            
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
           </div>
         </div>
 
@@ -5236,7 +5244,7 @@ System.out.println(res.getBody());</pre>
           
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Field</th>
@@ -5350,9 +5358,9 @@ System.out.println(res.getBody());</pre>
         </div>
 
         <div class="section-block">
-          <h2 class="section-block-title">Transaction Status Lifecycle</h2>
+          <h2 class="section-block-title"><i data-lucide="refresh-cw" stroke-width="1.75" class="animate-spin-slow"></i> Transaction Status Lifecycle</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Status</th>
@@ -5386,12 +5394,12 @@ System.out.println(res.getBody());</pre>
         </div>
 
         <div class="section-block">
-          <h2 class="section-block-title">Idempotency & Errors</h2>
+          <h2 class="section-block-title"><i data-lucide="shuffle" stroke-width="1.75"></i> Idempotency & Errors</h2>
           <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
             Include a <code>Idempotency-Key</code> (UUID v5) header with every request. If you retry the same request with the same key and body within 24 hours, FluX will return the cached result instead of creating a duplicate.
           </p>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Code</th>
@@ -5490,9 +5498,11 @@ System.out.println(res.getBody());</pre>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the ready-to-use Postman collection with all Penny Validation endpoints, test scripts, and example responses.</p>
           </div>
         </div>
-        <a href="#" class="postman-btn">
-          <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i> Descargar Colección
-        </a>
+        
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
       </div>
     </div>
 
@@ -6244,9 +6254,11 @@ System.out.println(res.getBody());</pre>
             <p style="font-size: 0.8rem; color: var(--flux-gray-300); margin: 0;">Download the Postman collection with webhook event simulations for testing your handler.</p>
           </div>
         </div>
-        <a href="#" class="postman-btn">
-          <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i> Descargar Colección
-        </a>
+        
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
       </div>
     </div>
 
@@ -7066,7 +7078,7 @@ app.listen(<span class="c-number">3000</span>, () => {
         <div class="section-block">
           <h2 class="section-block-title">Colombia Conventions</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Convention</th>
@@ -7187,7 +7199,11 @@ app.listen(<span class="c-number">3000</span>, () => {
                 </p>
               </div>
             </div>
-            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+            
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
           </div>
         </div>
 
@@ -7225,7 +7241,7 @@ app.listen(<span class="c-number">3000</span>, () => {
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Field</th>
@@ -7328,9 +7344,9 @@ app.listen(<span class="c-number">3000</span>, () => {
         </div>
 
         <div class="section-block">
-          <h2 class="section-block-title">Transaction Status Lifecycle</h2>
+          <h2 class="section-block-title"><i data-lucide="refresh-cw" stroke-width="1.75" class="animate-spin-slow"></i> Transaction Status Lifecycle</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Status</th>
@@ -7365,7 +7381,7 @@ app.listen(<span class="c-number">3000</span>, () => {
         <div class="section-block">
           <h2 class="section-block-title">Possible Errors</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Code</th>
@@ -7478,7 +7494,7 @@ app.listen(<span class="c-number">3000</span>, () => {
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr><th>Field</th><th>Type</th><th>Description</th></tr>
               </thead>
@@ -7566,7 +7582,11 @@ app.listen(<span class="c-number">3000</span>, () => {
                   </p>
                 </div>
               </div>
-              <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+              
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
             </div>
           </div>
 
@@ -7592,7 +7612,7 @@ app.listen(<span class="c-number">3000</span>, () => {
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr><th>Field</th><th>Type</th><th>Description</th></tr>
               </thead>
@@ -7664,7 +7684,7 @@ app.listen(<span class="c-number">3000</span>, () => {
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr><th>Field</th><th>Type</th><th>Description</th></tr>
               </thead>
@@ -7760,7 +7780,7 @@ app.listen(<span class="c-number">3000</span>, () => {
         <div class="section-block">
           <h2 class="section-block-title">Possible Errors</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Code</th>
@@ -7844,7 +7864,11 @@ app.listen(<span class="c-number">3000</span>, () => {
                 </p>
               </div>
             </div>
-            <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">Download .json</button>
+            
+            <a href="#" class="postman-btn">
+              <i data-lucide="download" stroke-width="1.75" style="width: 14px; height: 14px;"></i>
+              <span data-translate="es">Descargar Colección</span><span data-translate="en">Download Collection</span>
+            </a>
           </div>
         </div>
 
@@ -7885,7 +7909,7 @@ app.listen(<span class="c-number">3000</span>, () => {
         <div class="section-block">
           <h2 class="section-block-title">Available Events</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Event</th>
@@ -7912,7 +7936,7 @@ app.listen(<span class="c-number">3000</span>, () => {
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr><th>Field</th><th>Type</th><th>Description</th></tr>
               </thead>
@@ -7936,7 +7960,7 @@ app.listen(<span class="c-number">3000</span>, () => {
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Request Parameters</h3>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr><th>Field</th><th>Type</th><th>Description</th></tr>
               </thead>
@@ -8077,7 +8101,7 @@ app.listen(3000, () =&gt; {
             If your endpoint doesn't return a 2xx status, FluX retries up to 2 more times at 5-second intervals.
           </p>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Attempt</th>
@@ -8127,7 +8151,7 @@ app.listen(3000, () =&gt; {
         <div class="section-block">
           <h2 class="section-block-title">Possible Errors</h2>
           <div class="table-container">
-            <table>
+            <table class="convention-table" style="width: 100%; border-collapse: collapse;">
               <thead>
                 <tr>
                   <th>Code</th>
