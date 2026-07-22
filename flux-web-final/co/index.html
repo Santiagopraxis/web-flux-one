@@ -549,69 +549,75 @@
           </div>
         </div>
 
-        <!-- Right Column: Smartphone Mockup (3D Glass & Official Wallets) -->
+        <!-- Right Column: Interactive Payment Checkout Panel (Non-Phone Display) -->
         <div class="payment-methods-right sr fade-in d2">
-          <div class="phone-mockup-wrapper">
-            <div class="phone-mockup-frame">
-              <div class="phone-top-notch"></div>
-              
-              <!-- Screen Header (Clean top-left icon) -->
-              <div class="phone-screen-header">
-                <div class="phone-app-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                    <polyline points="2 17 12 22 22 17"/>
-                    <polyline points="2 12 12 17 22 12"/>
-                  </svg>
-                </div>
+          <div class="checkout-showcase-card">
+            <!-- Header Badge -->
+            <div class="checkout-header-row">
+              <div class="checkout-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>CHECKOUT SEGURO T+0</span>
               </div>
-
-              <!-- Progress Steps -->
-              <div class="phone-progress-steps">
-                <span class="step-item"><i class="step-check">✓</i> Cuenta</span>
-                <span class="phone-step-line"></span>
-                <span class="step-item"><i class="step-check">✓</i> Entrega</span>
-                <span class="phone-step-line"></span>
-                <span class="step-item"><i class="step-check">✓</i> Pago</span>
-              </div>
-
-              <!-- Card Badges -->
-              <div class="phone-card-pills">
-                <img src="../assets/images/payments/visa.png" alt="Visa" class="phone-card-badge-img" decoding="async">
-                <img src="../assets/images/payments/mastercard.png" alt="Mastercard" class="phone-card-badge-img" decoding="async">
-              </div>
-
-              <!-- Input Skeletons -->
-              <div class="phone-input-blank"></div>
-              <div class="phone-inputs-row">
-                <div class="phone-input-blank"></div>
-                <div class="phone-input-blank"></div>
-              </div>
-
-              <!-- Action Button -->
-              <button class="phone-submit-btn">Pagar</button>
-
-              <!-- Label -->
-              <div class="phone-other-label">Otros medios de pago</div>
             </div>
 
-            <!-- Floating Official Wallets -->
-            <div class="floating-wallets-row">
-              <div class="wallet-badge-item">
+            <!-- Steps -->
+            <div class="checkout-steps-row">
+              <div class="checkout-step-item active">
+                <span class="step-icon">✓</span>
+                <span>Cuenta</span>
+              </div>
+              <div class="checkout-step-divider active"></div>
+              <div class="checkout-step-item active">
+                <span class="step-icon">✓</span>
+                <span>Entrega</span>
+              </div>
+              <div class="checkout-step-divider active"></div>
+              <div class="checkout-step-item active">
+                <span class="step-icon">✓</span>
+                <span>Pago</span>
+              </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="checkout-cards-row">
+              <img src="../assets/images/payments/visa.png" alt="Visa" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/mastercard.png" alt="Mastercard" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/amex.png" alt="Amex" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/diners.png" alt="Diners" class="checkout-card-img" decoding="async">
+            </div>
+
+            <!-- Input Placeholders -->
+            <div class="checkout-input-skeleton"></div>
+            <div class="checkout-inputs-flex">
+              <div class="checkout-input-skeleton"></div>
+              <div class="checkout-input-skeleton"></div>
+            </div>
+
+            <!-- Pay Button -->
+            <button class="checkout-pay-btn">Pagar con fluX One →</button>
+
+            <!-- Subtitle Label -->
+            <div class="checkout-other-methods">Billeteras inteligentes y otros medios de pago</div>
+
+            <!-- Official Wallets Grid -->
+            <div class="official-wallets-grid">
+              <div class="official-wallet-card">
                 <img src="../assets/images/payments/apple-pay.webp" alt="Apple Pay" decoding="async">
               </div>
-              <div class="wallet-badge-item">
+              <div class="official-wallet-card">
                 <img src="../assets/images/payments/google-pay.webp" alt="Google Pay" decoding="async">
               </div>
-              <div class="wallet-badge-item">
+              <div class="official-wallet-card">
                 <img src="../assets/images/payments/samsung-pay.png" alt="Samsung Pay" decoding="async">
               </div>
             </div>
+          </div>
 
-            <!-- Bottom Security Pill -->
-            <div class="security-pill-badge">
-              Innovación y seguridad en <strong>opciones de medios de pago</strong>
-            </div>
+          <!-- Bottom Pill Badge -->
+          <div class="security-pill-badge">
+            Innovación y seguridad en <strong>opciones de medios de pago</strong>
           </div>
         </div>
       </div>
