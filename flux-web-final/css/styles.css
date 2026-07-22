@@ -2325,6 +2325,20 @@ section {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
+  /* Reset bleed-right on tablet/mobile */
+  .showcase-dashboard-col {
+    position: relative !important;
+    top: auto !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .showcase-browser-frame {
+    border-radius: 20px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  }
 }
 
 /* Columna Izquierda: Tabs en Acordeón */
@@ -5708,12 +5722,7 @@ html.preloader-skip body.preloader-active {
   }
 }
 
-.showcase-dashboard-col {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* .showcase-dashboard-col bleed-right is defined in the main block above — do NOT override margin-right or width here */
 
 /* ── Showcase: full bleed-right on desktop ── */
 .showcase-browser-frame,
@@ -5735,8 +5744,7 @@ html.preloader-skip body.preloader-active {
 }
 
 .showcase-browser-frame:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 55px rgba(60, 184, 235, 0.12) !important;
+  box-shadow: -24px 20px 100px rgba(60, 184, 235, 0.2) !important;
 }
 
 .browser-content {
@@ -5744,10 +5752,11 @@ html.preloader-skip body.preloader-active {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
+  aspect-ratio: 16 / 9 !important;
   padding: 0 !important;
   margin: 0 !important;
   overflow: hidden !important;
-  border-radius: 24px !important;
+  border-radius: 0 !important;
   line-height: 0 !important;
   font-size: 0 !important;
 }
@@ -5780,14 +5789,16 @@ html.preloader-skip body.preloader-active {
 
 .showcase-video {
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
   max-height: none !important;
   object-fit: cover !important;
-  border-radius: 24px !important;
+  border-radius: 0 !important;
   display: block !important;
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
+  position: absolute !important;
+  inset: 0 !important;
 }
 
 @media (max-width: 992px) {
@@ -5797,12 +5808,7 @@ html.preloader-skip body.preloader-active {
   }
 }
 
-.showcase-dashboard-col {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* second duplicate showcase-dashboard-col — DO NOT re-add this block, bleed-right is set in main block */
 
 /* duplicate light-mode block — removed, bleed-right is defined above */
 
