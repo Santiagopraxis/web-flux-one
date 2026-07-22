@@ -1183,7 +1183,7 @@ input:focus, select:focus {
 /* ── IMPACT STATS SECTION ─────────────────────────────────────── */
 .impact-stats-section {
   position: relative;
-  padding: 20px 0 100px;
+  padding: 80px 0 100px;
   overflow: hidden;
 }
 
@@ -4761,7 +4761,7 @@ html.preloader-skip body.preloader-active {
 /* ── IMPACT STATS SECTION ── */
 .impact-stats-section {
   position: relative;
-  padding: 20px 0 100px;
+  padding: 80px 0 100px;
   overflow: hidden;
   background: #FFFFFF !important;
   border-top: none;
