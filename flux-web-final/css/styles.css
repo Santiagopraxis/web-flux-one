@@ -4839,100 +4839,123 @@ html.preloader-skip body.preloader-active {
 }
 
 
-/* ── ECOSISTEMA PARTE 2: SPEED MARKET WITH INTEGRATED 3D WAVES & SCROLL ANIMATION ── */
+/* ── ELEGANT SPEED MARKET & 3D WAVES LAYOUT ── */
 .speed-market-container {
+  padding: 80px 0 100px;
   position: relative;
-  margin-top: 40px;
-  padding: 60px 0 100px;
+}
+
+.speed-market-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 900px) {
+  .speed-market-top-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.speed-market-title {
+  font-size: clamp(32px, 3.5vw, 46px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #0F172A;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.speed-market-subtitle {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+
+.speed-waves-visual-card {
+  width: 100%;
+  height: 280px;
+  border-radius: 28px;
   overflow: hidden;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 15px 45px rgba(60, 184, 235, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.speed-market-bg-waves {
-  position: absolute;
-  top: -15%;
-  right: -8%;
-  width: 65%;
-  height: 130%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.35;
-  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease;
-  transform: translateY(50px) scale(0.92);
-}
-
-.speed-market-container.active-scroll .speed-market-bg-waves {
-  opacity: 0.85;
-  transform: translateY(0) scale(1.05);
+.speed-waves-visual-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(60, 184, 235, 0.15);
 }
 
 .speed-waves-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: right center;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1s ease;
 }
 
-/* Scroll Transition Line between Part 1 and Part 2 */
-.ecosystem-scroll-trigger {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
-  position: relative;
-  z-index: 2;
+.speed-waves-visual-card:hover .speed-waves-img {
+  transform: scale(1.05);
 }
 
-.scroll-transition-line {
-  width: 2px;
-  height: 60px;
-  background: linear-gradient(180deg, rgba(60, 184, 235, 0.3), rgba(0, 184, 148, 0.3));
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
+.speed-stats-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
 
-.scroll-line-pulse {
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #00B894, transparent);
-  animation: scrollLineDrop 2s infinite ease-in-out;
+@media (max-width: 900px) {
+  .speed-stats-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@keyframes scrollLineDrop {
-  0% { top: -100%; }
-  100% { top: 100%; }
+@media (max-width: 500px) {
+  .speed-stats-bar-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-/* Scroll-driven animations */
-.sr-speed-item {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+.speed-stat-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.speed-market-container.active-scroll .sr-speed-item {
-  opacity: 1;
-  transform: translateX(0);
+.speed-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(60, 184, 235, 0.12);
+  border-color: rgba(60, 184, 235, 0.4);
 }
 
-.sr-speed-card {
-  opacity: 0;
-  transform: translateY(40px) scale(0.94);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+.stat-number-val {
+  font-size: clamp(36px, 3.8vw, 50px);
+  font-weight: 300;
+  color: #0F172A;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.speed-market-container.active-scroll .sr-speed-card {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+.stat-caption-text {
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
 }
-
-.sr-speed-card.delay-1 { transition-delay: 0.1s; }
-.sr-speed-card.delay-2 { transition-delay: 0.25s; }
-.sr-speed-card.delay-3 { transition-delay: 0.4s; }
-.sr-speed-card.delay-4 { transition-delay: 0.55s; }
 
 @media (max-width: 600px) {
   .stats-grid-2x2 {

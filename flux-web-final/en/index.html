@@ -475,6 +475,7 @@
   <!-- SECCIÓN 3: UNA API, TODO EL ECOSISTEMA -->
   <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
   <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
   <section id="ecosistema" class="ecosystem-hub-section" style="background: #ffffff; position: relative; overflow: hidden;">
     <!-- PARTE 1: UNA SOLA CONEXIÓN -->
     <div class="container hub-layout">
@@ -489,46 +490,38 @@
         <iframe src="eco-anim.html?v=1781197621734" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;"></iframe>
       </div>
     </div>
-  
-    <!-- LINEA INDICADORA DE TRANSICIÓN AL HACE SCROLL -->
-    <div class="ecosystem-scroll-trigger">
-      <div class="scroll-transition-line">
-        <span class="scroll-line-pulse"></span>
-      </div>
-    </div>
 
-    <!-- PARTE 2: EL MERCADO NECESITA VELOCIDAD (CON IMAGEN 3D WAVES Y ANIMACIÓN AL SCROLLEAR) -->
+    <!-- PARTE 2: EL MERCADO NECESITA VELOCIDAD -->
     <div class="container speed-market-container" id="speed-market-section">
-      <!-- Imagen 3D Waves integrada como fondo decorativo lateral de esta sección -->
-      <div class="speed-market-bg-waves">
-        <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="fluX 3D Waves" class="speed-waves-img" decoding="async">
-      </div>
-
-      <div class="grid-2 speed-market-content" style="align-items: center; gap: 60px; position: relative; z-index: 2;">
-        <!-- Izquierda: Textos de Impacto -->
-        <div class="sr-speed-item" style="text-align: left;">
+      <!-- Fila Superior: Texto a la Izquierda, Tarjeta 3D Waves a la Derecha -->
+      <div class="speed-market-top-grid sr fade-in">
+        <div class="speed-text-col">
           <h2 class="speed-market-title">El mercado necesita velocidad, el tiempo es el nuevo interés</h2>
-          <p class="speed-market-subtitle">Con fluX, el dinero llega y está disponible al instante, sin esperas, sin horarios, sin límites, solo fluir</p>
+          <p class="speed-market-subtitle">Con fluX, el dinero llega y está disponible al instante, sin esperas, sin horarios, sin límites, solo fluir.</p>
         </div>
 
-        <!-- Derecha: Números en cuadrícula 2x2 -->
-        <div class="stats-grid-2x2">
-          <div class="speed-stat-card sr-speed-card delay-1">
-            <h3 class="stat-number-val">T+0</h3>
-            <p class="stat-caption-text">Liquidación instantánea,<br>el dinero llega, el dinero está disponible</p>
-          </div>
-          <div class="speed-stat-card sr-speed-card delay-2">
-            <h3 class="stat-number-val">24/7</h3>
-            <p class="stat-caption-text">Sin horarios bancarios,<br>sin esperar al día siguiente</p>
-          </div>
-          <div class="speed-stat-card sr-speed-card delay-3">
-            <h3 class="stat-number-val">3.8B</h3>
-            <p class="stat-caption-text">TX anuales en PSE / <span class="nobreak">Bre-B</span></p>
-          </div>
-          <div class="speed-stat-card sr-speed-card delay-4">
-            <h3 class="stat-number-val">80%</h3>
-            <p class="stat-caption-text">del valor B2B en CO</p>
-          </div>
+        <div class="speed-waves-visual-card sr blur-reveal">
+          <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="fluX 3D Waves" class="speed-waves-img" decoding="async">
+        </div>
+      </div>
+
+      <!-- Fila Inferior: Cuadrícula Horizontal de 4 Métricas -->
+      <div class="speed-stats-bar-grid">
+        <div class="speed-stat-card sr blur-reveal delay-1">
+          <h3 class="stat-number-val">T+0</h3>
+          <p class="stat-caption-text">Liquidación instantánea, el dinero llega y está disponible</p>
+        </div>
+        <div class="speed-stat-card sr blur-reveal delay-2">
+          <h3 class="stat-number-val">24/7</h3>
+          <p class="stat-caption-text">Sin horarios bancarios, sin esperar al día siguiente</p>
+        </div>
+        <div class="speed-stat-card sr blur-reveal delay-3">
+          <h3 class="stat-number-val">3.8B</h3>
+          <p class="stat-caption-text">TX anuales en PSE / <span class="nobreak">Bre-B</span></p>
+        </div>
+        <div class="speed-stat-card sr blur-reveal delay-4">
+          <h3 class="stat-number-val">80%</h3>
+          <p class="stat-caption-text">del valor B2B en CO</p>
         </div>
       </div>
     </div>
