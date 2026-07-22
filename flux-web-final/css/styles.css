@@ -842,6 +842,10 @@ p {
   max-width: 650px;
 }
 
+.hero-graphic-col {
+  margin-top: -60px;
+}
+
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -849,6 +853,9 @@ p {
   }
   .hero-text-col {
     max-width: 100%;
+  }
+  .hero-graphic-col {
+    margin-top: 0;
   }
 }
 
@@ -2536,10 +2543,11 @@ section {
 
 .showcase-video {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 20px;
   display: block;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .browser-content {
@@ -5786,7 +5794,7 @@ html.preloader-skip body.preloader-active {
   inset: auto !important;
 }
 
-.showcase-video {
+.dashboard-showcase-section .showcase-video {
   width: 100% !important;
   height: 100% !important;
   max-height: none !important;
@@ -5850,7 +5858,7 @@ html.preloader-skip body.preloader-active {
   inset: auto !important;
 }
 
-.showcase-video {
+.dashboard-showcase-section .showcase-video {
   width: 100% !important;
   height: auto !important;
   max-height: none !important;
