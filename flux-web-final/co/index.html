@@ -549,31 +549,56 @@
           </div>
         </div>
 
-        <!-- Right Column: Smartphone Mockup & Wallets -->
+        <!-- Right Column: Smartphone Mockup (No fluX Logo, Refined UI) & Wallets -->
         <div class="payment-methods-right sr fade-in d2">
           <div class="phone-mockup-wrapper">
             <div class="phone-mockup-frame">
               <div class="phone-top-notch"></div>
-              <div class="phone-brand-header">
-                <img src="../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" decoding="async">
+              
+              <!-- Screen Header (Clean top-left icon) -->
+              <div class="phone-screen-header">
+                <div class="phone-app-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
+                  </svg>
+                </div>
               </div>
+
+              <!-- Progress Steps -->
               <div class="phone-progress-steps">
-                <span>✓ Cuenta</span>
+                <span class="step-item"><i class="step-check">✓</i> Cuenta</span>
                 <span class="phone-step-line"></span>
-                <span>✓ Entrega</span>
+                <span class="step-item"><i class="step-check">✓</i> Entrega</span>
                 <span class="phone-step-line"></span>
-                <span>✓ Pago</span>
+                <span class="step-item"><i class="step-check">✓</i> Pago</span>
               </div>
+
+              <!-- Card Badges -->
               <div class="phone-card-pills">
-                <span class="phone-card-pill visa-pill">VISA</span>
-                <span class="phone-card-pill mc-pill">MC</span>
+                <div class="phone-card-badge">
+                  <span style="font-weight:900; font-style:italic; color:#1A1F71; font-size:0.65rem;">VISA</span>
+                </div>
+                <div class="phone-card-badge">
+                  <span style="display:flex; align-items:center; gap:2px;">
+                    <span style="width:7px; height:7px; border-radius:50%; background:#EB001B; display:inline-block;"></span>
+                    <span style="width:7px; height:7px; border-radius:50%; background:#FF5F00; display:inline-block;"></span>
+                  </span>
+                </div>
               </div>
+
+              <!-- Input Skeletons -->
               <div class="phone-input-blank"></div>
               <div class="phone-inputs-row">
                 <div class="phone-input-blank"></div>
                 <div class="phone-input-blank"></div>
               </div>
+
+              <!-- Action Button -->
               <button class="phone-submit-btn">Pagar</button>
+
+              <!-- Label -->
               <div class="phone-other-label">Otros medios de pago</div>
             </div>
 

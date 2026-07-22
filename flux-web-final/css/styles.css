@@ -4357,7 +4357,7 @@ html.preloader-skip body.preloader-active {
   position: relative;
 }
 
-/* Smartphone Mockup */
+/* Smartphone Mockup Improved Styling */
 .phone-mockup-wrapper {
   position: relative;
   width: 100%;
@@ -4369,43 +4369,67 @@ html.preloader-skip body.preloader-active {
 
 .phone-mockup-frame {
   width: 100%;
-  max-width: 320px;
+  max-width: 310px;
   background: #FFFFFF;
-  border-radius: 36px;
-  border: 10px solid #1E293B;
-  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.15);
-  padding: 24px 20px 28px;
+  border-radius: 38px;
+  border: 9px solid #0F172A;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.2), 0 0 35px rgba(0, 184, 148, 0.08);
+  padding: 16px 18px 24px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.phone-mockup-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 35px 80px -15px rgba(15, 23, 42, 0.25), 0 0 45px rgba(0, 184, 148, 0.15);
 }
 
 .phone-top-notch {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #0F172A;
-  margin: 0 auto 16px;
+  background: #1E293B;
+  margin: 0 auto 14px;
 }
 
-.phone-brand-header {
+.phone-screen-header {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 16px;
 }
 
-.phone-brand-header img {
-  height: 20px;
-  width: auto;
+.phone-app-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 184, 148, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .phone-progress-steps {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: #00B894;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #00B894;
+}
+
+.step-check {
+  font-weight: 800;
+  font-style: normal;
 }
 
 .phone-step-line {
@@ -4413,40 +4437,39 @@ html.preloader-skip body.preloader-active {
   height: 2px;
   background: #00B894;
   margin: 0 6px;
-  opacity: 0.6;
+  opacity: 0.5;
+  border-radius: 2px;
 }
 
 .phone-card-pills {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 16px;
 }
 
-.phone-card-pill {
-  width: 36px;
-  height: 22px;
-  border-radius: 4px;
+.phone-card-badge {
+  padding: 3px 8px;
+  border-radius: 5px;
+  border: 1px solid #E2E8F0;
+  background: #F8FAFC;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.55rem;
-  font-weight: 800;
-  color: #fff;
+  height: 22px;
 }
-.phone-card-pill.visa-pill { background: #1A1F71; }
-.phone-card-pill.mc-pill { background: #EB001B; }
 
 .phone-input-blank {
-  height: 38px;
+  height: 36px;
   background: #F1F5F9;
+  border: 1px solid #E2E8F0;
   border-radius: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .phone-inputs-row {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 .phone-inputs-row .phone-input-blank {
   flex: 1;
@@ -4456,20 +4479,27 @@ html.preloader-skip body.preloader-active {
 .phone-submit-btn {
   width: 100%;
   height: 44px;
-  background: #00B894;
+  background: linear-gradient(135deg, #00B894 0%, #3CB8EB 100%);
   color: #FFFFFF;
   border: none;
   border-radius: 12px;
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0, 184, 148, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 184, 148, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.phone-submit-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 184, 148, 0.45);
 }
 
 .phone-other-label {
   font-size: 0.72rem;
+  font-weight: 500;
   color: #94A3B8;
-  margin-top: 14px;
+  margin-top: 16px;
   text-align: center;
 }
 
@@ -4500,6 +4530,19 @@ html.preloader-skip body.preloader-active {
 .wallet-badge-item img {
   height: 26px;
   width: auto;
+}
+
+/* Security Pill at Bottom */
+.security-pill-badge {
+  margin-top: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 100px;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  color: #334155;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
 /* Security Pill at Bottom */
