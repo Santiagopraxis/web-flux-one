@@ -4197,7 +4197,8 @@ body.preloader-active {
 }
 
 .preloader-logo {
-  width: 68px;
+  width: 120px;
+  max-width: 130px;
   height: auto;
   z-index: 10;
   animation: preloader-pulse 2s infinite ease-in-out;
