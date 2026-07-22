@@ -1185,6 +1185,8 @@ input:focus, select:focus {
   position: relative;
   padding: 80px 0 100px;
   overflow: hidden;
+  margin-top: -60px;
+  z-index: 20;
 }
 
 .impact-bg {
@@ -4763,6 +4765,8 @@ html.preloader-skip body.preloader-active {
   position: relative;
   padding: 80px 0 100px;
   overflow: hidden;
+  margin-top: -60px;
+  z-index: 20;
   background: #FFFFFF !important;
   border-top: none;
   border-bottom: none;
