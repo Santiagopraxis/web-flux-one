@@ -5200,3 +5200,45 @@ html.preloader-skip body.preloader-active {
   opacity: 0.9;
 }
 
+
+
+/* ── NEXA LLEGARÁ PRONTO (PURE WHITE BACKGROUND THEME) ── */
+#brand-transition {
+  position: relative;
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  padding: 100px 0 !important;
+  margin: 0;
+}
+
+#transition-bg {
+  background: #FFFFFF !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#growing-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #0F172A !important;
+}
+
+#growing-text h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2.4rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #0F172A !important;
+}
+
+#growing-text img {
+  height: clamp(80px, 12vw, 160px) !important;
+  width: auto !important;
+  margin-bottom: 24px !important;
+}
