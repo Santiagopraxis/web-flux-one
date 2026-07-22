@@ -4824,34 +4824,35 @@ html.preloader-skip body.preloader-active {
 }
 
 
-/* ── ECOSISTEMA PARTE 2: FULL-BLEED PANORAMIC 3D WAVES BACKGROUND ── */
+/* ── ECOSISTEMA PARTE 2: SUBTLE & SMALLER 3D WAVES BACKGROUND ── */
 .speed-market-section-wrapper {
   position: relative;
   width: 100%;
-  padding: 120px 0 140px;
+  padding: 100px 0 120px;
   overflow: hidden;
   background: #FFFFFF;
 }
 
 .speed-market-bg-overlay {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  right: -2%;
+  width: 52%;
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.9;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, transparent 100%);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.38;
+  -webkit-mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+  mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
   will-change: transform;
 }
 
 .speed-waves-bg-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: right center;
 }
 
 .speed-market-grid {
@@ -4861,6 +4862,98 @@ html.preloader-skip body.preloader-active {
   align-items: center;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 992px) {
+  .speed-market-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .speed-market-bg-overlay {
+    width: 90%;
+    opacity: 0.25;
+  }
+}
+
+.speed-text-glass-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 42px;
+  border-radius: 28px;
+  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.speed-text-glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 55px rgba(60, 184, 235, 0.1);
+}
+
+.speed-market-title {
+  font-size: clamp(30px, 3.3vw, 44px);
+  font-weight: 300;
+  line-height: 1.18;
+  color: #0F172A;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.speed-market-subtitle {
+  color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0;
+  text-align: left;
+}
+
+.stats-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 550px) {
+  .stats-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.speed-stat-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid #E2E8F0;
+  border-radius: 24px;
+  padding: 34px 24px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  perspective: 1000px;
+}
+
+.speed-stat-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 50px rgba(60, 184, 235, 0.16);
+  border-color: rgba(60, 184, 235, 0.45);
+}
+
+.stat-number-val {
+  font-size: clamp(38px, 4vw, 54px);
+  font-weight: 300;
+  color: #0F172A;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stat-caption-text {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.55;
+  margin: 0;
 }
 
 @media (max-width: 992px) {
@@ -5482,7 +5575,7 @@ html.preloader-skip body.preloader-active {
 }
 
 
-/* ── PERFECT-FIT SHOWCASE BROWSER FRAME & ZERO EMPTY GAP ── */
+/* ── PERFECT-FIT SHOWCASE BROWSER FRAME & LARGER PROMINENT DISPLAY ── */
 .dashboard-showcase-section {
   padding: 100px 0 120px !important;
   background: #FFFFFF !important;
@@ -5490,11 +5583,105 @@ html.preloader-skip body.preloader-active {
 
 .showcase-layout-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr !important;
-  gap: 40px !important;
+  grid-template-columns: 380px 1fr !important;
+  gap: 50px !important;
   align-items: center;
-  max-width: 1260px;
+  max-width: 1360px;
   margin: 0 auto;
+}
+
+@media (max-width: 1100px) {
+  .showcase-layout-grid {
+    grid-template-columns: 1fr 1.3fr !important;
+    gap: 36px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .showcase-layout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+.showcase-dashboard-col {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase-browser-frame,
+.showcase-display-window,
+.showcase-display-container {
+  width: 100% !important;
+  max-width: 880px !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  background: #000000 !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07), 0 3px 12px rgba(15, 23, 42, 0.03) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.showcase-browser-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(60, 184, 235, 0.12) !important;
+}
+
+.browser-content {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 24px !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+
+.dashboard-view {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.98);
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+
+.dashboard-view.active {
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+  pointer-events: all !important;
+  inset: auto !important;
+}
+
+.showcase-video {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  border-radius: 24px !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 @media (max-width: 992px) {
