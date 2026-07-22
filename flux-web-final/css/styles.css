@@ -6169,3 +6169,246 @@ html.preloader-skip body.preloader-active {
     letter-spacing: 0.08em !important;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCT PAGE BRAND COLOR SYSTEM — Los 4 Pilares
+   
+   COBRAR   (Recaudo / Cobranza) → Cian     #3CB8EB / #0284C7
+   PAGAR    (Dispersión)          → Rosa     #F5B5D2 / #DB63AA
+   CONCILIAR (Conciliación)       → Violeta  #AB4B96
+   DECIDIR  (BI)                  → Morado   #4E154F
+══════════════════════════════════════════════════════════════ */
+
+/* ── 1. COBRAR: Recaudo & Cobranza (Cian #3CB8EB) ── */
+.product-page-recaudo,
+.product-page-cobranza {
+  --product-color: #3CB8EB;
+  --product-color-dark: #0284C7;
+  --product-color-light: rgba(60, 184, 235, 0.12);
+  --product-color-border: rgba(60, 184, 235, 0.35);
+  --product-color-glow: rgba(60, 184, 235, 0.25);
+}
+
+/* ── 2. PAGAR: Dispersión (Rosa #F5B5D2) ── */
+.product-page-dispersion {
+  --product-color: #DB63AA;
+  --product-color-dark: #C23D8E;
+  --product-color-light: rgba(245, 181, 210, 0.15);
+  --product-color-border: rgba(245, 181, 210, 0.45);
+  --product-color-glow: rgba(245, 181, 210, 0.28);
+}
+
+/* ── 3. CONCILIAR: Conciliación (Violeta #AB4B96) ── */
+.product-page-conciliacion {
+  --product-color: #AB4B96;
+  --product-color-dark: #8B2F78;
+  --product-color-light: rgba(171, 75, 150, 0.12);
+  --product-color-border: rgba(171, 75, 150, 0.35);
+  --product-color-glow: rgba(171, 75, 150, 0.22);
+}
+
+/* ── 4. DECIDIR: BI (Morado Profundo #4E154F) ── */
+.product-page-bi {
+  --product-color: #7B2D8B;
+  --product-color-dark: #4E154F;
+  --product-color-light: rgba(78, 21, 79, 0.1);
+  --product-color-border: rgba(78, 21, 79, 0.35);
+  --product-color-glow: rgba(78, 21, 79, 0.22);
+}
+
+/* ── UNIVERSAL PRODUCT COLOR APPLICATION ── */
+
+/* Hero section: stat numbers */
+.product-page-recaudo .stat-card h2,
+.product-page-cobranza .stat-card h2,
+.product-page-dispersion .stat-card h2,
+.product-page-conciliacion .stat-card h2,
+.product-page-bi .stat-card h2 {
+  background: none !important;
+  -webkit-text-fill-color: var(--product-color) !important;
+  color: var(--product-color) !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* Section eyebrow labels / uppercase tags */
+.product-page-recaudo span[style*="var(--flux-primary)"],
+.product-page-recaudo span[style*="var(--flux-secondary)"],
+.product-page-cobranza span[style*="var(--flux-primary)"],
+.product-page-cobranza span[style*="var(--flux-secondary)"],
+.product-page-dispersion span[style*="var(--flux-primary)"],
+.product-page-dispersion span[style*="var(--flux-secondary)"],
+.product-page-conciliacion span[style*="var(--flux-primary)"],
+.product-page-conciliacion span[style*="var(--flux-secondary)"],
+.product-page-bi span[style*="var(--flux-primary)"],
+.product-page-bi span[style*="var(--flux-secondary)"] {
+  color: var(--product-color) !important;
+}
+
+/* Card icon accent color */
+.product-page-recaudo .card-icon,
+.product-page-cobranza .card-icon,
+.product-page-dispersion .card-icon,
+.product-page-conciliacion .card-icon,
+.product-page-bi .card-icon {
+  background: var(--product-color-light) !important;
+  border-color: var(--product-color-border) !important;
+}
+
+/* Card hover border accent */
+.product-page-recaudo .card:hover,
+.product-page-cobranza .card:hover,
+.product-page-dispersion .card:hover,
+.product-page-conciliacion .card:hover,
+.product-page-bi .card:hover {
+  border-color: var(--product-color-border) !important;
+  box-shadow: 0 12px 35px var(--product-color-glow) !important;
+}
+
+/* Checkmarks and bullet points */
+.product-page-recaudo span[style*="color: var(--flux-primary)"],
+.product-page-recaudo span[style*="color: var(--flux-secondary)"],
+.product-page-cobranza span[style*="color: var(--flux-primary)"],
+.product-page-cobranza span[style*="color: var(--flux-secondary)"],
+.product-page-dispersion span[style*="color: var(--flux-primary)"],
+.product-page-dispersion span[style*="color: var(--flux-secondary)"],
+.product-page-conciliacion span[style*="color: var(--flux-primary)"],
+.product-page-conciliacion span[style*="color: var(--flux-secondary)"],
+.product-page-bi span[style*="color: var(--flux-primary)"],
+.product-page-bi span[style*="color: var(--flux-secondary)"] {
+  color: var(--product-color) !important;
+}
+
+/* Primary CTA Button: Solid product color */
+.product-page-recaudo .btn-primary,
+.product-page-cobranza .btn-primary,
+.product-page-dispersion .btn-primary,
+.product-page-conciliacion .btn-primary,
+.product-page-bi .btn-primary {
+  background: var(--product-color) !important;
+  border-color: var(--product-color) !important;
+  box-shadow: 0 8px 24px var(--product-color-glow) !important;
+  color: #ffffff !important;
+}
+
+.product-page-recaudo .btn-primary:hover,
+.product-page-cobranza .btn-primary:hover,
+.product-page-dispersion .btn-primary:hover,
+.product-page-conciliacion .btn-primary:hover,
+.product-page-bi .btn-primary:hover {
+  background: var(--product-color-dark) !important;
+  box-shadow: 0 12px 32px var(--product-color-glow) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Secondary CTA Button: Outline product color */
+.product-page-recaudo .btn-secondary,
+.product-page-cobranza .btn-secondary,
+.product-page-dispersion .btn-secondary,
+.product-page-conciliacion .btn-secondary,
+.product-page-bi .btn-secondary {
+  border-color: var(--product-color) !important;
+  color: var(--product-color) !important;
+}
+
+/* Badge pill: "PRODUCTO: RECAUDO" etc. */
+.product-page-recaudo .badge-new,
+.product-page-cobranza .badge-new,
+.product-page-dispersion .badge-new,
+.product-page-conciliacion .badge-new,
+.product-page-bi .badge-new {
+  background: var(--product-color-light) !important;
+  border-color: var(--product-color-border) !important;
+  color: var(--product-color) !important;
+}
+
+/* Text gradient in section titles → use product mono color */
+.product-page-recaudo .text-grad,
+.product-page-cobranza .text-grad,
+.product-page-dispersion .text-grad,
+.product-page-conciliacion .text-grad,
+.product-page-bi .text-grad {
+  background: linear-gradient(135deg, var(--product-color) 0%, var(--product-color-dark) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Checkout badge accent */
+.product-page-recaudo .checkout-badge,
+.product-page-cobranza .checkout-badge,
+.product-page-dispersion .checkout-badge,
+.product-page-conciliacion .checkout-badge,
+.product-page-bi .checkout-badge {
+  background: var(--product-color-light) !important;
+  border-color: var(--product-color-border) !important;
+  color: var(--product-color) !important;
+}
+
+/* Checkout pay button */
+.product-page-recaudo .checkout-pay-btn,
+.product-page-cobranza .checkout-pay-btn,
+.product-page-dispersion .checkout-pay-btn,
+.product-page-conciliacion .checkout-pay-btn,
+.product-page-bi .checkout-pay-btn {
+  background: var(--product-color) !important;
+  box-shadow: 0 8px 20px var(--product-color-glow) !important;
+}
+
+/* Payment methods title gradient */
+.product-page-recaudo .payment-methods-title .text-grad,
+.product-page-cobranza .payment-methods-title .text-grad,
+.product-page-dispersion .payment-methods-title .text-grad,
+.product-page-conciliacion .payment-methods-title .text-grad,
+.product-page-bi .payment-methods-title .text-grad {
+  background: linear-gradient(135deg, var(--product-color) 0%, var(--product-color-dark) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Nav active link underline accent */
+.product-page-recaudo .nav-link.active,
+.product-page-cobranza .nav-link.active,
+.product-page-dispersion .nav-link.active,
+.product-page-conciliacion .nav-link.active,
+.product-page-bi .nav-link.active {
+  color: var(--product-color) !important;
+}
+
+/* Inline strong accent spans in feature lists */
+.product-page-recaudo strong[style*="color: var(--cyan"],
+.product-page-cobranza strong[style*="color: var(--cyan"] {
+  color: #3CB8EB !important;
+}
+
+/* Step connector dots / process circles */
+.product-page-recaudo .checkout-step-item.active .step-icon,
+.product-page-cobranza .checkout-step-item.active .step-icon,
+.product-page-dispersion .checkout-step-item.active .step-icon,
+.product-page-conciliacion .checkout-step-item.active .step-icon,
+.product-page-bi .checkout-step-item.active .step-icon {
+  background: var(--product-color) !important;
+  box-shadow: 0 0 0 3px var(--product-color-light) !important;
+}
+
+.product-page-recaudo .checkout-step-divider.active,
+.product-page-cobranza .checkout-step-divider.active,
+.product-page-dispersion .checkout-step-divider.active,
+.product-page-conciliacion .checkout-step-divider.active,
+.product-page-bi .checkout-step-divider.active {
+  background: var(--product-color) !important;
+}
+
+/* Bottom CTA section accent */
+.product-page-recaudo [class*="cta"] .section-title .text-grad,
+.product-page-cobranza [class*="cta"] .section-title .text-grad,
+.product-page-dispersion [class*="cta"] .section-title .text-grad,
+.product-page-conciliacion [class*="cta"] .section-title .text-grad,
+.product-page-bi [class*="cta"] .section-title .text-grad {
+  background: linear-gradient(135deg, var(--product-color) 0%, var(--product-color-dark) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
