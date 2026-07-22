@@ -146,7 +146,7 @@ function resize() {
 
   ambient = Array.from({ length: AMBIENT_COUNT }, (_, i) => {
     const isWhite = i < AMBIENT_COUNT * 0.70;
-    const [cr, cg, cb] = isWhite ? [255, 255, 255] : brandColor(Math.random());
+    const [cr, cg, cb] = isWhite ? [100, 116, 139] : brandColor(Math.random());
     return {
       x: Math.random() * W, y: Math.random() * H,
       vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18,
@@ -320,7 +320,7 @@ function draw() {
     ctx.fillStyle = `rgba(60,184,235,${lerp(0, 0.09, ht2) * fade})`;
     ctx.fill();
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
-    ctx.fillStyle = `rgba(255,255,255,${lerp(0.04, 0, ht2) * fade})`;
+    ctx.fillStyle = `rgba(255,255,255,${lerp(0.95, 1, ht2) * fade})`;
     ctx.fill();
 
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
@@ -328,14 +328,14 @@ function draw() {
     ctx.lineWidth   = lerp(0.7, 1, ht2);
     ctx.stroke();
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
-    ctx.strokeStyle = `rgba(255,255,255,${lerp(0.13, 0, ht2) * fade})`;
+    ctx.strokeStyle = `rgba(15,23,42,${lerp(0.18, 0.4, ht2) * fade})`;
     ctx.lineWidth   = 0.7;
     ctx.stroke();
     ctx.shadowBlur  = 0;
 
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle    = `rgba(255,255,255,${lerp(0.6, 1, ht2) * fade})`;
+    ctx.fillStyle    = `rgba(15,23,42,${lerp(0.9, 1, ht2) * fade})`;
     ctx.fillText(n.label, nx, ny);
 
     if (ht2 > 0.05) {
@@ -361,12 +361,12 @@ function draw() {
   const circleR = xoW * 0.82;
   ctx.beginPath();
   ctx.arc(cx, cy, circleR, 0, Math.PI * 2);
-  ctx.fillStyle = '#050507';
+  ctx.fillStyle = '#0F172A';
   ctx.fill();
 
   ctx.beginPath();
   ctx.arc(cx, cy, circleR, 0, Math.PI * 2);
-  ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+  ctx.strokeStyle = 'rgba(60,184,235,0.4)';
   ctx.lineWidth   = 1;
   ctx.stroke();
 
