@@ -4564,3 +4564,177 @@ html.preloader-skip body.preloader-active {
     gap: 40px;
   }
 }
+
+
+/* ── HOME WHITE/LIGHT BACKGROUND THEME (AFTER KICKOFF VIDEO) ── */
+.impact-stats-section {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.impact-stats-section .stat-number {
+  background: linear-gradient(135deg, #00B894 0%, #3CB8EB 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.impact-stats-section .stat-label,
+.impact-stats-section .stat-caption {
+  color: #475569 !important;
+}
+
+.impact-stats-section .impact-card,
+.impact-stats-section .stat-box {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Dashboard Showcase Section */
+.dashboard-showcase-section {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-showcase-section .section-title {
+  color: #0F172A !important;
+}
+
+.dashboard-showcase-section .section-subtitle {
+  color: #475569 !important;
+}
+
+.showcase-tab {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #475569 !important;
+}
+
+.showcase-tab:hover {
+  background: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+}
+
+.showcase-tab.active {
+  background: #FFFFFF !important;
+  border-color: rgba(60, 184, 235, 0.4) !important;
+  box-shadow: 0 14px 40px rgba(60, 184, 235, 0.12) !important;
+}
+
+.showcase-tab-title {
+  color: #0F172A !important;
+}
+
+.showcase-tab.active .showcase-tab-title {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
+.showcase-tab-desc {
+  color: #64748B !important;
+}
+
+.showcase-tab.active .showcase-tab-desc {
+  color: #334155 !important;
+}
+
+.showcase-tab-icon {
+  background: #E2E8F0 !important;
+}
+
+.showcase-tab.active .showcase-tab-icon {
+  background: rgba(0, 184, 148, 0.12) !important;
+}
+
+.showcase-tab-icon img {
+  filter: none !important;
+  opacity: 0.85 !important;
+}
+
+.showcase-display-window {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.08) !important;
+}
+
+.showcase-window-header {
+  background: #F8FAFC !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+.window-dot {
+  background: #CBD5E1 !important;
+}
+
+.window-title-tab {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #475569 !important;
+}
+
+/* Ecosystem Hub Section */
+.ecosystem-hub-section {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ecosystem-hub-section .section-title {
+  color: #0F172A !important;
+}
+
+.ecosystem-hub-section .section-subtitle {
+  color: #475569 !important;
+}
+
+.hub-center {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 15px 40px rgba(60, 184, 235, 0.15) !important;
+}
+
+.hub-node {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #0F172A !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+}
+
+.hub-node-title {
+  color: #0F172A !important;
+}
+
+.hub-node-sub {
+  color: #64748B !important;
+}
+
+.n-line {
+  stroke: rgba(60, 184, 235, 0.3) !important;
+}
+
+.ecosystem-hub-section .stat-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03) !important;
+}
+
+.ecosystem-hub-section .stat-val {
+  color: #00B894 !important;
+}
+
+.ecosystem-hub-section .stat-lbl {
+  color: #475569 !important;
+}
+
+/* Brand Transition */
+#brand-transition {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+#growing-text {
+  color: #0F172A !important;
+}
