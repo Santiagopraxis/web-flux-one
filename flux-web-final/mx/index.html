@@ -478,7 +478,8 @@
   <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
   <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
   <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
-  <section id="ecosistema" class="ecosystem-hub-section" style="background: #ffffff; position: relative; overflow: hidden;">
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <section id="ecosistema" class="ecosystem-hub-section">
     <!-- PARTE 1: UNA SOLA CONEXIÓN -->
     <div class="container hub-layout">
       <!-- Izquierda: Textos -->
@@ -493,21 +494,31 @@
       </div>
     </div>
 
-    <!-- PARTE 2: EL MERCADO NECESITA VELOCIDAD (CON IMAGEN 3D WAVES COMO FONDO DIFUMINADO EGANTE) -->
+    <!-- CONECTOR DINÁMICO DE TRANSICIÓN DE SCROLL -->
+    <div class="ecosystem-scroll-connector sr fade-in">
+      <div class="connector-line">
+        <div class="connector-pulse"></div>
+      </div>
+      <div class="connector-badge">
+        <span class="connector-text">VELOCIDAD Y LIQUIDACIÓN INSTANTÁNEA</span>
+      </div>
+    </div>
+
+    <!-- PARTE 2: EL MERCADO NECESITA VELOCIDAD (VIDA Y PARALAJE AL ESCROLLEAR) -->
     <div class="container speed-market-container" id="speed-market-section">
-      <!-- Capa de Fondo Gráfica 3D Waves con Máscara Difuminada -->
+      <!-- Capa de Fondo Gráfica 3D Waves con Paralaje al Escrollear -->
       <div class="speed-market-bg-overlay">
-        <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="" class="speed-waves-bg-img" decoding="async">
+        <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="fluX 3D Waves" class="speed-waves-bg-img" decoding="async">
       </div>
 
       <div class="speed-market-grid">
-        <!-- Izquierda: Textos de Impacto -->
-        <div class="speed-text-col sr fade-in">
+        <!-- Izquierda: Tarjeta de Cristalismo con Texto 100% Legible -->
+        <div class="speed-text-glass-card sr fade-in">
           <h2 class="speed-market-title">El mercado necesita velocidad, el tiempo es el nuevo interés</h2>
           <p class="speed-market-subtitle">Con fluX, el dinero llega y está disponible al instante, sin esperas, sin horarios, sin límites, solo fluir.</p>
         </div>
 
-        <!-- Derecha: Cuadrícula 2x2 de 4 Métricas -->
+        <!-- Derecha: Cuadrícula 2x2 de 4 Métricas con Tilt 3D al Cursor -->
         <div class="stats-grid-2x2">
           <div class="speed-stat-card sr blur-reveal delay-1">
             <h3 class="stat-number-val">T+0</h3>
