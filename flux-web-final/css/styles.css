@@ -5482,19 +5482,100 @@ html.preloader-skip body.preloader-active {
 }
 
 
-/* ── ULTRA-SOFT SHADOW & SPACIOUS AIR DASHBOARD SHOWCASE ── */
+/* ── PERFECT-FIT SHOWCASE BROWSER FRAME & ZERO EMPTY GAP ── */
 .dashboard-showcase-section {
-  padding: 120px 0 140px !important;
+  padding: 100px 0 120px !important;
   background: #FFFFFF !important;
 }
 
 .showcase-layout-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr !important;
-  gap: 44px !important;
+  grid-template-columns: 1fr 1.3fr !important;
+  gap: 40px !important;
   align-items: center;
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .showcase-layout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+}
+
+.showcase-dashboard-col {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase-browser-frame,
+.showcase-display-window,
+.showcase-display-container {
+  width: 100% !important;
+  max-width: 720px !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  background: #000000 !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.03) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+
+.browser-content {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 22px !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+
+.dashboard-view {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.98);
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+
+.dashboard-view.active {
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
+  pointer-events: all !important;
+  inset: auto !important;
+}
+
+.showcase-video {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  border-radius: 22px !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 @media (max-width: 992px) {
