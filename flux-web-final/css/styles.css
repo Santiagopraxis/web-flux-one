@@ -4971,3 +4971,106 @@ html.preloader-skip body.preloader-active {
   line-height: 1.5;
   margin: 0;
 }
+
+
+/* ── ULTRA-CLEAR TAB CLICKABILITY AFFORDANCE ── */
+.tabs-click-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 184, 148, 0.1);
+  border: 1px solid rgba(0, 184, 148, 0.3);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #00B894;
+  margin-bottom: 16px;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.1);
+}
+
+.tabs-click-hint .pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00B894;
+  box-shadow: 0 0 0 rgba(0, 184, 148, 0.4);
+  animation: pulseGreen 1.8s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 184, 148, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0); }
+}
+
+.showcase-tab {
+  background: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 20px !important;
+  padding: 22px 24px !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04) !important;
+}
+
+.showcase-tab:hover {
+  background: #FFFFFF !important;
+  border-color: #00B894 !important;
+  transform: translateX(6px) !important;
+  box-shadow: 0 12px 30px rgba(0, 184, 148, 0.15) !important;
+}
+
+.showcase-tab.active {
+  background: #FFFFFF !important;
+  border-color: #00B894 !important;
+  border-width: 2px !important;
+  box-shadow: 0 16px 40px rgba(0, 184, 148, 0.18) !important;
+}
+
+.showcase-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.tab-action-badge {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #475569;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.showcase-tab:hover .tab-action-badge {
+  background: rgba(0, 184, 148, 0.12);
+  border-color: rgba(0, 184, 148, 0.4);
+  color: #00B894;
+  transform: scale(1.05);
+}
+
+.showcase-tab.active .tab-action-badge {
+  background: #00B894;
+  border-color: #00B894;
+  color: #FFFFFF;
+}
+
+.tab-arrow-svg {
+  transition: transform 0.3s ease;
+}
+
+.showcase-tab.active .tab-arrow-svg {
+  transform: rotate(180deg);
+}
