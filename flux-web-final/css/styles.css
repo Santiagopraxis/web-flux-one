@@ -5242,3 +5242,179 @@ html.preloader-skip body.preloader-active {
   width: auto !important;
   margin-bottom: 24px !important;
 }
+
+
+/* ── LOS 4 PILARES OFICIALES DE FLUX (COLOR BRAND SYSTEM) ──
+ * 1. COBRAR   (Recaudo)      ➔ Cian #3CB8EB
+ * 2. CONCILIAR (Conciliación) ➔ Violeta #AB4B96
+ * 3. PAGAR    (Dispersión)   ➔ Rosa #F5B5D2
+ * 4. DECIDIR  (Inteligencia) ➔ Morado Profundo #4E154F
+ */
+
+/* Tab 1: Dispersión (PAGAR - Rosa #F5B5D2) */
+.showcase-tab[data-target="dispersion"] {
+  border-color: #E2E8F0 !important;
+}
+
+.showcase-tab[data-target="dispersion"]:hover {
+  border-color: #F5B5D2 !important;
+  box-shadow: 0 8px 24px rgba(245, 181, 210, 0.25) !important;
+}
+
+.showcase-tab[data-target="dispersion"].active {
+  background: #FFFFFF !important;
+  border: 1.5px solid #F5B5D2 !important;
+  box-shadow: 0 10px 30px rgba(245, 181, 210, 0.3) !important;
+}
+
+.showcase-tab[data-target="dispersion"] .tab-action-badge {
+  color: #D946EF;
+}
+
+.showcase-tab[data-target="dispersion"].active .tab-action-badge {
+  background: rgba(245, 181, 210, 0.18);
+  border-color: #F5B5D2;
+  color: #D946EF;
+  font-weight: 600;
+}
+
+.showcase-tab[data-target="dispersion"] ul li::before {
+  content: "✓";
+  color: #D946EF;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.showcase-tab[data-target="dispersion"] .showcase-link {
+  color: #D946EF !important;
+}
+
+/* Tab 2: Recaudo (COBRAR - Cian #3CB8EB) */
+.showcase-tab[data-target="recaudo"] {
+  border-color: #E2E8F0 !important;
+}
+
+.showcase-tab[data-target="recaudo"]:hover {
+  border-color: #3CB8EB !important;
+  box-shadow: 0 8px 24px rgba(60, 184, 235, 0.2) !important;
+}
+
+.showcase-tab[data-target="recaudo"].active {
+  background: #FFFFFF !important;
+  border: 1.5px solid #3CB8EB !important;
+  box-shadow: 0 10px 30px rgba(60, 184, 235, 0.25) !important;
+}
+
+.showcase-tab[data-target="recaudo"] .tab-action-badge {
+  color: #0284C7;
+}
+
+.showcase-tab[data-target="recaudo"].active .tab-action-badge {
+  background: rgba(60, 184, 235, 0.12);
+  border-color: #3CB8EB;
+  color: #0284C7;
+  font-weight: 600;
+}
+
+.showcase-tab[data-target="recaudo"] ul li::before {
+  content: "✓";
+  color: #3CB8EB;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.showcase-tab[data-target="recaudo"] .showcase-link {
+  color: #0284C7 !important;
+}
+
+/* Tab 3: Conciliación (CONCILIAR - Violeta #AB4B96) */
+.showcase-tab[data-target="conciliacion"] {
+  border-color: #E2E8F0 !important;
+}
+
+.showcase-tab[data-target="conciliacion"]:hover {
+  border-color: #AB4B96 !important;
+  box-shadow: 0 8px 24px rgba(171, 75, 150, 0.2) !important;
+}
+
+.showcase-tab[data-target="conciliacion"].active {
+  background: #FFFFFF !important;
+  border: 1.5px solid #AB4B96 !important;
+  box-shadow: 0 10px 30px rgba(171, 75, 150, 0.25) !important;
+}
+
+.showcase-tab[data-target="conciliacion"] .tab-action-badge {
+  color: #AB4B96;
+}
+
+.showcase-tab[data-target="conciliacion"].active .tab-action-badge {
+  background: rgba(171, 75, 150, 0.12);
+  border-color: #AB4B96;
+  color: #AB4B96;
+  font-weight: 600;
+}
+
+.showcase-tab[data-target="conciliacion"] ul li::before {
+  content: "✓";
+  color: #AB4B96;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.showcase-tab[data-target="conciliacion"] .showcase-link {
+  color: #AB4B96 !important;
+}
+
+/* Tab 4: Inteligencia de Negocio / BI (DECIDIR - Morado Profundo #4E154F) */
+.showcase-tab[data-target="inteligencia"] {
+  border-color: #E2E8F0 !important;
+}
+
+.showcase-tab[data-target="inteligencia"]:hover {
+  border-color: #4E154F !important;
+  box-shadow: 0 8px 24px rgba(78, 21, 79, 0.18) !important;
+}
+
+.showcase-tab[data-target="inteligencia"].active {
+  background: #FFFFFF !important;
+  border: 1.5px solid #4E154F !important;
+  box-shadow: 0 10px 30px rgba(78, 21, 79, 0.22) !important;
+}
+
+.showcase-tab[data-target="inteligencia"] .tab-action-badge {
+  color: #4E154F;
+}
+
+.showcase-tab[data-target="inteligencia"].active .tab-action-badge {
+  background: rgba(78, 21, 79, 0.1);
+  border-color: #4E154F;
+  color: #4E154F;
+  font-weight: 600;
+}
+
+.showcase-tab[data-target="inteligencia"] ul li::before {
+  content: "✓";
+  color: #4E154F;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.showcase-tab[data-target="inteligencia"] .showcase-link {
+  color: #4E154F !important;
+}
+
+/* Pillar Color Utility Classes */
+.pillar-cobrar-color { color: #3CB8EB !important; }
+.pillar-conciliar-color { color: #AB4B96 !important; }
+.pillar-pagar-color { color: #F5B5D2 !important; }
+.pillar-decidir-color { color: #4E154F !important; }
+
+.pillar-cobrar-bg { background-color: #3CB8EB !important; }
+.pillar-conciliar-bg { background-color: #AB4B96 !important; }
+.pillar-pagar-bg { background-color: #F5B5D2 !important; }
+.pillar-decidir-bg { background-color: #4E154F !important; }
+
+.pillar-cobrar-border { border-color: #3CB8EB !important; }
+.pillar-conciliar-border { border-color: #AB4B96 !important; }
+.pillar-pagar-border { border-color: #F5B5D2 !important; }
+.pillar-decidir-border { border-color: #4E154F !important; }
