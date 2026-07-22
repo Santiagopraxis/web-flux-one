@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+    <g transform="translate(12, 9)">
+      <circle cx="16" cy="16" r="15" fill="#0079C1"/>
+      <circle cx="16" cy="16" r="10" fill="#FFFFFF"/>
+      <path d="M16 6 v20 M12 16 h8" stroke="#0079C1" stroke-width="3"/>
+    </g>
+    <text x="50" y="25" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="700" font-size="14" fill="#333">Diners Club</text>
+    <text x="50" y="36" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="400" font-size="9" fill="#666" letter-spacing="1">INTERNATIONAL</text>
+  </svg>

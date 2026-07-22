@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 45" width="140" height="45">
+    <rect width="140" height="45" rx="10" fill="#FFFFFF" stroke="rgba(0,0,0,0.1)"/>
+    <text x="32" y="30" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="700" font-size="22" fill="#4285F4">G</text>
+    <text x="68" y="30" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="600" font-size="19" fill="#5F6368">Pay</text>
+  </svg>

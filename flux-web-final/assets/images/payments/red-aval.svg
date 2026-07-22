@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50">
+    <g transform="translate(15, 12)">
+      <polygon points="13,0 26,13 13,26 0,13" fill="#E31C23"/>
+      <polygon points="13,6 20,13 13,20 6,13" fill="#0055A5"/>
+    </g>
+    <text x="110" y="30" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="700" font-size="17" fill="#222" text-anchor="middle">Red Aval</text>
+  </svg>
