@@ -1020,7 +1020,7 @@ p {
 }
 
 .stat:last-child {
-  border-right: none;
+  
 }
 
 .stat h3 {
@@ -1662,7 +1662,7 @@ input:focus, select:focus {
   }
   /* Restaurar bordes correctos en 2x2 */
   .stats-grid-2x2 .stat-card:not(:last-child) {
-    border-right: none;
+    
   }
   .stats-grid-2x2 .stat-card:nth-child(1),
   .stats-grid-2x2 .stat-card:nth-child(3) {
@@ -1852,7 +1852,7 @@ input:focus, select:focus {
   .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
   .stats-grid { flex-direction: column; gap: 40px; }
-  .stat { border-right: none; padding: 0; text-align: center; }
+  .stat {  padding: 0; text-align: center; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .form-row { grid-template-columns: 1fr; }
   
@@ -2304,11 +2304,11 @@ section {
   padding: 100px 0;
   background-color: var(--flux-dark);
   position: relative;
-  overflow: visible !important;
+  
 }
 
 .dashboard-showcase-section > .container {
-  overflow: visible !important;
+  
 }
 
 .showcase-layout {
@@ -2491,19 +2491,19 @@ section {
   position: sticky;
   top: 110px;
   /* Pull right: calculate how far we are from the viewport right edge */
-  margin-right: calc(-1 * (50vw - 50%));
+  
   padding-right: 0;
-  width: calc(100% + (50vw - 50%));
+  
   overflow: visible;
 }
 
 .showcase-browser-frame {
   width: 100%;
-  border-radius: 20px 0 0 20px;
+  border-radius: 20px;
   overflow: hidden;
   background: #0f131f;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-right: none;
+  
   box-shadow: -20px 20px 80px rgba(0, 0, 0, 0.6), 0 4px 24px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.4s ease;
 }
@@ -3377,7 +3377,7 @@ section {
     width: 100% !important;
     height: auto !important;
     display: block !important;
-    overflow: visible !important;
+    
   }
   .kickoff-video-wrapper {
     width: 92% !important;
@@ -4280,13 +4280,13 @@ html.preloader-skip #flux-preloader {
   display: none !important;
 }
 html.preloader-skip body.preloader-active {
-  overflow: visible !important;
+  
 }
 
 
 /* ── MEDIOS DE PAGO TRADICIONALES Y DIGITALES (COLOMBIA) ── */
 .payment-methods-section {
-  padding: 100px 0;
+  padding: 40px 0 100px;
   background: radial-gradient(circle at 10% 20%, rgba(60, 184, 235, 0.05) 0%, transparent 40%),
               radial-gradient(circle at 90% 80%, rgba(245, 181, 210, 0.05) 0%, transparent 40%),
               #F8FAFC;
@@ -4853,7 +4853,7 @@ html.preloader-skip body.preloader-active {
 .speed-market-section-wrapper {
   position: relative;
   width: 100%;
-  padding: 100px 0 120px;
+  padding: 80px 0 40px;
   overflow: hidden;
   background: #FFFFFF;
 }
@@ -4868,8 +4868,8 @@ html.preloader-skip body.preloader-active {
   pointer-events: none;
   z-index: 1;
   opacity: 0.38;
-  -webkit-mask-image: radial-gradient(circle at 40% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
-  mask-image: radial-gradient(circle at 40% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+  -webkit-mask-image: radial-gradient(circle at 40% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%), linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
+  mask-image: radial-gradient(circle at 40% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%), linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
   will-change: transform;
 }
@@ -5724,19 +5724,18 @@ html.preloader-skip body.preloader-active {
 
 /* .showcase-dashboard-col bleed-right is defined in the main block above — do NOT override margin-right or width here */
 
-/* ── Showcase: full bleed-right on desktop ── */
+/* ── Showcase: Clean contained frame ── */
 .showcase-browser-frame,
 .showcase-display-window,
 .showcase-display-container {
   width: 100% !important;
-  max-width: none !important;
-  border-radius: 20px 0 0 20px !important;
+  max-width: 1000px !important;
+  border-radius: 20px !important;
   overflow: hidden !important;
   background: #0f131f !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-right: none !important;
-  box-shadow: -24px 20px 80px rgba(0, 0, 0, 0.55) !important;
-  margin: 0 !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4) !important;
+  margin: 0 auto !important;
   padding: 0 !important;
   line-height: 0 !important;
   font-size: 0 !important;
@@ -5744,7 +5743,7 @@ html.preloader-skip body.preloader-active {
 }
 
 .showcase-browser-frame:hover {
-  box-shadow: -24px 20px 100px rgba(60, 184, 235, 0.2) !important;
+  box-shadow: 0 40px 100px rgba(60, 184, 235, 0.15) !important;
 }
 
 .browser-content {
@@ -6083,7 +6082,7 @@ html.preloader-skip body.preloader-active {
   }
 
   .speed-market-section-wrapper {
-    padding: 60px 0 80px !important;
+    padding: 30px 0 60px !important;
   }
 
   .speed-market-bg-overlay {
