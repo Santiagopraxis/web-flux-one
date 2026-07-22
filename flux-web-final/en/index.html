@@ -467,7 +467,9 @@
 
   <!-- SECCIÓN 3: UNA API, TODO EL ECOSISTEMA -->
   <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
   <section id="ecosistema" class="ecosystem-hub-section" style="background: #ffffff; position: relative; overflow: hidden;">
+    <!-- PARTE 1: UNA SOLA CONEXIÓN -->
     <div class="container hub-layout">
       <!-- Izquierda: Textos -->
       <div class="hub-text-col sr fade-in">
@@ -481,38 +483,42 @@
       </div>
     </div>
   
-    <!-- TRANSICIÓN CON IMAGEN 3D GLASS WAVES -->
-    <div class="container ecosystem-transition-divider sr fade-in">
-      <div class="waves-graphic-wrapper">
-        <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="fluX 3D Waves" class="parallax-waves-img" decoding="async">
-        <div class="waves-glow-overlay"></div>
+    <!-- LINEA INDICADORA DE TRANSICIÓN AL HACE SCROLL -->
+    <div class="ecosystem-scroll-trigger">
+      <div class="scroll-transition-line">
+        <span class="scroll-line-pulse"></span>
       </div>
     </div>
 
-    <!-- SEGUNDA PARTE: EL MERCADO NECESITA VELOCIDAD -->
-    <div class="container speed-market-container">
-      <div class="grid-2" style="align-items: center; gap: 60px;">
+    <!-- PARTE 2: EL MERCADO NECESITA VELOCIDAD (CON IMAGEN 3D WAVES Y ANIMACIÓN AL SCROLLEAR) -->
+    <div class="container speed-market-container" id="speed-market-section">
+      <!-- Imagen 3D Waves integrada como fondo decorativo lateral de esta sección -->
+      <div class="speed-market-bg-waves">
+        <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="fluX 3D Waves" class="speed-waves-img" decoding="async">
+      </div>
+
+      <div class="grid-2 speed-market-content" style="align-items: center; gap: 60px; position: relative; z-index: 2;">
         <!-- Izquierda: Textos de Impacto -->
-        <div class="sr fade-in" style="text-align: left;">
+        <div class="sr-speed-item" style="text-align: left;">
           <h2 class="speed-market-title">El mercado necesita velocidad, el tiempo es el nuevo interés</h2>
           <p class="speed-market-subtitle">Con fluX, el dinero llega y está disponible al instante, sin esperas, sin horarios, sin límites, solo fluir</p>
         </div>
 
         <!-- Derecha: Números en cuadrícula 2x2 -->
         <div class="stats-grid-2x2">
-          <div class="speed-stat-card sr blur-reveal delay-1">
+          <div class="speed-stat-card sr-speed-card delay-1">
             <h3 class="stat-number-val">T+0</h3>
             <p class="stat-caption-text">Liquidación instantánea,<br>el dinero llega, el dinero está disponible</p>
           </div>
-          <div class="speed-stat-card sr blur-reveal delay-2">
+          <div class="speed-stat-card sr-speed-card delay-2">
             <h3 class="stat-number-val">24/7</h3>
             <p class="stat-caption-text">Sin horarios bancarios,<br>sin esperar al día siguiente</p>
           </div>
-          <div class="speed-stat-card sr blur-reveal delay-3">
+          <div class="speed-stat-card sr-speed-card delay-3">
             <h3 class="stat-number-val">3.8B</h3>
             <p class="stat-caption-text">TX anuales en PSE / <span class="nobreak">Bre-B</span></p>
           </div>
-          <div class="speed-stat-card sr blur-reveal delay-4">
+          <div class="speed-stat-card sr-speed-card delay-4">
             <h3 class="stat-number-val">80%</h3>
             <p class="stat-caption-text">del valor B2B en CO</p>
           </div>

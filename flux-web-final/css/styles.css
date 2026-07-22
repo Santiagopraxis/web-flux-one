@@ -4839,84 +4839,100 @@ html.preloader-skip body.preloader-active {
 }
 
 
-/* ── ECOSISTEMA 3D WAVES TRANSITION & SPEED MARKET ── */
-.ecosystem-transition-divider {
+/* ── ECOSISTEMA PARTE 2: SPEED MARKET WITH INTEGRATED 3D WAVES & SCROLL ANIMATION ── */
+.speed-market-container {
   position: relative;
-  width: 100%;
-  padding: 40px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 40px;
+  padding: 60px 0 100px;
   overflow: hidden;
-  margin: 30px 0;
 }
 
-.waves-graphic-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 1240px;
-  height: 260px;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(60, 184, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(15, 23, 42, 0.06);
+.speed-market-bg-waves {
+  position: absolute;
+  top: -15%;
+  right: -8%;
+  width: 65%;
+  height: 130%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s ease;
+  transform: translateY(50px) scale(0.92);
 }
 
-.parallax-waves-img {
+.speed-market-container.active-scroll .speed-market-bg-waves {
+  opacity: 0.85;
+  transform: translateY(0) scale(1.05);
+}
+
+.speed-waves-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.04);
-  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+  object-fit: contain;
+  object-position: right center;
 }
 
-.ecosystem-transition-divider:hover .parallax-waves-img {
-  transform: scale(1.08);
+/* Scroll Transition Line between Part 1 and Part 2 */
+.ecosystem-scroll-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  position: relative;
+  z-index: 2;
 }
 
-.waves-glow-overlay {
+.scroll-transition-line {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(60, 184, 235, 0.3), rgba(0, 184, 148, 0.3));
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line-pulse {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.1) 25%,
-    rgba(255, 255, 255, 0.1) 75%,
-    rgba(255, 255, 255, 0.9) 100%
-  );
-  pointer-events: none;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #00B894, transparent);
+  animation: scrollLineDrop 2s infinite ease-in-out;
 }
 
-/* Part 2: Speed Market Section */
-.speed-market-container {
-  margin-top: 20px;
-  padding-bottom: 60px;
+@keyframes scrollLineDrop {
+  0% { top: -100%; }
+  100% { top: 100%; }
 }
 
-.speed-market-title {
-  font-size: clamp(28px, 3vw, 42px);
-  font-weight: 300;
-  line-height: 1.2;
-  color: #0F172A;
-  margin-bottom: 18px;
-  text-transform: none;
-  letter-spacing: -0.02em;
+/* Scroll-driven animations */
+.sr-speed-item {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.speed-market-subtitle {
-  color: #64748B;
-  text-align: left;
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.6;
+.speed-market-container.active-scroll .sr-speed-item {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.stats-grid-2x2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+.sr-speed-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.94);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
+
+.speed-market-container.active-scroll .sr-speed-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.sr-speed-card.delay-1 { transition-delay: 0.1s; }
+.sr-speed-card.delay-2 { transition-delay: 0.25s; }
+.sr-speed-card.delay-3 { transition-delay: 0.4s; }
+.sr-speed-card.delay-4 { transition-delay: 0.55s; }
 
 @media (max-width: 600px) {
   .stats-grid-2x2 {

@@ -54,6 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.fade-in, .blur-reveal, .sr, .sr-stats').forEach(el => observer.observe(el));
 
+  // Speed Market Scroll Observer
+  const speedObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active-scroll');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.speed-market-container').forEach(el => speedObserver.observe(el));
+
   // Navbar Stickiness (Always visible, changes style on scroll)
   const navbar = document.querySelector('.navbar');
 
