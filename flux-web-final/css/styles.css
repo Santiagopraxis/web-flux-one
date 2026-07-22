@@ -2339,20 +2339,7 @@ section {
   position: relative;
 }
 
-.showcase-tab::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--flux-primary), var(--flux-secondary));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
+.showcase-tab::before { display: none !important; content: none !important; }
 
 .showcase-tab:hover {
   background: rgba(255, 255, 255, 0.04);
@@ -2365,9 +2352,7 @@ section {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-.showcase-tab.active::before {
-  opacity: 0.8;
-}
+.showcase-tab.active::before { display: none !important; opacity: 0 !important; }
 
 .showcase-tab-header {
   display: flex;
@@ -5718,3 +5703,16 @@ html.preloader-skip body.preloader-active {
   -webkit-text-fill-color: initial !important;
 }
 
+
+
+/* ── ELIMINATE RESIDUAL PSEUDO-ELEMENT BLUE BORDER BLEED BUG ── */
+.showcase-tab::before,
+.showcase-tab::after,
+.showcase-tab.active::before,
+.showcase-tab.active::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+  background: none !important;
+  border: none !important;
+}
