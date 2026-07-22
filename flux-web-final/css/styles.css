@@ -4837,3 +4837,121 @@ html.preloader-skip body.preloader-active {
   line-height: 1.5;
   text-align: center;
 }
+
+
+/* ── ECOSISTEMA 3D WAVES TRANSITION & SPEED MARKET ── */
+.ecosystem-transition-divider {
+  position: relative;
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.waves-graphic-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  height: 260px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(60, 184, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.parallax-waves-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+}
+
+.ecosystem-transition-divider:hover .parallax-waves-img {
+  transform: scale(1.08);
+}
+
+.waves-glow-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.1) 75%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+/* Part 2: Speed Market Section */
+.speed-market-container {
+  margin-top: 20px;
+  padding-bottom: 60px;
+}
+
+.speed-market-title {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.2;
+  color: #0F172A;
+  margin-bottom: 18px;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.speed-market-subtitle {
+  color: #64748B;
+  text-align: left;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.stats-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .stats-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.speed-stat-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.speed-stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(60, 184, 235, 0.12);
+  border-color: rgba(60, 184, 235, 0.4);
+}
+
+.stat-number-val {
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 300;
+  color: #0F172A;
+  margin-bottom: 8px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.stat-caption-text {
+  font-size: 0.88rem;
+  color: #64748B;
+  line-height: 1.5;
+  margin: 0;
+}
