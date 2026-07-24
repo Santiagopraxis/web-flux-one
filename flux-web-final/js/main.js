@@ -54,6 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.fade-in, .blur-reveal, .sr, .sr-stats').forEach(el => observer.observe(el));
 
+  // Speed Market Scroll Observer
+  const speedObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active-scroll');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.speed-market-container').forEach(el => speedObserver.observe(el));
+
   // Navbar Stickiness (Always visible, changes style on scroll)
   const navbar = document.querySelector('.navbar');
 
@@ -925,3 +936,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 });
+
+
+  // Ecosystem Parallax Scroll & 3D Tilt Listener
+  const speedSec = document.getElementById('speed-market-section');
+  const speedBg = document.querySelector('.speed-market-bg-overlay');
+
+  if (speedSec && speedBg) {
+    window.addEventListener('scroll', () => {
+      const rect = speedSec.getBoundingClientRect();
+      const winH = window.innerHeight;
+
+      if (rect.top < winH && rect.bottom > 0) {
+        const scrollPercent = (winH - rect.top) / (winH + rect.height);
+        const translateY = (scrollPercent - 0.5) * 60;
+        speedBg.style.transform = `translateY(${translateY}px) scale(${1 + scrollPercent * 0.04})`;
+      }
+    }, { passive: true });
+  }
+
+  const statCards = document.querySelectorAll('.speed-stat-card');
+  statCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateX = (y / rect.height) * -10;
+      const rotateY = (x / rect.width) * 10;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+    });
+  });

@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/images/logos/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logos/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logos/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fluX One — Recaudo Inteligente</title>
   <link rel="stylesheet" href="../css/styles.css?v=ultra_v68">
   <script>
@@ -14,7 +16,7 @@
     }
   </script>
 </head>
-<body class="preloader-active">
+<body class="preloader-active product-page-recaudo">
   <!-- fluX Preloader -->
   <div id="flux-preloader">
     <div class="preloader-content">
@@ -271,7 +273,114 @@
     </div>
   </section>
 
-  <!-- SECCIÓN WHATSAPP AGENT MOCKUP -->
+  
+  <!-- SECCIÓN: MEDIOS DE PAGO TRADICIONALES Y DIGITALES (COLOMBIA) -->
+  <section class="section-light payment-methods-section" id="medios-de-pago">
+    <div class="container">
+      <div class="payment-methods-grid">
+        <!-- Left Column: Payment Brands -->
+        <div class="payment-methods-left sr fade-in">
+          <h2 class="payment-methods-title">
+            MEDIOS DE PAGO<br>
+            <span class="text-grad">TRADICIONALES Y DIGITALES</span>
+          </h2>
+          
+          <div class="payment-logos-card">
+            <!-- Row 1: Cards -->
+            <div class="payment-logo-item"><img src="../assets/images/payments/mastercard.png" alt="Mastercard" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/visa.png" alt="Visa" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/diners.png" alt="Diners Club" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/amex.png" alt="American Express" decoding="async"></div>
+            
+            <!-- Row 2: Digital Wallets & Direct Pay -->
+            <div class="payment-logo-item"><img src="../assets/images/payments/nequi.png" alt="Nequi" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/pse.png" alt="PSE" decoding="async"></div>
+            <div class="payment-logo-item wide-item"><img src="../assets/images/payments/bancolombia.png" alt="Paga con Bancolombia" decoding="async"></div>
+            
+            <!-- Row 3: Cash & Recaudo Networks -->
+            <div class="payment-logo-item"><img src="../assets/images/payments/daviplata.png" alt="Daviplata" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/efecty.webp" alt="Efecty" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/red-aval.png" alt="Red Aval" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/puntored.png" alt="Puntored" decoding="async"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Payment Checkout Panel (Non-Phone Display) -->
+        <div class="payment-methods-right sr fade-in d2">
+          <div class="checkout-showcase-card">
+            <!-- Header Badge -->
+            <div class="checkout-header-row">
+              <div class="checkout-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>CHECKOUT SEGURO T+0</span>
+              </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="checkout-steps-row">
+              <div class="checkout-step-item active">
+                <span class="step-icon">✓</span>
+                <span>Cuenta</span>
+              </div>
+              <div class="checkout-step-divider active"></div>
+              <div class="checkout-step-item active">
+                <span class="step-icon">✓</span>
+                <span>Entrega</span>
+              </div>
+              <div class="checkout-step-divider active"></div>
+              <div class="checkout-step-item active">
+                <span class="step-icon">✓</span>
+                <span>Pago</span>
+              </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="checkout-cards-row">
+              <img src="../assets/images/payments/visa.png" alt="Visa" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/mastercard.png" alt="Mastercard" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/amex.png" alt="Amex" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/diners.png" alt="Diners" class="checkout-card-img" decoding="async">
+            </div>
+
+            <!-- Input Placeholders -->
+            <div class="checkout-input-skeleton"></div>
+            <div class="checkout-inputs-flex">
+              <div class="checkout-input-skeleton"></div>
+              <div class="checkout-input-skeleton"></div>
+            </div>
+
+            <!-- Pay Button -->
+            <button class="checkout-pay-btn">Pagar</button>
+
+            <!-- Subtitle Label -->
+            <div class="checkout-other-methods">Billeteras inteligentes y otros medios de pago</div>
+
+            <!-- Official Wallets Grid -->
+            <div class="official-wallets-grid">
+              <div class="official-wallet-card">
+                <img src="../assets/images/payments/apple-pay.webp" alt="Apple Pay" decoding="async">
+              </div>
+              <div class="official-wallet-card">
+                <img src="../assets/images/payments/google-pay.webp" alt="Google Pay" decoding="async">
+              </div>
+              <div class="official-wallet-card">
+                <img src="../assets/images/payments/samsung-pay.png" alt="Samsung Pay" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Pill Badge -->
+          <div class="security-pill-badge">
+            Innovación y seguridad en <strong>opciones de medios de pago</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- SECCIÓN WHATSAPP AGENT MOCKUP -->
   <section class="section-light" style="padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.05); background: #ffffff; position: relative; overflow: hidden;">
     <div class="container sr fade-in">
       <div class="grid-2" style="align-items: center; gap: 80px;">

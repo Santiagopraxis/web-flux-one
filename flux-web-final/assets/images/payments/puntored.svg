@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" width="160" height="50">
+    <g transform="translate(20, 8)">
+      <circle cx="17" cy="17" r="15" fill="#E31C23"/>
+      <path d="M17 7 A 10 10 0 0 1 27 17" stroke="#FFD100" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </g>
+    <text x="96" y="31" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="800" font-size="16" fill="#D32F2F" text-anchor="middle">Puntored</text>
+  </svg>

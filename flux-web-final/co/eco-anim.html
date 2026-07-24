@@ -9,6 +9,11 @@
 body { background: transparent; width: 100vw; height: 100vh; overflow: hidden; }
 canvas { display: block; }
 </style>
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/images/logos/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logos/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logos/apple-touch-icon.png">
 </head>
 <body>
 <canvas id="c"></canvas>
@@ -141,7 +146,7 @@ function resize() {
 
   ambient = Array.from({ length: AMBIENT_COUNT }, (_, i) => {
     const isWhite = i < AMBIENT_COUNT * 0.70;
-    const [cr, cg, cb] = isWhite ? [255, 255, 255] : brandColor(Math.random());
+    const [cr, cg, cb] = isWhite ? [100, 116, 139] : brandColor(Math.random());
     return {
       x: Math.random() * W, y: Math.random() * H,
       vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18,
@@ -213,15 +218,7 @@ function draw() {
     const alpha     = clamp((p.op + auraBoost + xoBoost) * twinkle, 0, 1);
     const radius = p.r + near * 0.6;
 
-    if (near > 0.15) {
-      const gr = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, radius * 4);
-      gr.addColorStop(0, `rgba(${p.cr},${p.cg},${p.cb},${near * 0.15})`);
-      gr.addColorStop(1, 'transparent');
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, radius * 4, 0, Math.PI * 2);
-      ctx.fillStyle = gr;
-      ctx.fill();
-    }
+    
     ctx.beginPath();
     ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},${alpha})`;
@@ -309,13 +306,13 @@ function draw() {
     const cr   = 8  * sc;
 
     ctx.shadowColor = 'rgba(60,184,235,0.3)';
-    ctx.shadowBlur  = 16 * ht2;
+    ctx.shadowBlur = 0;
 
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
     ctx.fillStyle = `rgba(60,184,235,${lerp(0, 0.09, ht2) * fade})`;
     ctx.fill();
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
-    ctx.fillStyle = `rgba(255,255,255,${lerp(0.04, 0, ht2) * fade})`;
+    ctx.fillStyle = `rgba(255,255,255,${lerp(0.95, 1, ht2) * fade})`;
     ctx.fill();
 
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
@@ -323,14 +320,14 @@ function draw() {
     ctx.lineWidth   = lerp(0.7, 1, ht2);
     ctx.stroke();
     roundRect(ctx, nx - cw/2, ny - ch/2, cw, ch, cr);
-    ctx.strokeStyle = `rgba(255,255,255,${lerp(0.13, 0, ht2) * fade})`;
+    ctx.strokeStyle = `rgba(15,23,42,${lerp(0.18, 0.4, ht2) * fade})`;
     ctx.lineWidth   = 0.7;
     ctx.stroke();
     ctx.shadowBlur  = 0;
 
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle    = `rgba(255,255,255,${lerp(0.6, 1, ht2) * fade})`;
+    ctx.fillStyle    = `rgba(15,23,42,${lerp(0.9, 1, ht2) * fade})`;
     ctx.fillText(n.label, nx, ny);
 
     if (ht2 > 0.05) {
@@ -361,7 +358,7 @@ function draw() {
 
   ctx.beginPath();
   ctx.arc(cx, cy, circleR, 0, Math.PI * 2);
-  ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+  ctx.strokeStyle = 'rgba(60,184,235,0.4)';
   ctx.lineWidth   = 1;
   ctx.stroke();
 

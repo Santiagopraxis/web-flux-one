@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg"  media="(prefers-color-scheme: dark)">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20negro.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/xo%20banco.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logos/favicon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/images/logos/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logos/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logos/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fluX One — Pagos inteligentes en Colombia.</title>
   <link rel="stylesheet" href="../css/styles.css?v=ultra_v68">
   <script>
@@ -240,7 +242,8 @@
   </section>
 
   <!-- SECCIÓN DE MÉTRICAS -->
-  <section class="impact-stats-section">
+  <section class="impact-stats-section" style="position: relative;">
+
     <!-- SVG Gradients Definition -->
     <svg style="width:0; height:0; position:absolute;" aria-hidden="true" focusable="false">
       <linearGradient id="flux-cyan-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -322,12 +325,17 @@
       <div class="showcase-layout sr fade-in d1">
         <!-- Columna Izquierda: Tabs Interactivas -->
         <div class="showcase-tabs-col">
+          <div class="tabs-click-hint">
+            <span class="pulse-dot"></span>
+            <span>Haz clic para explorar cada módulo</span>
+          </div>
           
           <!-- Tab 1: Dispersión -->
           <div class="showcase-tab active" data-target="dispersion">
             <div class="showcase-tab-header">
               <span class="showcase-tab-icon"><img src="../assets/images/icons/dispersiones.svg" alt="Dispersión" loading="lazy" decoding="async"></span>
               <h3 class="showcase-tab-title">Dispersión sin Límites</h3>
+              <span class="tab-action-badge"><span class="badge-text">Ver pantalla</span> <svg class="tab-arrow-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
             </div>
             <div class="showcase-tab-content">
               <p>Miles de pagos en un solo clic con liquidación inmediata y optimización de canales en tiempo real.</p>
@@ -352,6 +360,7 @@
             <div class="showcase-tab-header">
               <span class="showcase-tab-icon"><img src="../assets/images/icons/recaudo.svg" alt="Recaudo" loading="lazy" decoding="async"></span>
               <h3 class="showcase-tab-title">Recaudo Inteligente <span class="badge-new-sml"><span class="nobreak">Bre-B</span></span></h3>
+              <span class="tab-action-badge"><span class="badge-text">Ver pantalla</span> <svg class="tab-arrow-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
             </div>
             <div class="showcase-tab-content">
               <p>Acepta dinero de cualquier fuente en una sola integración con conciliación automática en tiempo real.</p>
@@ -376,6 +385,7 @@
             <div class="showcase-tab-header">
               <span class="showcase-tab-icon"><img src="../assets/images/icons/capacidades-bi.svg" alt="Inteligencia" loading="lazy" decoding="async"></span>
               <h3 class="showcase-tab-title">Inteligencia de Negocio</h3>
+              <span class="tab-action-badge"><span class="badge-text">Ver pantalla</span> <svg class="tab-arrow-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
             </div>
             <div class="showcase-tab-content">
               <p>Conviértete en un líder proactivo. Prevé morosidad y optimiza el flujo de caja con IA.</p>
@@ -465,8 +475,14 @@
   </section>
 
   <!-- SECCIÓN 3: UNA API, TODO EL ECOSISTEMA -->
-  <section id="ecosistema" class="ecosystem-hub-section" style="background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0.8) 30%, rgba(5,5,5,0) 70%), url('../assets/images/backgrounds/fondo%202.jpg') no-repeat center center; background-size: cover; position: relative;">
-
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <!-- SECCIÓN: ECOSISTEMA HUB & VELOCIDAD DE MERCADO -->
+  <section id="ecosistema" class="ecosystem-hub-section">
+    <!-- PARTE 1: UNA SOLA CONEXIÓN -->
     <div class="container hub-layout">
       <!-- Izquierda: Textos -->
       <div class="hub-text-col sr fade-in">
@@ -474,53 +490,176 @@
         <p class="section-subtitle">Sin importar con qué banco operas, qué billetera usa tu cliente o por dónde llega el pago — fluX One lo recibe, lo procesa y lo concilia, todo en tiempo real. Sin que tu operación se detenga.</p>
       </div>
 
-      <!-- Derecha: Iframe Canvas Animado -->
+      <!-- Derecha: Canvas Animado -->
       <div class="hub-graphic-col sr blur-reveal">
         <iframe src="eco-anim.html?v=1781197621734" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background: transparent;"></iframe>
       </div>
     </div>
-  
-        <div class="container" style="margin-top: 120px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 80px; padding-bottom: 80px;">
-      <div class="grid-2" style="align-items: center; gap: 80px;">
-        <!-- Izquierda: Textos de Impacto -->
-        <div class="sr fade-in" style="text-align: left;">
-          <h2 class="section-title" style="font-size: 2.2rem; font-weight: 300; line-height: 1.25; margin-bottom: 24px; text-transform: none;">El mercado necesita velocidad, el tiempo es el nuevo interés</h2>
-          <p class="section-subtitle" style="color: rgba(255,255,255,0.7); text-align: left; margin: 0; font-size: 1.1rem;">Con fluX, el dinero llega y está disponible al instante, sin esperas, sin horarios, sin límites, solo&nbsp;fluir</p>
-        </div>
 
-        <!-- Derecha: Números en cuadrícula 2x2 -->
-        <div class="stats-grid-2x2" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
-          <div class="stat-item sr sr-stats delay-1" style="padding: 0; border-right: none;">
-            <h3 class="stat-number">T+0</h3>
-            <p class="stat-caption" style="font-size: 0.95rem; line-height: 1.5; opacity: 0.8;">Liquidación instantánea,<br>el dinero llega, el dinero está disponible</p>
+    <!-- CONECTOR DINÁMICO DE TRANSICIÓN DE SCROLL -->
+    <div class="ecosystem-scroll-connector sr fade-in">
+      <div class="connector-line">
+        <div class="connector-pulse"></div>
+      </div>
+      
+    </div>
+
+    <!-- PARTE 2: EL MERCADO NECESITA VELOCIDAD (FONDO PANORÁMICO COMPLETO 100% ANCHO) -->
+    <div class="speed-market-section-wrapper" id="speed-market-section">
+      <!-- Capa de Fondo 3D Waves 100% Ancho Panorámico -->
+      <div class="speed-market-bg-overlay">
+        <img src="../assets/images/backgrounds/flux-waves-3d.png" alt="fluX 3D Waves" class="speed-waves-bg-img" decoding="async">
+      </div>
+
+      <div class="container">
+        <div class="speed-market-grid">
+          <!-- Izquierda: Tarjeta de Cristalismo con Texto 100% Legible -->
+          <div class="speed-text-glass-card sr fade-in">
+            <h2 class="speed-market-title">El mercado necesita velocidad, el tiempo es el nuevo interés</h2>
+            <p class="speed-market-subtitle">Con fluX, el dinero llega y está disponible al instante, sin esperas, sin horarios, sin límites, solo fluir.</p>
           </div>
-          <div class="stat-item sr sr-stats delay-2" style="padding: 0; border-right: none;">
-            <h3 class="stat-number">24/7</h3>
-            <p class="stat-caption" style="font-size: 0.95rem; line-height: 1.5; opacity: 0.8;">Sin horarios bancarios,<br>sin esperar al día siguiente</p>
-          </div>
-          <div class="stat-item sr sr-stats delay-3" style="padding: 0; border-right: none;">
-            <h3 class="stat-number">3.8B</h3>
-            <p class="stat-caption" style="font-size: 0.95rem; line-height: 1.5; opacity: 0.8;">TX anuales en PSE / <span class="nobreak">Bre-B</span></p>
-          </div>
-          <div class="stat-item sr sr-stats delay-4" style="padding: 0; border-right: none;">
-            <h3 class="stat-number">80%</h3>
-            <p class="stat-caption" style="font-size: 0.95rem; line-height: 1.5; opacity: 0.8;">del valor B2B en CO</p>
+
+          <!-- Derecha: Cuadrícula 2x2 de 4 Métricas -->
+          <div class="stats-grid-2x2">
+            <div class="speed-stat-card sr blur-reveal delay-1">
+              <h3 class="stat-number-val">T+0</h3>
+              <p class="stat-caption-text">Liquidación instantánea,<br>el dinero llega, el dinero está disponible</p>
+            </div>
+            <div class="speed-stat-card sr blur-reveal delay-2">
+              <h3 class="stat-number-val">24/7</h3>
+              <p class="stat-caption-text">Sin horarios bancarios,<br>sin esperar al día siguiente</p>
+            </div>
+            <div class="speed-stat-card sr blur-reveal delay-3">
+              <h3 class="stat-number-val">3.8B</h3>
+              <p class="stat-caption-text">TX anuales en PSE / <span class="nobreak">Bre-B</span></p>
+            </div>
+            <div class="speed-stat-card sr blur-reveal delay-4">
+              <h3 class="stat-number-val">80%</h3>
+              <p class="stat-caption-text">del valor B2B en CO</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-        
-</section>
+  </section>
 
   <!-- SECCIÓN: IMPACT STATS (Premium Blurred Background) -->
   
 
-  <!-- SECCIÓN: TEXTO CRECIENTE (fluX One Portal) -->
-  <section id="brand-transition">
-    <div id="transition-bg">
-      <div id="growing-text">
-        <img src="../assets/images/logos/logo-nexa-en-blanco.svg" alt="Nexa" style="max-height: 140px; margin-bottom: 24px;" decoding="async">
-        <h2 style="font-size: 1.8rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 10px; color: #ffffff; font-weight: 300;">Muy pronto llegará</h2>
+  
+  <!-- SECCIÓN: MEDIOS DE PAGO TRADICIONALES Y DIGITALES (COLOMBIA) -->
+  <section class="section-light payment-methods-section" id="medios-de-pago">
+    <div class="container">
+      <div class="payment-methods-grid">
+        <!-- Left Column: Payment Brands -->
+        <div class="payment-methods-left sr fade-in">
+          <h2 class="payment-methods-title">
+            MEDIOS DE PAGO<br>
+            <span class="text-grad">TRADICIONALES Y DIGITALES</span>
+          </h2>
+          
+          <div class="payment-logos-card">
+            <!-- Row 1: Cards -->
+            <div class="payment-logo-item"><img src="../assets/images/payments/mastercard.png" alt="Mastercard" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/visa.png" alt="Visa" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/diners.png" alt="Diners Club" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/amex.png" alt="American Express" decoding="async"></div>
+            
+            <!-- Row 2: Digital Wallets & Direct Pay -->
+            <div class="payment-logo-item"><img src="../assets/images/payments/nequi.png" alt="Nequi" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/pse.png" alt="PSE" decoding="async"></div>
+            <div class="payment-logo-item wide-item"><img src="../assets/images/payments/bancolombia.png" alt="Paga con Bancolombia" decoding="async"></div>
+            
+            <!-- Row 3: Cash & Recaudo Networks -->
+            <div class="payment-logo-item"><img src="../assets/images/payments/daviplata.png" alt="Daviplata" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/efecty.webp" alt="Efecty" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/red-aval.png" alt="Red Aval" decoding="async"></div>
+            <div class="payment-logo-item"><img src="../assets/images/payments/puntored.png" alt="Puntored" decoding="async"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Payment Checkout Panel (Non-Phone Display) -->
+        <div class="payment-methods-right sr fade-in d2">
+          <div class="checkout-showcase-card">
+            <!-- Header Badge -->
+            <div class="checkout-header-row">
+              <div class="checkout-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>CHECKOUT SEGURO T+0</span>
+              </div>
+            </div>
+
+            <!-- Steps -->
+            <div class="checkout-steps-row">
+              <div class="checkout-step-item active">
+                <span class="step-icon"></span>
+                <span>Cuenta</span>
+              </div>
+              <div class="checkout-step-divider active"></div>
+              <div class="checkout-step-item active">
+                <span class="step-icon"></span>
+                <span>Entrega</span>
+              </div>
+              <div class="checkout-step-divider active"></div>
+              <div class="checkout-step-item active">
+                <span class="step-icon"></span>
+                <span>Pago</span>
+              </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="checkout-cards-row">
+              <img src="../assets/images/payments/visa.png" alt="Visa" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/mastercard.png" alt="Mastercard" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/amex.png" alt="Amex" class="checkout-card-img" decoding="async">
+              <img src="../assets/images/payments/diners.png" alt="Diners" class="checkout-card-img" decoding="async">
+            </div>
+
+            <!-- Input Placeholders -->
+            <div class="checkout-input-skeleton"></div>
+            <div class="checkout-inputs-flex">
+              <div class="checkout-input-skeleton"></div>
+              <div class="checkout-input-skeleton"></div>
+            </div>
+
+            <!-- Pay Button -->
+            <button class="checkout-pay-btn">Pagar</button>
+
+            <!-- Subtitle Label -->
+            <div class="checkout-other-methods">Billeteras inteligentes y otros medios de pago</div>
+
+            <!-- Official Wallets Grid -->
+            <div class="official-wallets-grid">
+              <div class="official-wallet-card">
+                <img src="../assets/images/payments/apple-pay.webp" alt="Apple Pay" decoding="async">
+              </div>
+              <div class="official-wallet-card">
+                <img src="../assets/images/payments/google-pay.webp" alt="Google Pay" decoding="async">
+              </div>
+              <div class="official-wallet-card">
+                <img src="../assets/images/payments/samsung-pay.png" alt="Samsung Pay" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Pill Badge -->
+          <div class="security-pill-badge">
+            Innovación y seguridad en <strong>opciones de medios de pago</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- SECCIÓN: TEXTO CRECIENTE (fluX One Portal) -->
+  <!-- SECCIÓN: NEXA MUY PRONTO LLEGARÁ (Fondo Blanco) -->
+  <section id="brand-transition" style="background: #ffffff !important; padding: 120px 0;">
+    <div id="transition-bg" style="background: #ffffff !important;">
+      <div id="growing-text" class="sr fade-in">
+        <img src="../assets/images/logos/nexa-negro.svg" alt="Nexa" style="max-height: 140px; margin-bottom: 24px;" decoding="async">
+        <h2 style="font-size: 1.8rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 10px; color: #0F172A; font-weight: 300;">Muy pronto llegará</h2>
       </div>
     </div>
   </section>
@@ -712,7 +851,7 @@
     
     <!-- Contenedor de la barra de progreso inferior de scroll -->
     <div class="scroll-progress-container" style="background: rgba(0, 0, 0, 0.08);">
-      <div class="scroll-progress-bar" id="scroll-progress" style="background: linear-gradient(90deg, #00B894, #2563EB);"></div>
+      <div class="scroll-progress-bar" id="scroll-progress" style="background: #ffffff; position: relative;"></div>
     </div>
   </section>
 
@@ -1395,7 +1534,7 @@
   </section>
 
   <!-- SECCIÓN 5: SEGURIDAD Y CUMPLIMIENTO -->
-  <section class="section-light" id="seguridad" style="padding: 100px 0; border-top: 1px solid rgba(0,0,0,0.05);">
+  <section class="section-light" id="seguridad" style="padding: 100px 0;">
     <div class="container">
       <div class="section-header sr fade-in">
         <h2 class="section-title">Seguridad de nivel bancario</h2>
@@ -1437,7 +1576,7 @@
 
 
 <!-- SECCIÓN 8: CTA FINAL + FORMULARIO -->
-  <section class="section-light form-section" id="contacto" style="padding: 120px 0; border-top: 1px solid rgba(0,0,0,0.05); background: #ffffff; position: relative; overflow: hidden;">
+  <section class="section-light form-section" id="contacto" style="padding: 120px 0; background: #ffffff; position: relative; overflow: hidden;">
     <img src="../assets/images/backgrounds/footer-waves.png" alt="" class="form-bg-waves" loading="lazy" decoding="async">
     <div class="container sr fade-in" style="position: relative; z-index: 1;">
       <div class="grid-2" style="align-items: center; gap: 80px;">
@@ -1447,13 +1586,13 @@
           <p class="section-subtitle sr fade-in fade-delay-mid typewriter-delayed" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem; color: var(--flux-gray-700);">Agenda una demo personalizada de 15 minutos. Te mostramos cómo fluX se integra con tu ERP y optimiza tu operación desde el d&iacute;a&nbsp;1.</p>
           <ul class="typewriter-delayed" style="list-style: none; padding: 0; color: var(--flux-gray-700);">
             <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Tiempos de integración en días, no meses.
+              <span style="color: var(--flux-primary); font-weight: bold;"></span> Tiempos de integración en días, no meses.
             </li>
             <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Documentación API de nivel desarrollador.
+              <span style="color: var(--flux-primary); font-weight: bold;"></span> Documentación API de nivel desarrollador.
             </li>
             <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-              <span style="color: var(--flux-primary); font-weight: bold;">✓</span> Acompañamiento especializado local.
+              <span style="color: var(--flux-primary); font-weight: bold;"></span> Acompañamiento especializado local.
             </li>
           </ul>
         </div>

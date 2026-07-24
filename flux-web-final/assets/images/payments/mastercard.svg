@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" width="160" height="50">
+    <g transform="translate(15, 7)">
+      <circle cx="16" cy="18" r="14" fill="#EB001B"/>
+      <circle cx="30" cy="18" r="14" fill="#F79E1B"/>
+      <path d="M23 7.8a13.9 13.9 0 0 1 0 20.4 13.9 13.9 0 0 1 0-20.4z" fill="#FF5F00"/>
+    </g>
+    <text x="66" y="29" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="700" font-size="13" fill="#222">mastercard</text>
+  </svg>
