@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     while (current) {
       // Check explicit class identifiers
-      if (current.classList.contains('section-light') || current.classList.contains('footer-light')) {
+      if (current.classList.contains('section-light') || current.classList.contains('footer-light') || current.classList.contains('hero-light')) {
         return 'light';
       }
-      if (current.classList.contains('hero') || current.classList.contains('kickoff-section') || current.classList.contains('impact-stats-section') || current.classList.contains('ecosystem-hub-section') || current.classList.contains('dashboard-showcase-section') || current.classList.contains('footer-dark')) {
+      if ((current.classList.contains('hero') && !current.classList.contains('hero-light')) || current.classList.contains('kickoff-section') || current.classList.contains('impact-stats-section') || current.classList.contains('ecosystem-hub-section') || current.classList.contains('dashboard-showcase-section') || current.classList.contains('footer-dark')) {
         return 'dark';
       }
       

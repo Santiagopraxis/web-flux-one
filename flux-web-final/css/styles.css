@@ -284,6 +284,9 @@ p {
               transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 2.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, box-shadow;
+  border-radius: 20px;
+  overflow: hidden;
+  background: transparent !important;
 }
 .hero-video-reveal.visible {
   opacity: 1;
@@ -796,6 +799,75 @@ p {
     padding-top: 120px;
     justify-content: flex-start;
   }
+}
+
+/* Hero Light Theme Modifier */
+.hero.hero-light {
+  background: #ECEEF1 !important;
+  color: var(--flux-dark) !important;
+}
+
+.hero.hero-light .hero-title {
+  color: var(--flux-dark) !important;
+}
+
+.hero.hero-light .hero-desc {
+  color: var(--flux-gray-700) !important;
+}
+
+/* Default: no dots on light heroes */
+.hero.hero-light .product-hero-bg {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Only the BI page gets the white subtle dots on light hero */
+.product-page-bi .hero.hero-light .product-hero-bg {
+  background: transparent !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.85) 1.5px, transparent 1.5px) !important;
+  background-size: 24px 24px !important;
+}
+
+.hero.hero-light .product-hero-bg::before,
+.hero.hero-light .product-hero-bg::after {
+  display: none !important;
+}
+
+.hero.hero-light .hero-video-reveal.visible {
+  box-shadow: var(--product-video-shadow) !important;
+}
+
+/* High contrast styling for badge, text-grad, and buttons in light hero */
+.hero.hero-light .badge-new {
+  background: var(--product-badge-bg) !important;
+  border: 1px solid var(--product-badge-border) !important;
+  color: var(--product-badge-text) !important;
+  -webkit-text-fill-color: var(--product-badge-text) !important;
+}
+
+.hero.hero-light .text-grad {
+  background: var(--product-text-gradient-light) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.hero.hero-light .btn-primary {
+  background: transparent !important;
+  background-image: none !important;
+  border-color: var(--product-btn-color-light) !important;
+  color: var(--product-btn-color-light) !important;
+  -webkit-text-fill-color: var(--product-btn-color-light) !important;
+  box-shadow: none !important;
+}
+
+.hero.hero-light .btn-primary:hover {
+  background: var(--product-color-light) !important;
+  background-image: none !important;
+  border-color: var(--product-color-dark) !important;
+  color: var(--product-color-dark) !important;
+  -webkit-text-fill-color: var(--product-color-dark) !important;
+  box-shadow: 0 6px 20px var(--product-color-glow) !important;
 }
 
 .hero > .container,
@@ -2550,6 +2622,7 @@ section {
   border-radius: 20px;
   display: block;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background: transparent !important;
 }
 
 .browser-content {
@@ -6198,6 +6271,12 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   --product-color-light: rgba(60, 184, 235, 0.12);
   --product-color-border: rgba(60, 184, 235, 0.35);
   --product-color-glow: rgba(60, 184, 235, 0.2);
+  --product-video-shadow: 0 30px 80px -20px rgba(60, 184, 235, 0.25), 0 0 40px rgba(60, 184, 235, 0.12);
+  --product-badge-text: #0369A1;
+  --product-badge-border: rgba(3, 105, 161, 0.25);
+  --product-badge-bg: rgba(3, 105, 161, 0.08);
+  --product-text-gradient-light: linear-gradient(135deg, #0284C7 0%, #075985 100%);
+  --product-btn-color-light: #0284C7;
 }
 
 /* ── 2. PAGAR: Dispersión (Rosa #DB63AA) ── */
@@ -6207,6 +6286,12 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   --product-color-light: rgba(245, 181, 210, 0.15);
   --product-color-border: rgba(245, 181, 210, 0.45);
   --product-color-glow: rgba(245, 181, 210, 0.28);
+  --product-video-shadow: 0 30px 80px -20px rgba(219, 99, 170, 0.25), 0 0 40px rgba(219, 99, 170, 0.12);
+  --product-badge-text: #BE185D;
+  --product-badge-border: rgba(190, 24, 93, 0.25);
+  --product-badge-bg: rgba(190, 24, 93, 0.08);
+  --product-text-gradient-light: linear-gradient(135deg, #C23D8E 0%, #880E4F 100%);
+  --product-btn-color-light: #C23D8E;
 }
 
 /* ── 3. CONCILIAR: Conciliación (Violeta #AB4B96) ── */
@@ -6216,6 +6301,12 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   --product-color-light: rgba(171, 75, 150, 0.12);
   --product-color-border: rgba(171, 75, 150, 0.35);
   --product-color-glow: rgba(171, 75, 150, 0.22);
+  --product-video-shadow: 0 30px 80px -20px rgba(171, 75, 150, 0.25), 0 0 40px rgba(171, 75, 150, 0.12);
+  --product-badge-text: #86198F;
+  --product-badge-border: rgba(134, 25, 143, 0.25);
+  --product-badge-bg: rgba(134, 25, 143, 0.08);
+  --product-text-gradient-light: linear-gradient(135deg, #AB4B96 0%, #701A75 100%);
+  --product-btn-color-light: #AB4B96;
 }
 
 /* ── 4. DECIDIR: BI (Morado Profundo #4E154F) ── */
@@ -6225,6 +6316,12 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   --product-color-light: rgba(78, 21, 79, 0.1);
   --product-color-border: rgba(78, 21, 79, 0.35);
   --product-color-glow: rgba(78, 21, 79, 0.22);
+  --product-video-shadow: 0 30px 80px -20px rgba(123, 45, 139, 0.25), 0 0 40px rgba(123, 45, 139, 0.12);
+  --product-badge-text: #7B2D8B;
+  --product-badge-border: rgba(123, 45, 139, 0.25);
+  --product-badge-bg: rgba(123, 45, 139, 0.08);
+  --product-text-gradient-light: linear-gradient(135deg, #7B2D8B 0%, #4E154F 100%);
+  --product-btn-color-light: #7B2D8B;
 }
 
 /* ── UNIVERSAL PRODUCT COLOR APPLICATION ── */
@@ -6290,16 +6387,17 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   color: var(--product-color) !important;
 }
 
-/* Primary CTA Button: Solid product color */
+/* Primary CTA Button: Outline product color (0 fill) */
 .product-page-recaudo .btn-primary,
 .product-page-cobranza .btn-primary,
 .product-page-dispersion .btn-primary,
 .product-page-conciliacion .btn-primary,
 .product-page-bi .btn-primary {
-  background: var(--product-color) !important;
-  border-color: var(--product-color) !important;
-  box-shadow: 0 8px 24px var(--product-color-glow) !important;
-  color: #ffffff !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 1.5px solid var(--product-color) !important;
+  box-shadow: none !important;
+  color: var(--product-color) !important;
 }
 
 .product-page-recaudo .btn-primary:hover,
@@ -6307,8 +6405,10 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
 .product-page-dispersion .btn-primary:hover,
 .product-page-conciliacion .btn-primary:hover,
 .product-page-bi .btn-primary:hover {
-  background: var(--product-color-dark) !important;
-  box-shadow: 0 12px 32px var(--product-color-glow) !important;
+  background: var(--product-color-light) !important;
+  border-color: var(--product-color) !important;
+  color: var(--product-color) !important;
+  box-shadow: 0 6px 20px var(--product-color-glow) !important;
   transform: translateY(-2px) !important;
 }
 
