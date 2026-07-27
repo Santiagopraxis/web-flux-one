@@ -3522,23 +3522,28 @@ section {
     margin-top: -40px !important;
   }
 
-  /* 2x2 Grid Layout for Impact Stats on Mobile */
+  /* Mobile Swipe Carousel for Impact Stats */
   .stats-grid-impact {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
     gap: 16px !important;
-    overflow-x: visible !important;
-    scroll-snap-type: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    padding-bottom: 0 !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 16px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .stats-grid-impact::-webkit-scrollbar {
+    display: none !important;
   }
   .stats-grid-impact .stat-item {
-    flex: none !important;
+    flex: 0 0 88% !important; /* 88% width, reveals a slice of the next card */
     width: auto !important;
-    padding: 24px 16px !important;
+    padding: 32px 24px !important;
     background: #FFFFFF !important;
     border: 1px solid #E2E8F0 !important;
     border-radius: 20px !important;
@@ -3547,14 +3552,14 @@ section {
     flex-direction: column !important;
     align-items: center !important;
     box-sizing: border-box !important;
-    scroll-snap-align: none !important;
+    scroll-snap-align: center !important;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
   }
   .stats-grid-impact .stat-item .stat-number {
-    font-size: 1.8rem !important;
+    font-size: 2.2rem !important;
     font-weight: 700 !important;
     margin: 4px 0 12px 0 !important;
-    color: #0F172A !important;
+    color: transparent !important;
     -webkit-text-fill-color: transparent !important;
     background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
     -webkit-background-clip: text !important;
@@ -3562,8 +3567,8 @@ section {
     display: block !important;
   }
   .stats-grid-impact .stat-item .stat-caption {
-    font-size: 0.75rem !important;
-    line-height: 1.35 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
     color: #475569 !important;
     font-weight: 400 !important;
     opacity: 1 !important;

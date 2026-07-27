@@ -850,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(15, 23, 42, 0.15);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           }
           .carousel-dot.active {
