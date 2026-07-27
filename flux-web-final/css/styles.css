@@ -4979,7 +4979,7 @@ html.preloader-skip body.preloader-active {
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 12px;
-  color: #0F172A !important;
+  color: transparent !important;
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
