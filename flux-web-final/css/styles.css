@@ -3521,6 +3521,50 @@ section {
     transform-origin: center 40% !important;
     margin-top: -40px !important;
   }
+
+  /* 2x2 Grid Layout for Impact Stats on Mobile */
+  .stats-grid-impact {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    overflow-x: visible !important;
+    scroll-snap-type: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .stats-grid-impact .stat-item {
+    flex: none !important;
+    width: auto !important;
+    padding: 20px 12px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    scroll-snap-align: none !important;
+  }
+  .stats-grid-impact .stat-item .stat-number {
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+    margin: 4px 0 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+  }
+  .stats-grid-impact .stat-item .stat-caption {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-weight: 400 !important;
+  }
 }
 
 /* Fix para celulares extra pequeños (iPhone SE, etc) */
@@ -6532,4 +6576,9 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
+}
+
+/* Prevent typographic orphans globally */
+.section-title, .hero-title, .security-pill-badge {
+  text-wrap: balance !important;
 }
