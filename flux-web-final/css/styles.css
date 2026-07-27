@@ -3526,7 +3526,7 @@ section {
   .stats-grid-impact {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
+    gap: 16px !important;
     overflow-x: visible !important;
     scroll-snap-type: none !important;
     margin-left: 0 !important;
@@ -3538,32 +3538,35 @@ section {
   .stats-grid-impact .stat-item {
     flex: none !important;
     width: auto !important;
-    padding: 20px 12px !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 16px !important;
+    padding: 24px 16px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 20px !important;
     text-align: center !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     box-sizing: border-box !important;
     scroll-snap-align: none !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
   }
   .stats-grid-impact .stat-item .stat-number {
     font-size: 1.8rem !important;
     font-weight: 700 !important;
-    margin: 4px 0 !important;
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
+    margin: 4px 0 12px 0 !important;
+    color: #0F172A !important;
+    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    display: block !important;
   }
   .stats-grid-impact .stat-item .stat-caption {
     font-size: 0.75rem !important;
-    line-height: 1.3 !important;
-    color: rgba(255, 255, 255, 0.6) !important;
+    line-height: 1.35 !important;
+    color: #475569 !important;
     font-weight: 400 !important;
+    opacity: 1 !important;
   }
 }
 
@@ -4952,6 +4955,12 @@ html.preloader-skip body.preloader-active {
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
   text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .stat-item:hover {
