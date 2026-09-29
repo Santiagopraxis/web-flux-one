@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/logos/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fluX One — Pagos inteligentes en Colombia.</title>
-  <link rel="stylesheet" href="../css/styles.css?v=ultra_v68">
+  <link rel="stylesheet" href="../css/styles.css?v=ultra_v81">
   <script>
     if (sessionStorage.getItem('flux_preloader_loaded')) {
       document.documentElement.classList.add('preloader-skip');
@@ -148,6 +148,11 @@
             </div>
             
             <div class="menu-footer">
+                            <div class="menu-country">
+                <a href="./" class="active"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/co.svg" width="16" height="11" style="border-radius:1px;vertical-align:middle;margin-right:4px;" alt="CO"> CO</a>
+                <span class="divider">|</span>
+                <a href="../mx/"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.11.0/flags/4x3/mx.svg" width="16" height="11" style="border-radius:1px;vertical-align:middle;margin-right:4px;" alt="MX"> MX</a>
+              </div>
               <div class="menu-lang">
                 <a href="./" class="active">ES</a>
                 <span class="divider">|</span>
@@ -208,7 +213,7 @@
         </div>
         <!-- Right side React Dashboard Preview -->
         <div class="hero-graphic-col sr hero-video-reveal delay-3">
-          <video src="../assets/videos/co/dashboard.mp4" autoplay muted playsinline class="showcase-video"></video>
+          <video loop  src="../assets/videos/co/dashboard.mp4" autoplay muted playsinline class="showcase-video"></video>
         </div>
       </div>
     </div>
@@ -349,7 +354,7 @@
               <!-- Preview Móvil Incrustado -->
               <div class="showcase-mobile-dashboard-preview">
                 <div class="dashboard-view active" id="db-view-dispersion-mobile">
-                  <video src="../assets/videos/co/dispersiones.mp4" autoplay muted playsinline class="showcase-video"></video>
+                  <video loop  src="../assets/videos/co/dispersiones.mp4" autoplay muted playsinline class="showcase-video"></video>
                 </div>
               </div>
             </div>
@@ -374,7 +379,7 @@
               <!-- Preview Móvil Incrustado (Solo visible en < 1024px) -->
               <div class="showcase-mobile-dashboard-preview">
                 <div class="dashboard-view" id="db-view-recaudo-mobile">
-                  <video src="../assets/videos/co/recaudos.mp4" autoplay muted playsinline class="showcase-video"></video>
+                  <video loop  src="../assets/videos/co/recaudos.mp4" autoplay muted playsinline class="showcase-video"></video>
                 </div>
               </div>
             </div>
@@ -399,7 +404,7 @@
               <!-- Preview Móvil Incrustado -->
               <div class="showcase-mobile-dashboard-preview">
                 <div class="dashboard-view" id="db-view-inteligencia-mobile">
-                  <video src="../assets/videos/co/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
+                  <video loop  src="../assets/videos/co/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
                 </div>
               </div>
             </div>
@@ -413,15 +418,15 @@
             <div class="browser-content">
               <!-- PANTALLA DISPERSIÓN -->
               <div class="dashboard-view active" id="db-view-dispersion">
-                <video src="../assets/videos/co/dispersiones.mp4" autoplay muted playsinline class="showcase-video"></video>
+                <video loop  src="../assets/videos/co/dispersiones.mp4" autoplay muted playsinline class="showcase-video"></video>
               </div>
               <!-- PANTALLA RECAUDO -->
               <div class="dashboard-view" id="db-view-recaudo">
-                <video src="../assets/videos/co/recaudos.mp4" autoplay muted playsinline class="showcase-video"></video>
+                <video loop  src="../assets/videos/co/recaudos.mp4" autoplay muted playsinline class="showcase-video"></video>
               </div>
               <!-- PANTALLA INTELIGENCIA -->
               <div class="dashboard-view" id="db-view-inteligencia">
-                <video src="../assets/videos/co/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
+                <video loop  src="../assets/videos/co/bi.mp4" autoplay muted playsinline class="showcase-video"></video>
               </div>
             </div>
           </div>
@@ -646,7 +651,7 @@
 
           <!-- Bottom Pill Badge -->
           <div class="security-pill-badge">
-            Innovación y seguridad en <strong>opciones de medios de pago</strong>
+            Innovación y seguridad en <strong>opciones de medios de&nbsp;pago</strong>
           </div>
         </div>
       </div>
@@ -1557,16 +1562,12 @@
         </div>
       </div>
 
-      <div class="grid-3 sr fade-in">
+      <div class="grid-2 sr fade-in" style="max-width: 860px; margin: 0 auto;">
         <div class="card glass-light d1">
-          <h3 class="card-title">Cumplimiento regulatorio</h3>
-          <p class="card-desc">Operamos bajo supervisión de la Comisión Nacional Bancaria y de Valores (SFC). Cumplimos todas las normativas SARLAFT y protección de datos aplicables.</p>
-        </div>
-        <div class="card glass-light d2">
           <h3 class="card-title">Protección de datos certificada</h3>
           <p class="card-desc">ISO 27001 y PCI DSS validan nuestros controles de seguridad. Encriptación end-to-end. Almacenamiento seguro. Auditorías continuas.</p>
         </div>
-        <div class="card glass-light d3">
+        <div class="card glass-light d2">
           <h3 class="card-title">Monitoreo 24/7</h3>
           <p class="card-desc">Detección de anomalías en tiempo real. Alertas automáticas. Trazabilidad total de cada transacción.</p>
         </div>
@@ -1582,7 +1583,7 @@
       <div class="grid-2" style="align-items: center; gap: 80px;">
         <div style="text-align: left;">
           <p style="font-size: 0.875rem; letter-spacing: 0.15em; color: var(--flux-gray-500); margin-bottom: 16px; font-weight: 600;">PSST...</p>
-          <h2 class="section-title typewriter-text sr fade-in" data-delay="100" data-speed="40" style="margin-bottom: 24px; color: var(--flux-dark);">Llegamos para que fluir<br>fuera para todos.</h2>
+          <h2 class="section-title typewriter-text sr fade-in" data-delay="100" data-speed="40" style="margin-bottom: 24px; color: var(--flux-dark);">Llegamos para que fluir fuera para&nbsp;todos.</h2>
           <p class="section-subtitle sr fade-in fade-delay-mid typewriter-delayed" style="text-align: left; margin-bottom: 40px; font-size: 1.125rem; color: var(--flux-gray-700);">Agenda una demo personalizada de 15 minutos. Te mostramos cómo fluX se integra con tu ERP y optimiza tu operación desde el d&iacute;a&nbsp;1.</p>
           <ul class="typewriter-delayed" style="list-style: none; padding: 0; color: var(--flux-gray-700);">
             <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">

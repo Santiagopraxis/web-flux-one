@@ -3521,6 +3521,58 @@ section {
     transform-origin: center 40% !important;
     margin-top: -40px !important;
   }
+
+  /* Mobile Swipe Carousel for Impact Stats */
+  .stats-grid-impact {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 16px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .stats-grid-impact::-webkit-scrollbar {
+    display: none !important;
+  }
+  .stats-grid-impact .stat-item {
+    flex: 0 0 88% !important; /* 88% width, reveals a slice of the next card */
+    width: auto !important;
+    padding: 32px 24px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    scroll-snap-align: center !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
+  }
+  .stats-grid-impact .stat-item .stat-number {
+    font-size: 2.2rem !important;
+    font-weight: 700 !important;
+    margin: 4px 0 12px 0 !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    display: block !important;
+  }
+  .stats-grid-impact .stat-item .stat-caption {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    color: #475569 !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+  }
 }
 
 /* Fix para celulares extra pequeños (iPhone SE, etc) */
@@ -3758,21 +3810,32 @@ section {
   border-radius: 12px;
 }
 
-/* Footer (Languages) */
+/* Footer (Languages & Country Selector) */
 .menu-footer {
   margin-top: auto;
   padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
-.menu-lang {
+.menu-lang, .menu-country {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
   font-size: 0.85rem;
   color: rgba(255,255,255,0.5);
 }
-.menu-lang a { color: rgba(255,255,255,0.5); text-decoration: none; }
-.menu-lang a.active { color: #ffffff; font-weight: 600; }
-.menu-lang .divider { opacity: 0.3; }
+.menu-lang a, .menu-country a { 
+  color: rgba(255,255,255,0.5); 
+  text-decoration: none; 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.menu-lang a.active, .menu-country a.active { color: #ffffff; font-weight: 600; }
+.menu-lang .divider, .menu-country .divider { opacity: 0.3; }
 
 /* Global Nexa Hack (Always Dark Burger on light navs) */
 .navbar .menu-toggle span { background-color: #ffffff; }
@@ -4897,6 +4960,12 @@ html.preloader-skip body.preloader-active {
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
   text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .stat-item:hover {
@@ -4915,7 +4984,7 @@ html.preloader-skip body.preloader-active {
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 12px;
-  color: #0F172A !important;
+  color: transparent !important;
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
@@ -6521,4 +6590,9 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
+}
+
+/* Prevent typographic orphans globally */
+.section-title, .hero-title, .security-pill-badge {
+  text-wrap: balance !important;
 }
