@@ -36,11 +36,14 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  const host = req.headers.host || '';
+  const isMexico = host.includes('mx') || host.includes('mexico');
+  const localePrefix = isMexico ? '/mx/' : '/co/';
+
   // Resolve file path
   let safeUrl = req.url.split('?')[0];
   if (safeUrl === '/') {
-    // Redirect to /co/ so relative links resolve correctly
-    res.writeHead(302, { Location: '/co/' });
+    res.writeHead(302, { Location: localePrefix });
     res.end();
     return;
   }
