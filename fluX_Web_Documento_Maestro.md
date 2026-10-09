@@ -498,12 +498,12 @@ Seguridad de nivel bancario.
 #### **Bloque 1:**
 **Título:**
 ```
-Cumplimiento regulatorio
+Estándares de la industria
 ```
 
 **Copy:**
 ```
-Operamos bajo supervisión de la Superintendencia Financiera de Colombia (SFC). 
+Operamos mediante conexiones seguras con entidades financieras autorizadas. 
 Cumplimos todas las normativas SARLAFT y protección de datos aplicables.
 ```
 
@@ -711,11 +711,11 @@ fluX orquesta todos los rieles de pago en tiempo real para que tu operación nun
 
 #### **Sección 5 — Seguridad y Cumplimiento**
 
-**Bloque 1: Cumplimiento regulatorio**
+**Bloque 1: Estándares de la industria**
 
 **Copy:**
 ```
-Operamos bajo supervisión de la Comisión Nacional Bancaria y de Valores (CNBV). 
+Operamos mediante conexiones seguras con entidades financieras autorizadas. 
 Cumplimos todas las normativas de Prevención de Lavado de Dinero (PLD) y protección de datos aplicables.
 ```
 

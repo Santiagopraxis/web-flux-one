@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (current.classList.contains('section-light') || current.classList.contains('footer-light') || current.classList.contains('hero-light')) {
         return 'light';
       }
-      if ((current.classList.contains('hero') && !current.classList.contains('hero-light')) || current.classList.contains('kickoff-section') || current.classList.contains('impact-stats-section') || current.classList.contains('ecosystem-hub-section') || current.classList.contains('dashboard-showcase-section') || current.classList.contains('footer-dark')) {
+      if ((current.classList.contains('hero') && !current.classList.contains('hero-light')) || current.classList.contains('kickoff-section') || current.classList.contains('footer-dark')) {
         return 'dark';
       }
       
@@ -486,6 +486,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Force play showcase videos on first user interaction (helps bypass mobile low-power mode autoplay block)
+    const forcePlayVideos = () => {
+      document.querySelectorAll('.showcase-video').forEach(video => {
+        if (video.paused) {
+          video.play().catch(err => console.log("Autoplay play forced failed:", err));
+        }
+      });
+      // Remove event listeners after first run
+      window.removeEventListener('touchstart', forcePlayVideos);
+      window.removeEventListener('click', forcePlayVideos);
+      window.removeEventListener('scroll', forcePlayVideos);
+    };
+    window.addEventListener('touchstart', forcePlayVideos, { passive: true });
+    window.addEventListener('click', forcePlayVideos, { passive: true });
+    window.addEventListener('scroll', forcePlayVideos, { passive: true });
+
     // ── Vimeo Modal (Kickoff Video) ───────────────────────────────────────────
     window.openVimeoModal = function(vimeoId) {
       let overlay = document.getElementById('vimeo-modal-overlay');
@@ -834,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(15, 23, 42, 0.15);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           }
           .carousel-dot.active {
