@@ -6603,13 +6603,14 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
    --------------------------------------------------------------------------- */
 .modal-container.is-automata {
   padding: 0;
-  width: min(1040px, 94vw);
+  width: min(380px, 92vw);
   max-width: none;
-  max-height: 92vh;
+  max-height: 92dvh;
   overflow-x: hidden;
   overflow-y: auto;
-  border-radius: 20px;
+  border-radius: 18px;
   background: #fff;
+  transform-origin: center center;
 }
 .modal-container.is-automata .modal-close {
   top: 20px;
@@ -6623,15 +6624,46 @@ linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
   border: 0;
   background: #fff;
 }
-@media (max-width: 640px) {
+@media (min-width: 440px) and (max-width: 767px) {
   .modal-container.is-automata {
-    width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
-    border-radius: 0;
-    animation: none;
+    width: 380px;
+    max-height: 84dvh;
+    transform: scale(1.08);
+  }
+}
+@media (min-width: 768px) {
+  .modal-container.is-automata {
+    width: 1008px;
+    border-radius: 20px;
+    max-height: 90vh;
+    transform: scale(0.72);
   }
   .modal-container.is-automata iframe.automata-form {
-    min-height: 100dvh;
+    width: 1024px;
+    max-width: none;
+    margin-left: -8px;
+  }
+}
+@media (min-width: 900px) {
+  .modal-container.is-automata {
+    transform: scale(0.86);
+  }
+}
+@media (min-width: 1060px) {
+  .modal-container.is-automata {
+    max-height: 82vh;
+    transform: scale(1.06);
+  }
+}
+@media (min-width: 1240px) and (min-height: 720px) {
+  .modal-container.is-automata {
+    max-height: 80vh;
+    transform: scale(1.15);
+  }
+}
+@media (min-width: 1440px) and (min-height: 780px) {
+  .modal-container.is-automata {
+    max-height: 76vh;
+    transform: scale(1.24);
   }
 }
