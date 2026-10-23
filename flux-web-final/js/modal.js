@@ -78,3 +78,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+
+// ---------------------------------------------------------------------------
+// Formulario de demo de Automata (/f/praxis) embebido en el pop-up "Comienza hoy".
+// Reemplaza el formulario simulado de cada página por el real, que guarda el lead
+// en Automata. En local apunta al servidor de desarrollo de Automata.
+// ---------------------------------------------------------------------------
+(function () {
+  var PROD_URL = 'https://128-140-75-134.sslip.io/f/praxis';
+  var DEV_URL = 'http://localhost:5173/f/praxis';
+  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+
+  function formUrl() {
+    var url = new URL(isLocal ? DEV_URL : PROD_URL);
+    url.searchParams.set('insertado', '1');
+    var page = new URLSearchParams(location.search);
+    ['utm_source', 'utm_campaign'].forEach(function (key) {
+      if (page.get(key)) url.searchParams.set(key, page.get(key));
+    });
+    if (!page.get('utm_source')) url.searchParams.set('utm_source', 'web');
+    return url.toString();
+  }
+
+  function mount() {
+    var container = document.querySelector('#demo-modal .modal-container');
+    if (!container || container.classList.contains('is-automata')) return;
+    var close = container.querySelector('.modal-close');
+    container.innerHTML = '';
+    if (close) container.appendChild(close);
+    var iframe = document.createElement('iframe');
+    iframe.className = 'automata-form';
+    iframe.title = document.documentElement.lang === 'en' ? 'Book your fluX demo' : 'Agenda tu demo de fluX';
+    iframe.loading = 'lazy';
+    iframe.src = formUrl();
+    container.appendChild(iframe);
+    container.classList.add('is-automata');
+  }
+
+  // El formulario avisa su alto para que el pop-up no tenga doble barra de desplazamiento.
+  window.addEventListener('message', function (event) {
+    var data = event.data;
+    if (!data || data.type !== 'automata-form-height') return;
+    var iframe = document.querySelector('#demo-modal iframe.automata-form');
+    if (iframe && event.source === iframe.contentWindow) {
+      iframe.style.height = Math.max(420, Number(data.height) || 0) + 'px';
+    }
+  });
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
+})();
