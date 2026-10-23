@@ -83,19 +83,17 @@ document.addEventListener('DOMContentLoaded', function() {
 // ---------------------------------------------------------------------------
 // Formulario de demo de Automata (/f/praxis) embebido en el pop-up "Comienza hoy".
 // Reemplaza el formulario simulado de cada página por el real, que guarda el lead
-// en Automata. En local apunta al servidor de desarrollo de Automata.
+// en Automata.
 // ---------------------------------------------------------------------------
 (function () {
-  var PROD_URL = 'https://128-140-75-134.sslip.io/f/praxis';
-  var DEV_URL = 'http://localhost:5173/f/praxis';
-  var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var FORM_URL = 'https://salexone.cloud/f/praxis?insertado=1';
 
   function formUrl() {
-    var url = new URL(isLocal ? DEV_URL : PROD_URL);
+    var url = new URL(FORM_URL);
     url.searchParams.set('insertado', '1');
     var page = new URLSearchParams(location.search);
-    ['utm_source', 'utm_campaign'].forEach(function (key) {
-      if (page.get(key)) url.searchParams.set(key, page.get(key));
+    page.forEach(function (value, key) {
+      if (key.indexOf('utm_') === 0) url.searchParams.set(key, value);
     });
     if (!page.get('utm_source')) url.searchParams.set('utm_source', 'web');
     return url.toString();
