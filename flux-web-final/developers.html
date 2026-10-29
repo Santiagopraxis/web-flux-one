@@ -3676,7 +3676,7 @@
       
       <!-- Intro description (Dynamic based on country) -->
       <p class="page-subtitle" id="intro-text">
-        The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications  all through a single integration point connected to Mexico's interbank payment network via BANXICO.
+        The fluX One API, operated by Trueque Digital, transmits instructions and queries statuses from contracted providers for SPEI payouts, account data cross-checks, and webhook notifications. Trueque does not receive or custody funds nor act as a direct or indirect SPEI participant. Reference to Banco de México identifies the system operator, not an endorsement or sponsorship of fluX One.
       </p>
 
       <!-- Key Specs Grid -->
@@ -3701,7 +3701,7 @@
       <div class="section-block grid-textured">
         <h2 class="section-block-title"><i data-lucide="layers" stroke-width="1.75"></i> Platform Capabilities</h2>
         <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 20px;" id="intro-capabilities-subtitle">
-          Everything you need to move money in Mexico  built on SPEI, powered by BANXICO.
+          Technology integration layer for enterprise operations in Mexico — operated by Trueque Digital, S.A. de C.V. (SPEI is operated by Banco de México; transactions are executed by the contracted financial provider).
         </p>
         <div class="card-grid" id="capabilities-grid">
           <!-- MX/CO Dynamic Cards injected via JS -->
@@ -3881,7 +3881,7 @@
               <span class="env-name">Production</span>
               <span class="env-badge-tag production">LIVE</span>
             </div>
-            <p class="env-desc" id="production-desc">Production environment for live operations. Real SPEI transactions and CEP retrieval via BANXICO. Requires approved onboarding.</p>
+            <p class="env-desc" id="production-desc">Production environment for live operations. Transactions are executed via SPEI by the contracted financial provider and CEP data is queried according to provider availability. Requires approved onboarding. A technical response does not by itself confirm credit to the beneficiary.</p>
             <code style="display: block; font-family: var(--font-mono); font-size: 0.8rem; color: var(--flux-success); background: rgba(0,0,0,0.3); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--glass-border);" id="production-url">https://flux.praxisglobe.com/api/v1/partners</code>
           </div>
         </div>
@@ -3910,7 +3910,7 @@
 
       <h3 class="exec-section-title"><i data-lucide="target" stroke-width="1.75"></i> <span data-translate="es">¿Qué es fluX One?</span><span data-translate="en">What is fluX One?</span></h3>
       <p class="exec-paragraph">
-        <span data-translate="es">fluX One es una plataforma de middleware financiero que conecta tu negocio con los rieles de pago instantáneo de Latinoamérica a través de una sola integración. En México opera con SPEI (Banco de México) y en Colombia con Bre-B (Banco de la República). Tu equipo técnico integra una vez, y tu negocio puede mover dinero en ambos países de forma inmediata.</span><span data-translate="en">fluX One is a financial middleware platform that connects your business to Latin America's instant payment rails through a single integration. In Mexico it operates via SPEI (Banco de México) and in Colombia via Bre-B (Banco de la República). Your technical team integrates once, and your business can move money across both countries instantly.</span>
+        <span data-translate="es">La API de fluX One, operada en México por Trueque Digital, S.A. de C.V., transmite instrucciones y consulta estados de los proveedores contratados. Trueque no recibe ni custodia los recursos ni actúa como participante directo o indirecto del SPEI. La mención de Banco de México identifica al operador del sistema, no un patrocinio o aval de fluX One. Una respuesta técnica no confirma por sí sola el abono al beneficiario; el significado del estado final y el comprobante se verifican con el proveedor integrado.</span><span data-translate="en">The fluX One API, operated in Mexico by Trueque Digital, S.A. de C.V., transmits instructions and queries statuses from contracted providers. Trueque does not receive or custody funds nor act as a direct or indirect SPEI participant. Reference to Banco de México identifies the system operator, not an endorsement or sponsorship of fluX One. A technical response does not by itself confirm credit to the beneficiary; final status meaning and receipt are verified with the integrated provider.</span>
       </p>
 
       <h3 class="exec-section-title"><i data-lucide="briefcase" stroke-width="1.75"></i> <span data-translate="es">Capacidades de Negocio</span><span data-translate="en">Business Capabilities</span></h3>
@@ -4004,10 +4004,10 @@
             <div class="step-block">
               <div class="step-num">2</div>
               <div class="step-content">
-                <div class="step-title" data-translate="es">Validación y Registro en Libro Mayor (Blockchain)</div>
-                <div class="step-title" data-translate="en">Validation & Journaling (Blockchain)</div>
-                <div class="step-desc" data-translate="es">fluX One valida los fondos, la estructura de la solicitud y registra de forma inmutable la transacción en el Journal Ledger (blockchain), garantizando seguridad matemática y auditoría total.</div>
-                <div class="step-desc" data-translate="en">fluX One validates the funds, the request structure, and immutably records the transaction in the Journal Ledger (blockchain), guaranteeing mathematical security and total auditability.</div>
+                <div class="step-title" data-translate="es">Validación de Estructura y Registro Trazable</div>
+                <div class="step-title" data-translate="en">Structure Validation & Traceable Record</div>
+                <div class="step-desc" data-translate="es">fluX One valida la estructura de la solicitud y registra la operación en una bitácora trazable de instrucciones y estados reportados.</div>
+                <div class="step-desc" data-translate="en">fluX One validates the request structure and records the operation in a traceable log of instructions and reported statuses.</div>
               </div>
             </div>
             <div class="step-block">
@@ -4015,8 +4015,8 @@
               <div class="step-content">
                 <div class="step-title" data-translate="es">Dispersión en Red Bancaria Local (SPEI / Bre-B)</div>
                 <div class="step-title" data-translate="en">Local Banking Dispersion (SPEI / Bre-B)</div>
-                <div class="step-desc" data-translate="es">La transacción se canaliza en tiempo real al Banco Central correspondiente (Banco de México vía SPEI o Banco de la República vía Bre-B en Colombia) para liquidación interbancaria instantánea en segundos.</div>
-                <div class="step-desc" data-translate="en">The transaction is channeled in real time to the corresponding Central Bank (Banco de México via SPEI or Banco de la República via Bre-B in Colombia) for instant interbank settlement in seconds.</div>
+                <div class="step-desc" data-translate="es">En México, fluX One transmite la instrucción al proveedor financiero contratado, quien ejecuta la operación a través de SPEI. Una respuesta técnica no confirma por sí sola el abono al beneficiario; el estado final y el comprobante se verifican con el proveedor integrado. Pueden existir devoluciones o disputas conforme al medio de pago.</div>
+                <div class="step-desc" data-translate="en">In Mexico, fluX One transmits the instruction to the contracted financial provider, which executes the transaction via SPEI. A technical response does not by itself confirm credit to the beneficiary; the final status and receipt are verified with the integrated provider. Returns or disputes may occur according to the payment method.</div>
               </div>
             </div>
             <div class="step-block">
@@ -4069,7 +4069,7 @@
         <li><span class="exec-benefit-check">✓</span> <span data-translate="es">fluX One reintenta automáticamente si el banco no responde. Zero intervención manual.</span><span data-translate="en">fluX One automatically retries if the bank doesn't respond. Zero manual intervention.</span></li>
         <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Tu sistema recibe una notificación instantánea con el resultado final (éxito o fallo).</span><span data-translate="en">Your system receives an instant notification with the final result (success or failure).</span></li>
         <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Protección contra duplicados: un pago nunca se procesa dos veces, incluso con fallas de red.</span><span data-translate="en">Duplicate protection: a payment is never processed twice, even with network failures.</span></li>
-        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Cada transacción queda registrada en el journal inmutable de blockchain para auditoría completa.</span><span data-translate="en">Every transaction is recorded on the immutable blockchain journal for complete auditability.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Cada operación queda registrada en una bitácora trazable de instrucciones y estados reportados.</span><span data-translate="en">Every operation is recorded in a traceable log of instructions and reported statuses.</span></li>
       </ul>
     </div>
       </section>
@@ -4138,7 +4138,7 @@
         <div class="exec-usecase-card">
           <div class="exec-usecase-icon"><i data-lucide="clipboard-list" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
           <div class="exec-usecase-title"><span data-translate="es">Auditoría Completa</span><span data-translate="en">Full Audit Trail</span></div>
-          <div class="exec-usecase-desc"><span data-translate="es">Registro inmutable de cada operación en blockchain. Trazabilidad total para cumplimiento regulatorio.</span><span data-translate="en">Immutable record of every operation on blockchain. Full traceability for regulatory compliance.</span></div>
+          <div class="exec-usecase-desc"><span data-translate="es">Registro trazable de cada operación y sus estados reportados para apoyar la revisión interna y el cumplimiento.</span><span data-translate="en">Traceable record of every operation and its reported statuses to support internal review and compliance.</span></div>
         </div>
         <div class="exec-usecase-card">
           <div class="exec-usecase-icon"><i data-lucide="columns-3" stroke-width="1.75" style="width:20px;height:20px;color:var(--flux-primary);"></i></div>
@@ -4248,7 +4248,7 @@
     <div class="section-block" style="background: rgba(255, 255, 255, 0.01); border-color: var(--glass-border);">
       <h3 class="section-block-title" style="margin-bottom: 8px;"><i data-lucide="info" stroke-width="1.75"></i> Collections SPEI (Pay-ins)</h3>
       <p style="font-size: 0.82rem; color: var(--flux-gray-300); line-height: 1.6; margin: 0;">
-        SPEI (Sistema de Pagos Electrónicos Interbancarios) is Mexico's real-time interbank transfer system operated by Banco de México (BANXICO). fluX leverages SPEI to collect payments from any valid CLABE account into your concentrator account.
+        The payer authorizes the transaction through the corresponding provider's mechanism or via a valid recurring authorization for the contracted product. Knowing a CLABE does not authorize a charge. fluX One transmits instructions and queries statuses; it does not receive or custody funds or issue its own balances.
       </p>
     </div>
 
@@ -4326,8 +4326,8 @@
                 <span class="method-badge badge-success" style="background: var(--flux-success); color: white; border-color: rgba(34, 197, 94, 0.3);">200 OK</span>
               </div>
             </div>
-            <p class="step-card-desc" data-translate="es">fluX valida la solicitud e inicia el recaudo SPEI. Retorna la transacción con <code>status: INITIALIZED</code>. Los fondos se liquidan al confirmar el banco del pagador.</p>
-            <p class="step-card-desc" data-translate="en">fluX validates the request and initiates the SPEI collection. Returns the transaction with <code>status: INITIALIZED</code>. Funds settle once payer's bank confirms.</p>
+            <p class="step-card-desc" data-translate="es">fluX One transmite la instrucción al proveedor integrado y retorna <code>status: INITIALIZED</code>. El pagador autoriza la operación mediante el mecanismo del proveedor correspondiente; una respuesta técnica inicial no confirma el abono.</p>
+            <p class="step-card-desc" data-translate="en">fluX One transmits the instruction to the integrated provider and returns <code>status: INITIALIZED</code>. The payer authorizes the operation through the provider's mechanism; an initial technical response does not confirm settlement.</p>
           </div>
           <div class="step-number-circle">2</div>
         </div>
@@ -4880,7 +4880,7 @@ System.out.println(res.getBody());</pre>
         <div class="section-block">
           <h2 class="section-block-title">Payouts SPEI</h2>
           <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
-            SPEI (Sistema de Pagos Electrónicos Interbancarios) is Mexico's real-time interbank transfer system operated by Banco de México (BANXICO). FluX leverages SPEI to deliver instant payouts to any valid CLABE account in the Mexican banking system.
+            SPEI (Sistema de Pagos Electrónicos Interbancarios) is operated by Banco de México. The fluX One API, operated by Trueque Digital, transmits payout instructions to the contracted financial provider (which executes the SPEI transfer from the client's authorized account) and queries transaction statuses. Trueque does not receive or custody funds nor act as a direct or indirect SPEI participant. A technical response does not by itself confirm credit to the beneficiary.
           </p>
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Use Cases</h3>
@@ -5096,7 +5096,7 @@ System.out.println(res.getBody());</pre>
     <div class="exec-content">
       <h3 class="exec-section-title"><i data-lucide="send" stroke-width="1.75"></i> <span data-translate="es">Dispersión de Pagos en México</span><span data-translate="en">Payouts in Mexico</span></h3>
       <p class="exec-paragraph">
-        <span data-translate="es">Envía dinero a cualquier cuenta bancaria en México a través del sistema SPEI del Banco de México. Los pagos se liquidan en segundos, las 24 horas del día, los 365 días del año.</span><span data-translate="en">Send money to any bank account in Mexico through Banco de México's SPEI system. Payments settle in seconds, 24 hours a day, 365 days a year.</span>
+        <span data-translate="es">La API de fluX One, operada por Trueque Digital, transmite instrucciones de dispersión y consulta estados de los proveedores contratados. Trueque no recibe ni custodia los recursos ni actúa como participante directo o indirecto del SPEI. La mención de Banco de México identifica al operador del sistema, no un patrocinio o aval de fluX One. Una respuesta técnica no confirma por sí sola el abono al beneficiario; el significado del estado final y el comprobante se verifican con el proveedor integrado.</span><span data-translate="en">The fluX One API, operated by Trueque Digital, transmits payout instructions and queries statuses from contracted providers. Trueque does not receive or custody funds nor act as a direct or indirect SPEI participant. Reference to Banco de México identifies the system operator, not an endorsement or sponsorship of fluX One. A technical response does not by itself confirm credit to the beneficiary; the final status and receipt are verified with the integrated provider.</span>
       </p>
 
       <div class="exec-kpi-row">
@@ -5176,7 +5176,7 @@ System.out.println(res.getBody());</pre>
 
         <h1 class="page-title"><span class="flag" style="background-image: url('https://flagcdn.com/w40/mx.png');"></span> Collections (Pay-ins)</h1>
         <p class="page-subtitle">
-          Collect payments from any Mexican bank account via SPEI. Pay-in requests are processed in real time during SPEI operating hours. FluX handles the end-to-end flow  from request initiation to fund settlement in your concentrator account.
+          Transmit collection requests (Pay-ins) through the contracted provider. The payer authorizes the transaction through the corresponding provider's mechanism or via a valid recurring authorization for the contracted product. Knowing a CLABE does not authorize a charge. fluX One transmits instructions and queries statuses; it does not receive or custody funds or issue its own balances.
         </p>
 
         <div class="section-block grid-textured postman-card">
@@ -5210,7 +5210,7 @@ System.out.println(res.getBody());</pre>
         <div class="section-block">
           <h2 class="section-block-title">Collections SPEI (Pay-ins)</h2>
           <p style="font-size: 0.85rem; color: var(--flux-gray-300); margin-bottom: 16px;">
-            SPEI (Sistema de Pagos Electrónicos Interbancarios) is Mexico's real-time interbank transfer system operated by Banco de México (BANXICO). FluX leverages SPEI to collect payments from any valid CLABE account into your concentrator account.
+            El pagador autoriza la operación mediante el mecanismo del proveedor correspondiente o mediante una autorización recurrente válida para el producto contratado. Conocer una CLABE no autoriza un cargo. fluX One transmite instrucciones y consulta estados; no recibe ni custodia los fondos ni emite saldos propios.
           </p>
 
           <h3 style="font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px; color: var(--flux-white);">Use Cases</h3>
@@ -5425,7 +5425,7 @@ System.out.println(res.getBody());</pre>
     <div class="exec-content">
       <h3 class="exec-section-title"><i data-lucide="wallet" stroke-width="1.75"></i> <span data-translate="es">Cobros en México</span><span data-translate="en">Collections in Mexico</span></h3>
       <p class="exec-paragraph">
-        <span data-translate="es">Recibe pagos de tus clientes a través de SPEI. Cada vez que alguien transfiere a tu cuenta concentradora, fluX One te notifica automáticamente con los detalles del pago para reconciliación instantánea.</span><span data-translate="en">Receive payments from your customers via SPEI. Every time someone transfers to your concentrator account, fluX One automatically notifies you with payment details for instant reconciliation.</span>
+        <span data-translate="es">El pagador autoriza la operación mediante el mecanismo del proveedor correspondiente o mediante una autorización recurrente válida para el producto contratado. Conocer una CLABE no autoriza un cargo. fluX One transmite instrucciones y consulta estados; no recibe ni custodia los fondos ni emite saldos propios.</span><span data-translate="en">The payer authorizes the transaction through the corresponding provider's mechanism or via a valid recurring authorization for the contracted product. Knowing a CLABE does not authorize a charge. fluX One transmits instructions and queries statuses; it does not receive or custody funds or issue its own balances.</span>
       </p>
 
       <div class="exec-kpi-row">
@@ -5478,7 +5478,7 @@ System.out.println(res.getBody());</pre>
 
     <h1 class="page-title"><span class="flag"></span> Penny Validation  México</h1>
     <p class="page-subtitle">
-      The Penny Validation API enables account ownership verification by sending a minimal payment ($0.01 MXN) to a beneficiary account. This process generates a CEP (Comprobante Electrónico de Pago) that provides verified account holder information and creates an official payment receipt through BANXICO.
+      Validation uses a minimum-amount transfer ($0.01 MXN) executed by the integrated provider and the data available in the provider's response or CEP to cross-check information. It can help confirm account operability and data matching; it does not certify civil identity or legal account ownership, nor does it replace customer identification (KYC).
     </p>
 
     <!-- Postman Card -->
@@ -5515,12 +5515,12 @@ System.out.println(res.getBody());</pre>
         <div class="cap-card">
           <div class="use-case-icon-wrapper"><i data-lucide="user-check" stroke-width="1.75"></i></div>
           <h3 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">Account Verification</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Confirm the actual account holder matches your intended recipient before sending funds.</p>
+          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Cross-check account operability and data returned by the provider or CEP (does not certify legal ownership or civil identity).</p>
         </div>
         <div class="cap-card">
           <div class="use-case-icon-wrapper"><i data-lucide="file-text" stroke-width="1.75"></i></div>
           <h3 style="font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; color: var(--flux-white);">Official Documentation</h3>
-          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Get an easy-to-use URL to obtain XML or PDF receipts for compliance directly from BANXICO.</p>
+          <p style="font-size: 0.75rem; color: var(--flux-gray-300); line-height: 1.4; margin: 0;">Query the CEP reference and data reported by the participating institution as available via the integrated provider.</p>
         </div>
         <div class="cap-card">
           <div class="use-case-icon-wrapper"><i data-lucide="shield-alert" stroke-width="1.75"></i></div>
@@ -5934,7 +5934,7 @@ System.out.println(res.getBody());</pre>
             <i data-lucide="clock" stroke-width="1.75" class="animate-pulse-soft"></i>
           </div>
           <div class="lifecycle-label">PENDING</div>
-          <div class="lifecycle-desc">Waiting for CEP retrieval and confirmation from BANXICO.</div>
+          <div class="lifecycle-desc">Waiting for CEP data availability from the integrated provider.</div>
         </div>
         <div class="lifecycle-connector"><i data-lucide="chevron-right" stroke-width="1.75"></i></div>
         <div class="lifecycle-step">
@@ -5961,7 +5961,7 @@ System.out.println(res.getBody());</pre>
               <div class="lifecycle-label">FAILED</div>
             </div>
           </div>
-          <div class="lifecycle-desc" style="margin-top: 2px;">CEP available and identity validated, or permanently failed after retries.</div>
+          <div class="lifecycle-desc" style="margin-top: 2px;">CEP data available for cross-checking (does not certify identity), or failed after retries.</div>
         </div>
       </div>
       
@@ -5989,7 +5989,7 @@ System.out.println(res.getBody());</pre>
                 PENDING
               </span>
             </td>
-            <td style="color: var(--flux-gray-300);">Waiting for CEP retrieval and confirmation from BANXICO.</td>
+            <td style="color: var(--flux-gray-300);">Waiting for CEP data availability from the integrated provider.</td>
           </tr>
           <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
             <td style="font-family: var(--font-mono); font-weight: 700; color: var(--flux-warning);">
@@ -6218,7 +6218,7 @@ System.out.println(res.getBody());</pre>
       </div>
 
       <ul class="exec-benefit-list">
-        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Verifica la titularidad antes de dispersar grandes montos.</span><span data-translate="en">Verify ownership before disbursing large amounts.</span></li>
+        <li><span class="exec-benefit-check">✓</span> <span data-translate="es">La validación utiliza una transferencia de importe mínimo y los datos disponibles en la respuesta del proveedor o en el CEP para cotejar información. Puede ayudar a confirmar la operatividad de una cuenta y la coincidencia de datos; no certifica la identidad ni la titularidad jurídica de la cuenta, ni sustituye la identificación del cliente.</span><span data-translate="en">Validation uses a minimum-amount transfer and the data available in the provider's response or CEP to cross-check information. It can help confirm account operability and data matching; it does not certify identity or legal account ownership, nor does it replace customer identification.</span></li>
         <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Reduce costos operativos al eliminar transferencias fallidas.</span><span data-translate="en">Reduce operational costs by eliminating failed transfers.</span></li>
         <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Compatible con cuentas CLABE de cualquier banco mexicano.</span><span data-translate="en">Compatible with CLABE accounts from any Mexican bank.</span></li>
         <li><span class="exec-benefit-check">✓</span> <span data-translate="es">Respuesta inmediata: sabes si la cuenta es válida antes de comprometer fondos.</span><span data-translate="en">Immediate response: know if the account is valid before committing funds.</span></li>
@@ -8300,8 +8300,8 @@ app.listen(3000, () =&gt; {
             <h1 class="page-title" data-translate="es">Crear Payout (México)</h1>
             <h1 class="page-title" data-translate="en">Create Payout (Mexico)</h1>
             
-            <p class="page-subtitle" data-translate="es">Inicia un pago electrónico inmediato de fondos hacia una cuenta CLABE en México utilizando la red SPEI.</p>
-            <p class="page-subtitle" data-translate="en">Initiate an immediate electronic payout of funds to a CLABE bank account in Mexico via the SPEI network.</p>
+            <p class="page-subtitle" data-translate="es">Transmite una instrucción de pago hacia una cuenta CLABE en México por conducto del proveedor financiero contratado. Una respuesta técnica no confirma por sí sola el abono al beneficiario.</p>
+            <p class="page-subtitle" data-translate="en">Transmit a payout instruction to a CLABE account in Mexico through the contracted financial provider. A technical response does not by itself confirm credit to the beneficiary.</p>
 
             <div class="params-section">
               <h3 class="params-title" data-translate="es">Parámetros del Payload</h3>
@@ -8417,8 +8417,8 @@ app.listen(3000, () =&gt; {
             
             <h1 class="page-title">Penny Validation (México)</h1>
             
-            <p class="page-subtitle" data-translate="es">Inicia la validación en tiempo real de una cuenta CLABE enviando una micro-transferencia de un centavo y recuperando el CEP firmado.</p>
-            <p class="page-subtitle" data-translate="en">Initiate the real-time validation of a CLABE bank account by sending a micro-transfer of one penny and retrieving the signed CEP.</p>
+            <p class="page-subtitle" data-translate="es">La validación utiliza una transferencia de importe mínimo ($0.01 MXN) y los datos disponibles en la respuesta del proveedor o en el CEP para cotejar información. Puede ayudar a confirmar la operatividad de una cuenta y la coincidencia de datos; no certifica la identidad ni la titularidad jurídica de la cuenta, ni sustituye la identificación del cliente.</p>
+            <p class="page-subtitle" data-translate="en">Validation uses a minimum-amount transfer ($0.01 MXN) and the data available in the provider's response or CEP to cross-check information. It can help confirm account operability and data matching; it does not certify identity or legal account ownership, nor does it replace customer identification.</p>
 
             <div class="params-section">
               <h3 class="params-title" data-translate="es">Parámetros del Payload</h3>
@@ -8841,12 +8841,12 @@ app.listen(3000, () =&gt; {
       mx: {
         introBreadcrumb: 'Getting Started',
         introFlag: '',
-        introText: "The fluX API is a RESTful JSON interface that enables you to send SPEI payouts, verify account ownership, and receive real-time notifications  all through a single integration point connected to Mexico's interbank payment network via BANXICO.",
+        introText: "The fluX One API, operated by Trueque Digital, transmits instructions and queries statuses from contracted providers for SPEI payouts, account data cross-checks, and webhook notifications. Trueque does not receive or custody funds nor act as a direct or indirect SPEI participant. Reference to Banco de México identifies the system operator, not an endorsement or sponsorship of fluX One.",
         introBaseUrl: 'https://flux.praxisglobe.com/api/v1/partners',
-        capabilitiesSubtitle: "Everything you need to move money in Mexico  built on SPEI, powered by BANXICO.",
+        capabilitiesSubtitle: "Technology integration layer for enterprise operations in Mexico — operated by Trueque Digital, S.A. de C.V. (SPEI is operated by Banco de México; transactions are executed by the contracted financial provider).",
         capabilities: [
           { title: 'Payouts (SPEI)', desc: 'Send instant payouts to any Mexican bank account via SPEI. Real-time settlement during operating hours.' },
-          { title: 'Penny Validation', desc: 'Verify account ownership by sending a $0.01 MXN penny. Retrieve a CEP to confirm beneficiary identity.' },
+          { title: 'Penny Validation', desc: 'Use a minimum-amount transfer ($0.01 MXN) and provider/CEP data to help confirm account operability and cross-check data (does not certify identity or legal ownership).' },
           { title: 'Webhooks', desc: 'Receive real-time event notifications when transactions change status or CEPs are generated.' },
           { title: 'Authentication', desc: 'Secure access via JWT Bearer tokens with 6-hour sessions. All requests are authenticated and encrypted.' }
         ],
@@ -8892,7 +8892,7 @@ app.listen(3000, () =&gt; {
         ],
         sandboxDesc: 'Use the sandbox environment for development and testing. No real funds are moved. Simulated SPEI responses and CEPs.',
         sandboxUrl: 'https://sandbox.flux.praxisglobe.com/api/v1/partners',
-        productionDesc: 'Production environment for live operations. Real SPEI transactions and CEP retrieval via BANXICO. Requires approved onboarding.',
+        productionDesc: 'Production environment for live operations. Transactions are executed via SPEI by the contracted financial provider and CEP data is queried according to provider availability. Requires approved onboarding. A technical response does not by itself confirm credit to the beneficiary.',
         productionUrl: 'https://flux.praxisglobe.com/api/v1/partners'
       },
       co: {
@@ -9870,12 +9870,12 @@ app.listen(3000, () =&gt; {
         },
         'authentication': { es: '<strong>Contexto de negocio:</strong> Cómo se autentica la integración de tu equipo. Sección relevante para revisión de seguridad y cumplimiento.', en: '<strong>Business context:</strong> How your team integration authenticates. Relevant for security review and compliance.' },
         'payouts-mx': {
-          es: '<strong>Contexto de negocio:</strong> Dispersión de pagos a cualquier cuenta bancaria mexicana vía SPEI en segundos. Ideal para nómina, proveedores y reembolsos.',
-          en: '<strong>Business context:</strong> Send payouts to any Mexican bank account via SPEI in seconds. Ideal for payroll, suppliers, and refunds.'
+          es: '<strong>Contexto de negocio:</strong> La API de fluX One, operada por Trueque Digital, transmite instrucciones de dispersión y consulta estados de los proveedores contratados. Trueque no recibe ni custodia los recursos ni actúa como participante directo o indirecto del SPEI.',
+          en: '<strong>Business context:</strong> The fluX One API, operated by Trueque Digital, transmits payout instructions and queries statuses from contracted providers. Trueque does not receive or custody funds nor act as a direct or indirect SPEI participant.'
         },
         'collections-mx': {
-          es: '<strong>Contexto de negocio:</strong> Recaudo de pagos de clientes a través de múltiples canales en México. Simplifica la cobranza y acelera el flujo de caja.',
-          en: '<strong>Business context:</strong> Collect payments from customers through multiple channels in Mexico. Simplifies collections and accelerates cash flow.'
+          es: '<strong>Contexto de negocio:</strong> El pagador autoriza la operación mediante el mecanismo del proveedor correspondiente o mediante una autorización recurrente válida para el producto contratado. Conocer una CLABE no autoriza un cargo. fluX One transmite instrucciones y consulta estados; no recibe ni custodia los fondos ni emite saldos propios.',
+          en: '<strong>Business context:</strong> The payer authorizes the transaction through the corresponding provider\'s mechanism or via a valid recurring authorization. Knowing a CLABE does not authorize a charge. fluX One transmits instructions and queries statuses; it does not receive or custody funds or issue its own balances.'
         },
         'webhooks-mx': {
           es: '<strong>Contexto de negocio:</strong> Notificaciones automáticas del estado de cada transacción. Tu sistema se entera en tiempo real sin necesidad de consultar manualmente.',

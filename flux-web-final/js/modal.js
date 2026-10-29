@@ -111,6 +111,16 @@ document.addEventListener('DOMContentLoaded', function() {
     iframe.loading = 'lazy';
     iframe.src = formUrl();
     container.appendChild(iframe);
+    var p = (window.location.pathname || '').toLowerCase();
+    if (p.indexOf('/mx') !== -1) {
+      var note = document.createElement('div');
+      note.className = 'automata-legal-note';
+      note.style.cssText = 'padding:8px 16px;font-size:11px;line-height:1.4;color:#64748b;background:#f8fafc;border-top:1px solid rgba(15,23,42,0.06);text-align:center;';
+      note.textContent = document.documentElement.lang === 'en'
+        ? 'Submitting requests information or a demonstration. It does not contract services or authorize charges. Operated in Mexico by Trueque Digital, S.A. de C.V.'
+        : 'El envío solicita información o una demostración. No contrata servicios ni autoriza cargos. Operado en México por Trueque Digital, S.A. de C.V.';
+      container.appendChild(note);
+    }
     container.classList.add('is-automata');
   }
 
