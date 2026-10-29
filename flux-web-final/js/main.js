@@ -1,3 +1,18 @@
+// ── REDIRECCIÓN AUTOMÁTICA DOMINIO MEXICANO (.mx) ─────────────────────────────
+(function() {
+  try {
+    var host = (window.location.hostname || '').toLowerCase();
+    var path = window.location.pathname || '/';
+    var ref = document.referrer || '';
+    var isInternalRef = ref && ref.indexOf(host) !== -1;
+    if ((host.endsWith('.mx') || host.indexOf('fluxone.com.mx') !== -1) && !isInternalRef) {
+      if (path === '/' || path === '/co' || path === '/co/' || path === '/co/index.html') {
+        window.location.replace('/mx/');
+      }
+    }
+  } catch (e) {}
+})();
+
 // ── CONFIGURACIÓN GLOBAL DE ANALYTICS ─────────────────────────────────────────
 // José: Reemplaza 'G-XXXXXXXXXX' con tu ID real de Google Analytics 4 (GA4).
 // Si lo dejas como 'G-XXXXXXXXXX' o vacío, no se cargará ningún script de rastreo.
@@ -655,21 +670,21 @@ document.addEventListener('DOMContentLoaded', () => {
           bottom: 24px;
           right: 24px;
           width: calc(100% - 48px);
-          max-width: 420px;
-          background: rgba(255, 255, 255, 0.06);
+          max-width: 400px;
+          background: rgba(10, 13, 20, 0.94);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
-          border: 1px solid rgba(255, 255, 255, 0.12);
-          border-radius: 16px;
-          padding: 20px 24px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 14px;
+          padding: 20px 22px;
+          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
           z-index: 99999;
           display: flex;
           flex-direction: column;
           gap: 14px;
           opacity: 0;
-          transform: translateY(40px);
-          transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          transform: translateY(24px);
+          transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
           font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
           color: rgba(255, 255, 255, 0.9);
           text-align: left;
@@ -680,26 +695,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         #flux-cookie-banner.hide {
           opacity: 0;
-          transform: translateY(40px);
+          transform: translateY(24px);
           pointer-events: none;
         }
+        .flux-cookie-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .flux-cookie-icon {
+          width: 34px;
+          height: 34px;
+          border-radius: 9px;
+          background: rgba(60, 184, 235, 0.08);
+          border: 1px solid rgba(60, 184, 235, 0.22);
+          color: var(--cyan, #3CB8EB);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
         .flux-cookie-title {
-          font-size: 1.05rem;
+          font-size: 0.95rem;
           font-weight: 600;
           letter-spacing: -0.01em;
           color: #ffffff;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .flux-cookie-icon {
-          color: var(--cyan, #3CB8EB);
-          font-size: 1.2rem;
+          margin: 0;
         }
         .flux-cookie-text {
-          font-size: 0.875rem;
-          line-height: 1.5;
-          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.82rem;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, 0.68);
           font-weight: 400;
         }
         .flux-cookie-text a {
@@ -707,64 +733,64 @@ document.addEventListener('DOMContentLoaded', () => {
           text-decoration: none;
           font-weight: 500;
           transition: color 0.2s ease;
-          border-bottom: 1px solid transparent;
+          border-bottom: 1px solid rgba(60, 184, 235, 0.35);
         }
         .flux-cookie-text a:hover {
           color: #ffffff;
-          border-bottom-color: var(--cyan, #3CB8EB);
+          border-bottom-color: #ffffff;
         }
         .flux-cookie-actions {
           display: flex;
-          gap: 12px;
+          gap: 10px;
           justify-content: flex-end;
-          margin-top: 4px;
+          margin-top: 2px;
         }
         .flux-cookie-btn {
-          padding: 10px 20px;
-          font-size: 0.85rem;
+          padding: 8px 18px;
+          font-size: 0.8rem;
           font-weight: 600;
-          border-radius: 30px;
+          border-radius: 8px;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
           font-family: inherit;
           outline: none;
         }
         .flux-cookie-btn-reject {
-          background: transparent;
-          color: rgba(255, 255, 255, 0.8);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0.03);
+          color: rgba(255, 255, 255, 0.72);
+          border: 1px solid rgba(255, 255, 255, 0.12);
         }
         .flux-cookie-btn-reject:hover {
-          background: rgba(255, 255, 255, 0.05);
-          border-color: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.24);
           color: #ffffff;
         }
         .flux-cookie-btn-accept {
-          background: transparent;
-          color: #ffffff;
-          border: 1px solid transparent;
-          background-image: linear-gradient(#08080c, #08080c), linear-gradient(135deg, var(--cyan, #3CB8EB) 0%, #ab4b96 50%, #F5B5D2 100%);
-          background-origin: border-box;
-          background-clip: padding-box, border-box;
-          box-shadow: 0 4px 12px rgba(60, 184, 235, 0.15);
+          background: #ffffff;
+          color: #08080c;
+          border: 1px solid #ffffff;
+          box-shadow: 0 2px 10px rgba(255, 255, 255, 0.12);
         }
         .flux-cookie-btn-accept:hover {
-          transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 8px 20px rgba(60, 184, 235, 0.35);
-          filter: brightness(1.1);
+          background: var(--cyan, #3CB8EB);
+          border-color: var(--cyan, #3CB8EB);
+          color: #050508;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba(60, 184, 235, 0.3);
         }
         .flux-cookie-btn-accept:active {
-          transform: translateY(0) scale(1);
+          transform: translateY(0);
         }
         @media (max-width: 500px) {
           #flux-cookie-banner {
             bottom: 16px;
             right: 16px;
             width: calc(100% - 32px);
-            padding: 16px 20px;
+            padding: 16px 18px;
           }
           .flux-cookie-actions {
-            flex-direction: column-reverse;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
           }
           .flux-cookie-btn {
             width: 100%;
@@ -781,9 +807,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const banner = document.createElement('div');
       banner.id = 'flux-cookie-banner';
       banner.innerHTML = `
-        <div class="flux-cookie-title">
-          <span class="flux-cookie-icon">🍪</span>
-          <span>${titleText}</span>
+        <div class="flux-cookie-header">
+          <span class="flux-cookie-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><circle cx="8.5" cy="8.5" r="0.7" fill="currentColor"/><circle cx="16" cy="15.5" r="0.7" fill="currentColor"/><circle cx="12" cy="12" r="0.7" fill="currentColor"/><circle cx="11" cy="17" r="0.7" fill="currentColor"/><circle cx="7" cy="14" r="0.7" fill="currentColor"/></svg>
+          </span>
+          <span class="flux-cookie-title">${titleText}</span>
         </div>
         <div class="flux-cookie-text">${bodyText}</div>
         <div class="flux-cookie-actions">

@@ -10,49 +10,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fluX One — Política de Cookies</title>
   <link rel="stylesheet" href="css/styles.css?v=ultra_v81">
-  <style>
+    <style>
+    .legal-section-wrap {
+      background: radial-gradient(circle at 50% 0%, rgba(60, 184, 235, 0.08) 0%, rgba(5, 5, 8, 0) 55%), #050508;
+      padding: 140px 0 96px;
+    }
     .legal-container {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 48px 52px;
       line-height: 1.8;
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+    .legal-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(60, 184, 235, 0.08);
+      border: 1px solid rgba(60, 184, 235, 0.2);
+      color: var(--cyan, #3CB8EB);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      margin-bottom: 20px;
     }
     .legal-container h1 {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 700;
+      font-size: clamp(28px, 4.5vw, 42px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
       color: #ffffff;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       line-height: 1.2;
     }
     .legal-container h2 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 600;
       color: #ffffff;
-      margin-top: 40px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 8px;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 10px;
+      letter-spacing: -0.01em;
     }
     .legal-container p {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-weight: 300;
+      font-size: 0.96rem;
+    }
+    .legal-container strong {
+      color: #ffffff;
+      font-weight: 600;
     }
     .legal-container ul {
       margin-bottom: 24px;
       padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
     .legal-container li {
-      margin-bottom: 10px;
       font-weight: 300;
+      font-size: 0.95rem;
+      padding-left: 4px;
     }
-    .legal-meta {
-      font-size: 0.85rem;
-      color: var(--cyan, #3CB8EB);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 700;
-      margin-bottom: 16px;
+    @media (max-width: 640px) {
+      .legal-section-wrap {
+        padding: 110px 0 64px;
+      }
+      .legal-container {
+        padding: 28px 22px;
+        border-radius: 16px;
+      }
     }
   </style>
   <script>
@@ -237,12 +272,12 @@
   </div>
 
   <!-- LEGAL CONTENT -->
-  <section style="background: #050508; padding-top: 120px;">
+  <section class="legal-section-wrap">
     <div class="container">
       <div class="legal-container">
-        <div class="legal-meta">Última actualización: 22 de junio de 2026</div>
+        <div class="legal-header-badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><circle cx="8.5" cy="8.5" r="0.7" fill="currentColor"/><circle cx="16" cy="15.5" r="0.7" fill="currentColor"/><circle cx="12" cy="12" r="0.7" fill="currentColor"/><circle cx="11" cy="17" r="0.7" fill="currentColor"/><circle cx="7" cy="14" r="0.7" fill="currentColor"/></svg><span>Última actualización: 22 de junio de 2026</span></div>
         <h1>Política de Cookies</h1>
-        <p>En **fluX by Praxis**, utilizamos cookies y tecnologías similares para mejorar tu experiencia de navegación en nuestro sitio web, analizar nuestro tráfico web y comprender de dónde provienen nuestros visitantes.</p>
+        <p>En <strong>fluX by Praxis</strong>, utilizamos cookies y tecnologías similares para mejorar tu experiencia de navegación en nuestro sitio web, analizar nuestro tráfico web y comprender de dónde provienen nuestros visitantes.</p>
 
         <h2>1. ¿Qué son las Cookies?</h2>
         <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo (computador, tableta o dispositivo móvil) mientras navegas. Estos archivos permiten que el sitio recuerde información útil sobre tu visita, facilitando tus siguientes accesos y mejorando la funcionalidad técnica del sitio.</p>
@@ -250,19 +285,19 @@
         <h2>2. Tipos de Cookies que Utilizamos</h2>
         <p>Clasificamos las cookies que utilizamos en las siguientes categorías:</p>
         <ul>
-          <li>**Cookies Esenciales (Técnicas):** Son necesarias para el funcionamiento del sitio web. Permiten navegar por las páginas, habilitar los flujos de inicio de sesión y asegurar el correcto funcionamiento del formulario de demostración de producto. Estas cookies no pueden desactivarse de nuestros sistemas.</li>
-          <li>**Cookies de Rendimiento y Analítica:** Nos permiten contar las visitas y medir las fuentes de tráfico de forma anónima para evaluar y mejorar el rendimiento de nuestro sitio web. Nos ayudan a saber qué páginas son las más y menos populares.</li>
-          <li>**Cookies de Preferencias:** Permiten que el sitio web recuerde las elecciones del usuario (como su selección de país/región "Colombia/México" o el idioma "ES/EN") para ofrecer una navegación personalizada desde el primer instante.</li>
+          <li><strong>Cookies Esenciales (Técnicas):</strong> Son necesarias para el funcionamiento del sitio web. Permiten navegar por las páginas, habilitar los flujos de inicio de sesión y asegurar el correcto funcionamiento del formulario de demostración de producto. Estas cookies no pueden desactivarse de nuestros sistemas.</li>
+          <li><strong>Cookies de Rendimiento y Analítica:</strong> Nos permiten contar las visitas y medir las fuentes de tráfico de forma anónima para evaluar y mejorar el rendimiento de nuestro sitio web. Nos ayudan a saber qué páginas son las más y menos populares.</li>
+          <li><strong>Cookies de Preferencias:</strong> Permiten que el sitio web recuerde las elecciones del usuario (como su selección de país/región "Colombia/México" o el idioma "ES/EN") para ofrecer una navegación personalizada desde el primer instante.</li>
         </ul>
 
         <h2>3. Cómo Administrar las Cookies</h2>
         <p>La mayoría de los navegadores web te permiten controlar o bloquear el uso de cookies a través de sus ajustes de configuración. Ten en cuenta que si desactivas las cookies técnicas o esenciales, es posible que algunas secciones o funcionalidades de nuestro sitio web no operen correctamente.</p>
         <p>Para ajustar las configuraciones en los navegadores más utilizados:</p>
         <ul>
-          <li>**Google Chrome:** Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.</li>
-          <li>**Mozilla Firefox:** Opciones > Privacidad y seguridad > Cookies y datos del sitio.</li>
-          <li>**Microsoft Edge:** Configuración > Cookies y permisos del sitio > Administrar y eliminar cookies.</li>
-          <li>**Apple Safari:** Preferencias > Privacidad > Bloquear todas las cookies.</li>
+          <li><strong>Google Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.</li>
+          <li><strong>Mozilla Firefox:</strong> Opciones > Privacidad y seguridad > Cookies y datos del sitio.</li>
+          <li><strong>Microsoft Edge:</strong> Configuración > Cookies y permisos del sitio > Administrar y eliminar cookies.</li>
+          <li><strong>Apple Safari:</strong> Preferencias > Privacidad > Bloquear todas las cookies.</li>
         </ul>
 
         <h2>4. Actualizaciones a esta Política</h2>

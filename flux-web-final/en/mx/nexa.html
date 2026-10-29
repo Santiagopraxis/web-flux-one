@@ -455,7 +455,7 @@
               <div class="nx-card-lbl">Total pending this month</div>
               <div class="nx-card-amt">$312,400</div>
               <div class="nx-card-pills">
-                <span class="nx-pill">Wallet $120k</span>
+                <span class="nx-pill">Invoices & payment methods</span>
                 <span class="nx-pill">Mobility Card $15k</span>
               </div>
             </div>
@@ -513,8 +513,8 @@
         </div>
         <div class="nx-feat-card">
           <div class="nx-feat-icon" style="background:rgba(37,99,235,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg></div>
-          <div class="nx-feat-title">Transit Card Recharges</div>
-          <p class="nx-feat-desc">Recharge transit cards directly from the app in seconds. No queues, no physical reload stations, no interruptions.</p>
+          <div class="nx-feat-title">Invoice Lookup</div>
+          <p class="nx-feat-desc">Allow users to check invoice details and due dates from a single interface.</p>
         </div>
         <div class="nx-feat-card">
           <div class="nx-feat-icon" style="background:rgba(245,158,11,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
@@ -523,13 +523,13 @@
         </div>
         <div class="nx-feat-card">
           <div class="nx-feat-icon" style="background:rgba(0,184,148,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><circle cx="7" cy="15" r="1"/></svg></div>
-          <div class="nx-feat-title">Integrated Digital Wallet</div>
-          <p class="nx-feat-desc">Load funds once and pay whenever you want. Easy top-ups, clear transaction history, and balance always visible on screen.</p>
+          <div class="nx-feat-title">Invoices and Payment Methods</div>
+          <p class="nx-feat-desc">Check available invoices and access enabled payment options for the integration, without holding a balance in a Trueque account.</p>
         </div>
         <div class="nx-feat-card">
           <div class="nx-feat-icon" style="background:rgba(37,99,235,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8v4l3 3"/></svg></div>
-          <div class="nx-feat-title">Auto-Pay (Direct Debit)</div>
-          <p class="nx-feat-desc">Users enable auto-pay and never worry again. No service interruptions, no forgotten deadlines.</p>
+          <div class="nx-feat-title">Recurring Charges</div>
+          <p class="nx-feat-desc">Sends reminders and facilitates access to the payment flow. Recurring charges are executed according to the amount, frequency, and term authorized by the holder, with cancellation mechanisms.</p>
         </div>
         <div class="nx-feat-card">
           <div class="nx-feat-icon" style="background:rgba(16,185,129,0.08);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 4-5"/></svg></div>
@@ -610,7 +610,7 @@
           </div>
           <div class="wa-chat-bg">
             <div class="wa-bubble in">
-              Hi Carlos 👋. Your electricity bill for this month of <strong>$45,200</strong> is due tomorrow. Would you like to pay it now using your saved payment method?
+              Hi Carlos. Your electricity bill for this month of <strong>$45,200</strong> is due tomorrow. Would you like to pay it now using your saved payment method?
               <a class="wa-btn">Yes, pay now</a>
               <span class="wa-time">10:42 AM</span>
             </div>
@@ -625,7 +625,7 @@
             </div>
             
             <div class="wa-bubble in">
-              Payment successful! ✅ Here is your receipt. Thanks for staying up to date.
+              Payment successful! <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:3px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Here is your receipt. Thanks for staying up to date.
               <span class="wa-time">10:45 AM</span>
             </div>
           </div>
@@ -892,8 +892,7 @@
         </div>
       </div>
     </div>
-    
-    <div class="footer-bottom-row">
+      <div class="footer-bottom-row">
       <div class="footer-bottom-left" style="display: flex; align-items: center; gap: 24px;">
         <img src="../../assets/images/logos/flux%20one%20en%20negro_1.svg" alt="fluX One" class="footer-logo-main" style="height: 36px; width: auto;" decoding="async">
         <span style="color: rgba(255,255,255,0.2);">|</span>
@@ -911,6 +910,10 @@
         </div>
       </div>
     </div>
+      <div class="mx-legal-footer">
+        <p class="mx-legal-main"><strong>Legal Notice &amp; Operator Identity:</strong> fluX One is a technology platform operated in Mexico by <strong>Trueque Digital, S.A. de C.V.</strong> It integrates systems, transmits instructions, and facilitates reconciliation and data analysis. It does not receive or custody transaction funds. Financial services are provided by the contracted providers in each case. Trueque is responsible for the technology services under its charge.</p>
+        <p class="mx-legal-sub">Trueque Digital, S.A. de C.V. · RFC TDI2103181T1 · Av. Insurgentes Sur 64, Torre B, Oficina 501, Colonia Juárez, Alcaldía Cuauhtémoc, Mexico City, C.P. 06600.</p>
+      </div>
   </footer>
 
   <!-- MODAL -->

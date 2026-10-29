@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const host = req.headers.host || '';
+  const host = (req.headers['x-forwarded-host'] || req.headers.host || '').toLowerCase();
   const isMexico = host.includes('mx') || host.includes('mexico');
   const localePrefix = isMexico ? '/mx/' : '/co/';
 
